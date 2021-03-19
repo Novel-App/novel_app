@@ -5,7 +5,6 @@ const Favorites = require('./favorites')
 const Chat = require('./chat')
 const Messages = require('./messages')
 
-
 /**
  * If we had any associations to make, this would be a great place to put them!
  * ex. if we had another model called BlogPost, we might say:
@@ -19,12 +18,12 @@ const Messages = require('./messages')
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
  */
-Product.HasOne.Genre
+Product.hasOne(Genre)
 
 Product.belongsToMany(User, {
-  through: 'favorites' 
+  through: 'favorites'
 })
-User.belongsToMany(Product, { 
+User.belongsToMany(Product, {
   through: 'favorites'
 })
 
