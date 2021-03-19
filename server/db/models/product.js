@@ -6,68 +6,68 @@ const Product = db.define('Product', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true,
-    },
+      notEmpty: true
+    }
   },
   author: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true,
-    },
+      notEmpty: true
+    }
   },
   ISBN: {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
-      notEmpty: true,
-    },
+      notEmpty: true
+    }
   },
   description: {
-    type: Sequelize.TEXT,
+    type: Sequelize.TEXT
   },
   //Update image validater once we figure out another way to store images
   image: {
     type: Sequelize.TEXT,
     defaultValue:
       'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
-    allowNull: false,
+    allowNull: false
   },
   condition: {
     type: Sequelize.ENUM('aged, loved, good, like new'),
     allowNull: false,
     validate: {
-      notEmpty: true,
-    },
+      notEmpty: true
+    }
   },
   numFavorites: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER
   },
   price: {
     type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
     validate: {
-      min: 0,
-    },
+      min: 0
+    }
   },
   canBargain: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false,
+    defaultValue: false
   },
   transactionComplete: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false,
+    defaultValue: false
   },
   buyerId: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER
   },
   sellerId: {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
-      notEmpty: true,
-    },
-  },
+      notEmpty: true
+    }
+  }
 })
 
-module.exports = Products
+module.exports = Product
