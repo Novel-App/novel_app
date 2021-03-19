@@ -15,9 +15,15 @@ const SignupForm = props => {
           <label htmlFor="firstName">
             <small>First Name</small>
           </label>
+          <input name="firstName" type="text" />
+        </div>
+        <div>
           <label htmlFor="lastName">
             <small>Last Name</small>
           </label>
+          <input name="lastName" type="text" />
+        </div>
+        <div>
           <label htmlFor="email">
             <small>Email</small>
           </label>
@@ -51,12 +57,11 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
-      const formName = evt.target.name
       const firstName = evt.target.firstName
       const lastName = evt.target.lastName
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(register(email, password, firstName, lastName, formName))
+      dispatch(register(email, password, firstName, lastName))
     }
   }
 }

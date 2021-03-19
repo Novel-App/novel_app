@@ -32,37 +32,35 @@ export const me = () => async dispatch => {
   }
 }
 
-export const resgister = (
+export const register = (
   email,
   password,
   firstName,
-  lastName,
-  method
+  lastName
 ) => async dispatch => {
   let res
   try {
-    res = await axios.post(`/auth/${method}`, {
+    console.log('in the thunks!')
+    res = await axios.post('/auth/auth/signup', {
       email,
       password,
       firstName,
       lastName
     })
-  } catch (authError) {
-    return dispatch(getUser({error: authError}))
-  }
-
-  try {
+    console.log('res', res)
+    console.log('what is res data', res.data)
     dispatch(getUser(res.data))
     history.push('/home')
-  } catch (dispatchOrHistoryErr) {
-    console.error(dispatchOrHistoryErr)
+  } catch (authError) {
+    console.log('error')
+    return dispatch(getUser({error: authError}))
   }
 }
 
-export const login = (email, password, method) => async dispatch => {
+export const login = (email, password) => async dispatch => {
   let res
   try {
-    res = await axios.post(`/auth/${method}`, {email, password})
+    res = await axios.post('/auth/login', {email, password})
   } catch (authError) {
     return dispatch(getUser({error: authError}))
   }
