@@ -22,10 +22,21 @@ router.post('/', async (req, res, next) => {
       name: req.body.name
     })
     res.status(201).json(newProduct)
-    res.sendStatus(409).send('You have ')
   } catch (error){
     next (error)
   }
 })
 
 
+// GET /api/products/:id
+router.get('/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const singleProduct = await Product.findOne({
+      where: {id: id}
+    })
+    res.json(singleProduct)
+  } catch (err) {
+    next(err)
+  }
+})
