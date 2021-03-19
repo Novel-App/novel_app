@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Favorites = db.define('Favorites', {
+const Favorites = db.define('favorite', {
   isFavorite: {
     type: Sequelize.BOOLEAN,
     allowNull: false,

@@ -27,9 +27,9 @@ User.belongsToMany(Product, {
   through: 'favorites'
 })
 
-User.belongsToMany(Messages, {
-  through: 'chat'
-})
+// User.belongsToMany(Messages, {
+//   through: 'chat'
+// })
 
 module.exports = {
   User,
