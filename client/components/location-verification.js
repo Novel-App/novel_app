@@ -1,8 +1,11 @@
+/* eslint-disable no-alert */
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import GoogleMapReact from 'google-map-react'
 require('dotenv').config()
+import {updateUser} from '../store/user'
 
-export default class LocationVerification extends Component {
+class LocationVerification extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -12,6 +15,7 @@ export default class LocationVerification extends Component {
     this.getLocation = this.getLocation.bind(this)
     this.getCoordinates = this.getCoordinates.bind(this)
     this.handleLocationError = this.handleLocationError.bind(this)
+    this.addLocation = this.addLocation.bind(this)
   }
   getLocation() {
     if (navigator.geolocation) {
@@ -48,6 +52,14 @@ export default class LocationVerification extends Component {
         alert('An unknown error occurred.')
     }
   }
+  addLocation() {
+    if (this.state.latitude && this.state.longitude) {
+      updateUser({
+        ...this.props.user,
+        coordinates: [this.state.latitude, this.state.longitude]
+      })
+    }
+  }
 
   render() {
     return (
@@ -63,6 +75,20 @@ export default class LocationVerification extends Component {
     )
   }
 }
+
+const mapState = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    updateUser: userInfo => dispatch(updateUser(userInfo))
+  }
+}
+
+export default connect(mapState, mapDispatch)(LocationVerification)
 
 export const UserMap = props => {
   let userInfo = {
