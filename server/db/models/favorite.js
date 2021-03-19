@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Favorites = db.define('Favorites', {
+const Favorite = db.define('favorite', {
   isFavorite: {
     type: Sequelize.BOOLEAN,
     allowNull: false,
@@ -12,4 +12,4 @@ const Favorites = db.define('Favorites', {
   }
 })
 
-module.exports = Favorites
+module.exports = Favorite
