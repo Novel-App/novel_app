@@ -18,8 +18,14 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
-    
+    let [newProduct, wasCreated] = await Product.create({
+      name: req.body.name
+    })
+    res.status(201).json(newProduct)
+    res.sendStatus(409).send('You have ')
   } catch (error){
     next (error)
   }
 })
+
+
