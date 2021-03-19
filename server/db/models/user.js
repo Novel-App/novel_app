@@ -79,10 +79,10 @@ const User = db.define('user', {
   locationVerified: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  googleId: {
+    type: Sequelize.STRING
   }
-  // googleId: {
-  //   type: Sequelize.STRING
-  // }
 })
 
 module.exports = User
