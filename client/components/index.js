@@ -8,3 +8,10 @@ export {default as UserHome} from './user-home'
 export {Login, Signup} from './auth-form'
 export {default as LocationVerification} from './location-verification'
 export {UserMap} from './location-verification'
+
+//remember to comment these in
+
+// export { AllChats, SingleChat } from './Chats/AllChats'
+// export {default as AllProduct, Condition, SingleProducts} from './Products'
+// export { default as Favorites, Listings, Profile, Purchases, Rating, Settings } from './UserProfile'
+
