@@ -1,25 +1,24 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Messages = db.define('Messages', {
+const Message = db.define('message', {
   message: {
-    type: Sequelize.TEXT,
-  }, 
+    type: Sequelize.TEXT
+  },
   senderId: {
-    type: Sequelize.INTEGER, 
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: true
     }
   },
   receiverId: {
-    type: Sequelize.INTEGER, 
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: true
     }
   }
-  
 })
 
-module.export = Messages
+module.export = Message

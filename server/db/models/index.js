@@ -1,9 +1,9 @@
 const User = require('./user')
 const Product = require('./product')
 const Genre = require('./genre')
-const Favorites = require('./favorites')
+const Favorite = require('./favorite')
+const Message = require('./message')
 const Chat = require('./chat')
-const Messages = require('./messages')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -21,20 +21,24 @@ const Messages = require('./messages')
 Product.hasOne(Genre)
 
 Product.belongsToMany(User, {
-  through: 'favorites'
+  through: 'Favorite'
 })
 User.belongsToMany(Product, {
-  through: 'favorites'
+  through: 'Favorite'
 })
 
-User.belongsToMany(Messages, {
-  through: 'chat'
-})
+// User.belongsToMany(Message, {
+//   through: 'Chat',
+// })
+
+// Message.belongsToMany(User, {
+//   through: 'Chat',
+// })
 
 module.exports = {
   User,
   Product,
   Genre,
-  Favorites,
+  Favorite,
   Chat
 }
