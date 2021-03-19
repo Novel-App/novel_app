@@ -21,4 +21,4 @@ const Message = db.define('message', {
   }
 })
 
-module.export = Message
+module.exports = Message
