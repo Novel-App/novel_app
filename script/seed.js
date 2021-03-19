@@ -199,16 +199,16 @@ async function seed() {
 
   //Genre
   const genres = [
-    {category: 'Fantasy/Adventure'},
-    {category: 'Romance'},
-    {category: 'Thriller/Mystery'},
-    {category: 'Science Fiction/Dystopian'},
-    {category: 'Memoir'},
-    {category: 'History'},
-    {category: 'Lifestyle'},
-    {category: 'Development/How-To/Education'},
-    {category: 'Humor'},
-    {category: 'Childrens'}
+    {isFiction: true, category: 'Fantasy/Adventure'},
+    {isFiction: true, category: 'Romance'},
+    {isFiction: true, category: 'Thriller/Mystery'},
+    {isFiction: true, category: 'Science Fiction/Dystopian'},
+    {isFiction: false, category: 'Memoir'},
+    {isFiction: false, category: 'History'},
+    {isFiction: false, category: 'Lifestyle'},
+    {isFiction: false, category: 'Development/How-To/Education'},
+    {isFiction: true, category: 'Humor'},
+    {isFiction: true, category: 'Childrens'}
   ]
 
   const [
@@ -238,9 +238,9 @@ async function seed() {
       price: 14,
       canBargain: false,
       transactionComplete: false,
-      sellerId: null,
-      buyerId: 1,
-      genreId: [thrillerMystery.id]
+      sellerId: 1,
+      buyerId: null,
+      genreIds: [thrillerMystery.id]
     },
     {
       title: 'We Were the Lucky Ones',
@@ -254,9 +254,9 @@ async function seed() {
       price: 10,
       canBargain: true,
       transactionComplete: false,
-      buyerId: 2,
-      sellerId: null,
-      genreId: [history.id]
+      buyerId: null,
+      sellerId: 2,
+      genreIds: [history.id]
     },
     {
       title: 'The Dark is Rising',
@@ -270,9 +270,9 @@ async function seed() {
       price: 8,
       canBargain: true,
       transactionComplete: false,
-      buyerId: 3,
-      sellerId: null,
-      genreId: [fantasyAdventure.id]
+      buyerId: null,
+      sellerId: 3,
+      genreIds: [fantasyAdventure.id]
     },
     {
       title: 'I am a Bunny',
@@ -286,9 +286,9 @@ async function seed() {
       price: 4,
       canBargain: true,
       transactionComplete: false,
-      buyerId: 4,
-      sellerId: null,
-      genreId: [children.id]
+      buyerId: null,
+      sellerId: 4,
+      genreIds: [childrens.id]
     },
     {
       title: 'The Agatha Christie Hour',
@@ -302,9 +302,9 @@ async function seed() {
       price: 10,
       canBargain: true,
       transactionComplete: false,
-      buyerId: 5,
-      sellerId: null,
-      genreId: [thrillerMystery.id]
+      buyerId: null,
+      sellerId: 5,
+      genreIds: [thrillerMystery.id]
     },
     {
       title: '3001: The Final Odyssey',
@@ -317,9 +317,9 @@ async function seed() {
       price: 20,
       canBargain: true,
       transactionComplete: false,
-      buyerId: 6,
-      sellerId: null,
-      genreId: [scienceFictionDystopian.id]
+      buyerId: null,
+      sellerId: 6,
+      genreIds: [scienceFictionDystopian.id]
     },
     {
       title: 'Kathleen',
@@ -333,9 +333,9 @@ async function seed() {
       price: 3,
       canBargain: true,
       transactionComplete: false,
-      buyerId: 7,
-      sellerId: null,
-      genreId: [romance.id]
+      buyerId: null,
+      sellerId: 7,
+      genreIds: [romance.id]
     },
     {
       title: 'The Path to Power',
@@ -349,9 +349,9 @@ async function seed() {
       price: 15,
       canBargain: false,
       transactionComplete: false,
-      buyerId: 8,
-      sellerId: null,
-      genreId: [memoir.id]
+      buyerId: null,
+      sellerId: 8,
+      genreIds: [memoir.id]
     },
     {
       title: 'Passports Illustrated Travel Guide to Amsterdam',
@@ -364,9 +364,9 @@ async function seed() {
       price: 2,
       canBargain: false,
       transactionComplete: false,
-      buyerId: 9,
-      sellerId: null,
-      genreId: [developmentHowToEducation.id]
+      buyerId: null,
+      sellerId: 9,
+      genreIds: [lifestyle.id]
     },
     {
       title: 'In Search of the Far Side',
@@ -377,15 +377,31 @@ async function seed() {
       condition: 'Loved',
       numFavorites: 0,
       price: 6,
-      canBargain: True,
+      canBargain: true,
       transactionComplete: false,
-      buyerId: 10,
-      sellerId: null,
-      genreId: [humor.id]
+      buyerId: null,
+      sellerId: 10,
+      genreIds: [humor.id]
+    },
+    {
+      title: 'Building Node Applications with MongoDB and Backbone',
+      author: 'Mike Wilson',
+      ISBN: '1449337392',
+      description:
+        'Building Node Applications with MongoDB and Backbone The enthusiasm behind Node does not just reflect the promise of server side JavaScript. Developers also have the potential to create elegant applications with this open source framework that are much easier to maintain.',
+      image: 'https://pictures.abebooks.com/inventory/md/md30310824446.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      transactionComplete: false,
+      buyerId: null,
+      sellerId: 14,
+      genreIds: [developmentHowToEducation.id]
     }
   ]
   const createdProducts = await Product.bulkCreate(products)
-  console.log(green('Seeded products'))
+  console.log('Seeded products')
 
   // Genre/Products
   const flattenProductGenres = products => {
@@ -400,8 +416,7 @@ async function seed() {
     }, productGenres)
   }
   const productGenres = flattenProductGenres(products)
-  await ProductGenre.bulkCreate(productGenres)
-  console.log(green('Seeded product_genres'))
+  console.log('Seeded product_genres')
 }
 
 // We've separated the `seed` function from the `runSeed` function.
