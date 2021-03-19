@@ -1,4 +1,5 @@
 const isDev = process.env.NODE_ENV === 'development'
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
@@ -17,6 +18,10 @@ module.exports = {
   watchOptions: {
     ignored: /node_modules/
   },
+  node: {
+    fs: 'empty'
+  },
+  plugins: [new Dotenv()],
   module: {
     rules: [
       {
