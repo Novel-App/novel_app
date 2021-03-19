@@ -27,13 +27,13 @@ User.belongsToMany(Product, {
   through: 'Favorite'
 })
 
-// User.belongsToMany(Message, {
-//   through: 'Chat',
-// })
+Message.belongsToMany(User, {
+  through: 'Chat'
+})
 
-// Message.belongsToMany(User, {
-//   through: 'Chat',
-// })
+User.belongsToMany(Message, {
+  through: 'Chat'
+})
 
 module.exports = {
   User,
