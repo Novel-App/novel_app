@@ -40,19 +40,15 @@ export const register = (
 ) => async dispatch => {
   let res
   try {
-    console.log('in the thunks!')
-    res = await axios.post('/auth/auth/signup', {
+    res = await axios.post('/auth/signup', {
       email,
       password,
       firstName,
       lastName
     })
-    console.log('res', res)
-    console.log('what is res data', res.data)
     dispatch(getUser(res.data))
     history.push('/home')
   } catch (authError) {
-    console.log('error')
     return dispatch(getUser({error: authError}))
   }
 }
