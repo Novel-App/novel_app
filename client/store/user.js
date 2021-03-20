@@ -81,9 +81,9 @@ export const logout = () => async dispatch => {
 
 //GENERIC THUNK CREATOR FOR ALL USER UPDATES (updating info in settings, adding location coords after verification)
 //user argument passed with spread operator of existing user info + updated user info
-export const updateUser = user => {
+export const updateUser = (userInfo, userId) => {
   return async dispatch => {
-    const {data} = await axios.put('/api/users', user)
+    const {data} = await axios.put(`/api/users/${userId}`, userInfo)
     dispatch(_updateUser(data))
   }
 }

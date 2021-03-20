@@ -55,9 +55,10 @@ router.get('/:userId', async (req, res, next) => {
 })
 
 // PUT api/users
-router.put('/', async (req, res, next) => {
+router.put('/:userId', async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.user.id)
+    const user = await User.findByPk(req.params.userId)
+    if (!user) res.send('This user does not exist.')
     const updatedUser = await user.update(req.body)
     res.status(201).send(updatedUser)
   } catch (err) {
