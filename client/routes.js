@@ -7,7 +7,8 @@ import {
   Signup,
   UserHome,
   LocationVerification,
-  Welcome
+  Welcome,
+  AllProducts
 } from './components'
 import {me} from './store'
 
@@ -31,6 +32,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/" component={Welcome} />
+            <Route path="/products" component={AllProducts} />
           </Switch>
         )}
         <Route exact path="/" component={Welcome} />
