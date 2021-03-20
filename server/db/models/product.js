@@ -17,7 +17,7 @@ const Product = db.define('product', {
     }
   },
   ISBN: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true
@@ -34,7 +34,7 @@ const Product = db.define('product', {
     allowNull: false
   },
   condition: {
-    type: Sequelize.ENUM('aged, loved, good, like new'),
+    type: Sequelize.ENUM('Aged', 'Loved', 'Good', 'Like New'),
     allowNull: false,
     validate: {
       notEmpty: true
