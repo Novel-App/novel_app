@@ -1,18 +1,14 @@
 import axios from 'axios'
 import history from '../history'
 
-/*
- * ACTION TYPES
- */
+// ACTION TYPES
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
 const CREATE_PRODUCT = 'CREATE_PRODUCT'
 const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 
-/*
- * ACTION CREATORS
- */
+// ACTION CREATORS
 const getProducts = products => ({
   type: GET_PRODUCTS,
   products
@@ -44,10 +40,7 @@ const _removeProduct = productId => {
   }
 }
 
-/*
- * THUNK CREATORS
- */
-//THUNK CREATOR
+// THUNK CREATORS
 export const fetchProducts = () => {
   return async dispatch => {
     try {
@@ -94,15 +87,13 @@ export const removeProduct = productId => {
   }
 }
 
-//INITIAL STATE
+// INITIAL STATE
 let initialState = {
   all: [],
   single: {}
 }
 
-/*
- * REDUCER
- */
+// REDUCER
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS:
