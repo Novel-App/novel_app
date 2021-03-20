@@ -3,13 +3,15 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {updateUser} from '../store/user'
 import UserMap from './UserProfile/UserMap'
+import {Link} from 'react-router-dom'
 
 class LocationVerification extends Component {
   constructor(props) {
     super(props)
     this.state = {
       latitude: null,
-      longitude: null
+      longitude: null,
+      verified: false
     }
     this.getLocation = this.getLocation.bind(this)
     this.getCoordinates = this.getCoordinates.bind(this)
@@ -57,21 +59,27 @@ class LocationVerification extends Component {
         {coordinates: [this.state.latitude, this.state.longitude]},
         this.props.user.id
       )
+      this.setState({verified: true})
     }
   }
 
   render() {
     return (
       <div>
+        <h1>Verify your location</h1>
+        {/* info icon to hover ==> explaining 'why do i need to verify my location?' */}
         <button type="button" onClick={this.getLocation}>
-          Verify location
+          Get location
         </button>
-        <p>Latitude: {this.state.latitude}</p>
-        <p>Longitude: {this.state.longitude}</p>
         <UserMap
           userLat={this.state.latitude}
           userLong={this.state.longitude}
         />
+        {this.state.verified && (
+          <Link to="/all-books">
+            <button type="button">Confirm</button>
+          </Link>
+        )}
       </div>
     )
   }
