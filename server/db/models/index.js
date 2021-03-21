@@ -37,33 +37,25 @@ Message.belongsTo(Chat)
 Product.hasMany(Chat)
 Chat.belongsTo(Product)
 
-User.hasMany(Message, {
-  foreignKey: 'senderId',
-  as: 'OutgoingMessage'
-})
-User.hasMany(Message, {
-  foreignKey: 'receiverId',
-  as: 'IncomingMessage'
-})
+User.belongsToMany(Chat, {through: Message})
+Chat.belongsToMany(User, {through: Message})
 
-Message.belongsTo(User, {
-  foreignKey: 'senderId',
-  as: 'Sender'
-})
-Message.belongsTo(User, {
-  foreignKey: 'receiverId',
-  as: 'Receiver'
-})
-
-// User.hasMany(Message);
-// Message.belongsTo(User);
-
-// Message.belongsToMany(User, {
-//   through: Chat
+// User.hasMany(Message, {
+//   foreignKey: 'senderId',
+//   as: 'OutgoingMessage'
+// })
+// User.hasMany(Message, {
+//   foreignKey: 'receiverId',
+//   as: 'IncomingMessage'
 // })
 
-// User.belongsToMany(Message, {
-//   through: Chat
+// Message.belongsTo(User, {
+//   foreignKey: 'senderId',
+//   as: 'Sender'
+// })
+// Message.belongsTo(User, {
+//   foreignKey: 'receiverId',
+//   as: 'Receiver'
 // })
 
 module.exports = {

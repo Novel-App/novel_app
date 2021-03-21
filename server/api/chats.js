@@ -6,10 +6,7 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const chats = await Chat.findAll({
-      include: {
-        model: Product,
-        include: [{model: User}]
-      }
+      include: [{model: User}, {model: Product}]
     })
     res.status(200).send(chats)
   } catch (err) {
@@ -24,20 +21,7 @@ router.get('/:chatId/messages', async (req, res, next) => {
     const messages = await Message.findAll({
       where: {
         chatId
-      },
-      include: [
-        {
-          association: User,
-          as: 'Sender'
-        },
-        {
-          association: User,
-          as: 'Receiver'
-        },
-        {
-          model: Chat
-        }
-      ]
+      }
     })
     res.status(200).send(messages)
   } catch (err) {
@@ -51,7 +35,8 @@ router.post('/', async (req, res, next) => {
     const chat = await Chat.create({
       where: {
         postId: req.body.postId
-      }
+      },
+      include: [{model: User}, {model: Product}]
     })
     res.status(201).send(chat)
   } catch (err) {
