@@ -11,6 +11,7 @@ export {Signup} from './signup'
 export {default as LocationVerification} from './location-verification'
 export {default as UserMap} from './UserProfile/UserMap'
 export {AllChats} from './Chats/AllChats'
+export {default as AllProducts} from './Products/AllProducts'
 export {SingleChat} from './Chats/SingleChat'
 
 //remember to comment these in
