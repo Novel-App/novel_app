@@ -39,11 +39,11 @@ Chat.belongsTo(Product)
 
 User.hasMany(Message, {
   foreignKey: 'senderId',
-  as: 'OutgoingMessages'
+  as: 'OutgoingMessage'
 })
 User.hasMany(Message, {
   foreignKey: 'receiverId',
-  as: 'IncomingMessages'
+  as: 'IncomingMessage'
 })
 
 Message.belongsTo(User, {
