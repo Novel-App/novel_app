@@ -10,6 +10,7 @@ import {
   Welcome,
   AllProducts
 } from './components'
+// import {AllProducts} from './components/UserProfile'
 import {me} from './store'
 
 /**
@@ -40,6 +41,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            {/* <Route path="/all-books" component={AllProducts} /> */}
             <Route
               path="/location-verification"
               component={LocationVerification}

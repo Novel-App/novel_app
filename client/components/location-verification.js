@@ -1,16 +1,17 @@
 /* eslint-disable no-alert */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import GoogleMapReact from 'google-map-react'
-require('dotenv').config()
 import {updateUser} from '../store/user'
+import UserMap from './UserProfile/UserMap'
+import {Link} from 'react-router-dom'
 
 class LocationVerification extends Component {
   constructor(props) {
     super(props)
     this.state = {
       latitude: null,
-      longitude: null
+      longitude: null,
+      verified: false
     }
     this.getLocation = this.getLocation.bind(this)
     this.getCoordinates = this.getCoordinates.bind(this)
@@ -32,7 +33,7 @@ class LocationVerification extends Component {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
     })
-    console.log('GEOLOCATION', position)
+    this.addLocation()
   }
   handleLocationError(error) {
     switch (error.code) {
@@ -54,23 +55,31 @@ class LocationVerification extends Component {
   }
   addLocation() {
     if (this.state.latitude && this.state.longitude) {
-      updateUser({
-        ...this.props.user,
-        coordinates: [this.state.latitude, this.state.longitude]
-      })
+      this.props.updateUser(
+        {coordinates: [this.state.latitude, this.state.longitude]},
+        this.props.user.id
+      )
+      this.setState({verified: true})
     }
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.getLocation}>Verify location</button>
-        {/* <p>Latitude: {this.state.latitude}</p>
-                <p>Longitude: {this.state.longitude}</p> */}
+        <h1>Verify your location</h1>
+        {/* info icon to hover ==> explaining 'why do i need to verify my location?' */}
+        <button type="button" onClick={this.getLocation}>
+          Get location
+        </button>
         <UserMap
           userLat={this.state.latitude}
           userLong={this.state.longitude}
         />
+        {this.state.verified && (
+          <Link to="/all-books">
+            <button type="button">Confirm</button>
+          </Link>
+        )}
       </div>
     )
   }
@@ -84,40 +93,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    updateUser: userInfo => dispatch(updateUser(userInfo))
+    updateUser: (userInfo, userId) => dispatch(updateUser(userInfo, userId))
   }
 }
 
 export default connect(mapState, mapDispatch)(LocationVerification)
-
-export const UserMap = props => {
-  let userInfo = {
-    center: {
-      lat: props.userLat,
-      lng: props.userLong
-    },
-    zoom: 14
-  }
-
-  const renderMarker = (map, maps) => {
-    let marker = new maps.Marker({
-      position: userInfo.center,
-      map,
-      title: 'User Location'
-    })
-    return marker
-  }
-  return (
-    <div className="user-map" style={{height: '600px', width: '600px'}}>
-      <GoogleMapReact
-        bootstrapURLKeys={{key: process.env.API_KEY}}
-        center={userInfo.center}
-        defaultZoom={userInfo.zoom}
-        yesIWantToUseGoogleMapApiInternals={true}
-        onGoogleApiLoaded={({map, maps}) => {
-          renderMarker(map, maps)
-        }}
-      />
-    </div>
-  )
-}

@@ -9,7 +9,7 @@ export {Welcome} from './welcome'
 export {Login} from './login'
 export {Signup} from './signup'
 export {default as LocationVerification} from './location-verification'
-export {UserMap} from './location-verification'
+export {default as UserMap} from './UserProfile/UserMap'
 export {AllChats} from './Chats/AllChats'
 export {SingleChat} from './Chats/SingleChat'
 
