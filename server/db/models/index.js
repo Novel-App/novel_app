@@ -28,13 +28,42 @@ User.belongsToMany(Product, {
   through: Favorite
 })
 
-Message.belongsToMany(User, {
-  through: Chat
+Chat.hasMany(Message, {
+  onDelete: 'cascade',
+  hooks: true
+})
+Message.belongsTo(Chat)
+
+User.hasMany(Message, {
+  foreignKey: 'senderId',
+  as: 'OutgoingMessages'
 })
 
-User.belongsToMany(Message, {
-  through: Chat
+User.hasMany(Message, {
+  foreignKey: 'receiverId',
+  as: 'IncomingMessages'
 })
+
+Message.belongsTo(User, {
+  foreignKey: 'senderId',
+  as: 'Sender'
+})
+
+Message.belongsTo(User, {
+  foreignKey: 'receiverId',
+  as: 'Receiver'
+})
+
+// User.hasMany(Message);
+// Message.belongsTo(User);
+
+// Message.belongsToMany(User, {
+//   through: Chat
+// })
+
+// User.belongsToMany(Message, {
+//   through: Chat
+// })
 
 module.exports = {
   User,
@@ -42,5 +71,6 @@ module.exports = {
   Genre,
   Favorite,
   Chat,
+  Message,
   db
 }

@@ -10,7 +10,6 @@ import {
   Welcome,
   AllProducts
 } from './components'
-// import {AllProducts} from './components/UserProfile'
 import {me} from './store'
 
 /**

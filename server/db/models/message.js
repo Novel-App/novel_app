@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Message = db.define('message', {
-  message: {
+  content: {
     type: Sequelize.TEXT
   },
   senderId: {
