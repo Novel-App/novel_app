@@ -14,6 +14,18 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// GET /api/chats/:chatId
+router.get('/:chatId', async (req, res, next) => {
+  try {
+    const chat = await Chat.findByPk(req.params.chatId, {
+      include: [{model: User}, {model: Product}]
+    })
+    res.status(200).send(chat)
+  } catch (err) {
+    next(err)
+  }
+})
+
 // POST /api/chats
 router.post('/', async (req, res, next) => {
   try {
