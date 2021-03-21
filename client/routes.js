@@ -8,9 +8,10 @@ import {
   UserHome,
   LocationVerification,
   Welcome,
-  AllProducts
+  AllProducts,
+  AllChats,
+  SingleChat
 } from './components'
-// import {AllProducts} from './components/UserProfile'
 import {me} from './store'
 
 /**
@@ -31,21 +32,22 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         {!isLoggedIn && (
           <Switch>
-            {/* Routes placed here are only available after logging in */}
             <Route path="/" component={Welcome} />
-            <Route path="/products" component={AllProducts} />
           </Switch>
         )}
-        <Route exact path="/" component={Welcome} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
+            <Route exact path="/" component={UserHome} />
             <Route path="/home" component={UserHome} />
-            {/* <Route path="/all-books" component={AllProducts} /> */}
+            <Route exact path="/products" component={AllProducts} />
+            <Route exact path="/chats" component={AllChats} />
+            <Route exact path="/chat/:chatRoom" component={SingleChat} />
             <Route
               path="/location-verification"
               component={LocationVerification}
             />
+            <Route path="/products" component={AllProducts} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

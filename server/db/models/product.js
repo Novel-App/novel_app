@@ -57,17 +57,17 @@ const Product = db.define('product', {
   transactionComplete: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
-  },
-  buyerId: {
-    type: Sequelize.INTEGER
-  },
-  sellerId: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
   }
+  // buyerId: {
+  //   type: Sequelize.INTEGER
+  // },
+  // sellerId: {
+  //   type: Sequelize.INTEGER,
+  //   allowNull: false,
+  //   validate: {
+  //     notEmpty: true
+  //   }
+  // }
 })
 
 module.exports = Product

@@ -8,7 +8,7 @@ export default function UserMap(props) {
       lat: props.userLat,
       lng: props.userLong
     },
-    zoom: 14
+    zoom: 13
   }
 
   const renderMarker = (map, maps) => {
@@ -19,6 +19,19 @@ export default function UserMap(props) {
     })
     return marker
   }
+  const renderCircle = (map, maps) => {
+    let circle = new maps.Circle({
+      center: userInfo.center,
+      map,
+      radius: 3000,
+      strokeColor: 'deepskyblue',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: 'deepskyblue',
+      fillOpacity: 0.35
+    })
+    return circle
+  }
   return (
     <div className="user-map" style={{height: '600px', width: '600px'}}>
       <GoogleMapReact
@@ -28,6 +41,7 @@ export default function UserMap(props) {
         yesIWantToUseGoogleMapApiInternals={true}
         onGoogleApiLoaded={({map, maps}) => {
           renderMarker(map, maps)
+          renderCircle(map, maps)
         }}
       />
     </div>

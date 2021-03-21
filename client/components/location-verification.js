@@ -76,7 +76,7 @@ class LocationVerification extends Component {
           userLong={this.state.longitude}
         />
         {this.state.verified && (
-          <Link to="/all-books">
+          <Link to="/products">
             <button type="button">Confirm</button>
           </Link>
         )}
