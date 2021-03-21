@@ -28,14 +28,9 @@ User.belongsToMany(Product, {
   through: Favorite
 })
 
-
 //adding associations between product and user
 Product.belongsTo(User, {as: 'seller'})
 Product.belongsTo(User, {as: 'buyer'})
-
-Message.belongsToMany(User, {
-  through: Chat
-})
 
 Product.hasMany(Chat)
 Chat.belongsTo(Product)
