@@ -8,7 +8,9 @@ import {
   UserHome,
   LocationVerification,
   Welcome,
-  AllProducts
+  AllProducts,
+  AllChats,
+  SingleChat
 } from './components'
 import {me} from './store'
 
@@ -30,18 +32,20 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         {!isLoggedIn && (
           <Switch>
-            {/* Routes placed here are only available after logging in */}
-            <Route path="/" component={Welcome} />
-            <Route path="/products" component={AllProducts} />
+            {/* Routes placed here are only available to users not logged in */}
+            <Route exact path="/" component={Welcome} />
           </Switch>
         )}
-        <Route exact path="/" component={Welcome} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
-            {/* <Route path="/all-books" component={AllProducts} /> */}
+            <Route exact path="/" component={UserHome} />
+            <Route exact path="/home" component={UserHome} />
+            <Route exact path="/products" component={AllProducts} />
+            <Route exact path="/chats" component={AllChats} />
+            <Route exact path="/chat/:chatRoom" component={SingleChat} />
             <Route
+              exact
               path="/location-verification"
               component={LocationVerification}
             />

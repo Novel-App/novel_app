@@ -34,7 +34,8 @@ const Product = db.define('product', {
     allowNull: false
   },
   condition: {
-    type: Sequelize.ENUM('Aged', 'Loved', 'Good', 'Like New'),
+    type: Sequelize.STRING,
+    // type: Sequelize.ENUM('Aged', 'Loved', 'Good', 'Like New'),
     allowNull: false,
     validate: {
       notEmpty: true
