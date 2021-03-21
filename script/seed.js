@@ -20,175 +20,200 @@ async function seed() {
       lastName: 'Ahrens',
       email: 'tahrens0@usda.gov',
       password: 'U1WHr0',
-      zipCode: 10128
+      zipCode: 10128,
+      coordinates: [40.726096, -73.984152]
     },
     {
       firstName: 'Doretta',
       lastName: 'Camoletto',
       email: 'dcamoletto1@odnoklassniki.ru',
       password: 'rnEmVrgIr',
-      zipCode: 10014
+      zipCode: 10014,
+      coordinates: [40.919913, -74.814766]
     },
     {
       firstName: 'Clement',
       lastName: 'Petruskevich',
       email: 'cpetruskevich2@mac.com',
       password: 'XzK4gezebv6',
-      zipCode: 10012
+      zipCode: 10012,
+      coordinates: [43.621196, -84.682435]
     },
     {
       firstName: 'Tiffany',
       lastName: 'Feye',
       email: 'tfeye3@mtv.com',
       password: 'SkhyqqvwO',
-      zipCode: 10128
+      zipCode: 10128,
+      coordinates: [43.622442, -84.655136]
     },
     {
       firstName: 'Gretchen',
       lastName: 'Fowlie',
       email: 'gfowlie4@hubpages.com',
       password: 'cP9HOvsjo',
-      zipCode: 10012
+      zipCode: 10012,
+      coordinates: [28.382407, -81.561708]
     },
     {
       firstName: 'Mercie',
       lastName: 'Bounds',
       email: 'mbounds5@boston.com',
       password: 'KfOBBTeBpvFS',
-      zipCode: 10128
+      zipCode: 10128,
+      coordinates: [28.384825, -81.5472]
     },
     {
       firstName: 'Georgeanna',
       lastName: 'Rubinshtein',
       email: 'grubinshtein6@xing.com',
       password: '733iWK',
-      zipCode: 10014
+      zipCode: 10014,
+      coordinates: [28.386581, -81.56003]
     },
     {
       firstName: 'Tarrance',
       lastName: 'McArte',
       email: 'tmcarte7@abc.net.au',
       password: 'rFnpeSTvCo',
-      zipCode: 10008
+      zipCode: 10008,
+      coordinates: [37.511104, -127.098233]
     },
     {
       firstName: 'Babita',
       lastName: 'Clifft',
       email: 'bclifft8@twitpic.com',
       password: 'W7UiNxX',
-      zipCode: 10008
+      zipCode: 10008,
+      coordinates: [37.511104, 127.098233]
     },
     {
       firstName: 'Petra',
       lastName: 'Toretta',
       email: 'ptoretta9@springer.com',
       password: 'bcqYPtca',
-      zipCode: 10014
+      zipCode: 10014,
+      coordinates: [37.514931, 127.105153]
     },
     {
       firstName: 'Maxim',
       lastName: 'Maybery',
       email: 'mmayberya@goo.ne.jp',
       password: 'wiBy9Bft1',
-      zipCode: 10128
+      zipCode: 10128,
+      coordinates: [39.3438277, -84.2658113]
     },
     {
       firstName: 'Cherise',
       lastName: 'Bennet',
       email: 'cbennetb@yolasite.com',
       password: 'a3yBhDq',
-      zipCode: 10012
+      zipCode: 10012,
+      coordinates: [39.34279399764515, -84.25989403259177]
     },
     {
       firstName: 'Georgeanne',
       lastName: 'Skatcher',
       email: 'gskatcherc@ox.ac.uk',
       password: 'DS5AgFHq',
-      zipCode: 10128
+      zipCode: 10128,
+      coordinates: [40.1343634, -74.4416524]
     },
     {
       firstName: 'Deina',
       lastName: 'Caitlin',
       email: 'dcaitlind@indiatimes.com',
       password: 'XeVlgjtDo',
-      zipCode: 10014
+      zipCode: 10014,
+      coordinates: [40.13600502765449, -74.43409303394144]
     },
     {
       firstName: 'Bailie',
       lastName: 'Scriver',
       email: 'bscrivere@nbcnews.com',
       password: 'k5TDztv8MdW',
-      zipCode: 10008
+      zipCode: 10008,
+      coordinates: [40.13600502765449, -74.43409303394145]
     },
     {
       firstName: 'Job',
       lastName: 'Paynter',
       email: 'jpaynterf@amazon.co.uk',
       password: 'Esa0BaY',
-      zipCode: 10008
+      zipCode: 10008,
+      coordinates: [28.4772482, 81.4697068]
     },
     {
       firstName: 'Ashely',
       lastName: 'Ludvigsen',
       email: 'aludvigseng@theatlantic.com',
       password: 'FNV2YgSwh7',
-      zipCode: 10012
+      zipCode: 10012,
+      coordinates: [28.4772482, 81.469707]
     },
     {
       firstName: 'Saidee',
       lastName: 'Pickaver',
       email: 'spickaverh@salon.com',
       password: 'i0qOZr',
-      zipCode: 10014
+      zipCode: 10014,
+      coordinates: [44.8550204, -93.2421195]
     },
     {
       firstName: 'Siouxie',
       lastName: 'Rasor',
       email: 'srasori@dell.com',
       password: 'TL4S3KaBKx',
-      zipCode: 10036
+      zipCode: 10036,
+      coordinates: [44.85431899035432, -93.23840165446136]
     },
     {
       firstName: 'Maurits',
       lastName: 'Askew',
       email: 'maskewj@sun.com',
       password: 'k6sLTqYKK2',
-      zipCode: 10036
+      zipCode: 10036,
+      coordinates: [44.85431899035432, -93.23840165446138]
     },
     {
       firstName: 'Odessa',
       lastName: 'Halsworth',
       email: 'ohalsworthk@tumblr.com',
       password: 'YyoAEkKbWR',
-      zipCode: 10036
+      zipCode: 10036,
+      coordinates: [44.85431899035432, -93.23840165446134]
     },
     {
       firstName: 'Northrup',
       lastName: 'Viveash',
       email: 'nviveashl@bloglines.com',
       password: 'MlKmv72Re',
-      zipCode: 10036
+      zipCode: 10036,
+      coordinates: [40.7484284, 73.9856546]
     },
     {
       firstName: 'Quinton',
       lastName: 'Frany',
       email: 'qfranym@soundcloud.com',
       password: 'Ukq2HU0fiF',
-      zipCode: 10036
+      zipCode: 10036,
+      coordinates: [40.7484284, 73.9856545]
     },
     {
       firstName: 'Odey',
       lastName: 'Hatton',
       email: 'ohattonn@ustream.tv',
       password: 'gfhArxvH',
-      zipCode: 10128
+      zipCode: 10128,
+      coordinates: [40.7484284, 73.9856548]
     },
     {
       firstName: 'Timi',
       lastName: "O'Scanlan",
       email: 'toscanlano@sciencedaily.com',
       password: 'mdC6zQyu',
-      zipCode: 10014
+      zipCode: 10014,
+      coordinates: [40.7484284, 73.9856542]
     }
   ]
   const [tobie, doretta, clement, tiffany, gretchen] = await User.bulkCreate(
