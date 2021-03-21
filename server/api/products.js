@@ -10,16 +10,12 @@ router.get('/', async (req, res, next) => {
         {
           model: User,
           as: 'seller',
-          through: {
-            attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
-          }
+          attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
         },
         {
           model: User,
           as: 'buyer',
-          through: {
-            attributes: ['id', 'firstName', 'reviewScore']
-          }
+          attributes: ['id', 'firstName', 'reviewScore']
         },
         {model: Genre}
       ]
@@ -38,9 +34,7 @@ router.post('/', async (req, res, next) => {
         {
           model: User,
           as: 'seller',
-          through: {
-            attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
-          }
+          attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
         },
         {model: Genre}
       ]
@@ -61,16 +55,12 @@ router.get('/:id', async (req, res, next) => {
         {
           model: User,
           as: 'seller',
-          through: {
-            attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
-          }
+          attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
         },
         {
           model: User,
           as: 'buyer',
-          through: {
-            attributes: ['id', 'firstName', 'reviewScore']
-          }
+          attributes: ['id', 'firstName', 'reviewScore']
         },
         {model: Genre}
       ]
