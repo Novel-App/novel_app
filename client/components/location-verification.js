@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {updateUser} from '../store/user'
 import UserMap from './UserProfile/UserMap'
 import {Link} from 'react-router-dom'
+import history from '../history'
 
 class LocationVerification extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class LocationVerification extends Component {
         this.getCoordinates,
         this.handleLocationError
       )
+      history.push('/')
     } else {
       alert('Geolocation is not supported by this browser.')
     }

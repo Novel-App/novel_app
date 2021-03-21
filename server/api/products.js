@@ -24,7 +24,7 @@ router.get('/', async (req, res, next) => {
         {model: Genre}
       ]
     })
-    res.json(allProducts)
+    res.status(200).send(allProducts)
   } catch (error) {
     next(error)
   }
@@ -75,7 +75,7 @@ router.get('/:id', async (req, res, next) => {
         {model: Genre}
       ]
     })
-    res.json(singleProduct)
+    res.status(200).send(singleProduct)
   } catch (err) {
     next(err)
   }
