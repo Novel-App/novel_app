@@ -19,3 +19,8 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+/* this helps with border-box sizing with google maps */
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
