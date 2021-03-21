@@ -28,12 +28,6 @@ User.belongsToMany(Product, {
   through: Favorite
 })
 
-Chat.hasMany(Message, {
-  onDelete: 'cascade',
-  hooks: true
-})
-Message.belongsTo(Chat)
-
 Product.hasMany(Chat)
 Chat.belongsTo(Product)
 
