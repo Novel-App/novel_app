@@ -10,9 +10,10 @@ export {Login} from './login'
 export {Signup} from './signup'
 export {default as LocationVerification} from './location-verification'
 export {default as UserMap} from './UserProfile/UserMap'
-export {AllChats} from './Chats/AllChats'
 export {default as AllProducts} from './Products/AllProducts'
-export {SingleChat} from './Chats/SingleChat'
+export {AllChats} from './Chats/AllChats'
+export {default as SingleChat} from './Chats/SingleChat'
+export {default as Message} from './Chats/Message'
 
 //remember to comment these in
 
