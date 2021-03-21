@@ -28,6 +28,7 @@ User.belongsToMany(Product, {
   through: Favorite
 })
 
+
 //adding associations between product and user
 Product.belongsTo(User, {as: 'seller'})
 Product.belongsTo(User, {as: 'buyer'})
@@ -36,9 +37,29 @@ Message.belongsToMany(User, {
   through: Chat
 })
 
-User.belongsToMany(Message, {
-  through: Chat
-})
+Product.hasMany(Chat)
+Chat.belongsTo(Product)
+
+User.belongsToMany(Chat, {through: Message})
+Chat.belongsToMany(User, {through: Message})
+
+// User.hasMany(Message, {
+//   foreignKey: 'senderId',
+//   as: 'OutgoingMessage'
+// })
+// User.hasMany(Message, {
+//   foreignKey: 'receiverId',
+//   as: 'IncomingMessage'
+// })
+
+// Message.belongsTo(User, {
+//   foreignKey: 'senderId',
+//   as: 'Sender'
+// })
+// Message.belongsTo(User, {
+//   foreignKey: 'receiverId',
+//   as: 'Receiver'
+// })
 
 module.exports = {
   User,
@@ -46,5 +67,6 @@ module.exports = {
   Genre,
   Favorite,
   Chat,
+  Message,
   db
 }

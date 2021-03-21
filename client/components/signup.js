@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {register} from '../store'
+import history from '../history'
 
 /**
  * COMPONENT
@@ -62,6 +63,7 @@ const mapDispatch = dispatch => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       dispatch(register(email, password, firstName, lastName))
+      history.push('/location-verification')
     }
   }
 }
