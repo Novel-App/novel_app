@@ -14,21 +14,6 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-// GET /api/chats/:chatId/messages
-router.get('/:chatId/messages', async (req, res, next) => {
-  try {
-    const chatId = req.params.chatId
-    const messages = await Message.findAll({
-      where: {
-        chatId
-      }
-    })
-    res.status(200).send(messages)
-  } catch (err) {
-    next(err)
-  }
-})
-
 // POST /api/chats
 router.post('/', async (req, res, next) => {
   try {

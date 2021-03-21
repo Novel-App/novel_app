@@ -1,6 +1,21 @@
 const router = require('express').Router()
-const {Chat, Message, User} = require('../db/models')
+const {Message} = require('../db/models')
 module.exports = router
+
+// GET /api/chats/:chatId/messages
+router.get('/:chatId/messages', async (req, res, next) => {
+  try {
+    const chatId = req.params.chatId
+    const messages = await Message.findAll({
+      where: {
+        chatId
+      }
+    })
+    res.status(200).send(messages)
+  } catch (err) {
+    next(err)
+  }
+})
 
 // POST /api/messages
 router.post('/', async (req, res, next) => {
