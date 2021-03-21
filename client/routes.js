@@ -49,6 +49,7 @@ class Routes extends Component {
               path="/location-verification"
               component={LocationVerification}
             />
+            <Route path="/products" component={AllProducts} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

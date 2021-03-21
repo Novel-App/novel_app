@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchProducts} from '../../store/products'
+import {fetchProducts} from '../../store/product'
 import {Link} from 'react-router-dom'
 
 //add a product icon --> links to add product component
@@ -15,14 +15,15 @@ class AllProducts extends Component {
   }
   filterProducts(checkPoint, centerPoint, km) {
     const ky = 40000 / 360
-    const kx = Math.cos(Math.PI * centerPoint.latitude / 180.0) * ky
-    const dx = Math.abs(centerPoint.longitude - checkPoint.longitude) * kx
-    const dy = Math.abs(centerPoint.latitude - checkPoint.latitude) * ky
+    const kx = Math.cos(Math.PI * centerPoint[0] / 180.0) * ky
+    const dx = Math.abs(centerPoint[1] - checkPoint[1]) * kx
+    const dy = Math.abs(centerPoint[0] - checkPoint[0]) * ky
     return Math.sqrt(dx * dx + dy * dy) <= km
   }
 
   render() {
-    if (!this.props.products) {
+    let products = this.props.products || []
+    if (products.length === 0) {
       return (
         <div>
           <h2>Loading...</h2>
@@ -30,13 +31,14 @@ class AllProducts extends Component {
       )
     }
     //filter products within 3km from user location
-    const products = this.props.products.filter(product =>
+    products = this.props.products.filter(product =>
       this.filterProducts(
-        product.user.coordinates,
+        product.seller.coordinates,
         this.props.user.coordinates,
         3
       )
     )
+    console.log('PRODS AFTER FILTER->', products)
     return (
       <div>
         <ul>
@@ -61,7 +63,7 @@ class AllProducts extends Component {
 const mapState = state => {
   return {
     user: state.user,
-    products: state.all
+    products: state.products.all
   }
 }
 

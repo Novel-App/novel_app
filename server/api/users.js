@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
         'firstName',
         'lastName',
         'email',
-        'defaultImage',
+        // 'defaultImage',
         'reviewScore',
         'photoVerified',
         'emailVerified',
