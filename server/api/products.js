@@ -8,7 +8,7 @@ router.get('/', async (req, res, next) => {
     const allProducts = await Product.findAll({
       include: [{model: User}, {model: Genre}]
     })
-    res.json(allProducts)
+    res.status(200).send(allProducts)
   } catch (error) {
     next(error)
   }
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res, next) => {
       where: {id: id},
       include: [{model: User}, {model: Genre}]
     })
-    res.json(singleProduct)
+    res.status(200).send(singleProduct)
   } catch (err) {
     next(err)
   }

@@ -34,11 +34,13 @@ Chat.hasMany(Message, {
 })
 Message.belongsTo(Chat)
 
+Product.hasMany(Chat)
+Chat.belongsTo(Product)
+
 User.hasMany(Message, {
   foreignKey: 'senderId',
   as: 'OutgoingMessages'
 })
-
 User.hasMany(Message, {
   foreignKey: 'receiverId',
   as: 'IncomingMessages'
@@ -48,7 +50,6 @@ Message.belongsTo(User, {
   foreignKey: 'senderId',
   as: 'Sender'
 })
-
 Message.belongsTo(User, {
   foreignKey: 'receiverId',
   as: 'Receiver'
