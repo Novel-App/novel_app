@@ -20,6 +20,30 @@ form div {
   display: inline-block;
 }
 
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-columns {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    column-count: 5;
+  }
+}
+
 /* this helps with border-box sizing with google maps */
 .selector-for-some-widget {
   box-sizing: content-box;

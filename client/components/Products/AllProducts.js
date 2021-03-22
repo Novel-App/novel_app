@@ -39,23 +39,30 @@ class AllProducts extends Component {
       )
     )
 
-    console.log('PRODS AFTER FILTER->', products)
     return (
-      <div>
-        <ul>
-          {products.map(product => (
-            <li key={product.id}>
-              <Link to={`/products/${product.id}`}>
-                <img alt={product.title} src={product.image} />
-                <h1>{product.title}</h1>
-                <h2>by {product.author}</h2>
+      <div className="row">
+        <div className="col-sm-6">
+          <div className="card">
+            {products.map(product => (
+              <div className="card-body" key={product.id}>
+                <Link to={`/products/${product.id}`}>
+                  <img
+                    className="card-img-top"
+                    alt={product.title}
+                    src={product.image}
+                  />
+                  <h1 className="card-title">{product.title}</h1>
+                </Link>
+                <h2 className="card-subtitle mb-2 text-muted">
+                  by {product.author}
+                </h2>
                 <h3>{product.createdAt}</h3>
                 <h3>${product.price}</h3>
                 <h3>♡: {product.numFavorites}</h3>
-              </Link>
-            </li>
-          ))}
-        </ul>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     )
   }
