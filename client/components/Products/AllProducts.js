@@ -38,6 +38,7 @@ class AllProducts extends Component {
         3
       )
     )
+
     console.log('PRODS AFTER FILTER->', products)
     return (
       <div>
