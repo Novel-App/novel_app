@@ -52,14 +52,7 @@ const User = db.define('user', {
     type: Sequelize.ARRAY(Sequelize.DOUBLE)
   },
   reviewScore: {
-    type: Sequelize.ARRAY(Sequelize.INTEGER),
-    validate: {
-      isValidReview: function(value) {
-        return value > 1 && value <= 5
-          ? value
-          : 'Review must be between 1 and 5'
-      }
-    }
+    type: Sequelize.INTEGER
   },
   //Update image validater once we figure out another way to store images
   profileImage: {
