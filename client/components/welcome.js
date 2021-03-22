@@ -6,15 +6,6 @@ import {Link} from 'react-router-dom'
  */
 export const Welcome = () => {
   return (
-    // <div>
-    //   <h3>Welcome to Novel</h3>
-    //   <div>
-    //     <Link to="/login">Login</Link>
-    //   </div>
-    //   <div>
-    //     <Link to="/signup">SignUp</Link>
-    //   </div>
-    // </div>
     <header>
       <div id="intro-example" className="p-5 text-center bg-image">
         <div className="mask">
