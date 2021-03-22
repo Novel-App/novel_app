@@ -22,6 +22,22 @@ form div {
   display: inline-block;
 }
 
+.heroImg {
+  width: 100%;
+}
+
+/* Default height for small devices */
+.heroImg {
+  height: 300px;
+}
+
+/* Height for devices larger than 992px */
+@media (min-width: 992px) {
+  .heroImg {
+    height: 400px;
+  }
+}
+
 @media (min-width: 576px) {
   .card-columns {
     column-count: 2;
