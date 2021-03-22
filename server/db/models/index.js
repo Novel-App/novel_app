@@ -4,6 +4,7 @@ const Genre = require('./genre')
 const Favorite = require('./favorite')
 const Message = require('./message')
 const Chat = require('./chat')
+const Review = require('./review')
 const db = require('../db')
 
 /**
@@ -35,8 +36,22 @@ Product.belongsTo(User, {as: 'buyer'})
 Product.hasMany(Chat)
 Chat.belongsTo(Product)
 
-User.belongsToMany(Chat, {through: Message})
-Chat.belongsToMany(User, {through: Message})
+//adding associations between user and chat
+User.belongsToMany(Chat, {
+  through: Message,
+  as: 'author',
+  foreignKey: 'authorId'
+})
+Chat.belongsToMany(User, {
+  through: Message
+})
+
+//adding associations between user and review
+User.belongsToMany(User, {through: Review, as: 'Reviewer'})
+
+// Through table for review score (update database schema)
+// Association between two sets of users (reviewer, and review score)
+// Leave reviewScore as that average (update db each time)
 
 // User.hasMany(Message, {
 //   foreignKey: 'senderId',

@@ -40,9 +40,6 @@ const Product = db.define('product', {
       notEmpty: true
     }
   },
-  numFavorites: {
-    type: Sequelize.INTEGER
-  },
   price: {
     type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
@@ -58,16 +55,6 @@ const Product = db.define('product', {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   }
-  // buyerId: {
-  //   type: Sequelize.INTEGER
-  // },
-  // sellerId: {
-  //   type: Sequelize.INTEGER,
-  //   allowNull: false,
-  //   validate: {
-  //     notEmpty: true
-  //   }
-  // }
 })
 
 module.exports = Product
