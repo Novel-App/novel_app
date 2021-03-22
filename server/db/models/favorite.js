@@ -12,4 +12,13 @@ const Favorite = db.define('favorite', {
   }
 })
 
+Favorite.getCount = function(productId) {
+  return this.findAll({
+    where: {
+      productId,
+      isFavorite: true
+    }
+  }).length
+}
+
 module.exports = Favorite
