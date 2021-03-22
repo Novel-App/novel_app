@@ -51,9 +51,12 @@ const Product = db.define('product', {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
-  transactionComplete: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false
+  availability: {
+    type: Sequelize.ENUM('Available', 'Reserved', 'Sold'),
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   }
 })
 

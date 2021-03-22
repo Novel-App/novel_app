@@ -262,7 +262,7 @@ async function seed() {
       numFavorites: 2,
       price: 14,
       canBargain: false,
-      transactionComplete: false,
+      availability: 'Available',
       sellerId: 1,
       buyerId: null,
       genreIds: [thrillerMystery.id]
@@ -278,7 +278,7 @@ async function seed() {
       numFavorites: 1,
       price: 10,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Available',
       buyerId: null,
       sellerId: 2,
       genreIds: [history.id]
@@ -294,7 +294,7 @@ async function seed() {
       numFavorites: 4,
       price: 8,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Available',
       buyerId: null,
       sellerId: 3,
       genreIds: [fantasyAdventure.id]
@@ -310,7 +310,7 @@ async function seed() {
       numFavorites: 0,
       price: 4,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Available',
       buyerId: null,
       sellerId: 4,
       genreIds: [childrens.id]
@@ -326,7 +326,7 @@ async function seed() {
       numFavorites: 0,
       price: 10,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Available',
       buyerId: null,
       sellerId: 5,
       genreIds: [thrillerMystery.id]
@@ -341,7 +341,7 @@ async function seed() {
       numFavorites: 0,
       price: 20,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Available',
       buyerId: null,
       sellerId: 6,
       genreIds: [scienceFictionDystopian.id]
@@ -357,7 +357,7 @@ async function seed() {
       numFavorites: 1,
       price: 3,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Reserved',
       buyerId: null,
       sellerId: 7,
       genreIds: [romance.id]
@@ -373,7 +373,7 @@ async function seed() {
       numFavorites: 0,
       price: 15,
       canBargain: false,
-      transactionComplete: false,
+      availability: 'Reserved',
       buyerId: null,
       sellerId: 8,
       genreIds: [memoir.id]
@@ -388,7 +388,7 @@ async function seed() {
       numFavorites: 0,
       price: 2,
       canBargain: false,
-      transactionComplete: false,
+      availability: 'Reserved',
       buyerId: null,
       sellerId: 9,
       genreIds: [lifestyle.id]
@@ -403,7 +403,7 @@ async function seed() {
       numFavorites: 0,
       price: 6,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Sold',
       buyerId: null,
       sellerId: 10,
       genreIds: [humor.id]
@@ -419,7 +419,7 @@ async function seed() {
       numFavorites: 0,
       price: 3,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Sold',
       buyerId: null,
       sellerId: 14,
       genreIds: [developmentHowToEducation.id]
