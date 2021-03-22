@@ -47,7 +47,7 @@ Chat.belongsToMany(User, {
 })
 
 //adding associations between user and review
-User.belongsToMany(User, {through: Review, as: 'Reviewer'})
+User.belongsToMany(User, {through: Review, as: 'reviewer'})
 
 // Through table for review score (update database schema)
 // Association between two sets of users (reviewer, and review score)
@@ -78,5 +78,6 @@ module.exports = {
   Favorite,
   Chat,
   Message,
+  Review,
   db
 }

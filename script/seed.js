@@ -5,6 +5,7 @@ const {
   User,
   Product,
   Message,
+  Review,
   Genre,
   Favorite,
   Chat
@@ -442,6 +443,46 @@ async function seed() {
   }
   const productGenres = flattenProductGenres(products)
   console.log('Seeded product_genres')
+  //Reviews
+  const reviews = [
+    {
+      rating: 1,
+      userId: 1,
+      reviewerId: 3
+    },
+    {
+      rating: 1,
+      userId: 3,
+      reviewerId: 1
+    },
+    {
+      rating: 5,
+      userId: 1,
+      reviewerId: 5
+    },
+    {
+      rating: 5,
+      userId: 5,
+      reviewerId: 1
+    },
+    {
+      rating: 3,
+      userId: 2,
+      reviewerId: 1
+    },
+    {
+      rating: 3,
+      userId: 1,
+      reviewerId: 2
+    },
+    {
+      rating: 4,
+      userId: 6,
+      reviewerId: 1
+    }
+  ]
+  const createReviews = await Review.bulkCreate(reviews)
+  console.log('Seeded reviews')
 }
 
 // We've separated the `seed` function from the `runSeed` function.
