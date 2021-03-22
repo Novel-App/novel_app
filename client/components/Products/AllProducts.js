@@ -44,7 +44,7 @@ class AllProducts extends Component {
         <div className="col-sm-6">
           <div className="card">
             {products.map(product => (
-              <div className="card-body" key={product.id}>
+              <div key={product.id}>
                 <Link to={`/products/${product.id}`}>
                   <img
                     className="card-img-top"
