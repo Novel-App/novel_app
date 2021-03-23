@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const Chat = require('./chat')
 
 const Message = db.define('message', {
   content: {
@@ -28,6 +29,20 @@ Message.getUnreadCountByChat = function(chatId) {
       chatId
     }
   }).length
+}
+
+//chatId doesn't exist until chat exists
+async function getBrowserId(chatId) {
+  try {
+    const browser = await Message.findOne({
+      where: {
+        chatId: chatId
+      }
+    })
+    return browser.authorId
+  } catch {
+    console.log('buyer can not be found')
+  }
 }
 
 module.exports = Message
