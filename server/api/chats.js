@@ -27,13 +27,14 @@ router.get('/:chatId', async (req, res, next) => {
 })
 
 // POST /api/chats
+//must send browerId and productId to create or find a new chat
 router.post('/', async (req, res, next) => {
   try {
-    const chat = await Chat.create({
+    const chat = await Chat.findOrCreate({
       where: {
-        postId: req.body.postId
-      },
-      include: [{model: User}, {model: Product}]
+        browserId: req.body.browserId,
+        productId: req.body.productId
+      }
     })
     res.status(201).send(chat)
   } catch (err) {

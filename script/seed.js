@@ -495,16 +495,20 @@ async function seed() {
   //chats
   const chats = [
     {
-      productId: 1
+      productId: 1,
+      browserId: 10
     },
     {
-      productId: 2
+      productId: 2,
+      browserId: 5
     },
     {
-      productId: 3
+      productId: 3,
+      browserId: 5
     },
     {
-      productId: 1
+      productId: 1,
+      browserId: 15
     }
   ]
   const createChats = await Chat.bulkCreate(chats)
