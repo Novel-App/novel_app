@@ -5,6 +5,7 @@ const {
   User,
   Product,
   Message,
+  Review,
   Genre,
   Favorite,
   Chat
@@ -15,6 +16,14 @@ async function seed() {
   console.log('db synced!')
 
   const users = [
+    {
+      firstName: 'Cody',
+      lastName: 'Pug',
+      email: 'cody@gmail.com',
+      password: 'cody123',
+      zipCode: 10128,
+      coordinates: [40.726096, -73.984152]
+    },
     {
       firstName: 'Tobie',
       lastName: 'Ahrens',
@@ -262,7 +271,7 @@ async function seed() {
       numFavorites: 2,
       price: 14,
       canBargain: false,
-      transactionComplete: false,
+      availability: 'Available',
       sellerId: 1,
       buyerId: null,
       genreIds: [thrillerMystery.id]
@@ -278,7 +287,7 @@ async function seed() {
       numFavorites: 1,
       price: 10,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Available',
       buyerId: null,
       sellerId: 2,
       genreIds: [history.id]
@@ -294,7 +303,7 @@ async function seed() {
       numFavorites: 4,
       price: 8,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Available',
       buyerId: null,
       sellerId: 3,
       genreIds: [fantasyAdventure.id]
@@ -310,7 +319,7 @@ async function seed() {
       numFavorites: 0,
       price: 4,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Available',
       buyerId: null,
       sellerId: 4,
       genreIds: [childrens.id]
@@ -326,7 +335,7 @@ async function seed() {
       numFavorites: 0,
       price: 10,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Available',
       buyerId: null,
       sellerId: 5,
       genreIds: [thrillerMystery.id]
@@ -341,7 +350,7 @@ async function seed() {
       numFavorites: 0,
       price: 20,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Available',
       buyerId: null,
       sellerId: 6,
       genreIds: [scienceFictionDystopian.id]
@@ -357,7 +366,7 @@ async function seed() {
       numFavorites: 1,
       price: 3,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Reserved',
       buyerId: null,
       sellerId: 7,
       genreIds: [romance.id]
@@ -373,7 +382,7 @@ async function seed() {
       numFavorites: 0,
       price: 15,
       canBargain: false,
-      transactionComplete: false,
+      availability: 'Reserved',
       buyerId: null,
       sellerId: 8,
       genreIds: [memoir.id]
@@ -388,7 +397,7 @@ async function seed() {
       numFavorites: 0,
       price: 2,
       canBargain: false,
-      transactionComplete: false,
+      availability: 'Reserved',
       buyerId: null,
       sellerId: 9,
       genreIds: [lifestyle.id]
@@ -403,7 +412,7 @@ async function seed() {
       numFavorites: 0,
       price: 6,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Sold',
       buyerId: null,
       sellerId: 10,
       genreIds: [humor.id]
@@ -419,7 +428,7 @@ async function seed() {
       numFavorites: 0,
       price: 3,
       canBargain: true,
-      transactionComplete: false,
+      availability: 'Sold',
       buyerId: null,
       sellerId: 14,
       genreIds: [developmentHowToEducation.id]
@@ -442,6 +451,95 @@ async function seed() {
   }
   const productGenres = flattenProductGenres(products)
   console.log('Seeded product_genres')
+  //Reviews
+  const reviews = [
+    {
+      rating: 1,
+      userId: 1,
+      reviewerId: 3
+    },
+    {
+      rating: 1,
+      userId: 3,
+      reviewerId: 1
+    },
+    {
+      rating: 5,
+      userId: 1,
+      reviewerId: 5
+    },
+    {
+      rating: 5,
+      userId: 5,
+      reviewerId: 1
+    },
+    {
+      rating: 3,
+      userId: 2,
+      reviewerId: 1
+    },
+    {
+      rating: 3,
+      userId: 1,
+      reviewerId: 2
+    },
+    {
+      rating: 4,
+      userId: 6,
+      reviewerId: 1
+    }
+  ]
+  const createReviews = await Review.bulkCreate(reviews)
+  console.log('Seeded reviews')
+
+  //chats
+  const chats = [
+    {
+      productId: 1
+    },
+    {
+      productId: 2
+    },
+    {
+      productId: 3
+    },
+    {
+      productId: 1
+    }
+  ]
+  const createChats = await Chat.bulkCreate(chats)
+  console.log('Seeded chats')
+  //messages
+  const messages = [
+    {
+      content: 'Is this still available?',
+      authorId: 10,
+      chatId: 1
+    },
+    {
+      content: 'Hey can I buy this?',
+      authorId: 5,
+      chatId: 2
+    },
+    {
+      content: 'Love this book!',
+      unread: false,
+      authorId: 5,
+      chatId: 3
+    },
+    {
+      content: 'Same! Are you looking to buy this?',
+      authorId: 3,
+      chatId: 3
+    },
+    {
+      content: 'Can we bargin?',
+      authorId: 15,
+      chatId: 4
+    }
+  ]
+  const createMessages = await Message.bulkCreate(messages)
+  console.log('Seeded messages')
 }
 
 // We've separated the `seed` function from the `runSeed` function.
