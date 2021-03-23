@@ -1,9 +1,3 @@
-//refer to carrotmarket wireframe!
-//top card: small seller profile picture, name/id, reviewScore  [[extra: checkmark icons for email/location verified]]
-//image slides
-//body card: title, author, isbn, genre, condition, condition info icon to hover, description
-//bottom card: favorites button, numFavorites, price, can bargain, chat button
-
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchSingleProduct} from '../../store/product'
@@ -53,7 +47,7 @@ class SingleProduct extends Component {
               <div className="mb-0 text-dark">${product.price}</div>
               <div className="mb-0 text-dark">♡: </div>
               <p className="pt-1 text-dark">{product.description}</p>
-              {/* if user does not equal sellers id then render button to buy product */}
+              {/* if user is a buyer then render products to buy */}
             </div>
           </div>
         </div>
