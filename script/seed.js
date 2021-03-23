@@ -502,6 +502,9 @@ async function seed() {
     },
     {
       productId: 3
+    },
+    {
+      productId: 1
     }
   ]
   const createChats = await Chat.bulkCreate(chats)
@@ -518,7 +521,6 @@ async function seed() {
       authorId: 5,
       chatId: 2
     },
-
     {
       content: 'Love this book!',
       unread: false,
@@ -529,6 +531,11 @@ async function seed() {
       content: 'Same! Are you looking to buy this?',
       authorId: 3,
       chatId: 3
+    },
+    {
+      content: 'Can we bargin?',
+      authorId: 15,
+      chatId: 4
     }
   ]
   const createMessages = await Message.bulkCreate(messages)
