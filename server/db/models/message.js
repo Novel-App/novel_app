@@ -32,7 +32,7 @@ Message.getUnreadCountByChat = function(chatId) {
 }
 
 //chatId doesn't exist until chat exists
-async function getBrowserId(chatId) {
+Message.getBrowserId = async function(chatId) {
   try {
     const browser = await Message.findOne({
       where: {
