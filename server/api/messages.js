@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {Message} = require('../db/models')
 module.exports = router
 
+//bring back userInformation based on chatId
 // GET /api/chats/:chatId/messages
 router.get('/:chatId/messages', async (req, res, next) => {
   try {
@@ -16,7 +17,7 @@ router.get('/:chatId/messages', async (req, res, next) => {
     next(err)
   }
 })
-
+//post messages to specific chat
 // POST /api/messages
 router.post('/', async (req, res, next) => {
   try {
