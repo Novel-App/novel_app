@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Message from './Message'
 import {Form, Icon, Input, Button, Row, Col} from 'antd'
+import {sendMessage} from '../../store/index'
 
 /**
  * COMPONENT
@@ -70,7 +71,15 @@ export class SingleChat extends Component {
  * CONTAINER
  */
 const mapState = state => {
-  return {}
+  return {
+    messages: state.messages
+  }
 }
 
-export default connect(mapState)(SingleChat)
+const mapDispatch = dispatch => {
+  return {
+    sendMessage: message => dispatch(sendMessage(message))
+  }
+}
+
+export default connect(mapState, mapDispatch)(SingleChat)
