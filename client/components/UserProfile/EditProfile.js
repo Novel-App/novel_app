@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import updateUser from '../../store/user'
+import {updateUser} from '../../store/user'
 
 class EditProfile extends Component {
   constructor(props) {
@@ -12,6 +12,8 @@ class EditProfile extends Component {
       email: '',
       password: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   componentDidMount() {
     this.setState({
@@ -97,7 +99,7 @@ class EditProfile extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.defaultUser
+    user: state.user
   }
 }
 

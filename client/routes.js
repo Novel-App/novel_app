@@ -12,9 +12,10 @@ import {
   AllChats,
   SingleChat,
   SingleProducts,
-  EditProfile
+  EditProfile,
+  Profile
 } from './components'
-import {me} from './store'
+import {getMe} from './store'
 
 /**
  * COMPONENT
@@ -47,13 +48,14 @@ class Routes extends Component {
             <Route exact path="/products/:id" component={SingleProducts} />
             <Route exact path="/chats" component={AllChats} />
             <Route exact path="/singleChat" component={SingleChat} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile/edit" component={EditProfile} />
             <Route
               exact
               path="/location-verification"
               component={LocationVerification}
             />
             <Route path="/products" component={AllProducts} />
-            <Route path="/me/edit" component={EditProfile} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -77,7 +79,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(me())
+      dispatch(getMe())
     }
   }
 }

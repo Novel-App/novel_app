@@ -6,6 +6,8 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const chats = await Chat.findAll({
+      //where sellerId = or productId
+      //browserId
       include: [{model: User}, {model: Product}]
     })
     res.status(200).send(chats)
