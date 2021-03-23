@@ -16,10 +16,12 @@ class SingleProduct extends Component {
     }
   }
   componentDidMount() {
-    //or params or the product passed in from props
-    let productId = this.props.match.params.id
-    this.props.loadProduct(productId)
-    this.setState({loading: false})
+    try {
+      this.props.loadProduct(this.props.match.params.id)
+      this.setState({loading: false})
+    } catch (err) {
+      console.log(err)
+    }
   }
   render() {
     if (this.state.loading === true) {
@@ -30,20 +32,32 @@ class SingleProduct extends Component {
       )
     }
     const product = this.props.product
-    const barginStatus = product.canBargin
-      ? 'Price negotiable'
-      : 'Price non-negotiable'
+    const barginStatus = product.canBargin ? 'negotiable' : 'non-negotiable'
     return (
-      <>
-        <img className="card-img-top" alt={product.title} src={product.image} />
-        <h1 className="card-title">{product.title}</h1>
-        <h2 className="card-subtitle mb-2 text-muted">by {product.author}</h2>
-        <p>{product.createdAt}</p>
-        <p>{barginStatus}</p>
-        <p>${product.price}</p>
-        <p>{product.description}</p>
-        <p>♡: {product.numFavorites}</p>
-      </>
+      <div className="container">
+        <div className="mb-5">
+          <div className="row">
+            <div className="col-md-6 mb-4 mb-md-0">
+              <img
+                className="img-fluid rounded"
+                data-src="holder.js/200x250?theme=thumb"
+                alt={product.title}
+                src={product.image}
+              />
+            </div>
+            <div className="col-md-5">
+              <h2 className="mb-0 text-dark">{product.title}</h2>
+              <div className="mb-0 text-dark">by {product.author}</div>
+              <div className="mb-0 text-dark">{product.createdAt}</div>
+              <div className="mb-0 text-dark">{barginStatus}</div>
+              <div className="mb-0 text-dark">${product.price}</div>
+              <div className="mb-0 text-dark">♡: </div>
+              <p className="pt-1 text-dark">{product.description}</p>
+              {/* if user does not equal sellers id then render button to buy product */}
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 }
