@@ -24,7 +24,10 @@ const addMesssage = message => ({
 export const fetchMessages = chatId => {
   return async dispatch => {
     try {
-      const {data: messages} = await axios.get(`/api/${chatId}/messages`)
+      console.log('fectching ...,.')
+      const {data: messages} = await axios.get(
+        `/api/messages/${chatId}/messages`
+      )
       dispatch(getMessages(messages))
     } catch (error) {
       console.log(error)
@@ -54,6 +57,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_MESSAGES:
+      console.log('reducer....')
       return {...state, messages: action.messages}
     case ADD_MESSAGE:
       return {...state, message: action.message}

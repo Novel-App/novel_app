@@ -45,7 +45,11 @@ class Routes extends Component {
             <Route exact path="/products" component={AllProducts} />
             <Route exact path="/products/:id" component={SingleProducts} />
             <Route exact path="/chats" component={AllChats} />
-            <Route exact path="/singleChat" component={SingleChat} />
+            <Route
+              exact
+              path="/messages/:chatId/messages"
+              component={SingleChat}
+            />
             <Route
               exact
               path="/location-verification"

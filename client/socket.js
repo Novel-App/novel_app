@@ -1,5 +1,7 @@
 import io from 'socket.io-client'
-import store, {gotNewMessage} from './store/index'
+import store from './store/index'
+import {getMessage} from './store/message'
+import {createNewChat} from './store/chat'
 
 const socket = io(window.location.origin)
 
@@ -8,7 +10,11 @@ socket.on('connect', () => {
 })
 
 socket.on('new-message', message => {
-  store.dispatch(gotNewMessage(message))
+  store.dispatch(getMessage(message))
+})
+
+socket.on('new-chat', chat => {
+  store.dispatch(createNewChat(chat))
 })
 
 export default socket
