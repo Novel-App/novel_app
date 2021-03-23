@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const {User} = require('./')
 
 const Product = db.define('product', {
   title: {
@@ -56,5 +57,40 @@ const Product = db.define('product', {
     defaultValue: 'Available'
   }
 })
+
+Product.filterByLocation = function(allProducts, user) {
+  function filterProducts(checkPoint, centerPoint, km) {
+    const ky = 40000 / 360
+    const kx = Math.cos(Math.PI * centerPoint[0] / 180.0) * ky
+    const dx = Math.abs(centerPoint[1] - checkPoint[1]) * kx
+    const dy = Math.abs(centerPoint[0] - checkPoint[0]) * ky
+    return Math.sqrt(dx * dx + dy * dy) <= km
+  }
+  return allProducts.filter(product =>
+    filterProducts(product.seller.coordinates, user.coordinates, 3)
+  )
+}
+
+Product.getListingsByAvailability = function(sellerId, availability) {
+  return this.findAll({
+    where: {
+      sellerId,
+      availability:
+        availability === 'available'
+          ? 'Available'
+          : availability === 'reserved' ? 'Reserved' : 'Sold'
+    }
+  })
+}
+
+// Product.getFavorites = function(userId) {
+//   return this.findAll({
+//     include: {
+//       model: User,
+//       where: {
+//         id: userId
+//     }}
+//   }).filter(product => product.users[0].favorite.isFavorite === true)
+// }
 
 module.exports = Product
