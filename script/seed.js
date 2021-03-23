@@ -17,6 +17,14 @@ async function seed() {
 
   const users = [
     {
+      firstName: 'Cody',
+      lastName: 'Pug',
+      email: 'cody@gmail.com',
+      password: 'cody123',
+      zipCode: 10128,
+      coordinates: [40.726096, -73.984152]
+    },
+    {
       firstName: 'Tobie',
       lastName: 'Ahrens',
       email: 'tahrens0@usda.gov',
@@ -215,14 +223,6 @@ async function seed() {
       password: 'mdC6zQyu',
       zipCode: 10014,
       coordinates: [40.7484284, 73.9856542]
-    },
-    {
-      firstName: 'Cody',
-      lastName: 'Pug',
-      email: 'cody@gmail.com',
-      password: 'cody123',
-      zipCode: 10128,
-      coordinates: [40.726096, -73.984152]
     }
   ]
   const [tobie, doretta, clement, tiffany, gretchen] = await User.bulkCreate(
@@ -491,6 +491,48 @@ async function seed() {
   ]
   const createReviews = await Review.bulkCreate(reviews)
   console.log('Seeded reviews')
+
+  //chats
+  const chats = [
+    {
+      productId: 1
+    },
+    {
+      productId: 2
+    },
+    {
+      productId: 3
+    }
+  ]
+  const createChats = await Chat.bulkCreate(chats)
+  console.log('Seeded chats')
+  //messages
+  const messages = [
+    {
+      content: 'Is this still available?',
+      authorId: 10,
+      chatId: 1
+    },
+    {
+      content: 'Hey can I buy this?',
+      authorId: 5,
+      chatId: 2
+    },
+
+    {
+      content: 'Love this book!',
+      unread: false,
+      authorId: 5,
+      chatId: 3
+    },
+    {
+      content: 'Same! Are you looking to buy this?',
+      authorId: 3,
+      chatId: 3
+    }
+  ]
+  const createMessages = await Message.bulkCreate(messages)
+  console.log('Seeded messages')
 }
 
 // We've separated the `seed` function from the `runSeed` function.
