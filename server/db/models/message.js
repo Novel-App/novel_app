@@ -31,18 +31,4 @@ Message.getUnreadCountByChat = function(chatId) {
   }).length
 }
 
-//chatId doesn't exist until chat exists
-Message.getBrowserId = async function(chatId) {
-  try {
-    const browser = await Message.findOne({
-      where: {
-        chatId: chatId
-      }
-    })
-    return browser.authorId
-  } catch {
-    console.log('buyer can not be found')
-  }
-}
-
 module.exports = Message

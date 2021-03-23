@@ -18,7 +18,7 @@ const Chat = db.define('chat', {
 //       as: 'authorId'
 //     },
 //     where: {
-//       browserId: authorId
+//       browserId: "authorId"
 //     }
 //   })
 // }

@@ -11,7 +11,8 @@ import {
   AllProducts,
   AllChats,
   SingleChat,
-  SingleProducts
+  SingleProducts,
+  EditProfile
 } from './components'
 import {me} from './store'
 
@@ -52,6 +53,7 @@ class Routes extends Component {
               component={LocationVerification}
             />
             <Route path="/products" component={AllProducts} />
+            <Route path="/me/edit" component={EditProfile} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
