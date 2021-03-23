@@ -215,6 +215,14 @@ async function seed() {
       password: 'mdC6zQyu',
       zipCode: 10014,
       coordinates: [40.7484284, 73.9856542]
+    },
+    {
+      firstName: 'Cody',
+      lastName: 'Pug',
+      email: 'cody@gmail.com',
+      password: 'cody123',
+      zipCode: 10128,
+      coordinates: [40.726096, -73.984152]
     }
   ]
   const [tobie, doretta, clement, tiffany, gretchen] = await User.bulkCreate(
