@@ -1,13 +1,16 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchSingleProduct} from '../../store/product'
+import Condition from './Condition'
 
 class SingleProduct extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: true
+      loading: true,
+      popup: false
     }
+    this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
     try {
@@ -16,6 +19,9 @@ class SingleProduct extends Component {
     } catch (err) {
       console.log(err)
     }
+  }
+  handleClick() {
+    this.setState({popup: !this.state.popup})
   }
   render() {
     if (this.state.loading === true) {
@@ -26,7 +32,7 @@ class SingleProduct extends Component {
       )
     }
     const product = this.props.product
-    const barginStatus = product.canBargin ? 'negotiable' : 'non-negotiable'
+    const bargainStatus = product.canBargain ? 'negotiable' : 'non-negotiable'
     return (
       <div className="container">
         <div className="mb-5">
@@ -43,10 +49,19 @@ class SingleProduct extends Component {
               <h2 className="mb-0 text-dark">{product.title}</h2>
               <div className="mb-0 text-dark">by {product.author}</div>
               <div className="mb-0 text-dark">{product.createdAt}</div>
-              <div className="mb-0 text-dark">{barginStatus}</div>
-              <div className="mb-0 text-dark">${product.price}</div>
-              <div className="mb-0 text-dark">♡: </div>
-              <p className="pt-1 text-dark">{product.description}</p>
+              <div>
+                <span className="mb-0 text-dark">
+                  Condition: {product.condition}{' '}
+                </span>
+                <Condition />
+              </div>
+              <div className="mb-0 text-dark">
+                ${product.price} ({bargainStatus})
+              </div>
+              <div className="mb-0 text-dark">♡ </div>
+              <p className="pt-1 text-dark">
+                Description: {product.description}
+              </p>
               {/* if user is a buyer then render products to buy */}
             </div>
           </div>
