@@ -31,7 +31,6 @@ router.get('/', async (req, res, next) => {
 // GET /api/chats/:chatId
 router.get('/:chatId', async (req, res, next) => {
   try {
-    console.log('req.parms', req.params.chatId)
     const chat = await Chat.findByPk(req.params.chatId, {
       include: [
         {
