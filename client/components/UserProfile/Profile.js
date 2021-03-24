@@ -32,13 +32,14 @@ class Profile extends Component {
                 />
               </div>
             </div>
-
-            <ul className="list-group">
-              <li className="list-group-item">First Name: {firstName}</li>
-              <li className="list-group-item">Last Name: {lastName}</li>
-              <li className="list-group-item">Email: {email}</li>
-              <li className="list-group-item">Zip Code: {zipCode}</li>
-            </ul>
+            <div className="col-md-8">
+              <ul className="list-group">
+                <li className="list-group-item">First Name: {firstName}</li>
+                <li className="list-group-item">Last Name: {lastName}</li>
+                <li className="list-group-item">Email: {email}</li>
+                <li className="list-group-item">Zip Code: {zipCode}</li>
+              </ul>
+            </div>
           </div>
           <div>
             <Link to="/profile/edit">
