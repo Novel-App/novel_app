@@ -12,7 +12,7 @@ const Chat = db.define('chat', {
   sellerId: {
     type: Sequelize.INTEGER
   },
-  buyerId: {
+  browserId: {
     type: Sequelize.INTEGER
   }
 })
