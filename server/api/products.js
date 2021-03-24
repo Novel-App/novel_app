@@ -28,23 +28,54 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-
 //POST /api/products
 //post must include: title, author, ISBN, description, condition, price, sellerId
 //could include 'image', canBargin. could switch: availability ==> then need to add buyerId
 
 router.post('/', async (req, res, next) => {
   try {
-    let [newProduct, wasCreated] = await Product.create(req.body, {
-      include: [
-        {
-          model: User,
-          as: 'seller',
-          attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
-        },
-        {model: Genre}
-      ]
-    })
+    const {
+      title,
+      author,
+      ISBN,
+      description,
+      image,
+      condition,
+      price,
+      canBargain,
+      availability,
+      genreCategory,
+      isFiction,
+      sellerId
+    } = req.body
+    let newProduct = await Product.create(
+      {
+        title,
+        author,
+        ISBN,
+        description,
+        image,
+        condition,
+        price,
+        canBargain,
+        availability,
+        sellerId,
+        genre: {
+          isFiction,
+          category: genreCategory
+        }
+      },
+      {
+        include: [
+          {
+            model: User,
+            as: 'seller',
+            attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
+          },
+          {model: Genre}
+        ]
+      }
+    )
     res.status(201).json(newProduct)
   } catch (error) {
     next(error)

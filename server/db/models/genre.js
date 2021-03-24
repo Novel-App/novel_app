@@ -4,10 +4,10 @@ const db = require('../db')
 const Genre = db.define('genre', {
   isFiction: {
     type: Sequelize.BOOLEAN,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    allowNull: false
+    // validate: {
+    //   notEmpty: true
+    // }
   },
   category: {
     type: Sequelize.ENUM(
@@ -22,10 +22,10 @@ const Genre = db.define('genre', {
       'Humor',
       'Childrens'
     ),
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    allowNull: false
+    // validate: {
+    //   notEmpty: true
+    // }
   }
 })
 
