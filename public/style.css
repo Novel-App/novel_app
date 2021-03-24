@@ -19,9 +19,11 @@ body {
 .nav-link {
   margin-right: 1em !important;
 }
-.nav-link:hover {
+.nav-link:hover,
+.navbar-brand:hover {
   color: #002120;
 }
+
 .navbar-collapse {
   justify-content: flex-end;
 }
