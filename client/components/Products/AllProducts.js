@@ -2,36 +2,23 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchProducts} from '../../store/product'
 import {Link} from 'react-router-dom'
-import {fetchListings, fetchFavorites} from '../../store/userInfo'
-
-//add a product icon --> links to add product component
+import {fetchUserProducts} from '../../store/userInfo'
 
 class AllProducts extends Component {
   constructor(props) {
     super(props)
     this.state = {
       loading: true,
-      listingPage: false,
-      productPage: false,
-      favoritesPage: false
+      currentPage: ''
     }
   }
   componentDidMount() {
-    const path = this.props.match.path
-    if (path === '/products') {
-      //productPage
-      this.props.loadProducts()
-      this.setState({productPage: true})
-    } else if (path === '/listings') {
-      //listing page
-      this.props.loadListings(this.props.user.id)
-      this.setState({listingPage: true})
-    } else if (path === '/favorites') {
-      //favorites page
-      console.log('favorites')
-      this.props.loadFavorites(this.props.user.id)
-      this.setState({favoritesPage: true})
-    }
+    const path = this.props.match.path.slice(1)
+    const userId = this.props.user.id
+    this.setState({currentPage: path})
+    path === 'products'
+      ? this.props.loadProducts(userId)
+      : this.props.loadUserProducts(userId, path)
     this.setState({loading: false})
   }
 
@@ -47,21 +34,21 @@ class AllProducts extends Component {
     //only display certain buttons if listing page is true
     let products = []
     let noProducts = ''
-    if (this.state.favoritesPage) {
+    let currentPage = this.state.currentPage
+    if (currentPage === 'favorites') {
       products = this.props.favorites
       noProducts = (
         <>
           <h2>You do not have any favorite products</h2>
-          <p>Browse listings and heart some books!</p>
+          <p>Browse products and heart some books!</p>
         </>
       )
-    } else if (this.state.listingPage) {
-      products = this.props.listings
-
-      noProducts = <h2>You are not currently selling any products</h2>
-    } else if (this.state.productPage) {
+    } else if (currentPage === 'products') {
       products = this.props.products
       noProducts = <h2>There are no products being sold in your area</h2>
+    } else if (currentPage === 'purchases') {
+      products = this.props.purchases
+      noProducts = <h2>You do not have any past purchases</h2>
     }
     //if there are no products sold
     if (products.length === 0) {
@@ -87,20 +74,6 @@ class AllProducts extends Component {
                 <h3>{product.createdAt}</h3>
                 <h3>${product.price}</h3>
                 <h3>♡: {product.numFavorites}</h3>
-                <>
-                  {this.state.listingPage ? (
-                    <h3>UpdateListingButton</h3>
-                  ) : (
-                    <></>
-                  )}
-                </>
-                <>
-                  {this.state.listingPage ? (
-                    <h3>Update to sold/reservedButton</h3>
-                  ) : (
-                    <></>
-                  )}
-                </>
               </div>
             ))}
           </div>
@@ -115,15 +88,15 @@ const mapState = state => {
     user: state.user,
     products: state.products.all,
     favorites: state.userInfo.favorites,
-    listings: state.userInfo.listings
+    purchases: state.userInfo.purchases
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     loadProducts: () => dispatch(fetchProducts()),
-    loadListings: userId => dispatch(fetchListings(userId)),
-    loadFavorites: userId => dispatch(fetchFavorites(userId))
+    loadUserProducts: (userId, type) =>
+      dispatch(fetchUserProducts(userId, type))
   }
 }
 
