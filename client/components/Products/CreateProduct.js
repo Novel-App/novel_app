@@ -50,7 +50,7 @@ class CreateProduct extends Component {
       ...this.state,
       sellerId: this.props.user.id
     })
-    this.setState({defaultState})
+    // this.setState({defaultState})
   }
   render() {
     const {handleChange, handleCheckboxChange, handleSubmit} = this
