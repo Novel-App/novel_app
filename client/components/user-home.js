@@ -13,11 +13,11 @@ export const UserHome = props => {
   return (
     <div>
       <div className="container-fluid" />
-      <h3>Welcome, {firstName}</h3>
       <img
         className="heroImg"
         src="https://static01.nyt.com/images/2019/12/17/books/review/17fatbooks/17fatbooks-superJumbo.jpg?quality=90&auto=webp"
       />
+      <h3>Welcome, {firstName}</h3>
       <h3>
         Ready to expand your library?{' '}
         <Link to="/products">Browse titles in your area</Link>

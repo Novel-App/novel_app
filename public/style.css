@@ -1,7 +1,32 @@
 body {
   font-family: sans-serif;
   background-color: #65837b;
-  color: #f5d4b1;
+  color: #bda5ab;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
+  background: #254d4c;
+}
+
+.nav-link,
+.navbar-brand {
+  color: #bda5ab;
+  cursor: pointer;
+}
+
+.nav-link {
+  margin-right: 1em !important;
+}
+.nav-link:hover {
+  color: #002120;
+}
+.navbar-collapse {
+  justify-content: flex-end;
+}
+.navbar-signin {
+  justify-content: flex-start;
 }
 
 a {

@@ -4,9 +4,11 @@ import {Link} from 'react-router-dom'
 import {getMe} from '../../store/user'
 
 class Profile extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getMe()
+  }
   render() {
-    const {firstName, lastName, email} = this.state
+    const {firstName, lastName, email, profileImage} = this.state
     return (
       <div className="container">
         <h2>Hi {firstName}!</h2>
@@ -16,6 +18,7 @@ class Profile extends Component {
               <div>
                 <span className="card-title">Profile</span>
                 <div>
+                  <p>Profile Image: {profileImage}</p>
                   <p>First Name: {firstName}</p>
                   <p>Last Name: {lastName}</p>
                   <p>Email: {email}</p>
