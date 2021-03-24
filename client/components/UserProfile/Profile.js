@@ -8,27 +8,45 @@ class Profile extends Component {
     this.props.getMe()
   }
   render() {
-    const {firstName, lastName, email, profileImage} = this.state
+    const {firstName, lastName, email, profileImage, zipCode} = this.props.user
     return (
-      <div className="container">
-        <h2>Hi {firstName}!</h2>
-        <div className="row">
-          <div className="col s12 m6">
-            <div>
-              <div>
-                <span className="card-title">Profile</span>
-                <div>
-                  <p>Profile Image: {profileImage}</p>
-                  <p>First Name: {firstName}</p>
-                  <p>Last Name: {lastName}</p>
-                  <p>Email: {email}</p>
-                  <p>Password: ******</p>
-                </div>
-              </div>
-              <div>
-                <Link to="/profile/edit">Edit</Link>
+      <div className="main-content">
+        <a
+          className="h3 mb-0 text-uppercase d-none d-lg-inline-block"
+          target="_blank"
+        >
+          User profile
+        </a>
+        <span />
+        <div id="profile-container" className="container rounded mt-4">
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <h4>Hi {firstName}!</h4>
+          </div>
+          <div className="row">
+            <div className="col-md-4 border-right">
+              <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img
+                  className="rounded-circle mt-5"
+                  src={profileImage}
+                  width="90"
+                />
               </div>
             </div>
+            <div className="col-md-8">
+              <ul className="list-group">
+                <li className="list-group-item">First Name: {firstName}</li>
+                <li className="list-group-item">Last Name: {lastName}</li>
+                <li className="list-group-item">Email: {email}</li>
+                <li className="list-group-item">Zip Code: {zipCode}</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <Link to="/profile/edit">
+              <button type="button" className="btn btn-primary">
+                Edit Profile
+              </button>
+            </Link>
           </div>
         </div>
       </div>

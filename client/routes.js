@@ -14,6 +14,7 @@ import {
   SingleProducts,
   EditProfile,
   Profile,
+  CreateProduct,
   Listings
 } from './components'
 import {getMe} from './store'
@@ -49,11 +50,12 @@ class Routes extends Component {
             <Route exact path="/listings" component={Listings} />
             <Route exact path="/favorites" component={AllProducts} />
             <Route exact path="/purchases" component={AllProducts} />
+            <Route exact path="/products/add" component={CreateProduct} />
             <Route exact path="/products/:id" component={SingleProducts} />
             <Route exact path="/chats" component={AllChats} />
             <Route exact path="/singleChat" component={SingleChat} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/profile/edit" component={EditProfile} />
+            <Route path="/profile/edit" component={EditProfile} />
             <Route
               exact
               path="/messages/:chatId/messages"
