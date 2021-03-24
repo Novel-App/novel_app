@@ -4,17 +4,16 @@ const Op = require('Sequelize').Op
 module.exports = router
 
 // GET /api/chats/
-//THUNKS MUST SEND: userId
 router.get('/', async (req, res, next) => {
   try {
     const chat = await Chat.findAll({
       where: {
         [Op.or]: [
           {
-            sellerId: req.body.userId
+            sellerId: req.user.id
           },
           {
-            browserId: req.body.userId
+            browserId: req.user.id
           }
         ]
       },
