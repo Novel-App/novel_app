@@ -8,7 +8,7 @@ import history from '../history'
  * COMPONENT
  */
 const SignupForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+  const {name, displayName, email, handleSubmit, error} = props
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
