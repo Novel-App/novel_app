@@ -12,10 +12,13 @@ export {default as LocationVerification} from './location-verification'
 export {default as UserMap} from './UserProfile/UserMap'
 export {default as AllProducts} from './Products/AllProducts'
 export {default as SingleProducts} from './Products/SingleProducts'
+export {default as CreateProduct} from './Products/CreateProduct'
 export {default as Condition} from './Products/Condition'
 export {AllChats} from './Chats/AllChats'
 export {default as SingleChat} from './Chats/SingleChat'
 export {default as Message} from './Chats/Message'
+export {default as Profile} from './UserProfile/Profile'
+export {default as EditProfile} from './UserProfile/EditProfile'
 
 //remember to comment these in
 

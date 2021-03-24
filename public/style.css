@@ -10,6 +10,15 @@ body {
   background: #254d4c;
 }
 
+.btn-primary {
+  background: #bda5ab;
+}
+
+.btn-warning {
+  background: #341011;
+  color: white;
+}
+
 .nav-link,
 .navbar-brand {
   color: #bda5ab;
@@ -19,14 +28,22 @@ body {
 .nav-link {
   margin-right: 1em !important;
 }
-.nav-link:hover {
+.nav-link:hover,
+.navbar-brand:hover,
+.btn-primary:hover {
   color: #002120;
 }
+
 .navbar-collapse {
   justify-content: flex-end;
 }
 .navbar-signin {
   justify-content: flex-start;
+}
+
+#edit-container,
+#profile-container {
+  background-color: #564147;
 }
 
 a {
@@ -44,7 +61,7 @@ nav a {
 
 form div {
   margin: 1em;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .heroImg {
