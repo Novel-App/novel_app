@@ -68,11 +68,28 @@ class AllProducts extends Component {
       return <div>{noProducts}</div>
     }
     return (
-      <div className="row">
+      <div className="d-flex flex-column">
+        <Link to="/products/add">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="currentColor"
+            className="bi bi-plus-circle-fill"
+            viewBox="0 0 16 16"
+            // alignself="right"
+          >
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+          </svg>
+        </Link>
+        {/* <div className="row">
         <div className="col-sm-6">
-          <div className="card">
-            {products.map(product => (
-              <div key={product.id}>
+          <div className="card"> */}
+        {products.map(product => (
+          // <div key={product.id}>
+          <div className="row" key={product.id}>
+            <div className="col-sm-6">
+              <div className="card">
                 <Link to={`/products/${product.id}`}>
                   <img
                     className="card-img-top"
@@ -102,10 +119,13 @@ class AllProducts extends Component {
                   )}
                 </>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
+      //   </div>
+      // </div>
+      // </div>
     )
   }
 }

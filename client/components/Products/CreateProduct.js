@@ -3,10 +3,9 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {createProduct} from '../../store/product'
+import Condition from './Condition'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
-
-// add condition info icon
 
 const defaultState = {
   title: '',
@@ -49,7 +48,7 @@ class CreateProduct extends Component {
       ...this.state,
       sellerId: this.props.user.id
     })
-    this.setState({defaultState})
+    // this.setState({defaultState})
   }
   render() {
     const {handleChange, handleCheckboxChange, handleSubmit} = this
@@ -67,9 +66,9 @@ class CreateProduct extends Component {
     } = this.state
     return (
       <div>
-        <div>
+        <div className="d-flex flex-column justify-content-center">
           <Link to="/products">Cancel</Link>
-          <h1>New post</h1>
+          <h1 className="align-self-center">New post</h1>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -171,7 +170,9 @@ class CreateProduct extends Component {
           </div>
 
           <div className="form-group">
-            <label htmlFor="condition">Condition</label>
+            <label htmlFor="condition">
+              Condition <Condition />
+            </label>
             <select
               name="condition"
               className="form-control"
@@ -212,7 +213,9 @@ class CreateProduct extends Component {
               </label>
             </div>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn btn-light">
+            Submit
+          </button>
         </form>
       </div>
     )
