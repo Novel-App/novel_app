@@ -71,7 +71,7 @@ class CreateProduct extends Component {
           <h1 className="align-self-center">New post</h1>
         </div>
 
-        <form className="d-flex flex-sm-column" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           {/* <label htmlFor="image">Upload Images:</label>
                 <input
                 name="image"
