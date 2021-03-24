@@ -537,7 +537,7 @@ async function seed() {
       chatId: 3
     },
     {
-      content: 'Can we bargin?',
+      content: 'Can we bargain?',
       authorId: 15,
       chatId: 4
     }
