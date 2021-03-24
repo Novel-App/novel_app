@@ -46,22 +46,27 @@ class AllProducts extends Component {
     }
     //only display certain buttons if listing page is true
     let products = []
+    let noProducts = ''
     if (this.state.favoritesPage) {
-      console.log('in the fav page')
       products = this.props.favorites
+      noProducts = (
+        <>
+          <h2>You do not have any favorite products</h2>
+          <p>Browse listings and heart some books!</p>
+        </>
+      )
     } else if (this.state.listingPage) {
       products = this.props.listings
+
+      noProducts = <h2>You are not currently selling any products</h2>
     } else if (this.state.productPage) {
       products = this.props.products
+      noProducts = <h2>There are no products being sold in your area</h2>
     }
-    //if no products/favorites/products sold
-    // if (!products) {
-    //   return (
-    //     <div>
-    //       <h2>No products to show</h2>
-    //     </div>
-    //   )
-    // }
+    //if there are no products sold
+    if (products.length === 0) {
+      return <div>{noProducts}</div>
+    }
     return (
       <div className="row">
         <div className="col-sm-6">
@@ -109,7 +114,7 @@ const mapState = state => {
   return {
     user: state.user,
     products: state.products.all,
-    favorites: state.favorites,
+    favorites: state.userInfo.favorites,
     listings: state.userInfo.listings
   }
 }
