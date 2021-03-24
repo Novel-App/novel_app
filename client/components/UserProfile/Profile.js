@@ -49,6 +49,9 @@ class Profile extends Component {
             </Link>
           </div>
         </div>
+        <div id="favorites-container" />
+        <div id="my-listings" />
+        <div id="my-purchases" />
       </div>
     )
   }
