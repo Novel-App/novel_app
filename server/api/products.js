@@ -27,6 +27,8 @@ router.get('/', async (req, res, next) => {
 })
 
 //POST /api/products
+//post must include: title, author, ISBN, description, condition, price, sellerId
+//could include 'image', canBargin. could switch: availability ==> then need to add buyerId
 router.post('/', async (req, res, next) => {
   try {
     let [newProduct, wasCreated] = await Product.create(req.body, {
