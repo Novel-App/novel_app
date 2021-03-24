@@ -8,7 +8,7 @@ class Profile extends Component {
     this.props.getMe()
   }
   render() {
-    const {firstName, lastName, email, profileImage} = this.state
+    const {firstName, lastName, email, profileImage} = this.props.user
     return (
       <div className="container">
         <h2>Hi {firstName}!</h2>
