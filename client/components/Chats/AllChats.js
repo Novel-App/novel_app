@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {fetchAllChats, addNewChat, removeChat} from '../../store/chat'
 
-/**
- * COMPONENT
- */
-export class AllChats extends Component {
+class AllChats extends Component {
   constructor() {
     super()
     this.state = {chats: []}
@@ -15,19 +13,34 @@ export class AllChats extends Component {
     this.deleteClickHandler = this.deleteClickHandler.bind(this)
   }
 
+  componentDidMount() {
+    this.props.getAllChats()
+  }
+
   // handling the delete chat button
   deleteClickHandler() {}
 
   render() {
+    console.log('rendering AllChats...')
+
+    const chats = this.props.chats
+    console.log('chats', chats)
+
     return (
       <div>
         <h3>All chats</h3>
-        {/* {chat.id?} */}
         <ul>
-          {this.state.chats.map(chat => {
+          {chats.map(chat => {
             return (
               <li key={chat.id}>
-                <Link to={`/chat/${chat.id}`}>{chat.senderName}</Link>
+                <Link
+                  to={{
+                    pathname: `/messages/${chat.id}/messages`,
+                    chat: {chat}
+                  }}
+                >
+                  {`${chat.users[0].firstName} ${chat.users[0].lastName}`}
+                </Link>
 
                 <div>
                   <button
@@ -53,7 +66,16 @@ export class AllChats extends Component {
  * CONTAINER
  */
 const mapState = state => {
-  return {}
+  return {
+    chats: state.chat.chats
+  }
+}
+const mapDispatch = dispatch => {
+  return {
+    getAllChats: () => dispatch(fetchAllChats()),
+    addNewChat: chat => dispatch(addNewChat(chat)),
+    deleteChat: chatId => dispatch(removeChat(chatId))
+  }
 }
 
-export default connect(mapState)(AllChats)
+export default connect(mapState, mapDispatch)(AllChats)
