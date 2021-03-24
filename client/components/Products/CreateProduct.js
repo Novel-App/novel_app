@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {createProduct} from '../../store/product'
+import Condition from './Condition'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
@@ -171,7 +172,9 @@ class CreateProduct extends Component {
           </div>
 
           <div className="form-group">
-            <label htmlFor="condition">Condition</label>
+            <label htmlFor="condition">
+              Condition <Condition />
+            </label>
             <select
               name="condition"
               className="form-control"
