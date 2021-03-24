@@ -7,8 +7,6 @@ import Condition from './Condition'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
-// add condition info icon
-
 const defaultState = {
   title: '',
   author: '',
@@ -68,12 +66,12 @@ class CreateProduct extends Component {
     } = this.state
     return (
       <div>
-        <div>
+        <div className="d-flex flex-column justify-content-center">
           <Link to="/products">Cancel</Link>
-          <h1>New post</h1>
+          <h1 className="align-self-center">New post</h1>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form className="d-flex flex-sm-column" onSubmit={handleSubmit}>
           {/* <label htmlFor="image">Upload Images:</label>
                 <input
                 name="image"
