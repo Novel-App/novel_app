@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {fetchAllChats, addNewChat, removeChat} from '../../store/chat'
+import {fetchAllChats, removeChat} from '../../store/chat'
 
 class AllChats extends Component {
   constructor() {
@@ -37,7 +37,7 @@ class AllChats extends Component {
               <li key={chat.id}>
                 <Link
                   to={{
-                    pathname: `/messages/${chat.id}/messages`,
+                    pathname: `/messages/${chat.id}`,
                     chat: {chat}
                   }}
                 >
@@ -55,9 +55,6 @@ class AllChats extends Component {
               </li>
             )
           })}
-          <div>
-            <Link to="/singleChat">Start A New Chat</Link>
-          </div>
         </ul>
       </div>
     )
@@ -75,7 +72,6 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getAllChats: () => dispatch(fetchAllChats()),
-    addNewChat: chat => dispatch(addNewChat(chat)),
     deleteChat: chatId => dispatch(removeChat(chatId))
   }
 }

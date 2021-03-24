@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import Message from './Message'
 import {Form, Icon, Input, Button, Row, Col} from 'antd'
 import {sendMessage, fetchMessages} from '../../store/message'
+import socket from '../../socket'
 
 /**
  * COMPONENT
@@ -11,24 +12,8 @@ export class SingleChat extends Component {
   constructor() {
     super()
     this.state = {
-      messages: [
-        {
-          content: 'Love this book!',
-          unread: false,
-          createdAt: '2021-03-23T16:14:30.003Z',
-          updatedAt: '2021-03-23T16:14:30.003Z',
-          authorId: 5,
-          chatId: 3
-        },
-        {
-          content: 'Same! Are you looking to buy this?',
-          unread: true,
-          createdAt: '2021-03-23T16:14:30.003Z',
-          updatedAt: '2021-03-23T16:14:30.003Z',
-          authorId: 3,
-          chatId: 3
-        }
-      ]
+      content: '',
+      unread: true
     }
     //state or props will populate with messages objects connected to specific singleChat
     //once message are populated the map function will map through every message
@@ -37,23 +22,37 @@ export class SingleChat extends Component {
     this.submitChactMessage = this.submitChactMessage.bind(this)
   }
 
-  // componentDidMount() {
-  //   console.log('comDidMount.....')
-  //   // console.log(this.props.getMessages)
-  //   const chatId = Number(this.props.match.params.chatId) // 3
-  //   const messages = this.props.getMessages(chatId)
-  //   //this.setState({messages: messages})
-  // }
+  componentDidMount() {
+    console.log('comDidMount.....')
+    // console.log(this.props.getMessages)
+    const chatId = Number(this.props.match.params.chatId) // 3
+    this.props.getMessages(chatId)
+  }
 
   componentDidUpdate() {
     this.messagesEnd.scrollIntoView({behavior: 'smooth'})
   }
 
-  handleChange() {}
+  handleChange(e) {
+    this.setState({
+      content: e.target.value
+    })
+  }
 
-  submitChactMessage() {}
+  submitChactMessage(e) {
+    e.preventDefault()
+
+    let content = this.state.content
+
+    this.props.sendMessage({...this.state})
+    socket.emit('Input Chat Message', {
+      content
+    })
+    this.setState({content: ''})
+  }
 
   render() {
+    console.log('rendering SingleChat....')
     // const messages = this.props.location.chat.chat.users
     // console.log ('---',messages)
     return (
@@ -67,8 +66,8 @@ export class SingleChat extends Component {
             className="infinite-container"
             style={{height: '500px', overflowY: 'scroll'}}
           >
-            {this.state.messages
-              ? this.state.messages.map(message => {
+            {this.props.messages
+              ? this.props.messages.map(message => {
                   return <Message key={message.authorId} message={message} />
                 })
               : ''}
@@ -87,7 +86,7 @@ export class SingleChat extends Component {
                   id="message"
                   placeholder="Enter your message"
                   type="text"
-                  value={this.state.message}
+                  value={this.state.content}
                   onChange={this.handleChange}
                 />
               </Col>
@@ -113,7 +112,7 @@ export class SingleChat extends Component {
  */
 const mapState = state => {
   return {
-    messages: state.messages
+    messages: state.message.messages
     //users: state.users
   }
 }
