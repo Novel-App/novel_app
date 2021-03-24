@@ -29,7 +29,8 @@ body {
   margin-right: 1em !important;
 }
 .nav-link:hover,
-.navbar-brand:hover {
+.navbar-brand:hover,
+.btn-primary:hover {
   color: #002120;
 }
 
@@ -40,7 +41,8 @@ body {
   justify-content: flex-start;
 }
 
-#edit-container {
+#edit-container,
+#profile-container {
   background-color: #564147;
 }
 

@@ -8,28 +8,43 @@ class Profile extends Component {
     this.props.getMe()
   }
   render() {
-    const {firstName, lastName, email, profileImage} = this.props.user
+    const {firstName, lastName, email, profileImage, zipCode} = this.props.user
     return (
-      <div className="container">
-        <h2>Hi {firstName}!</h2>
-        <div className="row">
-          <div className="col s12 m6">
-            <div>
-              <div>
-                <span className="card-title">Profile</span>
-                <div>
-                  <p>Profile Image: {profileImage}</p>
-                  <p>First Name: {firstName}</p>
-                  <p>Last Name: {lastName}</p>
-                  <p>Email: {email}</p>
-                  <p>Password: ******</p>
-                </div>
-              </div>
-              <div>
-                <Link to="/profile/edit">Edit</Link>
+      <div className="main-content">
+        <a
+          className="h3 mb-0 text-uppercase d-none d-lg-inline-block"
+          target="_blank"
+        >
+          User profile
+        </a>
+        <span />
+        <div id="profile-container" className="container rounded mt-4">
+          <h4>Hi {firstName}!</h4>
+          <div className="row">
+            <div className="col-md-4 border-right">
+              <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img
+                  className="rounded-circle mt-5"
+                  src={profileImage}
+                  width="90"
+                />
               </div>
             </div>
+            <span className="font-weight-bold">First Name: {firstName}</span>
+            <span className="font-weight-bold">Last Name: {lastName}</span>
+            <span>Email: {email}</span>
+            <span>Zip Code: {zipCode}</span>
           </div>
+        </div>
+        <div>
+          <Link to="/profile/edit">
+            <button
+              type="button"
+              className="justify-content-right btn btn-primary"
+            >
+              Edit Profile
+            </button>
+          </Link>
         </div>
       </div>
     )
