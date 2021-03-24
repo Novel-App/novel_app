@@ -19,7 +19,9 @@ class Profile extends Component {
         </a>
         <span />
         <div id="profile-container" className="container rounded mt-4">
-          <h4>Hi {firstName}!</h4>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <h4>Hi {firstName}!</h4>
+          </div>
           <div className="row">
             <div className="col-md-4 border-right">
               <div className="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -30,21 +32,21 @@ class Profile extends Component {
                 />
               </div>
             </div>
-            <span className="font-weight-bold">First Name: {firstName}</span>
-            <span className="font-weight-bold">Last Name: {lastName}</span>
-            <span>Email: {email}</span>
-            <span>Zip Code: {zipCode}</span>
+
+            <ul className="list-group">
+              <li className="list-group-item">First Name: {firstName}</li>
+              <li className="list-group-item">Last Name: {lastName}</li>
+              <li className="list-group-item">Email: {email}</li>
+              <li className="list-group-item">Zip Code: {zipCode}</li>
+            </ul>
           </div>
-        </div>
-        <div>
-          <Link to="/profile/edit">
-            <button
-              type="button"
-              className="justify-content-right btn btn-primary"
-            >
-              Edit Profile
-            </button>
-          </Link>
+          <div>
+            <Link to="/profile/edit">
+              <button type="button" className="btn btn-primary">
+                Edit Profile
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     )
