@@ -6,7 +6,7 @@ import {fetchAllChats, addNewChat, removeChat} from '../../store/chat'
 class AllChats extends Component {
   constructor() {
     super()
-    this.state = {chats: []}
+
     //state or props will populate with chats objects connected to that user once components mount
     //once chats are populated the map function will map through every chat
     //each chat has a link, that navigates to the specific single chat based on chat id
@@ -18,13 +18,15 @@ class AllChats extends Component {
   }
 
   // handling the delete chat button
-  deleteClickHandler() {}
+  deleteClickHandler(chatId) {
+    // if (this.props.chat.id)
+    this.props.deleteChat(chatId)
+  }
 
   render() {
     console.log('rendering AllChats...')
 
-    const chats = this.props.chats
-    console.log('chats', chats)
+    let chats = this.props.chats
 
     return (
       <div>
@@ -39,7 +41,7 @@ class AllChats extends Component {
                     chat: {chat}
                   }}
                 >
-                  {`${chat.users[0].firstName} ${chat.users[0].lastName}`}
+                  {`${chat.users[0].firstName}`}
                 </Link>
 
                 <div>
