@@ -6,29 +6,68 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>Novel</h1>
-    <nav className="navbar sticky-bottom navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg">
       {isLoggedIn ? (
-        <div>
+        <div className="navbar-collapse">
           {/* The navbar will show these links after you log in */}
-          <Link className="text-white h5" to="/home">
-            Home
-          </Link>
-          <Link className="text-white h5" to="/products">
-            Browse Books
-          </Link>
-          <Link className="text-white h5" to="/chats">
-            Chat
-          </Link>
-          <a className="navbar-brand" href="#" onClick={handleClick}>
+          <a className="navbar-brand" href="#">
+            NOVEL
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#main-navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse" id="main-navigation">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link" href="/home#">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/products#" to="/products">
+                  Products
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/chats#">
+                  Chats
+                </a>
+              </li>
+            </ul>
+          </div>
+          <a className="nav-link" href="#" onClick={handleClick}>
             Logout
           </a>
         </div>
       ) : (
-        <div>
+        <div className="navbar-signin">
           {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <div className="collapse navbar-collapse" id="main-navigation">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link" href="/#">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/login#">
+                  Login
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/signup#">
+                  Sign Up
+                </a>
+              </li>
+            </ul>
+          </div>
+          {/* <Link to="/login">Login</Link>
+          <Link to="/signup">Sign Up</Link> */}
         </div>
       )}
     </nav>

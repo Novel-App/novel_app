@@ -11,9 +11,11 @@ import {
   AllProducts,
   AllChats,
   SingleChat,
-  SingleProducts
+  SingleProducts,
+  EditProfile,
+  Profile
 } from './components'
-import {me} from './store'
+import {getMe} from './store'
 
 /**
  * COMPONENT
@@ -45,11 +47,15 @@ class Routes extends Component {
             <Route exact path="/products" component={AllProducts} />
             <Route exact path="/products/:id" component={SingleProducts} />
             <Route exact path="/chats" component={AllChats} />
+            <Route exact path="/singleChat" component={SingleChat} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile/edit" component={EditProfile} />
             <Route
               exact
               path="/messages/:chatId/messages"
               component={SingleChat}
             />
+
             <Route
               exact
               path="/location-verification"
@@ -79,7 +85,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(me())
+      dispatch(getMe())
     }
   }
 }
