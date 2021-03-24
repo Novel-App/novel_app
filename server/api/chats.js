@@ -3,17 +3,18 @@ const {Chat, Message, Product, User} = require('../db/models')
 const Op = require('Sequelize').Op
 module.exports = router
 
-// GET /api/chats/:userId
-router.get('/:userId', async (req, res, next) => {
+// GET /api/chats/
+//THUNKS MUST SEND: userId
+router.get('/', async (req, res, next) => {
   try {
     const chat = await Chat.findAll({
       where: {
         [Op.or]: [
           {
-            sellerId: req.params.userId
+            sellerId: req.body.userId
           },
           {
-            browserId: req.params.userId
+            browserId: req.body.userId
           }
         ]
       },
@@ -31,8 +32,17 @@ router.get('/:userId', async (req, res, next) => {
 // GET /api/chats/:chatId
 router.get('/:chatId', async (req, res, next) => {
   try {
+    console.log('req.parms', req.params.chatId)
     const chat = await Chat.findByPk(req.params.chatId, {
-      include: [{model: User}, {model: Product}]
+      include: [
+        {
+          model: User,
+          attributes: ['firstName', 'profileImage', 'reviewScore']
+        },
+        {
+          model: Product
+        }
+      ]
     })
     res.status(200).send(chat)
   } catch (err) {
