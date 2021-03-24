@@ -17,6 +17,8 @@ export {default as Condition} from './Products/Condition'
 export {AllChats} from './Chats/AllChats'
 export {default as SingleChat} from './Chats/SingleChat'
 export {default as Message} from './Chats/Message'
+export {default as Profile} from './UserProfile/Profile'
+export {default as EditProfile} from './UserProfile/EditProfile'
 
 //remember to comment these in
 

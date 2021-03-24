@@ -51,7 +51,7 @@ class Routes extends Component {
             <Route exact path="/chats" component={AllChats} />
             <Route exact path="/singleChat" component={SingleChat} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/profile/edit" component={EditProfile} />
+            <Route path="/profile/edit" component={EditProfile} />
             <Route
               exact
               path="/messages/:chatId/messages"
