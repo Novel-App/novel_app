@@ -64,20 +64,37 @@ form div {
   display: inline-block;
 }
 
-.heroImg {
-  width: 100%;
+.header {
+  background-image: url('https://cdn.lifestyleasia.com/wp-content/uploads/sites/2/2020/02/25145253/Photo-by-Alfons-Morales-on-Unsplash-scaled-1535x900.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
-/* Default height for small devices */
-.heroImg {
-  height: 300px;
-}
+/* .overlay {
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+} */
 
-/* Height for devices larger than 992px */
-@media (min-width: 992px) {
-  .heroImg {
-    height: 400px;
-  }
+.description {
+  left: 50%;
+  position: absolute;
+  top: 45%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+}
+.description h1 {
+  color: #b9aa87;
+}
+.description h4 {
+  color: #bda5ab;
+  font-size: 1.3rem;
+  line-height: 1.5;
 }
 
 @media (min-width: 576px) {
