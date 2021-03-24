@@ -20,7 +20,8 @@ const db = require('../db')
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
  */
-Product.hasOne(Genre)
+Product.belongsTo(Genre)
+Genre.hasMany(Product)
 
 Product.belongsToMany(User, {
   through: Favorite
