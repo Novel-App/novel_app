@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const {User, Product} = require('../db/models')
 module.exports = router
 
 // GET /api/users
@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
         'firstName',
         'lastName',
         'email',
-        // 'defaultImage',
+        'profileImage',
         'reviewScore',
         'photoVerified',
         'emailVerified',
@@ -37,7 +37,7 @@ router.get('/:userId', async (req, res, next) => {
         'firstName',
         'lastName',
         'email',
-        'defaultImage',
+        'profileImage',
         'reviewScore',
         'photoVerified',
         'emailVerified',
@@ -61,6 +61,53 @@ router.put('/:userId', async (req, res, next) => {
     if (!user) res.send('This user does not exist.')
     const updatedUser = await user.update(req.body)
     res.status(201).send(updatedUser)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// get all available / reserved / sold listings by user (for profile)
+// GET api/users/:sellerId/listings/:availability
+// req.params.availability options: ["available", "reserved", "sold"]
+router.get('/:sellerId/listings/:availability', async (req, res, next) => {
+  try {
+    const listings = await Product.getListingsByAvailability(
+      req.params.sellerId,
+      req.params.availability
+    )
+    res.status(200).send(listings)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// get all purchases by user
+// GET api/users/:buyerId/purchases
+router.get('/:buyerId/purchases', async (req, res, next) => {
+  try {
+    const purchases = await Product.findAll({
+      where: {
+        buyerId: req.params.buyerId
+      }
+    })
+    res.status(200).send(purchases)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// get all favorites by users
+// GET api/users/:userId/favorites
+router.get('/:userId/favorites', async (req, res, next) => {
+  try {
+    const products = await Product.findAll({
+      include: {model: User, where: {id: req.params.userId}}
+    })
+    const faves = products.filter(
+      product => product.users[0].favorite.isFavorite === true
+    )
+    // const products = await Product.getFavorites(req.params.userId)
+    res.status(200).send(faves)
   } catch (err) {
     next(err)
   }

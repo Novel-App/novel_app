@@ -8,18 +8,18 @@ import {Link} from 'react-router-dom'
 class AllProducts extends Component {
   constructor() {
     super()
-    this.filterProducts = this.filterProducts.bind(this)
+    // this.filterProducts = this.filterProducts.bind(this)
   }
   componentDidMount() {
     this.props.loadProducts()
   }
-  filterProducts(checkPoint, centerPoint, km) {
-    const ky = 40000 / 360
-    const kx = Math.cos(Math.PI * centerPoint[0] / 180.0) * ky
-    const dx = Math.abs(centerPoint[1] - checkPoint[1]) * kx
-    const dy = Math.abs(centerPoint[0] - checkPoint[0]) * ky
-    return Math.sqrt(dx * dx + dy * dy) <= km
-  }
+  // filterProducts(checkPoint, centerPoint, km) {
+  //   const ky = 40000 / 360
+  //   const kx = Math.cos(Math.PI * centerPoint[0] / 180.0) * ky
+  //   const dx = Math.abs(centerPoint[1] - checkPoint[1]) * kx
+  //   const dy = Math.abs(centerPoint[0] - checkPoint[0]) * ky
+  //   return Math.sqrt(dx * dx + dy * dy) <= km
+  // }
 
   render() {
     let products = this.props.products || []
@@ -31,13 +31,13 @@ class AllProducts extends Component {
       )
     }
     //filter products within 3km from user location
-    products = this.props.products.filter(product =>
-      this.filterProducts(
-        product.seller.coordinates,
-        this.props.user.coordinates,
-        3
-      )
-    )
+    // products = this.props.products.filter(product =>
+    //   this.filterProducts(
+    //     product.seller.coordinates,
+    //     this.props.user.coordinates,
+    //     3
+    //   )
+    // )
 
     return (
       <div className="row">

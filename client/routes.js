@@ -52,6 +52,12 @@ class Routes extends Component {
             <Route exact path="/profile/edit" component={EditProfile} />
             <Route
               exact
+              path="/messages/:chatId/messages"
+              component={SingleChat}
+            />
+
+            <Route
+              exact
               path="/location-verification"
               component={LocationVerification}
             />

@@ -2,8 +2,9 @@ const router = require('express').Router()
 const {Message} = require('../db/models')
 module.exports = router
 
-// GET /api/chats/:chatId/messages
-router.get('/:chatId/messages', async (req, res, next) => {
+//COMMENT: unable to serve specific user information, need to do this on the front-end
+// GET /api/messages/:chatId'
+router.get('/:chatId', async (req, res, next) => {
   try {
     const chatId = req.params.chatId
     const messages = await Message.findAll({
@@ -16,11 +17,11 @@ router.get('/:chatId/messages', async (req, res, next) => {
     next(err)
   }
 })
-
+//post messages to specific chat
 // POST /api/messages
 router.post('/', async (req, res, next) => {
   try {
-    const message = await Message.create(req.body) //req.body will include content, chatId, userId
+    const message = await Message.create(req.body) //req.body will include content, chatId, authorId, (could maybe be unread)
     res.status(201).send(message)
   } catch (err) {
     next(err)
