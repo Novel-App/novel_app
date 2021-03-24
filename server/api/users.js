@@ -71,6 +71,8 @@ router.put('/:userId', async (req, res, next) => {
 // req.params.availability options: ["available", "reserved", "sold"]
 router.get('/:sellerId/listings/:availability', async (req, res, next) => {
   try {
+    console.log('here i am')
+    console.log('req.params', req.params.sellerId, req.params.availability)
     const listings = await Product.getListingsByAvailability(
       req.params.sellerId,
       req.params.availability
