@@ -16,9 +16,4 @@ export {default as Condition} from './Products/Condition'
 export {AllChats} from './Chats/AllChats'
 export {default as SingleChat} from './Chats/SingleChat'
 export {default as Message} from './Chats/Message'
-
-//remember to comment these in
-
-// export { AllChats, SingleChat } from './Chats/AllChats'
-// export {default as AllProduct, Condition, SingleProducts} from './Products'
-// export { default as Favorites, Listings, Profile, Purchases, Rating, Settings } from './UserProfile'
+export {default as Listings} from './UserProfile/Listings'
