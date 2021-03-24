@@ -28,7 +28,6 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-
 //POST /api/products
 //post must include: title, author, ISBN, description, condition, price, sellerId
 //could include 'image', canBargin. could switch: availability ==> then need to add buyerId
@@ -90,6 +89,17 @@ router.put('/:sellerId/product/:productId', async (req, res, next) => {
     if (!product) res.send('This product does not exist.')
     const updatedProduct = await product.update(req.body)
     res.status(201).send(updatedProduct)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// DELETE /api/product/:productId
+router.delete('/:productId', async (req, res, next) => {
+  try {
+    const id = req.params.productId
+    await Product.destroy({where: {id}})
+    res.status(204).end()
   } catch (err) {
     next(err)
   }
