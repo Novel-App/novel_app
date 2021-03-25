@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchListings} from '../../store/userInfo'
+import AvailabilityUpdateBtn from '../Products/AvailabilityUpdateBtn'
 
 class AllListings extends Component {
   constructor(props) {
@@ -97,7 +98,7 @@ class AllListings extends Component {
                   <h3>${listing.price}</h3>
                   <h3>♡: {listing.numFavorites}</h3>
                   <h3>UpdateListingButton</h3>
-                  <h3>Update to sold/reservedButton</h3>
+                  <AvailabilityUpdateBtn product={listing} />
                 </div>
               ))}
             </div>

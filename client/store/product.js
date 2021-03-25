@@ -110,7 +110,8 @@ export default function(state = initialState, action) {
             product = action.product
           }
           return product
-        })
+        }),
+        single: action.product
       }
     case REMOVE_PRODUCT:
       return {
