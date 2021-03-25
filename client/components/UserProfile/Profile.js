@@ -59,7 +59,7 @@ class Profile extends Component {
                     type="button"
                     className="btn btn-primary btn-circle btn-xl"
                   >
-                    <i className="bi bi-suit-heart-fill" />
+                    <i className="bi bi-suit-heart-fill" /> Favorites
                   </button>
                 </Link>
               </span>
@@ -69,7 +69,7 @@ class Profile extends Component {
                     type="button"
                     className="btn btn-primary btn-circle btn-xl"
                   >
-                    <i className="bi bi-receipt" />
+                    <i className="bi bi-receipt" /> Listings
                   </button>
                 </Link>
               </span>
@@ -79,7 +79,7 @@ class Profile extends Component {
                     type="button"
                     className="btn btn-primary btn-circle btn-xl"
                   >
-                    <i className="bi bi-bag-fill" />
+                    <i className="bi bi-bag-fill" /> Purchases
                   </button>
                 </Link>
               </span>

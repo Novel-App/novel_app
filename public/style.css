@@ -56,7 +56,7 @@ body {
   width: 90px;
   height: 90px;
   padding: 10px 16px;
-  border-radius: 35px;
+  border-radius: 50px;
   font-size: 12px;
   text-align: center;
 }
@@ -84,7 +84,7 @@ form div {
   background-image: url('https://cdn.lifestyleasia.com/wp-content/uploads/sites/2/2020/02/25145253/Photo-by-Alfons-Morales-on-Unsplash-scaled-1535x900.jpg');
   background-size: cover;
   background-position: center;
-  position: relative;
+  /* position: relative; */
 }
 
 /* .overlay {
