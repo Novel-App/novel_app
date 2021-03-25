@@ -41,14 +41,13 @@ export const fetchSingleChat = chatId => {
   }
 }
 
-export const addNewChat = (browerId, productId) => {
+export const addNewChat = (browserId, productId) => {
   return async dispatch => {
     try {
-      const {data: newChat} = await axios.post(
-        '/api/chats',
-        browerId,
+      const {data: newChat} = await axios.post('/api/chats', {
+        browserId,
         productId
-      )
+      })
       dispatch(createChat(newChat))
       socket.emit('new-chat', newChat)
     } catch (err) {

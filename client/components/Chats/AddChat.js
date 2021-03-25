@@ -10,18 +10,18 @@ class AddChat extends React.Component {
     this.addClickHandler = this.addClickHandler.bind(this)
   }
 
-  addClickHandler = (browerId, productId) => {
-    this.props.addNewChat(browerId, productId)
+  addClickHandler = (browserId, productId) => {
+    this.props.addNewChat(browserId, productId)
   }
 
   render() {
     console.log('rendering Addchat.....')
-    const {browerId, productId} = this.props
+    const {browserId, productId} = this.props
     return (
       <div>
         <button
           type="submit"
-          onClick={() => this.addClickHandler(browerId, productId)}
+          onClick={() => this.addClickHandler(browserId, productId)}
         >
           Start A New Chat
         </button>
@@ -32,8 +32,8 @@ class AddChat extends React.Component {
 
 const mapDispatch = dispatch => {
   return {
-    addNewChat: (browerId, productId) =>
-      dispatch(addNewChat(browerId, productId))
+    addNewChat: (browserId, productId) =>
+      dispatch(addNewChat(browserId, productId))
   }
 }
 export default connect(null, mapDispatch)(AddChat)

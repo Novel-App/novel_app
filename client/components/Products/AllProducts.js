@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchProducts} from '../../store/product'
 import {Link} from 'react-router-dom'
 import {fetchUserProducts} from '../../store/userInfo'
+import AddChat from '../Chats/AddChat'
 
 class AllProducts extends Component {
   constructor(props) {
@@ -104,6 +105,10 @@ class AllProducts extends Component {
                 <h3>{product.createdAt}</h3>
                 <h3>${product.price}</h3>
                 <h3>♡: {product.numFavorites}</h3>
+                <AddChat
+                  productId={product.id}
+                  browserId={this.props.user.id}
+                />
               </div>
             </div>
           </div>

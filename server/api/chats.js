@@ -51,7 +51,9 @@ router.get('/:chatId', async (req, res, next) => {
 // POST /api/chats
 //THUNKS MUST SEND: browserId & productId
 router.post('/', async (req, res, next) => {
+  console.log('start: posting....', req.body)
   try {
+    console.log('try: posting....', req.body)
     const chat = await Chat.findOrCreate({
       where: {
         browserId: req.body.browserId,
@@ -60,6 +62,7 @@ router.post('/', async (req, res, next) => {
     })
     res.status(201).send(chat[0])
   } catch (err) {
+    console.log('catch: posting....', req.body)
     next(err)
   }
 })
