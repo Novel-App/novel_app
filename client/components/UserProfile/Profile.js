@@ -51,20 +51,35 @@ class Profile extends Component {
           </div>
         </div>
         <div id="fav-container" className="container mt-5">
-          <div className="container">
+          <div className="center container">
             <span className="col-1 buttons iconsize">
               <Link to="/favorites">
-                <p>Favorites </p>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-circle btn-xl"
+                >
+                  <i className="bi bi-suit-heart-fill" />Chat Seller Now!
+                </button>
               </Link>
             </span>
             <span className="col-1 buttons iconsize">
               <Link to="/listings">
-                <p>My Listings</p>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-circle btn-xl"
+                >
+                  <i className="bi bi-receipt" />
+                </button>
               </Link>
             </span>
             <span className="col-1 buttons iconsize">
               <Link to="/purchases">
-                <p>Purchases </p>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-circle btn-xl"
+                >
+                  <i className="bi bi-bag-fill" />
+                </button>
               </Link>
             </span>
           </div>

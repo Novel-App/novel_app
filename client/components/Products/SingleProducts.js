@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchSingleProduct} from '../../store/product'
 import Condition from './Condition'
+import {Link} from 'react-router-dom'
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -35,6 +36,11 @@ class SingleProduct extends Component {
     const bargainStatus = product.canBargain ? 'negotiable' : 'non-negotiable'
     return (
       <div className="container">
+        <Link to="/messages/:chatId">
+          <button type="button" className="btn btn-primary btn-circle btn-xl">
+            <i className="bi bi-chat" />
+          </button>
+        </Link>
         <div className="mb-5">
           <div className="row">
             <div className="col-md-6 mb-4 mb-md-0">
