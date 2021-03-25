@@ -10,7 +10,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       {isLoggedIn ? (
         <div className="navbar-collapse">
           {/* The navbar will show these links after you log in */}
-          <a className="navbar-brand" href="products#">
+          <a className="navbar-brand" href="products">
             NOVEL
           </a>
           <button
@@ -24,17 +24,17 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <div className="collapse navbar-collapse" id="main-navigation">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="/profile#">
+                <a className="nav-link" href="/profile" to="/profile">
                   My Profile
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/products#" to="/products">
+                <a className="nav-link" href="/products" to="/products">
                   Products
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/chats#">
+                <a className="nav-link" href="/chats" to="/chats">
                   Chats
                 </a>
               </li>
@@ -50,17 +50,17 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <div className="collapse navbar-collapse" id="main-navigation">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="/#">
+                <a className="nav-link" href="/">
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/login#">
+                <a className="nav-link" href="/login">
                   Login
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/signup#">
+                <a className="nav-link" href="/signup">
                   Sign Up
                 </a>
               </li>

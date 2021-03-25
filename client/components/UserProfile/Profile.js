@@ -109,5 +109,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
-
-//button wrapped in a link with the exact path (paths are listed on routes)
