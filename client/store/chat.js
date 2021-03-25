@@ -41,14 +41,13 @@ export const fetchSingleChat = chatId => {
   }
 }
 
-export const addNewChat = (browerId, productId) => {
+export const addNewChat = (browserId, productId) => {
   return async dispatch => {
     try {
-      const {data: newChat} = await axios.post(
-        '/api/chats',
-        browerId,
+      const {data: newChat} = await axios.post('/api/chats', {
+        browserId,
         productId
-      )
+      })
       dispatch(createChat(newChat))
       socket.emit('new-chat', newChat)
     } catch (err) {
@@ -86,7 +85,7 @@ export default function(state = initialState, action) {
     case GET_SINGLE_CHAT:
       return {...state, chat: action.chat}
     case CREATE_CHAT:
-      return {...state, chats: [...state.chats, action.chat]}
+      return {chat: action.chat, chats: [...state.chats, action.chat]}
     case DELETE_CHAT:
       return {
         ...state,

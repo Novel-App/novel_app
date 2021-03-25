@@ -1,27 +1,32 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {addNewChat} from '../../store/chat'
+import {addNewChat, fetchSingleChat} from '../../store/chat'
 
 class AddChat extends React.Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      gotNewChat: false
+    }
 
     this.addClickHandler = this.addClickHandler.bind(this)
   }
 
-  addClickHandler = (browerId, productId) => {
-    this.props.addNewChat(browerId, productId)
+  addClickHandler = (browserId, productId) => {
+    this.props.addNewChat(browserId, productId)
+    this.setState({gotNewChat: true})
+    console.log('after change the state', this.props.chat)
   }
 
   render() {
     console.log('rendering Addchat.....')
-    const {browerId, productId} = this.props
+    console.log('new added chatid', this.props.chat)
+    const {browserId, productId} = this.props
     return (
       <div>
         <button
           type="submit"
-          onClick={() => this.addClickHandler(browerId, productId)}
+          onClick={() => this.addClickHandler(browserId, productId)}
         >
           Start A New Chat
         </button>
@@ -30,10 +35,16 @@ class AddChat extends React.Component {
   }
 }
 
+const mapState = state => {
+  return {
+    chat: state.chat.chat
+  }
+}
+
 const mapDispatch = dispatch => {
   return {
-    addNewChat: (browerId, productId) =>
-      dispatch(addNewChat(browerId, productId))
+    addNewChat: (browserId, productId) =>
+      dispatch(addNewChat(browserId, productId))
   }
 }
 export default connect(null, mapDispatch)(AddChat)
