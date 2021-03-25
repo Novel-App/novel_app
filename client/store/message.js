@@ -25,9 +25,7 @@ export const fetchMessages = chatId => {
   return async dispatch => {
     try {
       console.log('fectching ...,.')
-      const {data: messages} = await axios.get(
-        `/api/messages/${chatId}/messages`
-      )
+      const {data: messages} = await axios.get(`/api/messages/${chatId}`)
       dispatch(getMessages(messages))
     } catch (error) {
       console.log(error)
@@ -38,9 +36,11 @@ export const fetchMessages = chatId => {
 export const sendMessage = message => {
   return async dispatch => {
     try {
-      const {data: newMessage} = await axios.post('/api/messages', message)
+      console.log('posting a new mesg')
+      const newMessage = (await axios.post('/api/messages', message)).data
+      console.log('/////', newMessage)
       dispatch(addMesssage(newMessage))
-      socket.emit('new-message', newMessage)
+      //socket.emit('new-message', newMessage)
     } catch (error) {
       console.log(error)
     }
