@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import {
   Login,
   Signup,
-  UserHome,
   LocationVerification,
   Welcome,
   AllProducts,
@@ -44,8 +43,8 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route exact path="/" component={UserHome} />
-            <Route exact path="/home" component={UserHome} />
+            <Route exact path="/" component={Welcome} />
+            <Route exact path="/home" component={Welcome} />
             <Route exact path="/products" component={AllProducts} />
             <Route exact path="/listings" component={Listings} />
             <Route exact path="/favorites" component={AllProducts} />

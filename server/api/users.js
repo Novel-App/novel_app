@@ -112,3 +112,18 @@ router.get('/:userId/favorites', async (req, res, next) => {
     next(err)
   }
 })
+
+//PUT api/user/:userId/favorites
+// router.put('/:userId/favorites', async (req, res, next) => {
+//   try {
+//     const products = await Product.findOne({
+//       include: [
+//         {model: User, where: {userId: req.params.userId}},
+//         {model: Product, where: {productId: req.params.productId}}
+//       ]
+//     })
+//   } catch (error) {
+//     next(error)
+
+//   }
+// })
