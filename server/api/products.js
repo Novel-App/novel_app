@@ -113,6 +113,7 @@ router.get('/:id', async (req, res, next) => {
 // PUT api/products/:productId
 router.put('/:productId', async (req, res, next) => {
   try {
+    console.log('REQ PARAMS->', req.params.productId)
     const product = await Product.findByPk(req.params.productId, {
       include: [
         {
