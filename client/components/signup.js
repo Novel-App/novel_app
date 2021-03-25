@@ -66,7 +66,6 @@ const mapDispatch = dispatch => {
         register(email, password, firstName, lastName),
         history.push('/location-verification')
       )
-      // history.push('/location-verification')
     }
   }
 }
