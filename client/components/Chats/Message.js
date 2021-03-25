@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import {Comment, Tooltip, Avatar} from 'antd'
 
-export default function Message(props) {
+const Message = props => {
   const message = props.message
   console.log('rendering message....', message)
 
@@ -33,3 +33,11 @@ export default function Message(props) {
     </div>
   )
 }
+
+const mapState = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapState)(Message)
