@@ -10,12 +10,22 @@ class AllListings extends Component {
       loading: true,
       listingStatus: 'available'
     }
+    this.updateStatus = this.updateStatus.bind(this)
   }
   componentDidMount() {
     const userId = this.props.user.id
     this.props.loadListings(userId, this.state.listingStatus)
+    this.setState({loading: false})
   }
-
+  componentDidUpdate() {
+    const userId = this.props.user.id
+    this.props.loadListings(userId, this.state.listingStatus)
+  }
+  updateStatus(status) {
+    if (status !== this.state.listingStatus) {
+      this.setState({listingStatus: status})
+    }
+  }
   render() {
     //loading screen
     if (this.state.loading === true) {
@@ -34,6 +44,36 @@ class AllListings extends Component {
     return (
       <div className="row">
         <div className="col-sm-6">
+          <div>
+            <a
+              href="#"
+              onClick={() => {
+                this.updateStatus('available')
+              }}
+            >
+              Current Listings
+            </a>
+          </div>
+          <div>
+            <a
+              href="#"
+              onClick={() => {
+                this.updateStatus('reserved')
+              }}
+            >
+              Reserved Listings
+            </a>
+          </div>
+          <div>
+            <a
+              href="#"
+              onClick={() => {
+                this.updateStatus('sold')
+              }}
+            >
+              Past Listings
+            </a>
+          </div>
           <div className="card">
             {listings.map(listing => (
               <div key={listing.id}>

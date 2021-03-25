@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getMe} from '../../store/user'
+import {fetchUserProducts} from '../../store/userInfo'
 
 class Profile extends Component {
   componentDidMount() {
@@ -49,6 +50,25 @@ class Profile extends Component {
             </Link>
           </div>
         </div>
+        <div id="fav-container" className="container mt-5">
+          <div className="container">
+            <span className="col-1 buttons iconsize">
+              <Link to="/favorites">
+                <p>Favorites </p>
+              </Link>
+            </span>
+            <span className="col-1 buttons iconsize">
+              <Link to="/listings">
+                <p>My Listings</p>
+              </Link>
+            </span>
+            <span className="col-1 buttons iconsize">
+              <Link to="/purchases">
+                <p>Purchases </p>
+              </Link>
+            </span>
+          </div>
+        </div>
       </div>
     )
   }
@@ -56,14 +76,21 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    products: state.products.all,
+    favorites: state.userInfo.favorites,
+    purchases: state.userInfo.purchases
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getMe: () => dispatch(getMe())
+    getMe: () => dispatch(getMe()),
+    loadUserProducts: (userId, type) =>
+      dispatch(fetchUserProducts(userId, type))
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+
+//button wrapped in a link with the exact path (paths are listed on routes)

@@ -71,8 +71,6 @@ router.put('/:userId', async (req, res, next) => {
 // req.params.availability options: ["available", "reserved", "sold"]
 router.get('/:sellerId/listings/:availability', async (req, res, next) => {
   try {
-    console.log('here i am')
-    console.log('req.params', req.params.sellerId, req.params.availability)
     const listings = await Product.getListingsByAvailability(
       req.params.sellerId,
       req.params.availability
@@ -114,3 +112,18 @@ router.get('/:userId/favorites', async (req, res, next) => {
     next(err)
   }
 })
+
+//PUT api/user/:userId/favorites
+// router.put('/:userId/favorites', async (req, res, next) => {
+//   try {
+//     const products = await Product.findOne({
+//       include: [
+//         {model: User, where: {userId: req.params.userId}},
+//         {model: Product, where: {productId: req.params.productId}}
+//       ]
+//     })
+//   } catch (error) {
+//     next(error)
+
+//   }
+// })

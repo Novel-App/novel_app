@@ -10,8 +10,14 @@ class AllProducts extends Component {
     this.state = {
       loading: true,
       currentPage: ''
+      // isClicked: false,
+      // buttonsIcons: {
+      //   notFavorite:{icon: },
+      //   favorite: {icon: }
+      //}
     }
   }
+
   componentDidMount() {
     const path = this.props.match.path.slice(1)
     const userId = this.props.user.id
@@ -53,6 +59,13 @@ class AllProducts extends Component {
     //if there are no products sold
     if (products.length === 0) {
       return <div>{noProducts}</div>
+
+      //click handler for favorite
+      // clickHandler = (event) =>{
+      //     this.setState({
+      //        isClicked:!this.state.isClicked // toggles when you click
+      //      });
+      //   }
     }
     return (
       <div className="d-flex flex-column">
