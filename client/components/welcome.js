@@ -1,10 +1,12 @@
 import React from 'react'
+import {propTypes} from 'prop-types'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 /**
  * COMPONENT
  */
-export const Welcome = () => {
+export const Welcome = ({isLoggedIn}) => {
   return (
     <div className="container">
       <header className="page-header header container-fluid">
@@ -23,3 +25,15 @@ export const Welcome = () => {
     </div>
   )
 }
+
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: !!state.user.id
+  }
+}
+
+export default connect(mapStateToProps)(Welcome)
+
+// Welcome.propTypes = {
+//   isLoggedIn: propTypes.bool.isRequred
+// }

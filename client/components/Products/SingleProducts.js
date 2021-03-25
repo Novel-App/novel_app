@@ -38,7 +38,7 @@ class SingleProduct extends Component {
       <div className="container">
         <Link to="/messages/:chatId">
           <button type="button" className="btn btn-primary btn-circle btn-xl">
-            <i className="bi bi-chat" />
+            <i className="bi bi-chat" /> Chat Seller Now!
           </button>
         </Link>
         <div className="mb-5">
