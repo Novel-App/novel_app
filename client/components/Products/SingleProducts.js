@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchSingleProduct} from '../../store/product'
 import Condition from './Condition'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
+import {Link} from 'react-router-dom'
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -35,6 +36,13 @@ class SingleProduct extends Component {
         {product.sellerId === user.id && (
           <AvailabilityUpdateBtn product={product} />
         )}
+
+        <Link to="/messages/:chatId">
+          <button type="button" className="btn btn-primary btn-circle btn-xl">
+            <i className="bi bi-chat" /> Chat Seller Now!
+          </button>
+        </Link>
+
         <div className="mb-5">
           <div className="row">
             <div className="col-md-6 mb-4 mb-md-0">

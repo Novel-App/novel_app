@@ -33,11 +33,18 @@ class EditProfile extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.editUser(this.state)
+    this.props.editUser({...this.state, id: this.props.user.id})
   }
 
   render() {
-    const {firstName, lastName, email, profileImage, zipCode} = this.state
+    const {
+      firstName,
+      lastName,
+      email,
+      profileImage,
+      zipCode,
+      password
+    } = this.state
 
     return (
       <div id="edit-container" className="container rounded mt-5">
@@ -60,7 +67,7 @@ class EditProfile extends Component {
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h4 className="text-right">Edit Profile</h4>
             </div>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div className="input-field">
                 <label>First Name</label>
                 <input

@@ -7,8 +7,6 @@ import history from '../history'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const UPDATE_USER = 'UPDATE_USER'
-const SET_ERROR = 'SET_ERROR'
-const CLEAR_ERROR = 'CLEAR_ERROR'
 
 /**
  * INITIAL STATE
@@ -21,8 +19,6 @@ const defaultUser = {}
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const _updateUser = user => ({type: UPDATE_USER, user})
-const handleError = error => ({type: SET_ERROR, error})
-const removeError = () => ({type: CLEAR_ERROR})
 
 /**
  * THUNK CREATORS
@@ -51,12 +47,8 @@ export const register = (
       lastName
     })
     dispatch(getUser(res.data))
-  } catch (error) {
-    // catch (authError) {
-    dispatch(handleError(error.response))
-    setTimeout(() => dispatch(removeError()), 3000)
-    console.log('Error creating a new user!', error)
-    // return dispatch(getUser({error: authError}))
+  } catch (authError) {
+    return dispatch(getUser({error: authError}))
   }
 }
 
@@ -88,9 +80,9 @@ export const logout = () => async dispatch => {
 
 //GENERIC THUNK CREATOR FOR ALL USER UPDATES (updating info in settings, adding location coords after verification)
 //user argument passed with spread operator of existing user info + updated user info
-export const updateUser = (userInfo, userId) => {
+export const updateUser = user => {
   return async dispatch => {
-    const {data} = await axios.put(`/api/users/${userId}`, userInfo)
+    const {data} = await axios.put(`/api/users/${user.id}`, user)
     dispatch(_updateUser(data))
   }
 }
@@ -106,10 +98,6 @@ export default function(state = defaultUser, action) {
       return defaultUser
     case UPDATE_USER:
       return action.user
-    case SET_ERROR:
-      return {...state, error: action.error}
-    case CLEAR_ERROR:
-      return {...state, error: {}}
     default:
       return state
   }

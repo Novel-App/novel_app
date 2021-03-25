@@ -9,7 +9,8 @@ class AllListings extends Component {
     super(props)
     this.state = {
       loading: true,
-      listingStatus: 'available'
+      listingStatus: 'available',
+      listingUpdated: false
     }
     this.updateStatus = this.updateStatus.bind(this)
   }
@@ -19,12 +20,16 @@ class AllListings extends Component {
     this.setState({loading: false})
   }
   componentDidUpdate() {
-    const userId = this.props.user.id
-    this.props.loadListings(userId, this.state.listingStatus)
+    if (this.state.listingUpdated) {
+      const userId = this.props.user.id
+      this.props.loadListings(userId, this.state.listingStatus)
+      this.setState({listingUpdated: false})
+    }
   }
   updateStatus(status) {
     if (status !== this.state.listingStatus) {
       this.setState({listingStatus: status})
+      this.setState({listingUpdated: true})
     }
   }
   render() {
@@ -38,10 +43,6 @@ class AllListings extends Component {
     }
     //only display certain buttons if listing page is true
     let listings = this.props.listings || []
-    //if there are no products sold
-    if (listings.length === 0) {
-      return <div>You don't have any listings</div>
-    }
     return (
       <div className="row">
         <div className="col-sm-6">
@@ -75,28 +76,33 @@ class AllListings extends Component {
               Past Listings
             </a>
           </div>
-          <div className="card">
-            {listings.map(listing => (
-              <div key={listing.id}>
-                <Link to={`/products/${listing.id}`}>
-                  <img
-                    className="card-img-top"
-                    alt={listing.title}
-                    src={listing.image}
-                  />
-                  <h1 className="card-title">{listing.title}</h1>
-                </Link>
-                <h2 className="card-subtitle mb-2 text-muted">
-                  by {listing.author}
-                </h2>
-                <h3>{listing.createdAt}</h3>
-                <h3>${listing.price}</h3>
-                <h3>♡: {listing.numFavorites}</h3>
-                <h3>UpdateListingButton</h3>
-                <h3>Update to sold/reservedButton</h3>
-              </div>
-            ))}
-          </div>
+          {/* render info if there's products if not you do not have listing */}
+          {listings.length === 0 ? (
+            <div>You don't have any listings</div>
+          ) : (
+            <div className="card">
+              {listings.map(listing => (
+                <div key={listing.id}>
+                  <Link to={`/products/${listing.id}`}>
+                    <img
+                      className="card-img-top"
+                      alt={listing.title}
+                      src={listing.image}
+                    />
+                    <h1 className="card-title">{listing.title}</h1>
+                  </Link>
+                  <h2 className="card-subtitle mb-2 text-muted">
+                    by {listing.author}
+                  </h2>
+                  <h3>{listing.createdAt}</h3>
+                  <h3>${listing.price}</h3>
+                  <h3>♡: {listing.numFavorites}</h3>
+                  <h3>UpdateListingButton</h3>
+                  <h3>Update to sold/reservedButton</h3>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     )
