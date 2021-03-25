@@ -110,14 +110,25 @@ router.get('/:id', async (req, res, next) => {
 
 // edit listing info (seller can update info for their listings) ==> info to update -> pass in as req.body
 // ** ex) use this when updating product availability status --> ex) req.body = {availability: "Sold", buyerId: 3}
-// PUT api/users/:sellerId/product/:productId
-router.put('/:sellerId/product/:productId', async (req, res, next) => {
+// PUT api/products/:productId
+router.put('/:productId', async (req, res, next) => {
   try {
-    const product = await Product.findOne({
-      where: {
-        id: req.params.productId
-      }
+    const product = await Product.findByPk(req.params.productId, {
+      include: [
+        {
+          model: User,
+          as: 'seller',
+          attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
+        },
+        {
+          model: User,
+          as: 'buyer',
+          attributes: ['id', 'firstName', 'reviewScore']
+        },
+        {model: Genre}
+      ]
     })
+    console.log('PRODUCT IN ROUTE->', product)
     if (!product) res.send('This product does not exist.')
     const updatedProduct = await product.update(req.body)
     res.status(201).send(updatedProduct)
@@ -126,7 +137,7 @@ router.put('/:sellerId/product/:productId', async (req, res, next) => {
   }
 })
 
-// DELETE /api/product/:productId
+// DELETE /api/products/:productId
 router.delete('/:productId', async (req, res, next) => {
   try {
     const id = req.params.productId

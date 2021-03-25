@@ -2,15 +2,14 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchSingleProduct} from '../../store/product'
 import Condition from './Condition'
+import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
 
 class SingleProduct extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: true,
-      popup: false
+      loading: true
     }
-    this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
     try {
@@ -20,9 +19,6 @@ class SingleProduct extends Component {
       console.log(err)
     }
   }
-  handleClick() {
-    this.setState({popup: !this.state.popup})
-  }
   render() {
     if (this.state.loading === true) {
       return (
@@ -31,10 +27,14 @@ class SingleProduct extends Component {
         </div>
       )
     }
-    const product = this.props.product
+    const {product, user} = this.props
     const bargainStatus = product.canBargain ? 'negotiable' : 'non-negotiable'
     return (
       <div className="container">
+        {/* AVAILABILITY UPDATE BTN ONLY RENDERS FOR SELLER */}
+        {product.sellerId === user.id && (
+          <AvailabilityUpdateBtn product={product} />
+        )}
         <div className="mb-5">
           <div className="row">
             <div className="col-md-6 mb-4 mb-md-0">

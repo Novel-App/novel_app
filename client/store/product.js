@@ -72,6 +72,7 @@ export const createProduct = product => {
 }
 
 export const updateProduct = product => {
+  console.log('PRODUCT IN THUNK', product)
   return async dispatch => {
     const {data} = await axios.put(`/api/products/${product.id}`, product)
     dispatch(_updateProduct(data))
@@ -110,7 +111,8 @@ export default function(state = initialState, action) {
             product = action.product
           }
           return product
-        })
+        }),
+        single: action.product
       }
     case REMOVE_PRODUCT:
       return {
