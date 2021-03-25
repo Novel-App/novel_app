@@ -25,6 +25,8 @@ class AvailabilityUpdateBtn extends Component {
       [evt.target.name]: evt.target.value
     })
     this.props.updateProduct({...this.state, availability: evt.target.value})
+    //IS THIS OKAY TO USE?
+    window.location.reload()
   }
   render() {
     const {handleChange} = this
