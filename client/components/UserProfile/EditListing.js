@@ -2,10 +2,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {createProduct} from '../../store/product'
-import Condition from './Condition'
-
-//TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
+import {fetchSingleProduct, updateProduct} from '../../store/product'
+import Condition from '../Products/Condition'
 
 const defaultState = {
   title: '',
@@ -17,16 +15,32 @@ const defaultState = {
   price: 0,
   canBargain: false,
   availability: 'Available',
-  genreId: ''
+  genreId: 1
 }
 
-class CreateProduct extends Component {
+class EditListing extends Component {
   constructor(props) {
     super(props)
     this.state = defaultState
     this.handleChange = this.handleChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  async componentDidMount() {
+    await this.props.loadSingleProduct(this.props.match.params.listingId)
+    this.setState({
+      title: this.props.listing.title,
+      author: this.props.listing.author,
+      ISBN: this.props.listing.ISBN,
+      description: this.props.listing.description,
+      image: this.props.listing.image,
+      condition: this.props.listing.condition,
+      price: this.props.listing.price,
+      canBargain: this.props.listing.canBargain,
+      availability: this.props.listing.availability,
+      genreId: this.props.genreId
+    })
   }
 
   handleChange(evt) {
@@ -43,10 +57,12 @@ class CreateProduct extends Component {
 
   async handleSubmit(evt) {
     evt.preventDefault()
-    await this.props.createProduct({
+    await this.props.updateListing({
       ...this.state,
+      id: this.props.match.params.listingId,
       sellerId: this.props.user.id
     })
+    // this.setState({defaultState})
   }
   render() {
     const {handleChange, handleCheckboxChange, handleSubmit} = this
@@ -65,8 +81,7 @@ class CreateProduct extends Component {
     return (
       <div>
         <div className="d-flex flex-column justify-content-center">
-          <Link to="/products">Cancel</Link>
-          <h1 className="align-self-center">New post</h1>
+          <Link to="/listings">Cancel</Link>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -218,14 +233,16 @@ class CreateProduct extends Component {
 
 const mapState = state => {
   return {
+    listing: state.products.single,
     user: state.user
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    createProduct: product => dispatch(createProduct(product))
+    loadSingleProduct: id => dispatch(fetchSingleProduct(id)),
+    updateListing: product => dispatch(updateProduct(product))
   }
 }
 
-export default connect(mapState, mapDispatch)(CreateProduct)
+export default connect(mapState, mapDispatch)(EditListing)

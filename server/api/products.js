@@ -34,48 +34,16 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const {
-      title,
-      author,
-      ISBN,
-      description,
-      image,
-      condition,
-      price,
-      canBargain,
-      availability,
-      genreCategory,
-      isFiction,
-      sellerId
-    } = req.body
-    let newProduct = await Product.create(
-      {
-        title,
-        author,
-        ISBN,
-        description,
-        image,
-        condition,
-        price,
-        canBargain,
-        availability,
-        sellerId,
-        genre: {
-          isFiction,
-          category: genreCategory
-        }
-      },
-      {
-        include: [
-          {
-            model: User,
-            as: 'seller',
-            attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
-          },
-          {model: Genre}
-        ]
-      }
-    )
+    let newProduct = await Product.create(req.body, {
+      include: [
+        {
+          model: User,
+          as: 'seller',
+          attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
+        },
+        {model: Genre}
+      ]
+    })
     res.status(201).json(newProduct)
   } catch (error) {
     next(error)
