@@ -85,7 +85,7 @@ export default function(state = initialState, action) {
     case GET_SINGLE_CHAT:
       return {...state, chat: action.chat}
     case CREATE_CHAT:
-      return {...state, chats: [...state.chats, action.chat]}
+      return {chat: action.chat, chats: [...state.chats, action.chat]}
     case DELETE_CHAT:
       return {
         ...state,
