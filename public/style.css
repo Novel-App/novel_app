@@ -42,8 +42,13 @@ body {
 }
 
 #edit-container,
-#profile-container {
+#profile-container,
+#fav-container {
   background-color: #564147;
+}
+
+.buttons {
+  padding-right: 80px;
 }
 
 a {

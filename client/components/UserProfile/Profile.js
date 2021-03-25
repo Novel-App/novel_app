@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getMe} from '../../store/user'
+import {fetchUserProducts} from '../../store/userInfo'
 
 class Profile extends Component {
   componentDidMount() {
@@ -49,9 +50,39 @@ class Profile extends Component {
             </Link>
           </div>
         </div>
-        <div id="favorites-container" />
-        <div id="my-listings" />
-        <div id="my-purchases" />
+        <div id="fav-container" className="container mt-5">
+          <ul className="list-group list-group-flush">
+            <div className="container">
+              <div className="row">
+                <span className="col-1 buttons iconsize">
+                  <a className="btn-floating btn-lg stick stylish-color">
+                    <i className="bi bi-suit-heart" />
+                  </a>
+                </span>
+                <div className="list-group-item col-8">
+                  Favorites<br />
+                  <p />
+                </div>
+              </div>
+              <div className="row">
+                <span className="col-1 buttons iconsize">
+                  <a className="btn-floating btn-lg stick stylish-color">
+                    <i className="bi bi-cash" />
+                  </a>
+                </span>
+                <div className="list-group-item col-8">Listed Items</div>
+              </div>
+              <div className="row">
+                <span className="col-1 buttons iconsize">
+                  <a className="btn-floating btn-lg stick stylish-color">
+                    <i className="bi bi-receipt" />
+                  </a>
+                </span>
+                <div className="list-group-item col-8">Purchased Items</div>
+              </div>
+            </div>
+          </ul>
+        </div>
       </div>
     )
   }
@@ -59,13 +90,18 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    products: state.products.all,
+    favorites: state.userInfo.favorites,
+    purchases: state.userInfo.purchases
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getMe: () => dispatch(getMe())
+    getMe: () => dispatch(getMe()),
+    loadUserProducts: (userId, type) =>
+      dispatch(fetchUserProducts(userId, type))
   }
 }
 
