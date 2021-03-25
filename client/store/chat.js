@@ -41,18 +41,31 @@ export const fetchSingleChat = chatId => {
   }
 }
 
-export const addNewChat = chat => {
+export const addNewChat = (browerId, productId) => {
   return async dispatch => {
-    const {data: newChat} = await axios.post('/api/chats', chat)
-    dispatch(createChat(newChat))
-    socket.emit('new-chat', newChat)
+    try {
+      const {data: newChat} = await axios.post(
+        '/api/chats',
+        browerId,
+        productId
+      )
+      dispatch(createChat(newChat))
+      socket.emit('new-chat', newChat)
+    } catch (err) {
+      console.log(err)
+    }
   }
 }
 
 export const removeChat = chatId => {
   return async dispatch => {
-    await axios.delete(`/api/chats/${chatId}`)
-    dispatch(deleteChat(chatId))
+    try {
+      await axios.delete(`/api/chats/${chatId}`)
+      dispatch(deleteChat(chatId))
+      history.push('/chats')
+    } catch (err) {
+      console.log(err)
+    }
   }
 }
 
@@ -77,7 +90,7 @@ export default function(state = initialState, action) {
     case DELETE_CHAT:
       return {
         ...state,
-        all: state.all.filter(chat => chat.id !== action.chatId)
+        chats: state.chats.filter(chat => chat.id !== action.chatId)
       }
     default:
       return state

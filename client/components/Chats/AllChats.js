@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {fetchAllChats, addNewChat, removeChat} from '../../store/chat'
+import {fetchAllChats, removeChat} from '../../store/chat'
 
 class AllChats extends Component {
   constructor() {
     super()
-    this.state = {chats: []}
+
     //state or props will populate with chats objects connected to that user once components mount
     //once chats are populated the map function will map through every chat
     //each chat has a link, that navigates to the specific single chat based on chat id
@@ -18,13 +18,15 @@ class AllChats extends Component {
   }
 
   // handling the delete chat button
-  deleteClickHandler() {}
+  deleteClickHandler(chatId) {
+    // if (this.props.chat.id)
+    this.props.deleteChat(chatId)
+  }
 
   render() {
     console.log('rendering AllChats...')
 
-    const chats = this.props.chats
-    console.log('chats', chats)
+    let chats = this.props.chats
 
     return (
       <div>
@@ -35,11 +37,11 @@ class AllChats extends Component {
               <li key={chat.id}>
                 <Link
                   to={{
-                    pathname: `/messages/${chat.id}/messages`,
+                    pathname: `/messages/${chat.id}`,
                     chat: {chat}
                   }}
                 >
-                  {`${chat.users[0].firstName} ${chat.users[0].lastName}`}
+                  {`${chat.users[0].firstName}`}
                 </Link>
 
                 <div>
@@ -53,9 +55,6 @@ class AllChats extends Component {
               </li>
             )
           })}
-          <div>
-            <Link to="/singleChat">Start A New Chat</Link>
-          </div>
         </ul>
       </div>
     )
@@ -73,7 +72,6 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getAllChats: () => dispatch(fetchAllChats()),
-    addNewChat: chat => dispatch(addNewChat(chat)),
     deleteChat: chatId => dispatch(removeChat(chatId))
   }
 }
