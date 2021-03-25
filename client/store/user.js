@@ -51,12 +51,8 @@ export const register = (
       lastName
     })
     dispatch(getUser(res.data))
-  } catch (error) {
-    // catch (authError) {
-    dispatch(handleError(error.response))
-    setTimeout(() => dispatch(removeError()), 3000)
-    console.log('Error creating a new user!', error)
-    // return dispatch(getUser({error: authError}))
+  } catch (authError) {
+    return dispatch(getUser({error: authError}))
   }
 }
 

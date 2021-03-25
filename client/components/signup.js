@@ -1,14 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {register} from '../store'
 import history from '../history'
+import Errors from './Errors'
 
 /**
  * COMPONENT
  */
 const SignupForm = props => {
-  const {name, displayName, email, handleSubmit, error} = props
+  const {name, displayName, handleSubmit, error} = props
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
@@ -63,7 +64,7 @@ const mapDispatch = dispatch => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       dispatch(register(email, password, firstName, lastName))
-      history.push('/location-verification')
+      // history.push('/location-verification')
     }
   }
 }

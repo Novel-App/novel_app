@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ErrorFormMessage = props => {
+const Errors = props => {
   const {error} = props
 
   let errorMessage
@@ -32,4 +32,4 @@ const ErrorFormMessage = props => {
   )
 }
 
-export default ErrorFormMessage
+export default Errors
