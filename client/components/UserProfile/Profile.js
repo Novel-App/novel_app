@@ -51,22 +51,39 @@ class Profile extends Component {
           </div>
         </div>
         <div id="fav-container" className="container mt-5">
-          <div className="container">
-            <span className="col-1 buttons iconsize">
-              <Link to="/favorites">
-                <p>Favorites </p>
-              </Link>
-            </span>
-            <span className="col-1 buttons iconsize">
-              <Link to="/listings">
-                <p>My Listings</p>
-              </Link>
-            </span>
-            <span className="col-1 buttons iconsize">
-              <Link to="/purchases">
-                <p>Purchases </p>
-              </Link>
-            </span>
+          <div className="d-flex justify-content-center">
+            <div className="center container">
+              <span className="col-1 buttons iconsize">
+                <Link to="/favorites">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-circle btn-xl"
+                  >
+                    <i className="bi bi-suit-heart-fill" /> Favorites
+                  </button>
+                </Link>
+              </span>
+              <span className="col-1 buttons iconsize">
+                <Link to="/listings">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-circle btn-xl"
+                  >
+                    <i className="bi bi-receipt" /> Listings
+                  </button>
+                </Link>
+              </span>
+              <span className="col-1 buttons iconsize">
+                <Link to="/purchases">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-circle btn-xl"
+                  >
+                    <i className="bi bi-bag-fill" /> Purchases
+                  </button>
+                </Link>
+              </span>
+            </div>
           </div>
         </div>
       </div>
