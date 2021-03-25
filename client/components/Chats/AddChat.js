@@ -1,26 +1,26 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {addNewChat, fetchSingleChat} from '../../store/chat'
+import history from '../../history'
 
 class AddChat extends React.Component {
   constructor() {
     super()
     this.state = {
-      gotNewChat: false
+      createdChat: false
     }
-
     this.addClickHandler = this.addClickHandler.bind(this)
   }
-
   addClickHandler = (browserId, productId) => {
     this.props.addNewChat(browserId, productId)
-    this.setState({gotNewChat: true})
-    console.log('after change the state', this.props.chat)
+    this.setState({createdChat: !this.state.createdChat})
   }
-
+  componentDidUpdate() {
+    if (this.state.createdChat && this.props.chat.id) {
+      history.push(`/messages/${this.props.chat.id}`)
+    }
+  }
   render() {
-    console.log('rendering Addchat.....')
-    console.log('new added chatid', this.props.chat)
     const {browserId, productId} = this.props
     return (
       <div>
@@ -47,4 +47,4 @@ const mapDispatch = dispatch => {
       dispatch(addNewChat(browserId, productId))
   }
 }
-export default connect(null, mapDispatch)(AddChat)
+export default connect(mapState, mapDispatch)(AddChat)
