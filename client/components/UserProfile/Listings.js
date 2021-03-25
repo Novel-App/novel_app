@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchListings} from '../../store/userInfo'
+import AvailabilityUpdateBtn from '../Products/AvailabilityUpdateBtn'
 
 class AllListings extends Component {
   constructor(props) {

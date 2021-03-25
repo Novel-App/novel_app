@@ -72,7 +72,6 @@ export const createProduct = product => {
 }
 
 export const updateProduct = product => {
-  console.log('PRODUCT IN THUNK', product)
   return async dispatch => {
     const {data} = await axios.put(`/api/products/${product.id}`, product)
     dispatch(_updateProduct(data))
