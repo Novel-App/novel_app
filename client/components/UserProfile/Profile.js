@@ -51,37 +51,23 @@ class Profile extends Component {
           </div>
         </div>
         <div id="fav-container" className="container mt-5">
-          <ul className="list-group list-group-flush">
-            <div className="container">
-              <div className="row">
-                <span className="col-1 buttons iconsize">
-                  <a className="btn-floating btn-lg stick stylish-color">
-                    <i className="bi bi-suit-heart" />
-                  </a>
-                </span>
-                <div className="list-group-item col-8">
-                  Favorites<br />
-                  <p />
-                </div>
-              </div>
-              <div className="row">
-                <span className="col-1 buttons iconsize">
-                  <a className="btn-floating btn-lg stick stylish-color">
-                    <i className="bi bi-cash" />
-                  </a>
-                </span>
-                <div className="list-group-item col-8">Listed Items</div>
-              </div>
-              <div className="row">
-                <span className="col-1 buttons iconsize">
-                  <a className="btn-floating btn-lg stick stylish-color">
-                    <i className="bi bi-receipt" />
-                  </a>
-                </span>
-                <div className="list-group-item col-8">Purchased Items</div>
-              </div>
-            </div>
-          </ul>
+          <div className="container">
+            <span className="col-1 buttons iconsize">
+              <Link to="/favorites">
+                <p>Favorites </p>
+              </Link>
+            </span>
+            <span className="col-1 buttons iconsize">
+              <Link to="/listings">
+                <p>My Listings</p>
+              </Link>
+            </span>
+            <span className="col-1 buttons iconsize">
+              <Link to="/purchases">
+                <p>Purchases </p>
+              </Link>
+            </span>
+          </div>
         </div>
       </div>
     )
@@ -106,3 +92,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+
+//button wrapped in a link with the exact path (paths are listed on routes)
