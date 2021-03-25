@@ -36,6 +36,22 @@ class EditProfile extends Component {
     this.props.editUser({...this.state, id: this.props.user.id})
   }
 
+  // upload(){
+  //   return (async (resolve, reject) => {
+  //     const filePicker = document.querySelector('input');
+
+  //     if (!filePicker || !filePicker.files
+  //         || filePicker.files.length <= 0) {
+  //         reject('No file selected.');
+  //         return;
+  //     }
+  //     const myFile = filePicker.files[0];
+  //     console.log(myFile);
+
+  //     resolve();
+  // });
+  // }
+
   render() {
     const {
       firstName,
@@ -116,6 +132,13 @@ class EditProfile extends Component {
                   id="password"
                   // value={password}
                   onChange={this.handleChange}
+                />
+              </div>
+              <div>
+                <input
+                  type="file"
+                  accept="image/x-png,image/jpeg, image/gif"
+                  onChange={() => this.upload()}
                 />
               </div>
               <div>
