@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Message from './Message'
 import {Form, Icon, Input, Button, Row, Col} from 'antd'
-import message, {sendMessage, fetchMessages} from '../../store/message'
+import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
 import {getMe} from '../../store/user'
 import socket from '../../socket'
@@ -25,7 +25,7 @@ export class SingleChat extends Component {
   }
 
   componentDidMount() {
-    const chatId = Number(this.props.match.params.chatId) // 3
+    const chatId = Number(this.props.match.params.chatId)
     this.props.getChat(chatId)
     this.props.getMessages(chatId)
     this.props.getUser()
@@ -52,9 +52,6 @@ export class SingleChat extends Component {
   }
 
   render() {
-    console.log('rendering SingleChat.....')
-    // const messages = this.props.location.chat.chat.users
-    // console.log ('---',messages)
     return (
       <React.Fragment>
         <div>

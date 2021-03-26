@@ -37,8 +37,8 @@ export const sendMessage = message => {
   return async dispatch => {
     try {
       //
-      const newMessage = (await axios.post('/api/messages', message)).data
-      //console.log ('--------',newMessage)
+      const {data: newMessage} = await axios.post('/api/messages', message)
+      console.log(newMessage)
       dispatch(addMessage(newMessage))
       socket.emit('new-message', newMessage)
     } catch (error) {

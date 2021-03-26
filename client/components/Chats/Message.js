@@ -4,7 +4,6 @@ import {Comment, Tooltip, Avatar} from 'antd'
 
 export default function Message(props) {
   const message = props.message
-  console.log('rendering message....', message)
 
   return (
     //   // <li className>
