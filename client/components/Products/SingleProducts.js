@@ -4,6 +4,7 @@ import {fetchSingleProduct} from '../../store/product'
 import Condition from './Condition'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
 import {Link} from 'react-router-dom'
+import AddChat from '../Chats/AddChat'
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -37,11 +38,7 @@ class SingleProduct extends Component {
           <AvailabilityUpdateBtn product={product} />
         )}
 
-        <Link to="/messages/:chatId">
-          <button type="button" className="btn btn-primary btn-circle btn-xl">
-            <i className="bi bi-chat" /> Chat Seller Now!
-          </button>
-        </Link>
+        <AddChat productId={product.id} browserId={this.props.user.id} />
         <br />
         <div className="mb-5">
           <div className="row">
