@@ -49,10 +49,8 @@ class Profile extends Component {
               </button>
             </Link>
           </div>
-        </div>
-        <div id="fav-container" className="container mt-5">
-          <div className="d-flex justify-content-center">
-            <div className="center container">
+          <div className="d-flex">
+            <div className="text-center container">
               <span className="col-1 buttons iconsize">
                 <Link to="/favorites">
                   <button
