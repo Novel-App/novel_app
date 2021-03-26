@@ -25,7 +25,6 @@ class LocationVerification extends Component {
         this.getCoordinates,
         this.handleLocationError
       )
-      history.push('/')
     } else {
       alert('Geolocation is not supported by this browser.')
     }

@@ -1,7 +1,7 @@
 import io from 'socket.io-client'
 import store from './store/index'
-import {getMessage} from './store/message'
-import {createNewChat} from './store/chat'
+// import {getMessage} from './store/message'
+// import {createNewChat} from './store/message'
 
 const socket = io(window.location.origin)
 
