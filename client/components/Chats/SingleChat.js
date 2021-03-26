@@ -5,7 +5,7 @@ import {Form, Icon, Input, Button, Row, Col} from 'antd'
 import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
 import {getMe} from '../../store/user'
-import socket from '../../socket'
+// import socket from '../../socket'
 
 /**
  * COMPONENT
