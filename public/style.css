@@ -12,10 +12,12 @@ body {
 
 .btn-primary {
   background: #bda5ab;
+  border-color: #cf9eac;
 }
 
 .btn-warning {
   background: #341011;
+  border-color: #cf9eac;
   color: white;
 }
 
@@ -64,6 +66,12 @@ body {
   border-radius: 50px;
   font-size: 12px;
   text-align: center;
+  border-color: #cf9eac;
+}
+
+.btn-circle.btn-xl:hover,
+.btn-primary:hover {
+  background-color: #cf9eac;
 }
 
 a {
