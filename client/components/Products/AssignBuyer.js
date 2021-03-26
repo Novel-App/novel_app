@@ -1,13 +1,10 @@
-//PROPS --> SINGLE PRODUCT
-//logic to add buyerId if status changes to "Sold"
-//pass in product req.body object including all necessary fields (including user)
+//select options to add buyerId if status changes to "Sold"
 
 //pass this into AvailabilityUpdateBtn (conditional, if state availability === sold)
 //get chats by productId
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {updateProduct} from '../../store/product'
 import {fetchChatsByProduct} from '../../store/chat'
 
@@ -17,7 +14,6 @@ class AssignBuyer extends Component {
     this.state = {
       ...this.props.product
     }
-    // this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   componentDidMount() {
@@ -35,12 +31,12 @@ class AssignBuyer extends Component {
     window.location.reload()
   }
   render() {
-    const {handleSubmit} = this
     return (
       <div>
-        <form onSubmit={handleSubmit}>
+        <p>Deal completed!</p>
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label htmlFor="buyerId">Select A Buyer</label>
+            <label htmlFor="buyerId">Who bought your book?</label>
             <select name="buyerId" className="form-select" required>
               {this.props.chats.map(chat => {
                 return (
@@ -52,6 +48,19 @@ class AssignBuyer extends Component {
             </select>
           </div>
           <button type="submit">Submit</button>
+          {/* <div name="buyerId" className="form-check" >
+          {this.props.chats.map(chat => {
+                return (
+                        <div key={chat.id} >
+                        <input className="form-check-input" type="radio" value={chat.users[0].id} />
+                        <label className="form-check-label" htmlFor="buyerId">
+                            {chat.users[0].firstName}
+                        </label>
+                        </div>
+                )
+              })}
+           </div>
+            <button type="submit">Submit</button> */}
         </form>
       </div>
     )
