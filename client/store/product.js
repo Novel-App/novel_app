@@ -75,7 +75,7 @@ export const updateProduct = product => {
   return async dispatch => {
     const {data} = await axios.put(`/api/products/${product.id}`, product)
     dispatch(_updateProduct(data))
-    //   history.push()
+    history.push('/listings')
   }
 }
 
