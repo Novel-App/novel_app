@@ -36,6 +36,11 @@ body {
   color: #002120;
 }
 
+#prod-nav-link:hover,
+#prod-nav-link.active {
+  color: #564147;
+}
+
 .navbar-collapse {
   justify-content: flex-end;
 }

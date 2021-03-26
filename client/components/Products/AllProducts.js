@@ -83,6 +83,7 @@ class AllProducts extends Component {
               <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <div>
                   <a
+                    id="prod-nav-link"
                     href="#"
                     onClick={() => {
                       this.updateStatus('Available')
@@ -93,6 +94,7 @@ class AllProducts extends Component {
                 </div>
                 <div>
                   <a
+                    id="prod-nav-link"
                     href="#"
                     onClick={() => {
                       this.updateStatus('Reserved')
@@ -103,6 +105,7 @@ class AllProducts extends Component {
                 </div>
                 <div>
                   <a
+                    id="prod-nav-link"
                     href="#"
                     onClick={() => {
                       this.updateStatus('Sold')
