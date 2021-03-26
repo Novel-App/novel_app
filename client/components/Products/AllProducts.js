@@ -86,7 +86,7 @@ class AllProducts extends Component {
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
           {products.map(product => (
             <div key={product.id}>
-              <div className="col-mb-4">
+              <div className="col-mb-6">
                 <div className="card">
                   <Link to={`/products/${product.id}`}>
                     <img
@@ -94,15 +94,17 @@ class AllProducts extends Component {
                       alt={product.title}
                       src={product.image}
                     />
-                    <h1 className="card-title">{product.title}</h1>
+                    <h1 className="card-title text-center">{product.title}</h1>
                   </Link>
-                  <h2 className="card-subtitle mb-2 text-muted">
-                    by {product.author}
-                  </h2>
-                  <div className="card-body">
-                    <h3 className="card-text">{product.createdAt}</h3>
-                    <h3 className="card-text">${product.price}</h3>
-                    <h3 className="card-text">♡: {product.numFavorites}</h3>
+                  <h3 className="card-subtitle mb-2 text-muted text-center">
+                    {product.author}
+                  </h3>
+                  <div className="card text-center">
+                    <div className="card-body">
+                      <h3 className="card-text">{product.createdAt}</h3>
+                      <h3 className="card-text">${product.price}</h3>
+                      <h3 className="card-text">♡: {product.numFavorites}</h3>
+                    </div>
                     <AddChat
                       productId={product.id}
                       browserId={this.props.user.id}
