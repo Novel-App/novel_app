@@ -44,7 +44,7 @@ const _removeProduct = productId => {
 export const fetchProducts = availability => {
   return async dispatch => {
     try {
-      const {data} = await axios.get(`/api/products/${availability}`)
+      const {data} = await axios.get(`/api/products/status/${availability}`)
       dispatch(getProducts(data))
     } catch (error) {
       console.log(error)

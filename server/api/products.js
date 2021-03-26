@@ -4,7 +4,7 @@ module.exports = router
 
 // GET /api/products
 // filters by user location & availability
-router.get('/:availability', async (req, res, next) => {
+router.get('/status/:availability', async (req, res, next) => {
   try {
     const allProducts = await Product.findAll({
       where: {
