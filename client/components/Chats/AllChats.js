@@ -24,8 +24,6 @@ class AllChats extends Component {
   }
 
   render() {
-    console.log('rendering AllChats...')
-
     let chats = this.props.chats
 
     return (

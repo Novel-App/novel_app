@@ -3,6 +3,12 @@ const db = require('../db')
 const Chat = require('./chat')
 
 const Message = db.define('message', {
+  id: {
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+    type: Sequelize.INTEGER
+  },
   content: {
     type: Sequelize.TEXT
   },

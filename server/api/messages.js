@@ -20,7 +20,6 @@ router.get('/:chatId', async (req, res, next) => {
 //post messages to specific chat
 // POST /api/messages
 router.post('/', async (req, res, next) => {
-  console.log('start:posting a new mesg', req.body)
   try {
     const message = await Message.create(req.body) //req.body will include content, chatId, authorId, (could maybe be unread)
     res.status(201).send(message)
