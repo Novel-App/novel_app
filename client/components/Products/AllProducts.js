@@ -69,7 +69,7 @@ class AllProducts extends Component {
       //   }
     }
     return (
-      <div className="d-flex flex-column">
+      <div className="container">
         <Link to="/products/add">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -83,38 +83,41 @@ class AllProducts extends Component {
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
           </svg>
         </Link>
-        {/* <div className="row">
-        <div className="col-sm-6">
-          <div className="card"> */}
-        {products.map(product => (
-          // <div key={product.id}>
-          <div className="row" key={product.id}>
-            <div className="col-sm-6">
-              <div className="card">
-                <Link to={`/products/${product.id}`}>
-                  <img
-                    className="card-img-top"
-                    alt={product.title}
-                    src={product.image}
-                  />
-                  <h1 className="card-title">{product.title}</h1>
-                </Link>
-                <h2 className="card-subtitle mb-2 text-muted">
-                  by {product.author}
-                </h2>
-                <h3>{product.createdAt}</h3>
-                <h3>${product.price}</h3>
-                <h3>♡: {product.numFavorites}</h3>
-                <AddChat
-                  productId={product.id}
-                  browserId={this.props.user.id}
-                />
+        <h5>Add a product</h5>
+        <div />
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+          {products.map(product => (
+            <div key={product.id}>
+              <div className="col-mb-6">
+                <div className="card">
+                  <Link to={`/products/${product.id}`}>
+                    <img
+                      className="card-img-top mx-auto"
+                      alt={product.title}
+                      src={product.image}
+                    />
+                    <h3 className="card-title text-center">{product.title}</h3>
+                  </Link>
+                  <h4 className="card-subtitle mb-2 text-muted text-center">
+                    {product.author}
+                  </h4>
+                  <div className="card text-center">
+                    <div className="card-body">
+                      <h5 className="card-text">{product.createdAt}</h5>
+                      <h5 className="card-text">${product.price}</h5>
+                      <h5 className="card-text">♡: {product.numFavorites}</h5>
+                    </div>
+                    <AddChat
+                      productId={product.id}
+                      browserId={this.props.user.id}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      //   </div>
       // </div>
       // </div>
     )

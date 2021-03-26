@@ -13,24 +13,31 @@ class Profile extends Component {
     return (
       <div className="main-content">
         <a
-          className="h3 mb-0 text-uppercase d-none d-lg-inline-block"
+          className="h3 mb-0 text-uppercase font-weight-bold d-none d-lg-inline-block"
           target="_blank"
         >
           User profile
         </a>
         <span />
         <div id="profile-container" className="container rounded mt-4">
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h4>Hi {firstName}!</h4>
-          </div>
+          <div className="d-flex justify-content-between align-items-center mb-3" />
           <div className="row">
             <div className="col-md-4 border-right">
               <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                <h4>Hi {firstName}!</h4>
                 <img
                   className="rounded-circle mt-5"
                   src={profileImage}
                   width="90"
                 />
+                <br />
+                <div>
+                  <Link to="/profile/edit">
+                    <button type="button" className="btn btn-primary">
+                      Edit Profile
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="col-md-8">
@@ -40,49 +47,41 @@ class Profile extends Component {
                 <li className="list-group-item">Email: {email}</li>
                 <li className="list-group-item">Zip Code: {zipCode}</li>
               </ul>
-            </div>
-          </div>
-          <div>
-            <Link to="/profile/edit">
-              <button type="button" className="btn btn-primary">
-                Edit Profile
-              </button>
-            </Link>
-          </div>
-        </div>
-        <div id="fav-container" className="container mt-5">
-          <div className="d-flex justify-content-center">
-            <div className="center container">
-              <span className="col-1 buttons iconsize">
-                <Link to="/favorites">
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-circle btn-xl"
-                  >
-                    <i className="bi bi-suit-heart-fill" /> Favorites
-                  </button>
-                </Link>
-              </span>
-              <span className="col-1 buttons iconsize">
-                <Link to="/listings">
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-circle btn-xl"
-                  >
-                    <i className="bi bi-receipt" /> Listings
-                  </button>
-                </Link>
-              </span>
-              <span className="col-1 buttons iconsize">
-                <Link to="/purchases">
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-circle btn-xl"
-                  >
-                    <i className="bi bi-bag-fill" /> Purchases
-                  </button>
-                </Link>
-              </span>
+              <br />
+              <div className="d-flex">
+                <div className="text-center container">
+                  <span className="col-1 buttons iconsize">
+                    <Link to="/favorites">
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-circle btn-xl"
+                      >
+                        <i className="bi bi-suit-heart-fill" /> Favorites
+                      </button>
+                    </Link>
+                  </span>
+                  <span className="col-1 buttons iconsize">
+                    <Link to="/listings">
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-circle btn-xl"
+                      >
+                        <i className="bi bi-receipt" /> Listings
+                      </button>
+                    </Link>
+                  </span>
+                  <span className="col-1 buttons iconsize">
+                    <Link to="/purchases">
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-circle btn-xl"
+                      >
+                        <i className="bi bi-bag-fill" /> Purchases
+                      </button>
+                    </Link>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
