@@ -70,9 +70,13 @@ router.post('/', async (req, res, next) => {
 // DELETE /api/chats
 router.delete('/:chatId', async (req, res, next) => {
   try {
-    const id = req.params.chatId
-    await Chat.destroy({where: {id}})
-    res.status(204).end()
+    const chat = await Chat.findByPk(req.params.chatId)
+    if (chat) {
+      await chat.destroy()
+    } else {
+      res.sendStatus(400)
+    }
+    res.status(204).send(chat)
   } catch (err) {
     next(err)
   }

@@ -10,7 +10,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       {isLoggedIn ? (
         <div className="navbar-collapse">
           {/* The navbar will show these links after you log in */}
-          <a className="navbar-brand" href="products">
+          <a className="navbar-brand" href="/products">
             NOVEL
           </a>
           <button
