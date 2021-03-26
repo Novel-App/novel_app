@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchProducts} from '../../store/product'
 import {Link} from 'react-router-dom'
-import {fetchUserProducts} from '../../store/userInfo'
+import {fetchProducts} from '../../store/product'
+import {fetchListings} from '../../store/userInfo'
+import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
+import EditListing from '../UserProfile/EditListing'
 import AddChat from '../Chats/AddChat'
 
 class AllProducts extends Component {
@@ -10,25 +12,39 @@ class AllProducts extends Component {
     super(props)
     this.state = {
       loading: true,
-      currentPage: ''
-      // isClicked: false,
-      // buttonsIcons: {
-      //   notFavorite:{icon: },
-      //   favorite: {icon: }
-      //}
+      currentPage: '',
+      listingStatus: 'Available',
+      listingUpdated: false
     }
+    this.updateStatus = this.updateStatus.bind(this)
   }
-
   componentDidMount() {
-    const path = this.props.match.path.slice(1)
-    const userId = this.props.user.id
+    const path =
+      this.props.match.path.slice(1) === 'listings' ? 'listings' : 'products'
     this.setState({currentPage: path})
-    path === 'products'
-      ? this.props.loadProducts(userId)
-      : this.props.loadUserProducts(userId, path)
+    this.updateData()
     this.setState({loading: false})
   }
-
+  componentDidUpdate() {
+    if (this.state.listingUpdated) {
+      this.updateData()
+      this.setState({listingUpdated: false})
+    }
+  }
+  updateData() {
+    const userId = this.props.user.id
+    const path =
+      this.props.match.path.slice(1) === 'listings' ? 'listings' : 'products'
+    path === 'listings'
+      ? this.props.loadListings(userId, this.state.listingStatus)
+      : this.props.loadProducts(this.state.listingStatus)
+  }
+  updateStatus(status) {
+    if (status !== this.state.listingStatus) {
+      this.setState({listingStatus: status})
+      this.setState({listingUpdated: true})
+    }
+  }
   render() {
     //loading screen
     if (this.state.loading === true) {
@@ -40,34 +56,10 @@ class AllProducts extends Component {
     }
     //only display certain buttons if listing page is true
     let products = []
-    let noProducts = ''
     let currentPage = this.state.currentPage
-    if (currentPage === 'favorites') {
-      products = this.props.favorites
-      noProducts = (
-        <>
-          <h2>You do not have any favorite products</h2>
-          <p>Browse products and heart some books!</p>
-        </>
-      )
-    } else if (currentPage === 'products') {
-      products = this.props.products
-      noProducts = <h2>There are no products being sold in your area</h2>
-    } else if (currentPage === 'purchases') {
-      products = this.props.purchases
-      noProducts = <h2>You do not have any past purchases</h2>
-    }
-    //if there are no products sold
-    if (products.length === 0) {
-      return <div>{noProducts}</div>
-
-      //click handler for favorite
-      // clickHandler = (event) =>{
-      //     this.setState({
-      //        isClicked:!this.state.isClicked // toggles when you click
-      //      });
-      //   }
-    }
+    currentPage === 'listings'
+      ? (products = this.props.listings)
+      : (products = this.props.products)
     return (
       <div className="container">
         <Link to="/products/add">
@@ -85,41 +77,91 @@ class AllProducts extends Component {
         </Link>
         <h5>Add a product</h5>
         <div />
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-          {products.map(product => (
-            <div key={product.id}>
-              <div className="col-mb-6">
-                <div className="card">
-                  <Link to={`/products/${product.id}`}>
-                    <img
-                      className="card-img-top mx-auto"
-                      alt={product.title}
-                      src={product.image}
-                    />
-                    <h3 className="card-title text-center">{product.title}</h3>
-                  </Link>
-                  <h4 className="card-subtitle mb-2 text-muted text-center">
-                    {product.author}
-                  </h4>
-                  <div className="card text-center">
-                    <div className="card-body">
-                      <h5 className="card-text">{product.createdAt}</h5>
-                      <h5 className="card-text">${product.price}</h5>
-                      <h5 className="card-text">♡: {product.numFavorites}</h5>
+        <div className="col-sm-6">
+          <div>
+            <a
+              href="#"
+              onClick={() => {
+                this.updateStatus('Available')
+              }}
+            >
+              Current {currentPage}
+            </a>
+          </div>
+          <div>
+            <a
+              href="#"
+              onClick={() => {
+                this.updateStatus('Reserved')
+              }}
+            >
+              Reserved {currentPage}
+            </a>
+          </div>
+          <div>
+            <a
+              href="#"
+              onClick={() => {
+                this.updateStatus('Sold')
+              }}
+            >
+              Past {currentPage}
+            </a>
+          </div>
+          {products.length === 0 ? (
+            <h2>
+              There are no {this.state.listingStatus.toLowerCase()}{' '}
+              {this.state.currentPage}
+            </h2>
+          ) : (
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+              {products.map(product => (
+                <div key={product.id}>
+                  <div className="col-mb-6">
+                    <div className="card">
+                      <Link to={`/products/${product.id}`}>
+                        <img
+                          className="card-img-top mx-auto"
+                          alt={product.title}
+                          src={product.image}
+                        />
+                        <h3 className="card-title text-center">
+                          {product.title}
+                        </h3>
+                      </Link>
+                      <h4 className="card-subtitle mb-2 text-muted text-center">
+                        {product.author}
+                      </h4>
+                      <div className="card text-center">
+                        <div className="card-body">
+                          <h5 className="card-text">{product.createdAt}</h5>
+                          <h5 className="card-text">${product.price}</h5>
+                          <h5 className="card-text">
+                            ♡: {product.numFavorites}
+                          </h5>
+                        </div>
+                        {currentPage === 'listings' ? (
+                          <>
+                            <Link to={`/listings/${product.id}/edit`}>
+                              Edit
+                            </Link>
+                            <AvailabilityUpdateBtn product={product} />
+                          </>
+                        ) : (
+                          <AddChat
+                            productId={product.id}
+                            browserId={this.props.user.id}
+                          />
+                        )}
+                      </div>
                     </div>
-                    <AddChat
-                      productId={product.id}
-                      browserId={this.props.user.id}
-                    />
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       </div>
-      // </div>
-      // </div>
     )
   }
 }
@@ -128,16 +170,15 @@ const mapState = state => {
   return {
     user: state.user,
     products: state.products.all,
-    favorites: state.userInfo.favorites,
-    purchases: state.userInfo.purchases
+    listings: state.userInfo.listings
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    loadProducts: () => dispatch(fetchProducts()),
-    loadUserProducts: (userId, type) =>
-      dispatch(fetchUserProducts(userId, type))
+    loadListings: (userId, availability) =>
+      dispatch(fetchListings(userId, availability)),
+    loadProducts: availability => dispatch(fetchProducts(availability))
   }
 }
 

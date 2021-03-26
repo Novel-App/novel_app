@@ -56,11 +56,11 @@ export const addNewChat = (browserId, productId) => {
   }
 }
 
-export const removeChat = chatId => {
+export const removeChat = chat => {
   return async dispatch => {
     try {
-      await axios.delete(`/api/chats/${chatId}`)
-      dispatch(deleteChat(chatId))
+      await axios.delete(`/api/chats/${chat.id}`)
+      dispatch(deleteChat(chat))
       history.push('/chats')
     } catch (err) {
       console.log(err)
@@ -89,7 +89,7 @@ export default function(state = initialState, action) {
     case DELETE_CHAT:
       return {
         ...state,
-        chats: state.chats.filter(chat => chat.id !== action.chatId)
+        chats: state.chats.filter(chat => chat.id !== action.chat.id)
       }
     default:
       return state

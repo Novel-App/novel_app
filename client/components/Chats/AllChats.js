@@ -47,7 +47,7 @@ class AllChats extends Component {
                 <div>
                   <button
                     type="button"
-                    onClick={() => this.deleteClickHandler(chat.id)}
+                    onClick={() => this.deleteClickHandler(chat)}
                   >
                     X
                   </button>
@@ -72,7 +72,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getAllChats: () => dispatch(fetchAllChats()),
-    deleteChat: chatId => dispatch(removeChat(chatId))
+    deleteChat: chat => dispatch(removeChat(chat))
   }
 }
 

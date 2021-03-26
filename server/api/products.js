@@ -3,10 +3,13 @@ const {Product, User, Genre} = require('../db/models')
 module.exports = router
 
 // GET /api/products
-// filters by user location
-router.get('/', async (req, res, next) => {
+// filters by user location & availability
+router.get('/status/:availability', async (req, res, next) => {
   try {
     const allProducts = await Product.findAll({
+      where: {
+        availability: req.params.availability
+      },
       include: [
         {
           model: User,

@@ -41,10 +41,10 @@ const _removeProduct = productId => {
 }
 
 // THUNK CREATORS
-export const fetchProducts = () => {
+export const fetchProducts = availability => {
   return async dispatch => {
     try {
-      const {data} = await axios.get('/api/products')
+      const {data} = await axios.get(`/api/products/status/${availability}`)
       dispatch(getProducts(data))
     } catch (error) {
       console.log(error)
