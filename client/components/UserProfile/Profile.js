@@ -9,7 +9,7 @@ class Profile extends Component {
     this.props.getMe()
   }
   render() {
-    const {firstName, lastName, email, profileImage, zipCode} = this.props.user
+    const {firstName, lastName, email, profileImage} = this.props.user
     return (
       <div className="main-content">
         <a
@@ -45,7 +45,6 @@ class Profile extends Component {
                 <li className="list-group-item">First Name: {firstName}</li>
                 <li className="list-group-item">Last Name: {lastName}</li>
                 <li className="list-group-item">Email: {email}</li>
-                <li className="list-group-item">Zip Code: {zipCode}</li>
               </ul>
               <br />
               <div className="d-flex">
