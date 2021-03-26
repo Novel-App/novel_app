@@ -43,9 +43,9 @@ body {
   justify-content: flex-start;
 }
 
-.card-img-top {
-  height: 350px;
-  width: 200px;
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
 }
 
 #edit-container,

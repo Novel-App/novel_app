@@ -77,7 +77,7 @@ class AllProducts extends Component {
         </Link>
         <h5>Add a product</h5>
         <div />
-        <div className="col-sm-6">
+        <div className="container-fluid">
           <div>
             <a
               href="#"
@@ -114,45 +114,51 @@ class AllProducts extends Component {
               {this.state.currentPage}
             </h2>
           ) : (
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            <div className="row">
               {products.map(product => (
                 <div key={product.id}>
-                  <div className="col-mb-6">
+                  <div className="col-12 mt-3">
                     <div className="card">
-                      <Link to={`/products/${product.id}`}>
-                        <img
-                          className="card-img-top mx-auto"
-                          alt={product.title}
-                          src={product.image}
-                        />
-                        <h3 className="card-title text-center">
-                          {product.title}
-                        </h3>
-                      </Link>
-                      <h4 className="card-subtitle mb-2 text-muted text-center">
-                        {product.author}
-                      </h4>
-                      <div className="card text-center">
-                        <div className="card-body">
-                          <h5 className="card-text">{product.createdAt}</h5>
-                          <h5 className="card-text">${product.price}</h5>
-                          <h5 className="card-text">
-                            ♡: {product.numFavorites}
-                          </h5>
-                        </div>
-                        {currentPage === 'listings' ? (
-                          <>
-                            <Link to={`/listings/${product.id}/edit`}>
-                              Edit
-                            </Link>
-                            <AvailabilityUpdateBtn product={product} />
-                          </>
-                        ) : (
-                          <AddChat
-                            productId={product.id}
-                            browserId={this.props.user.id}
+                      <div className="card-horizontal">
+                        <Link to={`/products/${product.id}`}>
+                          <img
+                            className="card-img"
+                            alt={product.title}
+                            src={product.image}
                           />
-                        )}
+                        </Link>
+                        <div className="card-body">
+                          <h3 className="card-title text-center">
+                            {product.title}
+                          </h3>
+                          <h4 className="card-subtitle mb-2 text-muted text-center">
+                            {product.author}
+                          </h4>
+                          <div>
+                            <h5 className="card-text">${product.price}</h5>
+                            <h5 className="card-text">
+                              ♡: {product.numFavorites}
+                            </h5>
+                          </div>
+                          <h5 className="card-footer">
+                            <small className="text-muted">
+                              {product.createdAt}
+                            </small>
+                          </h5>
+                          {currentPage === 'listings' ? (
+                            <>
+                              <Link to={`/listings/${product.id}/edit`}>
+                                Edit
+                              </Link>
+                              <AvailabilityUpdateBtn product={product} />
+                            </>
+                          ) : (
+                            <AddChat
+                              productId={product.id}
+                              browserId={this.props.user.id}
+                            />
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
