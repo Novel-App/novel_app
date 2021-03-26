@@ -54,7 +54,7 @@ export class SingleChat extends Component {
   }
 
   render() {
-    console.log('rendering SingleChat....')
+    console.log('rendering SingleChat.....')
     // const messages = this.props.location.chat.chat.users
     // console.log ('---',messages)
     return (
