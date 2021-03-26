@@ -41,6 +41,11 @@ body {
   justify-content: flex-start;
 }
 
+.card-img-top {
+  height: 350px;
+  width: 200px;
+}
+
 #edit-container,
 #profile-container,
 #fav-container {
