@@ -48,6 +48,30 @@ router.get('/:chatId', async (req, res, next) => {
   }
 })
 
+//GET CHATS BY PRODUCT ID
+// GET /api/chats/product/:productId
+router.get('/product/:productId', async (req, res, next) => {
+  try {
+    const chats = await Chat.findAll({
+      where: {
+        productId: req.params.productId
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'firstName', 'profileImage', 'reviewScore']
+        },
+        {
+          model: Product
+        }
+      ]
+    })
+    res.status(200).send(chats)
+  } catch (err) {
+    next(err)
+  }
+})
+
 // POST /api/chats
 //THUNKS MUST SEND: browserId & productId
 router.post('/', async (req, res, next) => {

@@ -13,6 +13,7 @@ export {default as AllProducts} from './Products/AllProducts'
 export {default as SingleProducts} from './Products/SingleProducts'
 export {default as CreateProduct} from './Products/CreateProduct'
 export {default as Condition} from './Products/Condition'
+export {default as AssignBuyer} from './Products/AssignBuyer'
 export {
   default as AvailabilityUpdateBtn
 } from './Products/AvailabilityUpdateBtn'
