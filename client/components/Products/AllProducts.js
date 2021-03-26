@@ -155,6 +155,7 @@ class AllProducts extends Component {
                                 </h5>
                                 {currentPage === 'listings' ? (
                                   <>
+                                    <i className="bi bi-star" />
                                     <Link to={`/listings/${product.id}/edit`}>
                                       Edit
                                     </Link>

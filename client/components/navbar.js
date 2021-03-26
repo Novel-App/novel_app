@@ -11,7 +11,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         <div className="navbar-collapse">
           {/* The navbar will show these links after you log in */}
           <a className="navbar-brand" href="/products">
-            NOVEL
+            <img id="logo" className="logo" src="images/2.png" alt="logo" />
           </a>
           <button
             className="navbar-toggler"
