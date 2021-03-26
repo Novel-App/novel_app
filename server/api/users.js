@@ -71,10 +71,12 @@ router.put('/:userId', async (req, res, next) => {
 // req.params.availability options: ["available", "reserved", "sold"]
 router.get('/:sellerId/listings/:availability', async (req, res, next) => {
   try {
-    const listings = await Product.getListingsByAvailability(
-      req.params.sellerId,
-      req.params.availability
-    )
+    const listings = await Product.findAll({
+      where: {
+        availability: req.params.availability,
+        sellerId: req.params.sellerId
+      }
+    })
     res.status(200).send(listings)
   } catch (err) {
     next(err)
