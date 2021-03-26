@@ -93,11 +93,42 @@ form div {
   /* display: inline-block; */
 }
 
-.header {
-  background-image: url('https://cdn.lifestyleasia.com/wp-content/uploads/sites/2/2020/02/25145253/Photo-by-Alfons-Morales-on-Unsplash-scaled-1535x900.jpg');
+.jumbotron {
+  position: relative;
+  overflow: hidden;
+}
+
+.jumbotron .container {
+  position: relative;
+  z-index: 2;
+
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.jumbotron-background {
+  object-fit: cover;
+  font-family: 'object-fit: cover;';
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+img.blur {
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+}
+
+.jumbotron-image {
+  background-position: center center;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  /* position: relative; */
 }
 
 /* .overlay {
