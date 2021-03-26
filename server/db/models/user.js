@@ -42,9 +42,6 @@ const User = db.define('user', {
       return () => this.getDataValue('salt')
     }
   },
-  zipCode: {
-    type: Sequelize.INTEGER
-  },
   locationAuthorization: {
     type: Sequelize.BOOLEAN
   },

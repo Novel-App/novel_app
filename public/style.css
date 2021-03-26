@@ -36,6 +36,11 @@ body {
   color: #002120;
 }
 
+#prod-nav-link:hover,
+#prod-nav-link.active {
+  color: #564147;
+}
+
 .navbar-collapse {
   justify-content: flex-end;
 }
@@ -43,9 +48,19 @@ body {
   justify-content: flex-start;
 }
 
-.card-img-top {
-  height: 350px;
-  width: 200px;
+.logo {
+  height: 100px;
+  width: 100px;
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.card-img {
+  width: 300px;
+  height: 430px;
 }
 
 #edit-container,
