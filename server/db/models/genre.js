@@ -2,6 +2,12 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Genre = db.define('genre', {
+  id: {
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+    type: Sequelize.INTEGER
+  },
   isFiction: {
     type: Sequelize.BOOLEAN,
     allowNull: false

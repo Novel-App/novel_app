@@ -56,6 +56,7 @@ class SingleProduct extends Component {
             <div className="col-md-5">
               <h2 className="mb-0 text-dark">{product.title}</h2>
               <div className="mb-0 text-dark">by {product.author}</div>
+              <div className="mb-0 text-dark">Genre: {product.genreId}</div>
               <div className="mb-0 text-dark">{product.createdAt}</div>
               <div>
                 <span className="mb-0 text-dark">

@@ -232,7 +232,7 @@ async function seed() {
     childrens
   ] = await Genre.bulkCreate(genres)
   console.log('Seeded genres')
-
+  console.log('dev id!', developmentHowToEducation.id)
   const products = [
     {
       title: 'Little Fires Everywhere',
@@ -248,7 +248,7 @@ async function seed() {
       availability: 'Available',
       sellerId: 1,
       buyerId: null,
-      genreIds: [thrillerMystery.id]
+      genreId: thrillerMystery.id
     },
     {
       title: 'We Were the Lucky Ones',
@@ -264,7 +264,7 @@ async function seed() {
       availability: 'Available',
       buyerId: null,
       sellerId: 2,
-      genreIds: [history.id]
+      genreId: history.id
     },
     {
       title: 'The Dark is Rising',
@@ -280,7 +280,7 @@ async function seed() {
       availability: 'Available',
       buyerId: null,
       sellerId: 3,
-      genreIds: [fantasyAdventure.id]
+      genreId: fantasyAdventure.id
     },
     {
       title: 'I am a Bunny',
@@ -296,7 +296,7 @@ async function seed() {
       availability: 'Available',
       buyerId: null,
       sellerId: 4,
-      genreIds: [childrens.id]
+      genreId: childrens.id
     },
     {
       title: 'The Agatha Christie Hour',
@@ -312,7 +312,7 @@ async function seed() {
       availability: 'Available',
       buyerId: null,
       sellerId: 5,
-      genreIds: [thrillerMystery.id]
+      genreId: thrillerMystery.id
     },
     {
       title: '3001: The Final Odyssey',
@@ -327,7 +327,7 @@ async function seed() {
       availability: 'Available',
       buyerId: null,
       sellerId: 6,
-      genreIds: [scienceFictionDystopian.id]
+      genreId: scienceFictionDystopian.id
     },
     {
       title: 'Kathleen',
@@ -343,7 +343,7 @@ async function seed() {
       availability: 'Reserved',
       buyerId: null,
       sellerId: 7,
-      genreIds: [romance.id]
+      genreId: romance.id
     },
     {
       title: 'The Path to Power',
@@ -359,7 +359,7 @@ async function seed() {
       availability: 'Reserved',
       buyerId: null,
       sellerId: 8,
-      genreIds: [memoir.id]
+      genreId: memoir.id
     },
     {
       title: 'Passports Illustrated Travel Guide to Amsterdam',
@@ -374,7 +374,7 @@ async function seed() {
       availability: 'Reserved',
       buyerId: null,
       sellerId: 9,
-      genreIds: [lifestyle.id]
+      genreId: lifestyle.id
     },
     {
       title: 'In Search of the Far Side',
@@ -389,7 +389,7 @@ async function seed() {
       availability: 'Sold',
       buyerId: null,
       sellerId: 10,
-      genreIds: [humor.id]
+      genreId: humor.id
     },
     {
       title: 'Building Node Applications with MongoDB and Backbone',
@@ -405,26 +405,90 @@ async function seed() {
       availability: 'Sold',
       buyerId: null,
       sellerId: 14,
-      genreIds: [developmentHowToEducation.id]
+      genreId: developmentHowToEducation.id
+    },
+    {
+      title: 'The Thursday Murder Club',
+      author: 'Richard Osman',
+      ISBN: '0241425441',
+      description:
+        'Record-breaking Sunday Times Number One Bestseller. Great series!',
+      image: 'https://pictures.abebooks.com/inventory/md/md30744350421.jpg',
+      condition: 'Like New',
+      numFavorites: 0,
+      price: 12,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 2,
+      genreId: thrillerMystery.id
+    },
+    {
+      title: 'Vienna, 1890-1920',
+      author: 'Hans Bisanz',
+      ISBN: '0914427075',
+      description: 'Book on Vienna',
+      image: 'https://pictures.abebooks.com/inventory/md/md30472342163.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 5,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 2,
+      genreId: history.id
+    },
+    {
+      title: 'The Fifth Elephant',
+      author: 'Terry Pratchett',
+      ISBN: '0385409958',
+      description:
+        'A new stage adaptation of one of Pratchetts best-selling novels Commander Vimes is sent to wild, wintry and Transylvania-like Uberwald to establish trade links with the King of the Dwarfs but he ends up trying to stop and inter-species war.',
+      image: 'https://pictures.abebooks.com/inventory/md/md22878683997.jpg',
+      condition: 'Good',
+      numFavorites: 0,
+      price: 7,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 2,
+      genreId: fantasyAdventure.id
+    },
+    {
+      title: 'In A Sunburnt Country',
+      author: 'Bill Bryson',
+      ISBN: '0767903862',
+      description:
+        'Every time Bill Bryson walks out the door, memorable travel literature threatens to break out. This time in Australia.',
+      image: 'https://pictures.abebooks.com/inventory/md/md30616504538.jpg',
+      condition: 'Good',
+      numFavorites: 0,
+      price: 9,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 2,
+      genreId: humor.id
     }
   ]
   const createdProducts = await Product.bulkCreate(products)
   console.log('Seeded products')
-
   // Genre/Products
-  const flattenProductGenres = products => {
-    const productGenres = []
+  // const flattenProductGenres = products => {
+  //   const productGenres = []
 
-    return products.reduce((acc, currProduct, idx) => {
-      const currProductGenres = currProduct.genreIds.map(genreId => {
-        return {productId: idx + 1, genreId}
-      })
+  //   return products.reduce((acc, currProduct, idx) => {
+  //     console.log("currentProduct -->",currProduct)
+  //     const currProductGenres = currProduct.map(product => {
+  //       const genreId = product.genreId
+  //       return {productId: idx + 1, genreId}
+  //     })
 
-      return acc.concat(currProductGenres)
-    }, productGenres)
-  }
-  const productGenres = flattenProductGenres(products)
-  console.log('Seeded product_genres')
+  //     return acc.concat(currProductGenres)
+  //   }, productGenres)
+  // }
+  // const productGenres = flattenProductGenres(products)
+  // console.log('Seeded product_genres')
   //Reviews
   const reviews = [
     {
