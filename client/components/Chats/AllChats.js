@@ -41,7 +41,7 @@ class AllChats extends Component {
                     chat: {chat}
                   }}
                 >
-                  {/* {`${chat.users[0].firstName}`} */}
+                  {`${chat.users[0].firstName}`}
                 </Link>
 
                 <div>
