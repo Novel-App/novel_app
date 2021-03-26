@@ -156,11 +156,19 @@ class AllProducts extends Component {
                                     {product.createdAt}
                                   </small>
                                 </h5>
-                                {currentPage === 'listings' ? (
+                                {product.sellerId === this.props.user.id ? (
                                   <>
                                     <i className="bi bi-star" />
+                                    <p>Your Item</p>
+                                    <br />
                                     <Link to={`/listings/${product.id}/edit`}>
-                                      Edit
+                                      <button
+                                        className="btn-primary"
+                                        type="button"
+                                      >
+                                        {' '}
+                                        Edit
+                                      </button>
                                     </Link>
                                     <AvailabilityUpdateBtn product={product} />
                                   </>

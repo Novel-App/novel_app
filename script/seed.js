@@ -232,7 +232,6 @@ async function seed() {
     childrens
   ] = await Genre.bulkCreate(genres)
   console.log('Seeded genres')
-  console.log('dev id!', developmentHowToEducation.id)
   const products = [
     {
       title: 'Little Fires Everywhere',
@@ -474,21 +473,21 @@ async function seed() {
   const createdProducts = await Product.bulkCreate(products)
   console.log('Seeded products')
   // Genre/Products
-  const flattenProductGenres = products => {
-    const productGenres = []
+  // const flattenProductGenres = products => {
+  //   const productGenres = []
 
-    return products.reduce((acc, currProduct, idx) => {
-      console.log('currentProduct -->', currProduct)
-      const currProductGenres = currProduct.map(product => {
-        const genreId = product.genreId
-        return {productId: idx + 1, genreId}
-      })
+  //   return products.reduce((acc, currProduct, idx) => {
+  //     console.log('currentProduct -->', currProduct)
+  //     const currProductGenres = currProduct.map(product => {
+  //       const genreId = product.genreId
+  //       return {productId: idx + 1, genreId}
+  //     })
 
-      return acc.concat(currProductGenres)
-    }, productGenres)
-  }
-  const productGenres = flattenProductGenres(products)
-  console.log('Seeded product_genres')
+  //     return acc.concat(currProductGenres)
+  //   }, productGenres)
+  // }
+  // const productGenres = flattenProductGenres(products)
+  // console.log('Seeded product_genres')
   //Reviews
   const reviews = [
     {
