@@ -25,6 +25,7 @@ class AddChat extends React.Component {
     return (
       <div>
         <button
+          className="btn-primary"
           type="submit"
           onClick={() => this.addClickHandler(browserId, productId)}
         >

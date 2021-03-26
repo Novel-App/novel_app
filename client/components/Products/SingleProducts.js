@@ -42,7 +42,7 @@ class SingleProduct extends Component {
             <i className="bi bi-chat" /> Chat Seller Now!
           </button>
         </Link>
-
+        <br />
         <div className="mb-5">
           <div className="row">
             <div className="col-md-6 mb-4 mb-md-0">
