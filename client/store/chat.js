@@ -8,12 +8,14 @@ import socket from '../socket'
 
 // ACTION TYPES
 const GET_ALL_CHATS = 'GET_ALL_CHATS'
+const GET_CHATS_BY_PRODUCT = 'GET_CHATS_BY_PRODUCT'
 const GET_SINGLE_CHAT = 'GET_SINGLE_CHAT'
 const CREATE_CHAT = 'CREATE_CHAT'
 const DELETE_CHAT = 'DELETE_CHAT'
 
 // ACTION CREATORS
 const getAllChats = chats => ({type: GET_ALL_CHATS, chats})
+const getChatsByProduct = chats => ({type: GET_CHATS_BY_PRODUCT, chats})
 const getSingleChat = chat => ({type: GET_SINGLE_CHAT, chat})
 const createChat = chat => ({type: CREATE_CHAT, chat})
 const deleteChat = chat => ({type: DELETE_CHAT, chat})
@@ -24,6 +26,17 @@ export const fetchAllChats = () => {
     try {
       const {data: chats} = await axios.get('/api/chats')
       dispatch(getAllChats(chats))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+export const fetchChatsByProduct = productId => {
+  return async dispatch => {
+    try {
+      const {data: chats} = await axios.get(`/api/chats/product/${productId}`)
+      dispatch(getChatsByProduct(chats))
     } catch (err) {
       console.log(err)
     }
@@ -81,6 +94,8 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_CHATS:
       console.log('reducer....', action.chats)
+      return {...state, chats: action.chats}
+    case GET_CHATS_BY_PRODUCT:
       return {...state, chats: action.chats}
     case GET_SINGLE_CHAT:
       return {...state, chat: action.chat}

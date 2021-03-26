@@ -11,6 +11,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {updateProduct} from '../../store/product'
+import AssignBuyer from './AssignBuyer'
 
 class AvailabilityUpdateBtn extends Component {
   constructor(props) {
@@ -24,9 +25,12 @@ class AvailabilityUpdateBtn extends Component {
     this.setState({
       [evt.target.name]: evt.target.value
     })
-    this.props.updateProduct({...this.state, availability: evt.target.value})
-    //IS THIS OKAY TO USE?
-    window.location.reload()
+    // ADD CONDITION: IF VALUE = AVAILABLE / RESERVED
+    if (evt.target.value === 'Available' || evt.target.value === 'Reserved') {
+      this.props.updateProduct({...this.state, availability: evt.target.value})
+      //IS THIS OK TO USE
+      window.location.reload()
+    }
   }
   render() {
     const {handleChange} = this
@@ -49,6 +53,10 @@ class AvailabilityUpdateBtn extends Component {
             </select>
           </div>
         </form>
+        {this.state.availability === 'Sold' &&
+          this.props.product.availability !== 'Sold' && (
+            <AssignBuyer product={this.props.product} />
+          )}
       </div>
     )
   }
