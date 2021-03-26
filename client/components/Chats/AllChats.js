@@ -41,13 +41,13 @@ class AllChats extends Component {
                     chat: {chat}
                   }}
                 >
-                  {`${chat.users[0].firstName}`}
+                  {/* {`${chat.users[0].firstName}`} */}
                 </Link>
 
                 <div>
                   <button
                     type="button"
-                    onClick={() => this.deleteClickHandler(chat.id)}
+                    onClick={() => this.deleteClickHandler(chat)}
                   >
                     X
                   </button>
@@ -72,7 +72,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getAllChats: () => dispatch(fetchAllChats()),
-    deleteChat: chatId => dispatch(removeChat(chatId))
+    deleteChat: chat => dispatch(removeChat(chat))
   }
 }
 
