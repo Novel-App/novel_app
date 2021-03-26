@@ -53,9 +53,10 @@ class AvailabilityUpdateBtn extends Component {
             </select>
           </div>
         </form>
-        {this.state.availability === 'Sold' && (
-          <AssignBuyer product={this.props.product} />
-        )}
+        {this.state.availability === 'Sold' &&
+          this.props.product.availability !== 'Sold' && (
+            <AssignBuyer product={this.props.product} />
+          )}
       </div>
     )
   }
