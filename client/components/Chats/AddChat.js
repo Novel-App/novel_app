@@ -29,7 +29,7 @@ class AddChat extends React.Component {
           type="submit"
           onClick={() => this.addClickHandler(browserId, productId)}
         >
-          Start A New Chat
+          {this.props.chat.id ? 'Start A New Chat' : 'Continue Chat'}
         </button>
       </div>
     )
