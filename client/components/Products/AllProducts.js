@@ -90,20 +90,20 @@ class AllProducts extends Component {
                 <div className="card">
                   <Link to={`/products/${product.id}`}>
                     <img
-                      className="card-img-top"
+                      className="card-img-top mx-auto"
                       alt={product.title}
                       src={product.image}
                     />
-                    <h1 className="card-title text-center">{product.title}</h1>
+                    <h3 className="card-title text-center">{product.title}</h3>
                   </Link>
-                  <h3 className="card-subtitle mb-2 text-muted text-center">
+                  <h4 className="card-subtitle mb-2 text-muted text-center">
                     {product.author}
-                  </h3>
+                  </h4>
                   <div className="card text-center">
                     <div className="card-body">
-                      <h3 className="card-text">{product.createdAt}</h3>
-                      <h3 className="card-text">${product.price}</h3>
-                      <h3 className="card-text">♡: {product.numFavorites}</h3>
+                      <h5 className="card-text">{product.createdAt}</h5>
+                      <h5 className="card-text">${product.price}</h5>
+                      <h5 className="card-text">♡: {product.numFavorites}</h5>
                     </div>
                     <AddChat
                       productId={product.id}
