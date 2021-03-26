@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Message from './Message'
 import {Form, Icon, Input, Button, Row, Col} from 'antd'
-import {sendMessage, fetchMessages} from '../../store/message'
+import message, {sendMessage, fetchMessages} from '../../store/message'
+import {getMe} from '../../store/user'
 import socket from '../../socket'
 
 /**
@@ -27,6 +28,7 @@ export class SingleChat extends Component {
     // console.log(this.props.getMessages)
     const chatId = Number(this.props.match.params.chatId) // 3
     this.props.getMessages(chatId)
+    this.props.getUser()
   }
 
   componentDidUpdate() {
@@ -42,11 +44,11 @@ export class SingleChat extends Component {
   submitChactMessage(e) {
     e.preventDefault()
 
-    let content = this.state.content
-
-    this.props.sendMessage({...this.state})
-    socket.emit('Input Chat Message', {
-      content
+    //newcontent = this.state.content
+    this.props.sendMessage({
+      ...this.state,
+      authorId: this.props.user.id,
+      chatId: this.props.messages[0].chatId
     })
     this.setState({content: ''})
   }
@@ -112,7 +114,8 @@ export class SingleChat extends Component {
  */
 const mapState = state => {
   return {
-    messages: state.message.messages
+    messages: state.message.messages,
+    user: state.user
     //users: state.users
   }
 }
@@ -120,7 +123,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getMessages: chatId => dispatch(fetchMessages(chatId)),
-    sendMessage: message => dispatch(sendMessage(message))
+    sendMessage: message => dispatch(sendMessage(message)),
+    getUser: () => dispatch(getMe())
   }
 }
 
