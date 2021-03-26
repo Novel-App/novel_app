@@ -36,9 +36,9 @@ export const fetchMessages = chatId => {
 export const sendMessage = message => {
   return async dispatch => {
     try {
-      console.log('posting a new mesg')
+      //
       const newMessage = (await axios.post('/api/messages', message)).data
-
+      //console.log ('--------',newMessage)
       dispatch(addMessage(newMessage))
       socket.emit('new-message', newMessage)
     } catch (error) {
