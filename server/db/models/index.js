@@ -39,13 +39,33 @@ Chat.belongsTo(Product)
 
 //adding associations between user and chat
 User.belongsToMany(Chat, {
-  through: Message,
-  as: 'author',
-  foreignKey: 'authorId'
+  through: {
+    model: Message,
+    // as: 'author',
+    unique: false
+  },
+  foreignKey: 'authorId',
+  constraints: false
 })
 Chat.belongsToMany(User, {
-  through: Message
+  through: {
+    model: Message,
+    unique: false
+  },
+  constraints: false
 })
+
+// Post.belongsToMany(Tag, {
+//   through: {
+//       model: ItemTag,
+//       unique: false,
+//       scope: {
+//           taggable: 'post'
+//       }
+//   },
+//   foreignKey: 'taggable_id',
+//   constraints: false
+// });
 
 //adding associations between user and review
 User.belongsToMany(User, {through: Review, as: 'reviewer'})

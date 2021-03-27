@@ -21,7 +21,7 @@ export class SingleChat extends Component {
     //once message are populated the map function will map through every message
     //need to ensure that we're sorting messages by send time
     this.handleChange = this.handleChange.bind(this)
-    this.submitChactMessage = this.submitChactMessage.bind(this)
+    this.submitChatMessage = this.submitChatMessage.bind(this)
   }
 
   componentDidMount() {
@@ -41,7 +41,7 @@ export class SingleChat extends Component {
     })
   }
 
-  submitChactMessage(e) {
+  submitChatMessage(e) {
     e.preventDefault()
     this.props.sendMessage({
       ...this.state,
@@ -52,6 +52,7 @@ export class SingleChat extends Component {
   }
 
   render() {
+    let messages = this.props.messages || []
     return (
       <React.Fragment>
         <div>
@@ -63,11 +64,9 @@ export class SingleChat extends Component {
             className="infinite-container"
             style={{height: '500px', overflowY: 'scroll'}}
           >
-            {this.props.messages
-              ? this.props.messages.map(message => {
-                  return <Message key={message.authorId} message={message} />
-                })
-              : ''}
+            {messages.map(message => {
+              return <Message key={message.id} message={message} />
+            })}
             <div
               ref={el => {
                 this.messagesEnd = el
@@ -77,7 +76,7 @@ export class SingleChat extends Component {
           </div>
 
           <Row>
-            <Form layout="inline" onSubmit={this.submitChactMessage}>
+            <Form layout="inline" onSubmit={this.submitChatMessage}>
               <Col span={18}>
                 <Input
                   id="message"
@@ -91,7 +90,7 @@ export class SingleChat extends Component {
                 {/* {a dropdown icon for uploading pictures or videos} */}
               </Col>
               <Col span={4}>
-                <Button type="submit" onClick={this.submitChactMessage}>
+                <Button type="submit" onClick={this.submitChatMessage}>
                   {/* <Icon type="enter" /> */}
                   send
                 </Button>
