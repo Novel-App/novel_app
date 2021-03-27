@@ -52,6 +52,7 @@ export class SingleChat extends Component {
   }
 
   render() {
+    let messages = this.props.messages || []
     return (
       <React.Fragment>
         <div>
@@ -63,11 +64,15 @@ export class SingleChat extends Component {
             className="infinite-container"
             style={{height: '500px', overflowY: 'scroll'}}
           >
-            {this.props.messages
-              ? this.props.messages.map(message => {
-                  return <Message key={message.authorId} message={message} />
-                })
-              : ''}
+            {messages.map(message => {
+              return (
+                <Message
+                  key={message.id}
+                  message={message}
+                  chat={this.props.chat}
+                />
+              )
+            })}
             <div
               ref={el => {
                 this.messagesEnd = el

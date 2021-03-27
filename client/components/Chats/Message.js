@@ -1,34 +1,20 @@
 import React from 'react'
 import moment from 'moment'
-import {Comment, Tooltip, Avatar} from 'antd'
 
 export default function Message(props) {
-  const message = props.message
+  const {message, chat} = props
+  const users = chat.users || []
+  const currUser =
+    users.length > 0
+      ? users.filter(user => user.message.id === message.id)
+      : [{profile: '', firstName: '', lastName: ''}]
 
   return (
-    //   // <li className>
-    //   //   <div className>
-    //   //     <a href="#">
-    //   //       <img src={message.sender.image} alt="image" />
-    //   //     </a>
-    //   //   </div>
-    //   //   <div>
-    //   //     <h4>{message.sender.name}</h4>
-    //   //     {message.content}
-    //   //   </div>
-    //   // </li>
-
-    <div style={{width: '100%'}}>
-      <Comment
-        author //props.sender.name
-        avatar //props.sender.image
-        content={message.content} //props.message (meesage or video or uploaded pictures)
-        datetime={
-          <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-            <span>{moment().fromNow()}</span>
-          </Tooltip>
-        }
-      />
+    <div>
+      <span>{moment(moment().format('YYYY-MM-DD HH:mm:ss')).fromNow()}</span>
+      <img src={currUser[0].profile} />
+      <p>{currUser[0].firstName} </p>
+      <p>{message.content}</p>
     </div>
   )
 }
