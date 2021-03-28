@@ -24,28 +24,47 @@ class AllChats extends Component {
   }
 
   render() {
-    let chats = this.props.chats
+    const chats = this.props.chats || []
+    const {user} = this.props
+
+    const currUser = chats
+      ? chats.map(chat => {
+          if (user.id !== chat.sellerId) {
+            return {
+              chatId: chat.id,
+              firstName: chat.product.seller.firstName,
+              productName: chat.product.title
+            }
+          } else {
+            return {
+              chatId: chat.id,
+              firstName: chat.users[0].firstName,
+              productName: chat.product.title
+            }
+          }
+        })
+      : []
+    console.log('CURR USER', currUser)
 
     return (
       <div>
         <h3>All chats</h3>
         <ul>
-          {chats.map(chat => {
+          {currUser.map(chatRoom => {
             return (
-              <li key={chat.id}>
+              <li key={chatRoom.chatId}>
                 <Link
                   to={{
-                    pathname: `/messages/${chat.id}`,
-                    chat: {chat}
+                    pathname: `/messages/${chatRoom.chatId}`
                   }}
                 >
-                  {`${chat.users[0].firstName}`}
+                  {`${chatRoom.firstName}: ${chatRoom.productName}`}
                 </Link>
 
                 <div>
                   <button
                     type="button"
-                    onClick={() => this.deleteClickHandler(chat)}
+                    onClick={() => this.deleteClickHandler(chatRoom.chatId)}
                   >
                     X
                   </button>
@@ -64,13 +83,14 @@ class AllChats extends Component {
  */
 const mapState = state => {
   return {
+    user: state.user,
     chats: state.chat.chats
   }
 }
 const mapDispatch = dispatch => {
   return {
     getAllChats: () => dispatch(fetchAllChats()),
-    deleteChat: chat => dispatch(removeChat(chat))
+    deleteChat: chatId => dispatch(removeChat(chatId))
   }
 }
 
