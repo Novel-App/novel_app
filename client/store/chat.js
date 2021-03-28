@@ -18,7 +18,7 @@ const getAllChats = chats => ({type: GET_ALL_CHATS, chats})
 const getChatsByProduct = chats => ({type: GET_CHATS_BY_PRODUCT, chats})
 const getSingleChat = chat => ({type: GET_SINGLE_CHAT, chat})
 const createChat = chat => ({type: CREATE_CHAT, chat})
-const deleteChat = chat => ({type: DELETE_CHAT, chat})
+const deleteChat = chatId => ({type: DELETE_CHAT, chatId})
 
 // THUNK REDUCERS
 export const fetchAllChats = () => {
@@ -69,11 +69,11 @@ export const addNewChat = (browserId, productId) => {
   }
 }
 
-export const removeChat = chat => {
+export const removeChat = chatId => {
   return async dispatch => {
     try {
-      await axios.delete(`/api/chats/${chat.id}`)
-      dispatch(deleteChat(chat))
+      await axios.delete(`/api/chats/${chatId}`)
+      dispatch(deleteChat(chatId))
       history.push('/chats')
     } catch (err) {
       console.log(err)
@@ -104,7 +104,7 @@ export default function(state = initialState, action) {
     case DELETE_CHAT:
       return {
         ...state,
-        chats: state.chats.filter(chat => chat.id !== action.chat.id)
+        chats: state.chats.filter(chat => chat.id !== action.chatId)
       }
     default:
       return state

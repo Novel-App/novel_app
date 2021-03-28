@@ -60,7 +60,11 @@ export default function(state = initialState, action) {
       console.log('reducer....')
       return {...state, messages: action.messages}
     case ADD_MESSAGE:
-      return {...state, message: action.message}
+      return {
+        ...state,
+        messages: [...state.messages, action.message],
+        message: action.message
+      }
     default:
       return state
   }

@@ -6,7 +6,7 @@ module.exports = router
 // GET /api/chats/
 router.get('/', async (req, res, next) => {
   try {
-    const chat = await Chat.findAll({
+    const chats = await Chat.findAll({
       where: {
         [Op.or]: [
           {
@@ -17,12 +17,26 @@ router.get('/', async (req, res, next) => {
           }
         ]
       },
-      include: {
-        model: User,
-        attributes: ['firstName', 'profileImage', 'reviewScore']
-      }
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'firstName', 'profileImage', 'reviewScore']
+        },
+        {
+          model: Product,
+          attributes: ['title', 'id', 'image', 'price'],
+          include: {
+            model: User,
+            as: 'seller',
+            attributes: ['id', 'firstName', 'profileImage', 'reviewScore']
+          }
+        }
+      ]
     })
-    res.status(200).send(chat)
+
+    const filteredChats = chats.filter(chat => chat.users.length > 0)
+
+    res.status(200).send(filteredChats)
   } catch (err) {
     next(err)
   }
@@ -35,10 +49,16 @@ router.get('/:chatId', async (req, res, next) => {
       include: [
         {
           model: User,
-          attributes: ['firstName', 'profileImage', 'reviewScore']
+          attributes: ['id', 'firstName', 'profileImage', 'reviewScore']
         },
         {
-          model: Product
+          model: Product,
+          attributes: ['title', 'id', 'image', 'price'],
+          include: {
+            model: User,
+            as: 'seller',
+            attributes: ['id', 'firstName', 'profileImage', 'reviewScore']
+          }
         }
       ]
     })
