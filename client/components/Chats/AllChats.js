@@ -44,7 +44,6 @@ class AllChats extends Component {
           }
         })
       : []
-    console.log('CURR USER', currUser)
 
     return (
       <div>
