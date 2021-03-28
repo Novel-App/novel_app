@@ -1,6 +1,6 @@
 import axios from 'axios'
 import history from '../history'
-import socket from '../socket'
+// import socket from '../socket'
 
 // get all messages in chat
 // add new message
@@ -40,7 +40,7 @@ export const sendMessage = message => {
       const {data: newMessage} = await axios.post('/api/messages', message)
       console.log(newMessage)
       dispatch(addMessage(newMessage))
-      socket.emit('new-message', newMessage)
+      // socket.emit('new-message', newMessage)
     } catch (error) {
       console.log(error)
     }
