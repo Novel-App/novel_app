@@ -100,7 +100,16 @@ router.post('/', async (req, res, next) => {
       where: {
         browserId: req.body.browserId,
         productId: req.body.productId
-      }
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'firstName', 'profileImage', 'reviewScore']
+        },
+        {
+          model: Product
+        }
+      ]
     })
     res.status(201).send(chat[0])
   } catch (err) {

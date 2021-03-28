@@ -10,11 +10,12 @@ import socket from '../../socket'
  * COMPONENT
  */
 export class SingleChat extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       content: '',
-      unread: true
+      unread: true,
+      messageSent: false
     }
     //state or props will populate with messages objects connected to specific singleChat
     //once message are populated the map function will map through every message
@@ -25,8 +26,8 @@ export class SingleChat extends Component {
 
   componentDidMount() {
     const chatId = Number(this.props.match.params.chatId)
-    this.props.getChat(chatId)
     this.props.getMessages(chatId)
+    this.props.getChat(chatId)
   }
 
   componentDidUpdate() {
@@ -46,11 +47,12 @@ export class SingleChat extends Component {
       authorId: this.props.user.id,
       chatId: this.props.chat.id
     })
-    this.setState({content: ''})
+    const chatId = Number(this.props.match.params.chatId)
+    this.props.getMessages(chatId)
+    this.props.getChat(chatId)
+    this.setState({content: '', messageSent: true})
   }
-
   render() {
-    let messages = this.props.messages || []
     return (
       <React.Fragment>
         <div>
@@ -62,13 +64,7 @@ export class SingleChat extends Component {
             className="infinite-container"
             style={{height: '500px', overflowY: 'scroll'}}
           >
-            {messages.length > 0 ? (
-              messages.map(message => {
-                return <Message key={message.id} message={message} />
-              })
-            ) : (
-              <></>
-            )}
+            <Message chatId={this.props.match.params.chatId} />
             <div
               ref={el => {
                 this.messagesEnd = el
