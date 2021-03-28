@@ -24,8 +24,8 @@ const addMessage = message => ({
 export const fetchMessages = chatId => {
   return async dispatch => {
     try {
-      console.log('fectching ...,.')
       const {data: messages} = await axios.get(`/api/messages/${chatId}`)
+      console.log('MESSAGES', messages)
       dispatch(getMessages(messages))
     } catch (error) {
       console.log(error)
