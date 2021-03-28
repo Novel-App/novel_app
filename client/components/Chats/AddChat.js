@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {addNewChat, fetchSingleChat} from '../../store/chat'
+import {addNewChat} from '../../store/chat'
 import history from '../../history'
 
-class AddChat extends React.Component {
+class AddChat extends Component {
   constructor() {
     super()
     this.state = {
@@ -11,8 +11,8 @@ class AddChat extends React.Component {
     }
     this.addClickHandler = this.addClickHandler.bind(this)
   }
-  addClickHandler = (browserId, productId) => {
-    this.props.addNewChat(browserId, productId)
+  addClickHandler = async (browserId, productId) => {
+    await this.props.addNewChat(browserId, productId)
     this.setState({createdChat: !this.state.createdChat})
   }
   componentDidUpdate() {
@@ -29,7 +29,7 @@ class AddChat extends React.Component {
           type="submit"
           onClick={() => this.addClickHandler(browserId, productId)}
         >
-          {this.props.chat.id ? 'Start A New Chat' : 'Continue Chat'}
+          Chat
         </button>
       </div>
     )

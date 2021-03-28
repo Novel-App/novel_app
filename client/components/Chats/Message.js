@@ -13,6 +13,7 @@ export class Message extends Component {
   }
   render() {
     const {message, chat} = this.props
+    console.log('MESSAGE', message)
 
     const currUser = chat.users
       ? chat.users.filter(user => user.message.authorId === message.authorId)

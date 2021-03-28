@@ -25,7 +25,6 @@ export const fetchMessages = chatId => {
   return async dispatch => {
     try {
       const {data: messages} = await axios.get(`/api/messages/${chatId}`)
-      console.log('MESSAGES', messages)
       dispatch(getMessages(messages))
     } catch (error) {
       console.log(error)
@@ -38,7 +37,6 @@ export const sendMessage = message => {
     try {
       //
       const {data: newMessage} = await axios.post('/api/messages', message)
-      console.log(newMessage)
       dispatch(addMessage(newMessage))
       socket.emit('new-message', newMessage)
     } catch (error) {
@@ -57,7 +55,6 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_MESSAGES:
-      console.log('reducer....')
       return {...state, messages: action.messages}
     case ADD_MESSAGE:
       return {

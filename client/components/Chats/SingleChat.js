@@ -4,7 +4,6 @@ import Message from './Message'
 import {Form, Icon, Input, Button, Row, Col} from 'antd'
 import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
-import {getMe} from '../../store/user'
 import socket from '../../socket'
 
 /**
@@ -28,7 +27,6 @@ export class SingleChat extends Component {
     const chatId = Number(this.props.match.params.chatId)
     this.props.getChat(chatId)
     this.props.getMessages(chatId)
-    this.props.getUser()
   }
 
   componentDidUpdate() {
@@ -64,9 +62,13 @@ export class SingleChat extends Component {
             className="infinite-container"
             style={{height: '500px', overflowY: 'scroll'}}
           >
-            {messages.map(message => {
-              return <Message key={message.id} message={message} />
-            })}
+            {messages.length > 0 ? (
+              messages.map(message => {
+                return <Message key={message.id} message={message} />
+              })
+            ) : (
+              <></>
+            )}
             <div
               ref={el => {
                 this.messagesEnd = el
@@ -118,7 +120,6 @@ const mapDispatch = dispatch => {
   return {
     getMessages: chatId => dispatch(fetchMessages(chatId)),
     sendMessage: message => dispatch(sendMessage(message)),
-    getUser: () => dispatch(getMe()),
     getChat: id => dispatch(fetchSingleChat(id))
   }
 }

@@ -27,7 +27,6 @@ export const fetchListings = (userId, availability) => {
       const {data} = await axios.get(
         `/api/users/${userId}/listings/${availability}`
       )
-      console.log('data', data)
       dispatch(getListings(data))
     } catch (error) {
       console.log(error)
