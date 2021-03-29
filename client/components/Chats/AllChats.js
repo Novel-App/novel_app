@@ -60,11 +60,6 @@ class AllChats extends Component {
                 >
                   <p>{`${chatRoom.firstName}: ${chatRoom.productName}`}</p>
                 </Link>
-                <span>
-                  {moment(
-                    moment(chatRoom.updatedAt).format('YYYY-MM-DD HH:mm:ss')
-                  ).fromNow()}
-                </span>{' '}
                 <div>
                   <button
                     type="button"
