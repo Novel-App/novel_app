@@ -12,8 +12,6 @@ export class Message extends Component {
     }
   }
   async componentDidMount() {
-    console.log(' THIS IS MY PROPS', this.props)
-    console.log(this.props.chatId ? 'we get chatId' : 'naw we do not')
     if (this.props.chatId) {
       await this.props.getMessages(this.props.chatId)
       await this.props.getChat(this.props.chatId)
@@ -26,25 +24,33 @@ export class Message extends Component {
     if (this.state.loading) {
       return <></>
     }
+    //move the loading state to redux
     if (!chat.users) {
       return <></>
     }
     return (
       <div>
-        {messages.map((chatBubble, index) => {
+        {messages.map(chatBubble => {
+          let info
           if (chat.users.length === 0) {
-            return <div key={index} />
+            return <></>
+          } else if (chat.users.length < 2) {
+            info = {
+              firstName: chat.users[0].firstName,
+              profileImg: chat.users[0].profileImage
+            }
+          } else {
+            info =
+              chat.users[0].id === chatBubble.authorId
+                ? {
+                    firstName: chat.users[0].firstName,
+                    profileImg: chat.users[0].profileImage
+                  }
+                : {
+                    firstName: chat.users[1].firstName,
+                    profileImg: chat.users[1].profileImage
+                  }
           }
-          const info =
-            chat.users[0].id === chatBubble.authorId
-              ? {
-                  firstName: chat.users[0].firstName,
-                  profileImg: chat.users[0].profileImage
-                }
-              : {
-                  firstName: chat.users[1].firstName,
-                  profileImg: chat.users[1].profileImage
-                }
           return (
             <div key={chatBubble.id} className="box-body">
               <div className="direct-chat-info clearfix">
