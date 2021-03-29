@@ -144,19 +144,21 @@ class AllProducts extends Component {
               </div>
             </nav>
             <form className="input-group rounded" onSubmit={this.handleSubmit}>
-              <input
-                type="search"
-                name="searchTerm"
-                className="form-control rounded"
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="search-addon"
-                value={this.state.searchTerm}
-                onChange={this.handleOnSearchChange}
-              />
-              <button type="submit" className="btn btn-light">
-                search
-              </button>
+              <div className="col-xs-2 form-inline">
+                <input
+                  type="search"
+                  name="searchTerm"
+                  className="form-control rounded"
+                  placeholder="Search for title/author!"
+                  aria-label="Search"
+                  aria-describedby="search-addon"
+                  value={this.state.searchTerm}
+                  onChange={this.handleOnSearchChange}
+                />
+                <button type="submit" className="btn btn-light">
+                  search
+                </button>
+              </div>
             </form>
             {products.length === 0 ? (
               <h2>
