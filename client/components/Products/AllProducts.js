@@ -19,6 +19,7 @@ class AllProducts extends Component {
     this.updateStatus = this.updateStatus.bind(this)
     this.handleOnSearchChange = this.handleOnSearchChange.bind(this)
     this.dynamicSearch = this.dynamicSearch.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   componentDidMount() {
     const path =
@@ -51,6 +52,13 @@ class AllProducts extends Component {
     console.log('SEARCH CHANGE', evt.target.value)
     this.setState({
       searchTerm: evt.target.value
+    })
+  }
+  handleSubmit(evt) {
+    // console.log('SEARCH CHANGE', evt.target.value)
+    evt.preventDefault()
+    this.setState({
+      searchTerm: evt.target.searchTerm.value
     })
   }
   dynamicSearch(products) {
@@ -135,24 +143,26 @@ class AllProducts extends Component {
                 </div>
               </div>
             </nav>
-            <div className="input-group rounded">
+            <form className="input-group rounded" onSubmit={this.handleSubmit}>
               <input
                 type="search"
+                name="searchTerm"
                 className="form-control rounded"
-                placeholder="Search for a title"
-                aria-label="Search for a title"
+                placeholder="Search"
+                aria-label="Search"
                 aria-describedby="search-addon"
                 value={this.state.searchTerm}
                 onChange={this.handleOnSearchChange}
               />
-              <span className="input-group-text border-0" id="search-addon">
-                <i className="fas fa-search" />
-              </span>
-            </div>
+              <button type="submit" className="btn btn-light">
+                search
+              </button>
+            </form>
             {products.length === 0 ? (
               <h2>
-                There are no {this.state.listingStatus.toLowerCase()}{' '}
-                {this.state.currentPage}
+                {/* There are no {this.state.listingStatus.toLowerCase()}{' '}
+                {this.state.currentPage} */}
+                No results
               </h2>
             ) : (
               <div className="container-fluid">
