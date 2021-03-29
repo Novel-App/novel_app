@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchAllChats, removeChat} from '../../store/chat'
+import moment from 'moment'
 
 class AllChats extends Component {
   constructor() {
@@ -57,9 +58,8 @@ class AllChats extends Component {
                     pathname: `/messages/${chatRoom.chatId}`
                   }}
                 >
-                  {`${chatRoom.firstName}: ${chatRoom.productName}`}
+                  <p>{`${chatRoom.firstName}: ${chatRoom.productName}`}</p>
                 </Link>
-
                 <div>
                   <button
                     type="button"
