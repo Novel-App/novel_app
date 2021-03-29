@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 import {fetchProducts} from '../../store/product'
 import {fetchListings} from '../../store/userInfo'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
-import EditListing from '../UserProfile/EditListing'
 import AddChat from '../Chats/AddChat'
 
 class AllProducts extends Component {
@@ -12,11 +11,14 @@ class AllProducts extends Component {
     super(props)
     this.state = {
       loading: true,
+      searchTerm: '',
       currentPage: '',
       listingStatus: 'Available',
       listingUpdated: false
     }
     this.updateStatus = this.updateStatus.bind(this)
+    this.handleOnSearchChange = this.handleOnSearchChange.bind(this)
+    this.dynamicSearch = this.dynamicSearch.bind(this)
   }
   componentDidMount() {
     const path =
@@ -45,6 +47,23 @@ class AllProducts extends Component {
       this.setState({listingUpdated: true})
     }
   }
+  handleOnSearchChange(evt) {
+    console.log('SEARCH CHANGE', evt.target.value)
+    this.setState({
+      searchTerm: evt.target.value
+    })
+  }
+  dynamicSearch(products) {
+    return products.filter(
+      product =>
+        product.title
+          .toLowerCase()
+          .includes(this.state.searchTerm.toLowerCase()) ||
+        product.author
+          .toLowerCase()
+          .includes(this.state.searchTerm.toLowerCase())
+    )
+  }
   render() {
     //loading screen
     if (this.state.loading === true) {
@@ -58,8 +77,8 @@ class AllProducts extends Component {
     let products = []
     let currentPage = this.state.currentPage
     currentPage === 'listings'
-      ? (products = this.props.listings)
-      : (products = this.props.products)
+      ? (products = this.dynamicSearch(this.props.listings))
+      : (products = this.dynamicSearch(this.props.products))
     return (
       <div className="container">
         <div className="container-flex">
@@ -116,6 +135,20 @@ class AllProducts extends Component {
                 </div>
               </div>
             </nav>
+            <div className="input-group rounded">
+              <input
+                type="search"
+                className="form-control rounded"
+                placeholder="Search for a title"
+                aria-label="Search for a title"
+                aria-describedby="search-addon"
+                value={this.state.searchTerm}
+                onChange={this.handleOnSearchChange}
+              />
+              <span className="input-group-text border-0" id="search-addon">
+                <i className="fas fa-search" />
+              </span>
+            </div>
             {products.length === 0 ? (
               <h2>
                 There are no {this.state.listingStatus.toLowerCase()}{' '}
@@ -146,7 +179,7 @@ class AllProducts extends Component {
                               <div className="text-center">
                                 <h5 className="card-text">${product.price}</h5>
                                 <h5 className="card-text">
-                                  ♡: {product.numFavorites}
+                                  ♡ {product.numFavorites}
                                 </h5>
                               </div>
                               <br />
