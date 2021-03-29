@@ -9,7 +9,7 @@ const db = require('./db')
 const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
-// const socketio = require('socket.io')
+
 module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
@@ -99,10 +99,10 @@ const startListening = () => {
   const server = app.listen(PORT, () =>
     console.log(`Mixing it up on port ${PORT}`)
   )
-
+  const io = require('socket.io')(server)
   // set up our socket control center
-  // const io = socketio(server)
-  // require('./socket')(io)
+
+  require('./socket')(io)
 }
 
 const syncDb = () => db.sync()
