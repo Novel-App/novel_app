@@ -32,24 +32,31 @@ export class Message extends Component {
       <div>
         {messages.map(chatBubble => {
           let info
-          if (chat.users.length === 0) {
-            return <></>
-          } else if (chat.users.length < 2) {
+          //user is browser
+          if (this.props.user.id === chatBubble.authorId) {
             info = {
-              firstName: chat.users[0].firstName,
-              profileImg: chat.users[0].profileImage
+              firstName: this.props.user.firstName,
+              profileImg: this.props.user.profileImage
+            }
+            //guest is the browser (allChat view clicking on chat)
+          } else if (
+            this.props.user.id !== chat.browserId &&
+            chat.browserId === chatBubble.authorId
+          ) {
+            let guest =
+              chat.users[0].id === chatBubble.authorId
+                ? chat.users[0]
+                : chat.users[1]
+            info = {
+              firstName: guest.firstName,
+              profileImg: guest.profileImage
             }
           } else {
-            info =
-              chat.users[0].id === chatBubble.authorId
-                ? {
-                    firstName: chat.users[0].firstName,
-                    profileImg: chat.users[0].profileImage
-                  }
-                : {
-                    firstName: chat.users[1].firstName,
-                    profileImg: chat.users[1].profileImage
-                  }
+            //guest is the seller
+            info = {
+              firstName: this.props.chat.product.seller.firstName,
+              profileImg: this.props.chat.product.seller.profileImage
+            }
           }
           return (
             <div key={chatBubble.id} className="box-body">
@@ -81,7 +88,8 @@ export class Message extends Component {
 const mapState = state => {
   return {
     chat: state.chat.chat,
-    messages: state.message.messages
+    messages: state.message.messages,
+    user: state.user
   }
 }
 

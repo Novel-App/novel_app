@@ -218,6 +218,7 @@ async function seed() {
     {isFiction: true, category: 'Humor'},
     {isFiction: true, category: 'Childrens'}
   ]
+  const bulkCreateContent = await Genre.bulkCreate(genres)
 
   const [
     fantasyAdventure,
@@ -230,7 +231,7 @@ async function seed() {
     developmentHowToEducation,
     humor,
     childrens
-  ] = await Genre.bulkCreate(genres)
+  ] = await Genre.findAll()
   console.log('Seeded genres')
   const products = [
     {
