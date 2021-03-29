@@ -5,6 +5,7 @@ import {fetchProducts} from '../../store/product'
 import {fetchListings} from '../../store/userInfo'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
 import AddChat from '../Chats/AddChat'
+import moment from 'moment'
 
 class AllProducts extends Component {
   constructor(props) {
@@ -198,7 +199,12 @@ class AllProducts extends Component {
                               <div className="card-footer text-center">
                                 <h5>
                                   <small className="text-muted">
-                                    {product.createdAt}
+                                    {' listed '}
+                                    {moment(
+                                      moment(product.createdAt).format(
+                                        'YYYY-MM-DD HH:mm:ss'
+                                      )
+                                    ).fromNow()}
                                   </small>
                                 </h5>
                                 {product.sellerId === this.props.user.id ? (

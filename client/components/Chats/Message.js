@@ -66,7 +66,9 @@ export class Message extends Component {
                   {info.firstName}
                 </span>{' '}
                 <span className="direct-chat-timestamp pull-right">
-                  {moment(moment().format('YYYY-MM-DD HH:mm:ss')).fromNow()}
+                  {moment(
+                    moment(chatBubble.createdAt).format('YYYY-MM-DD HH:mm:ss')
+                  ).fromNow()}
                 </span>{' '}
               </div>
               <img
