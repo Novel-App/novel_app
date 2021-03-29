@@ -478,7 +478,7 @@ async function seed() {
   //   const productGenres = []
 
   //   return products.reduce((acc, currProduct, idx) => {
-  //     console.log('currentProduct -->', currProduct)
+  //     // console.log('currentProduct -->', currProduct)
   //     const currProductGenres = currProduct.map(product => {
   //       const genreId = product.genreId
   //       return {productId: idx + 1, genreId}
