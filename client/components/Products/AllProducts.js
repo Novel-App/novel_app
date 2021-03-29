@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 import {fetchProducts} from '../../store/product'
 import {fetchListings} from '../../store/userInfo'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
-import EditListing from '../UserProfile/EditListing'
 import AddChat from '../Chats/AddChat'
 
 class AllProducts extends Component {
@@ -12,11 +11,15 @@ class AllProducts extends Component {
     super(props)
     this.state = {
       loading: true,
+      searchTerm: '',
       currentPage: '',
       listingStatus: 'Available',
       listingUpdated: false
     }
     this.updateStatus = this.updateStatus.bind(this)
+    this.handleOnSearchChange = this.handleOnSearchChange.bind(this)
+    this.dynamicSearch = this.dynamicSearch.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   componentDidMount() {
     const path =
@@ -45,6 +48,30 @@ class AllProducts extends Component {
       this.setState({listingUpdated: true})
     }
   }
+  handleOnSearchChange(evt) {
+    console.log('SEARCH CHANGE', evt.target.value)
+    this.setState({
+      searchTerm: evt.target.value
+    })
+  }
+  handleSubmit(evt) {
+    // console.log('SEARCH CHANGE', evt.target.value)
+    evt.preventDefault()
+    this.setState({
+      searchTerm: evt.target.searchTerm.value
+    })
+  }
+  dynamicSearch(products) {
+    return products.filter(
+      product =>
+        product.title
+          .toLowerCase()
+          .includes(this.state.searchTerm.toLowerCase()) ||
+        product.author
+          .toLowerCase()
+          .includes(this.state.searchTerm.toLowerCase())
+    )
+  }
   render() {
     //loading screen
     if (this.state.loading === true) {
@@ -58,8 +85,8 @@ class AllProducts extends Component {
     let products = []
     let currentPage = this.state.currentPage
     currentPage === 'listings'
-      ? (products = this.props.listings)
-      : (products = this.props.products)
+      ? (products = this.dynamicSearch(this.props.listings))
+      : (products = this.dynamicSearch(this.props.products))
     return (
       <div className="container">
         <div className="container-flex">
@@ -76,7 +103,7 @@ class AllProducts extends Component {
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
             </svg>
           </Link>
-          <h5>Add a product</h5>
+          <h5>New post</h5>
           <div />
           <div className="container">
             <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -116,10 +143,28 @@ class AllProducts extends Component {
                 </div>
               </div>
             </nav>
+            <form className="input-group rounded" onSubmit={this.handleSubmit}>
+              <div className="col-xs-2 form-inline">
+                <input
+                  type="search"
+                  name="searchTerm"
+                  className="form-control rounded"
+                  placeholder="Search for title/author!"
+                  aria-label="Search"
+                  aria-describedby="search-addon"
+                  value={this.state.searchTerm}
+                  onChange={this.handleOnSearchChange}
+                />
+                <button type="submit" className="btn btn-light">
+                  search
+                </button>
+              </div>
+            </form>
             {products.length === 0 ? (
               <h2>
-                There are no {this.state.listingStatus.toLowerCase()}{' '}
-                {this.state.currentPage}
+                {/* There are no {this.state.listingStatus.toLowerCase()}{' '}
+                {this.state.currentPage} */}
+                No results
               </h2>
             ) : (
               <div className="container-fluid">
@@ -146,7 +191,7 @@ class AllProducts extends Component {
                               <div className="text-center">
                                 <h5 className="card-text">${product.price}</h5>
                                 <h5 className="card-text">
-                                  ♡: {product.numFavorites}
+                                  ♡ {product.numFavorites}
                                 </h5>
                               </div>
                               <br />
