@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Chat = require('./chat')
 
 const Message = db.define('message', {
   id: {

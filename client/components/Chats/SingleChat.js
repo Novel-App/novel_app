@@ -48,7 +48,6 @@ export class SingleChat extends Component {
       chatId: this.props.chat.id
     })
     const chatId = Number(this.props.match.params.chatId)
-    this.props.getMessages(chatId)
     this.props.getChat(chatId)
     this.setState({content: '', messageSent: true})
   }
