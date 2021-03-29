@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import {fetchProducts} from '../../store/product'
 import {fetchListings} from '../../store/userInfo'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
+import FavoriteBtn from './FavoriteBtn'
 import AddChat from '../Chats/AddChat'
 
 class AllProducts extends Component {
@@ -191,7 +192,8 @@ class AllProducts extends Component {
                               <div className="text-center">
                                 <h5 className="card-text">${product.price}</h5>
                                 <h5 className="card-text">
-                                  ♡ {product.numFavorites}
+                                  {/* add logic to count num favorites */}
+                                  <FavoriteBtn product={product} />
                                 </h5>
                               </div>
                               <br />

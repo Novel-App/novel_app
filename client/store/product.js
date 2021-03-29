@@ -7,6 +7,7 @@ const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
 const CREATE_PRODUCT = 'CREATE_PRODUCT'
 const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE'
 
 // ACTION CREATORS
 const getProducts = products => ({
@@ -37,6 +38,13 @@ const _removeProduct = productId => {
   return {
     type: REMOVE_PRODUCT,
     productId
+  }
+}
+
+const _getFavorite = product => {
+  return {
+    type: TOGGLE_FAVORITE,
+    product
   }
 }
 
@@ -87,10 +95,21 @@ export const removeProduct = productId => {
   }
 }
 
+export const getFavorite = (product, userId) => {
+  return async dispatch => {
+    const {data} = await axios.put(
+      `/api/products/${product.id}/favorite`,
+      userId
+    )
+    dispatch(_getFavorite(data))
+  }
+}
+
 // INITIAL STATE
 let initialState = {
   all: [],
-  single: {}
+  single: {},
+  favorited: {}
 }
 
 // REDUCER
@@ -117,6 +136,17 @@ export default function(state = initialState, action) {
       return {
         ...state,
         all: state.all.filter(product => product.id !== action.productId)
+      }
+    case TOGGLE_FAVORITE:
+      return {
+        ...state,
+        all: state.all.map(product => {
+          if (product.id === action.product.id) {
+            product = action.product
+          }
+          return product
+        }),
+        single: action.product
       }
     default:
       return state

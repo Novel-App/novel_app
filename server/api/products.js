@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Product, User, Genre} = require('../db/models')
+const {Product, User, Genre, Favorite} = require('../db/models')
 module.exports = router
 
 // GET /api/products
@@ -48,6 +48,28 @@ router.post('/', async (req, res, next) => {
       ]
     })
     res.status(201).json(newProduct)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//FAVORITE PRODUCT
+//PASS IN userId FROM FE
+router.post('/:productId/favorite', async (req, res, next) => {
+  try {
+    let favorite = await Favorite.findOrCreate({
+      where: {
+        productId: req.params.productId,
+        userId: req.body.userId
+      }
+    })
+    const updatedFavorite = await favorite.update(req.body)
+    const updatedProduct = await Product.findOne({
+      where: {
+        id: updatedFavorite.productId
+      }
+    })
+    res.status(201).json(updatedProduct)
   } catch (error) {
     next(error)
   }

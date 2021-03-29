@@ -5,7 +5,7 @@ const Favorite = db.define('favorite', {
   isFavorite: {
     type: Sequelize.BOOLEAN,
     allowNull: false,
-    defaultValue: false,
+    defaultValue: true,
     validate: {
       isEmpty: false
     }
