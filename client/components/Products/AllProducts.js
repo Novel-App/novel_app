@@ -51,13 +51,11 @@ class AllProducts extends Component {
     }
   }
   handleOnSearchChange(evt) {
-    console.log('SEARCH CHANGE', evt.target.value)
     this.setState({
       searchTerm: evt.target.value
     })
   }
   handleSubmit(evt) {
-    // console.log('SEARCH CHANGE', evt.target.value)
     evt.preventDefault()
     this.setState({
       searchTerm: evt.target.searchTerm.value

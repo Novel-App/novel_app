@@ -21,31 +21,27 @@ const getPurchases = purchases => ({
 })
 
 // THUNK CREATORS
-export const fetchListings = (userId, availability) => {
-  return async dispatch => {
-    try {
-      const {data} = await axios.get(
-        `/api/users/${userId}/listings/${availability}`
-      )
-      dispatch(getListings(data))
-    } catch (error) {
-      console.log(error)
-    }
+export const fetchListings = (userId, availability) => async dispatch => {
+  try {
+    const {data} = await axios.get(
+      `/api/users/${userId}/listings/${availability}`
+    )
+    dispatch(getListings(data))
+  } catch (error) {
+    console.log(error)
   }
 }
 
-export const fetchUserProducts = (userId, type) => {
-  return async dispatch => {
-    try {
-      const {data} = await axios.get(`/api/users/${userId}/${type}`)
-      if (type === 'favorites') {
-        dispatch(getFavorites(data))
-      } else if (type === 'purchases') {
-        dispatch(getPurchases(data))
-      }
-    } catch (error) {
-      console.log(error)
+export const fetchUserProducts = (userId, type) => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/users/${userId}/${type}`)
+    if (type === 'favorites') {
+      dispatch(getFavorites(data))
+    } else if (type === 'purchases') {
+      dispatch(getPurchases(data))
     }
+  } catch (error) {
+    console.log(error)
   }
 }
 
