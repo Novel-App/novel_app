@@ -12,13 +12,18 @@ const Favorite = db.define('favorite', {
   }
 })
 
-Favorite.getCount = function(productId) {
-  return this.findAll({
-    where: {
-      productId,
-      isFavorite: true
-    }
-  }).length
+Favorite.getCount = async function(productId) {
+  try {
+    const favs = await this.findAll({
+      where: {
+        productId,
+        isFavorite: true
+      }
+    })
+    return favs.length
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 module.exports = Favorite
