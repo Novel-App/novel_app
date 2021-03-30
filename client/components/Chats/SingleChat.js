@@ -81,12 +81,7 @@ export class SingleChat extends Component {
                     </p>
                     <p className="card-text">
                       <small className="text-muted">
-                        Posted {/* DATE IS NOT ACCURATE HERE */}
-                        {moment(
-                          moment(chat.product.createdAt).format(
-                            'YYYY-MM-DD HH:mm:ss'
-                          )
-                        ).fromNow()}
+                        {chat.product.availability}
                       </small>
                     </p>
                   </div>
