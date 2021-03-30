@@ -8,10 +8,10 @@ import {getFavorite, getFavCount} from '../../store/product'
 class FavoriteBtn extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      isFavorite: true,
-      favCount: 0
-    }
+    // this.state = {
+    //   isFavorite: null,
+    //   favCount: null
+    // }
     this.toggleFavorite = this.toggleFavorite.bind(this)
   }
   async componentDidMount() {
@@ -19,30 +19,53 @@ class FavoriteBtn extends Component {
       userId: this.props.user.id
     })
     await this.props.getFavCount(this.props.product.id)
-    await this.setState({
-      isFavorite: this.props.favorite.isFavorite,
-      favCount: this.props.favCount
-    })
+    // await this.setState({
+    //   isFavorite: this.props.favorite.isFavorite,
+    //   favCount: Number(this.props.favCount)
+    // })
+    console.log('COMP DID MOUNT FAV', this.props.favorite.isFavorite)
+    console.log('COMP DID MOUNT FAV', this.props.favCount)
+  }
+  async componentDidUpdate(prevProps) {
+    if (
+      prevProps.favorite &&
+      prevProps.favorite.isFavorite !== this.props.favorite.isFavorite
+    ) {
+      console.log('IN COMP DID UPDATE')
+      // await this.props.getFavorite(this.props.product, {
+      //     userId: this.props.user.id,
+      //     isFavorite: this.state.isFavorite
+      // })
+      await this.props.getFavCount(this.props.product.id)
+    }
   }
   async toggleFavorite() {
-    await this.setState({
-      isFavorite: !this.state.isFavorite
-    })
+    // this.setState({
+    //   isFavorite: !this.state.isFavorite
+    console.log('BEFORE TOGGLE FAV COUNT', this.props.favCount)
+    console.log('BEFORE TOGGLE FAVORITE', this.props.favorite.isFavorite)
     await this.props.getFavorite(this.props.product, {
       userId: this.props.user.id,
-      isFavorite: this.state.isFavorite
+      isFavorite: !this.props.isFavorite
     })
-    await this.props.getFavCount(this.props.product.id)
+    this.props.getFavCount(this.props.product.id)
+    console.log('AFTER TOGGLE FAVORITE', this.props.favorite.isFavorite)
+    console.log('AFTER TOGGLE FAV COUNT', this.props.favCount)
   }
+
   render() {
-    return (
+    const favorite = this.props.favorite
+    const favCount = Number(this.props.favCount)
+    return favorite !== undefined && favCount !== undefined ? (
       <>
         <i
-          className={this.state.isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'}
+          className={favorite.isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'}
           onClick={this.toggleFavorite}
         />
-        <p>{this.state.favCount}</p>
+        <p>{this.props.favCount}</p>
       </>
+    ) : (
+      ''
     )
   }
 }
