@@ -171,6 +171,7 @@ class EditListing extends Component {
                 type="checkbox"
                 onChange={handleCheckboxChange}
                 value={isFiction}
+                checked={isFiction}
               />
               <label className="form-check-label" htmlFor="isFiction">
                 Fiction
@@ -216,6 +217,7 @@ class EditListing extends Component {
                 name="canBargain"
                 onChange={handleCheckboxChange}
                 value={canBargain}
+                checked={canBargain}
               />
               <label className="form-check-label" htmlFor="canBargain">
                 Negotiable

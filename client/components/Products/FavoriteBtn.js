@@ -26,19 +26,19 @@ class FavoriteBtn extends Component {
     console.log('COMP DID MOUNT FAV', this.props.favorite.isFavorite)
     console.log('COMP DID MOUNT FAV', this.props.favCount)
   }
-  async componentDidUpdate(prevProps) {
-    if (
-      prevProps.favorite &&
-      prevProps.favorite.isFavorite !== this.props.favorite.isFavorite
-    ) {
-      console.log('IN COMP DID UPDATE')
-      // await this.props.getFavorite(this.props.product, {
-      //     userId: this.props.user.id,
-      //     isFavorite: this.state.isFavorite
-      // })
-      await this.props.getFavCount(this.props.product.id)
-    }
-  }
+  //   async componentDidUpdate(prevProps) {
+  //     if (
+  //       prevProps.favorite &&
+  //       prevProps.favorite.isFavorite !== this.props.favorite.isFavorite
+  //     ) {
+  //       console.log('IN COMP DID UPDATE')
+  //       // await this.props.getFavorite(this.props.product, {
+  //       //     userId: this.props.user.id,
+  //       //     isFavorite: this.state.isFavorite
+  //       // })
+  //       await this.props.getFavCount(this.props.product.id)
+  //     }
+  //   }
   async toggleFavorite() {
     // this.setState({
     //   isFavorite: !this.state.isFavorite
