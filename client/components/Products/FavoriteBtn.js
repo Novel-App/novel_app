@@ -15,54 +15,64 @@ class FavoriteBtn extends Component {
     this.toggleFavorite = this.toggleFavorite.bind(this)
   }
   async componentDidMount() {
-    await this.props.getFavorite(this.props.product, {
+    await this.props.getFavorite(this.props.productId, {
       userId: this.props.user.id
     })
-    await this.props.getFavCount(this.props.product.id)
+    await this.props.getFavCount(this.props.productId)
+    // console.log('THIS PROPS FAVORITES', this.props.favorites)
     // await this.setState({
-    //   isFavorite: this.props.favorite.isFavorite,
+    //   isFavorite: this.props.favorited.isFavorite,
     //   favCount: Number(this.props.favCount)
     // })
-    console.log('COMP DID MOUNT FAV', this.props.favorite.isFavorite)
-    console.log('COMP DID MOUNT FAV', this.props.favCount)
+    // console.log('COMP DID MOUNT FAV', this.props.favorited.isFavorite)
+    // console.log('COMP DID MOUNT FAV', this.props.favCount)
   }
-  async componentDidUpdate(prevProps) {
-    if (
-      prevProps.favorite &&
-      prevProps.favorite.isFavorite !== this.props.favorite.isFavorite
-    ) {
-      console.log('IN COMP DID UPDATE')
-      // await this.props.getFavorite(this.props.product, {
-      //     userId: this.props.user.id,
-      //     isFavorite: this.state.isFavorite
-      // })
-      await this.props.getFavCount(this.props.product.id)
-    }
-  }
-  async toggleFavorite() {
+  //   async componentDidUpdate(prevProps) {
+  //     if (
+  //       prevProps.favorite &&
+  //       prevProps.favorite.isFavorite !== this.props.favorited.isFavorite
+  //     ) {
+  //       console.log('IN COMP DID UPDATE')
+  //       // await this.props.getFavorite(this.props.product, {
+  //       //     userId: this.props.user.id,
+  //       //     isFavorite: this.state.isFavorite
+  //       // })
+  //       await this.props.getFavCount(this.props.product.id)
+  //     }
+  //   }
+  async toggleFavorite(favorite) {
     // this.setState({
     //   isFavorite: !this.state.isFavorite
-    console.log('BEFORE TOGGLE FAV COUNT', this.props.favCount)
-    console.log('BEFORE TOGGLE FAVORITE', this.props.favorite.isFavorite)
-    await this.props.getFavorite(this.props.product, {
+    // console.log('BEFORE TOGGLE FAV COUNT', this.props.favCount)
+    // console.log('BEFORE TOGGLE FAVORITE', this.props.favorited.isFavorite)
+    await this.props.getFavorite(this.props.productId, {
       userId: this.props.user.id,
-      isFavorite: !this.props.isFavorite
+      isFavorite: !favorite.isFavorite
     })
-    this.props.getFavCount(this.props.product.id)
-    console.log('AFTER TOGGLE FAVORITE', this.props.favorite.isFavorite)
-    console.log('AFTER TOGGLE FAV COUNT', this.props.favCount)
+    this.props.getFavCount(this.props.productId)
+    // console.log('AFTER TOGGLE FAVORITE', this.props.favorited.isFavorite)
+    // console.log('AFTER TOGGLE FAV COUNT', this.props.favCount)
   }
 
   render() {
-    const favorite = this.props.favorite
+    const favorites = this.props.favorites || []
+    const favorite =
+      favorites.length > 0
+        ? favorites.filter(fav => fav.productId === this.props.productId)
+        : [{isFavorite: '', productId: ''}]
     const favCount = Number(this.props.favCount)
-    return favorite !== undefined && favCount !== undefined ? (
+    console.log('FAVORITED', favorite)
+    return favorite.length === 0 && favCount !== undefined ? (
       <>
         <i
-          className={favorite.isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'}
-          onClick={this.toggleFavorite}
+          className={
+            favorite[0].isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'
+          }
+          onClick={() => this.toggleFavorite(favorite[0])}
         />
         <p>{this.props.favCount}</p>
+        <p>this.props.productId {this.props.productId}</p>
+        <p>this.props.favorite.productId {favorite[0].productId}</p>
       </>
     ) : (
       ''
@@ -73,14 +83,14 @@ class FavoriteBtn extends Component {
 const mapState = state => {
   return {
     user: state.user,
-    favorite: state.products.favorite,
+    favorites: state.products.favorites,
     favCount: Number(state.products.favCount)
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    getFavorite: (product, info) => dispatch(getFavorite(product, info)),
+    getFavorite: (productId, info) => dispatch(getFavorite(productId, info)),
     getFavCount: productId => dispatch(getFavCount(productId))
   }
 }

@@ -197,7 +197,8 @@ class AllProducts extends Component {
                             <h5 className="card-text">${product.price}</h5>
                             <h5 className="card-text">
                               {/* add logic to count num favorites */}
-                              <FavoriteBtn product={product} />
+                              <FavoriteBtn productId={product.id} />
+                              <p>Product id: {product.id}</p>
                             </h5>
                           </div>
                           <br />
