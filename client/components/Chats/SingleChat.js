@@ -4,6 +4,7 @@ import Message from './Message'
 import {Form, Icon, Input, Button, Row, Col} from 'antd'
 import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
+import {Link} from 'react-router-dom'
 import socket from '../../socket'
 import moment from 'moment'
 
@@ -70,9 +71,11 @@ export class SingleChat extends Component {
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title">
-                      {chat.product.title} by {chat.product.author}
-                    </h5>
+                    <Link to={`/products/${chat.product.id}`}>
+                      <h5 className="card-title">
+                        {chat.product.title} by {chat.product.author}
+                      </h5>
+                    </Link>
                     <p className="card-text text-muted">
                       ${chat.product.price}
                     </p>
