@@ -137,7 +137,7 @@ class AllProducts extends Component {
               <Link to="/products/add">
                 <i
                   className="bi bi-plus-circle-fill"
-                  style={{'font-size': '3em'}}
+                  style={{fontSize: '3em'}}
                 />
               </Link>
               <form
@@ -169,69 +169,76 @@ class AllProducts extends Component {
               </h2>
             ) : (
               <div className="container-fluid">
-                <div className="row">
-                  {products.map(product => (
-                    <div key={product.id}>
-                      <div className="col-12 mt-3">
-                        <div className="card">
-                          <div className="card-horizontal">
-                            <Link to={`/products/${product.id}`}>
-                              <img
-                                className="card-img"
-                                alt={product.title}
-                                src={product.image}
+                {/* <div className="row no-gutters"> */}
+                {products.map(product => (
+                  <div className="card" key={product.id}>
+                    <div className="row no-gutters">
+                      <div className="col-md-4 mt-3">
+                        {/* <div className="card"> */}
+                        <div className="card-horizontal">
+                          <Link to={`/products/${product.id}`}>
+                            <img
+                              className="card-img"
+                              alt={product.title}
+                              src={product.image}
+                            />
+                          </Link>
+                        </div>
+                      </div>
+
+                      <div className="col-md-8">
+                        <div className="card-body">
+                          <h3 className="card-title text-center">
+                            {product.title}
+                          </h3>
+                          <h4 className="card-subtitle mb-2 text-muted text-center">
+                            {product.author}
+                          </h4>
+                          <div className="text-center">
+                            <h5 className="card-text">${product.price}</h5>
+                            <h5 className="card-text">
+                              {/* add logic to count num favorites */}
+                              <FavoriteBtn product={product} />
+                            </h5>
+                          </div>
+                          <br />
+                          <div className="card-footer text-center">
+                            <h5>
+                              <small className="text-muted">
+                                {product.createdAt}
+                              </small>
+                            </h5>
+                            {product.sellerId === this.props.user.id ? (
+                              <>
+                                <Link to={`/listings/${product.id}/edit`}>
+                                  <button
+                                    className="btn btn-primary rounded"
+                                    type="button"
+                                  >
+                                    {' '}
+                                    Edit
+                                  </button>
+                                </Link>
+                                <AvailabilityUpdateBtn product={product} />
+                                <i className="bi bi-star-fill small" />{' '}
+                                <span className="small">Your Listing</span>
+                              </>
+                            ) : (
+                              <AddChat
+                                productId={product.id}
+                                browserId={this.props.user.id}
                               />
-                            </Link>
-                            <div className="card-body">
-                              <h3 className="card-title text-center">
-                                {product.title}
-                              </h3>
-                              <h4 className="card-subtitle mb-2 text-muted text-center">
-                                {product.author}
-                              </h4>
-                              <div className="text-center">
-                                <h5 className="card-text">${product.price}</h5>
-                                <h5 className="card-text">
-                                  {/* add logic to count num favorites */}
-                                  <FavoriteBtn product={product} />
-                                </h5>
-                              </div>
-                              <br />
-                              <div className="card-footer text-center">
-                                <h5>
-                                  <small className="text-muted">
-                                    {product.createdAt}
-                                  </small>
-                                </h5>
-                                {product.sellerId === this.props.user.id ? (
-                                  <>
-                                    <Link to={`/listings/${product.id}/edit`}>
-                                      <button
-                                        className="btn btn-primary rounded"
-                                        type="button"
-                                      >
-                                        {' '}
-                                        Edit
-                                      </button>
-                                    </Link>
-                                    <AvailabilityUpdateBtn product={product} />
-                                    <i className="bi bi-star-fill small" />{' '}
-                                    <span className="small">Your Listing</span>
-                                  </>
-                                ) : (
-                                  <AddChat
-                                    productId={product.id}
-                                    browserId={this.props.user.id}
-                                  />
-                                )}
-                              </div>
-                            </div>
+                            )}
                           </div>
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
+                    {/* </div> */}
+                    {/* </div> */}
+                  </div>
+                  // </div>
+                ))}
+                {/* </div> */}
               </div>
             )}
           </div>
