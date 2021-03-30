@@ -205,12 +205,9 @@ class AllProducts extends Component {
                                 </h5>
                                 {product.sellerId === this.props.user.id ? (
                                   <>
-                                    <i className="bi bi-star" />
-                                    <p>Your Item</p>
-                                    <br />
                                     <Link to={`/listings/${product.id}/edit`}>
                                       <button
-                                        className="btn-primary"
+                                        className="btn btn-primary rounded"
                                         type="button"
                                       >
                                         {' '}
@@ -218,6 +215,8 @@ class AllProducts extends Component {
                                       </button>
                                     </Link>
                                     <AvailabilityUpdateBtn product={product} />
+                                    <i className="bi bi-star-fill small" />{' '}
+                                    <span className="small">Your Listing</span>
                                   </>
                                 ) : (
                                   <AddChat
