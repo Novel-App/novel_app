@@ -1,9 +1,5 @@
 import axios from 'axios'
-import history from '../history'
 import socket from '../socket'
-
-// get all messages in chat
-// add new message
 
 // ACTION TYPES
 const GET_MESSAGES = 'GET_MESSAGES'
@@ -20,28 +16,23 @@ export const addMessage = message => ({
   message
 })
 
-// THUNK CREATEORS
-export const fetchMessages = chatId => {
-  return async dispatch => {
-    try {
-      const {data: messages} = await axios.get(`/api/messages/${chatId}`)
-      dispatch(getMessages(messages))
-    } catch (error) {
-      console.log(error)
-    }
+// THUNK CREATORS
+export const fetchMessages = chatId => async dispatch => {
+  try {
+    const {data: messages} = await axios.get(`/api/messages/${chatId}`)
+    dispatch(getMessages(messages))
+  } catch (error) {
+    console.log(error)
   }
 }
 
-export const sendMessage = message => {
-  return async dispatch => {
-    try {
-      //
-      const {data: newMessage} = await axios.post('/api/messages', message)
-      dispatch(addMessage(newMessage))
-      socket.emit('new-message', newMessage)
-    } catch (error) {
-      console.log(error)
-    }
+export const sendMessage = message => async dispatch => {
+  try {
+    const {data: newMessage} = await axios.post('/api/messages', message)
+    dispatch(addMessage(newMessage))
+    socket.emit('new-message', newMessage)
+  } catch (error) {
+    console.log(error)
   }
 }
 

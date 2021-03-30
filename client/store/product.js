@@ -41,49 +41,50 @@ const _removeProduct = productId => {
 }
 
 // THUNK CREATORS
-export const fetchProducts = availability => {
-  return async dispatch => {
-    try {
-      const {data} = await axios.get(`/api/products/status/${availability}`)
-      dispatch(getProducts(data))
-    } catch (error) {
-      console.log(error)
-    }
+export const fetchProducts = availability => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/products/status/${availability}`)
+    dispatch(getProducts(data))
+  } catch (error) {
+    console.log(error)
   }
 }
 
-export const fetchSingleProduct = productId => {
-  return async dispatch => {
-    try {
-      const {data} = await axios.get(`/api/products/${productId}`)
-      dispatch(getSingleProduct(data))
-    } catch (error) {
-      console.log(error)
-    }
+export const fetchSingleProduct = productId => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/products/${productId}`)
+    dispatch(getSingleProduct(data))
+  } catch (error) {
+    console.log(error)
   }
 }
 
-export const createProduct = product => {
-  return async dispatch => {
+export const createProduct = product => async dispatch => {
+  try {
     const {data} = await axios.post('/api/products', product)
     dispatch(_createProduct(data))
     history.push('/products')
+  } catch (error) {
+    console.log(error)
   }
 }
 
-export const updateProduct = product => {
-  return async dispatch => {
+export const updateProduct = product => async dispatch => {
+  try {
     const {data} = await axios.put(`/api/products/${product.id}`, product)
     dispatch(_updateProduct(data))
     history.push('/listings')
+  } catch (error) {
+    console.log(error)
   }
 }
 
-export const removeProduct = productId => {
-  return async dispatch => {
+export const removeProduct = productId => async dispatch => {
+  try {
     await axios.delete(`/api/products/${productId}`)
     dispatch(_removeProduct(productId))
-    //   history.push()
+  } catch (error) {
+    console.log(error)
   }
 }
 
