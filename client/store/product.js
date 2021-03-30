@@ -1,3 +1,4 @@
+import ActionButton from 'antd/lib/modal/ActionButton'
 import axios from 'axios'
 import history from '../history'
 
@@ -8,6 +9,7 @@ const CREATE_PRODUCT = 'CREATE_PRODUCT'
 const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE'
+const GET_FAV_COUNT = 'GET_FAV_COUNT'
 
 // ACTION CREATORS
 const getProducts = products => ({
@@ -41,10 +43,17 @@ const _removeProduct = productId => {
   }
 }
 
-const _getFavorite = product => {
+const _getFavorite = favorite => {
   return {
     type: TOGGLE_FAVORITE,
-    product
+    favorite
+  }
+}
+
+const _getFavCount = favCount => {
+  return {
+    type: GET_FAV_COUNT,
+    favCount
   }
 }
 
@@ -95,13 +104,20 @@ export const removeProduct = productId => {
   }
 }
 
-export const getFavorite = (product, userId) => {
+export const getFavorite = (product, info) => {
   return async dispatch => {
-    const {data} = await axios.put(
+    const {data} = await axios.post(
       `/api/products/${product.id}/favorite`,
-      userId
+      info
     )
     dispatch(_getFavorite(data))
+  }
+}
+
+export const getFavCount = productId => {
+  return async dispatch => {
+    const {data} = await axios.get(`/api/products/${productId}/favorite-count`)
+    dispatch(_getFavCount(data))
   }
 }
 
@@ -109,7 +125,8 @@ export const getFavorite = (product, userId) => {
 let initialState = {
   all: [],
   single: {},
-  favorited: {}
+  favorited: {},
+  favCount: 0
 }
 
 // REDUCER
@@ -140,13 +157,12 @@ export default function(state = initialState, action) {
     case TOGGLE_FAVORITE:
       return {
         ...state,
-        all: state.all.map(product => {
-          if (product.id === action.product.id) {
-            product = action.product
-          }
-          return product
-        }),
-        single: action.product
+        favorite: action.favorite
+      }
+    case GET_FAV_COUNT:
+      return {
+        ...state,
+        favCount: action.favCount
       }
     default:
       return state

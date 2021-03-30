@@ -3,22 +3,19 @@ const db = require('../db')
 
 const Favorite = db.define('favorite', {
   isFavorite: {
-    type: Sequelize.BOOLEAN,
-    allowNull: false,
-    defaultValue: true,
-    validate: {
-      isEmpty: false
-    }
+    type: Sequelize.BOOLEAN
+    // allowNull: false,
   }
 })
 
-Favorite.getCount = function(productId) {
-  return this.findAll({
+Favorite.getCount = async function(productId) {
+  const favorites = await this.findAll({
     where: {
       productId,
       isFavorite: true
     }
-  }).length
+  })
+  return favorites.length
 }
 
 module.exports = Favorite
