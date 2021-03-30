@@ -24,7 +24,7 @@ router.get('/', async (req, res, next) => {
         },
         {
           model: Product,
-          attributes: ['title', 'id', 'image', 'price'],
+          attributes: ['title', 'author', 'id', 'image', 'price'],
           include: {
             model: User,
             as: 'seller',
@@ -53,7 +53,7 @@ router.get('/:chatId', async (req, res, next) => {
         },
         {
           model: Product,
-          attributes: ['title', 'id', 'image', 'price'],
+          attributes: ['title', 'author', 'id', 'image', 'price'],
           include: {
             model: User,
             as: 'seller',

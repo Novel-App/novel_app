@@ -9,7 +9,6 @@ class FavoriteBtn extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      ...this.props.product,
       isFavorite: true,
       favCount: 0
     }
