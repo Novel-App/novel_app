@@ -91,20 +91,9 @@ class AllProducts extends Component {
     return (
       <div className="container">
         <div className="container-flex">
-          <Link to="/products/add">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
-              fill="currentColor"
-              className="bi bi-plus-circle-fill"
-              viewBox="0 0 16 16"
-              alignself="right"
-            >
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-            </svg>
-          </Link>
-          <h5>New post</h5>
+          {/* <Link to="/products/add">
+              <i className="bi bi-plus-circle-fill" style={{"font-size":"3em"}}/>
+          </Link> */}
           <div />
           <div className="container">
             <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -144,23 +133,34 @@ class AllProducts extends Component {
                 </div>
               </div>
             </nav>
-            <form className="input-group rounded" onSubmit={this.handleSubmit}>
-              <div className="col-xs-2 form-inline">
-                <input
-                  type="search"
-                  name="searchTerm"
-                  className="form-control rounded"
-                  placeholder="Search for title/author!"
-                  aria-label="Search"
-                  aria-describedby="search-addon"
-                  value={this.state.searchTerm}
-                  onChange={this.handleOnSearchChange}
+            <div className="d-flex justify-content-between w-90">
+              <Link to="/products/add">
+                <i
+                  className="bi bi-plus-circle-fill"
+                  style={{'font-size': '3em'}}
                 />
-                <button type="submit" className="btn btn-light">
-                  search
-                </button>
-              </div>
-            </form>
+              </Link>
+              <form
+                className="input-group rounded d-flex justify-content-end"
+                onSubmit={this.handleSubmit}
+              >
+                <div className="col-xs-2 form-inline">
+                  <input
+                    type="search"
+                    name="searchTerm"
+                    className="form-control rounded"
+                    placeholder="Search for title/author!"
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+                    value={this.state.searchTerm}
+                    onChange={this.handleOnSearchChange}
+                  />
+                  <button type="submit" className="btn btn-light">
+                    search
+                  </button>
+                </div>
+              </form>
+            </div>
             {products.length === 0 ? (
               <h2>
                 {/* There are no {this.state.listingStatus.toLowerCase()}{' '}
@@ -171,8 +171,8 @@ class AllProducts extends Component {
               <div className="container-fluid">
                 <div className="row">
                   {products.map(product => (
-                    <div key={product.id}>
-                      <div className="col-12 mt-3">
+                    <div key={product.id} className="w-100">
+                      <div className="col mt-3">
                         <div className="card">
                           <div className="card-horizontal">
                             <Link to={`/products/${product.id}`}>
