@@ -13,9 +13,9 @@ class SingleProduct extends Component {
       loading: true
     }
   }
-  componentDidMount() {
+  async componentDidMount() {
     try {
-      this.props.loadProduct(this.props.match.params.id)
+      await this.props.loadProduct(this.props.match.params.id)
       this.setState({loading: false})
     } catch (err) {
       console.log(err)
@@ -31,6 +31,7 @@ class SingleProduct extends Component {
     }
     const {product, user} = this.props
     const bargainStatus = product.canBargain ? 'negotiable' : 'non-negotiable'
+
     return (
       <div className="container">
         {/* AVAILABILITY UPDATE BTN ONLY RENDERS FOR SELLER */}
@@ -53,7 +54,9 @@ class SingleProduct extends Component {
             <div className="col-md-5">
               <h2 className="mb-0 text-dark">{product.title}</h2>
               <div className="mb-0 text-dark">by {product.author}</div>
-              <div className="mb-0 text-dark">Genre: {product.genreId}</div>
+              <div className="mb-0 text-dark">
+                Genre: {product.genre.category}
+              </div>
               <div className="mb-0 text-dark">{product.createdAt}</div>
               <div>
                 <span className="mb-0 text-dark">

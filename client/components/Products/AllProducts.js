@@ -6,6 +6,7 @@ import {fetchListings} from '../../store/userInfo'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
 import FavoriteBtn from './FavoriteBtn'
 import AddChat from '../Chats/AddChat'
+import moment from 'moment'
 
 class AllProducts extends Component {
   constructor(props) {
