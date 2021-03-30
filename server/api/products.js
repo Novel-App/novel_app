@@ -58,6 +58,8 @@ router.post('/', async (req, res, next) => {
 //PASS IN userId FROM FE
 router.post('/:productId/favorite', async (req, res, next) => {
   try {
+    console.log('REQ.BODY', req.body)
+    console.log('REQ PARAMS ID', req.params.productId)
     const favorite = await Favorite.findOrCreate({
       where: {
         productId: req.params.productId,

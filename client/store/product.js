@@ -105,20 +105,21 @@ export const removeProduct = productId => async dispatch => {
   }
 }
 
-export const getFavorite = (product, info) => {
-  return async dispatch => {
-    const {data} = await axios.post(
-      `/api/products/${product.id}/favorite`,
-      info
-    )
+export const getFavorite = (productId, info) => async dispatch => {
+  try {
+    const {data} = await axios.post(`/api/products/${productId}/favorite`, info)
     dispatch(_getFavorite(data))
+  } catch (error) {
+    console.log(error)
   }
 }
 
-export const getFavCount = productId => {
-  return async dispatch => {
+export const getFavCount = productId => async dispatch => {
+  try {
     const {data} = await axios.get(`/api/products/${productId}/favorite-count`)
     dispatch(_getFavCount(data))
+  } catch (error) {
+    console.log(error)
   }
 }
 
@@ -126,7 +127,7 @@ export const getFavCount = productId => {
 let initialState = {
   all: [],
   single: {},
-  favorited: {},
+  favorites: [],
   favCount: 0
 }
 
@@ -158,7 +159,7 @@ export default function(state = initialState, action) {
     case TOGGLE_FAVORITE:
       return {
         ...state,
-        favorite: action.favorite
+        favorites: [...state.favorites, action.favorite]
       }
     case GET_FAV_COUNT:
       return {
