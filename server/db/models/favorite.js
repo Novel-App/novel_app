@@ -4,6 +4,7 @@ const db = require('../db')
 const Favorite = db.define('favorite', {
   isFavorite: {
     type: Sequelize.BOOLEAN
+    // defaultValue: false
     // allowNull: false,
   }
 })

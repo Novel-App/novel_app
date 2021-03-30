@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Chat, Message, Product, User} = require('../db/models')
+const {Chat, Product, User} = require('../db/models')
 const Op = require('Sequelize').Op
 module.exports = router
 
@@ -52,7 +52,18 @@ router.get('/', async (req, res, next) => {
 // GET /api/chats/:chatId
 router.get('/:chatId', async (req, res, next) => {
   try {
-    const chat = await Chat.findByPk(req.params.chatId, {
+    const chat = await Chat.findOne({
+      where: {
+        id: req.params.chatId,
+        [Op.or]: [
+          {
+            sellerId: req.user.id
+          },
+          {
+            browserId: req.user.id
+          }
+        ]
+      },
       include: [
         {
           model: User,
@@ -88,7 +99,15 @@ router.get('/product/:productId', async (req, res, next) => {
   try {
     const chats = await Chat.findAll({
       where: {
-        productId: req.params.productId
+        productId: req.params.productId,
+        [Op.or]: [
+          {
+            sellerId: req.user.id
+          },
+          {
+            browserId: req.user.id
+          }
+        ]
       },
       include: [
         {
@@ -134,7 +153,19 @@ router.post('/', async (req, res, next) => {
 // DELETE /api/chats
 router.delete('/:chatId', async (req, res, next) => {
   try {
-    const chat = await Chat.findByPk(req.params.chatId)
+    const chat = await Chat.findOne({
+      where: {
+        id: req.params.chatId,
+        [Op.or]: [
+          {
+            sellerId: req.user.id
+          },
+          {
+            browserId: req.user.id
+          }
+        ]
+      }
+    })
     if (chat) {
       await chat.destroy()
     } else {

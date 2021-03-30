@@ -131,8 +131,14 @@ router.put('/:productId', async (req, res, next) => {
       ]
     })
     if (!product) res.send('This product does not exist.')
-    const updatedProduct = await product.update(req.body)
-    res.status(201).send(updatedProduct)
+    else if (req.user.id === product.sellerId) {
+      const updatedProduct = await product.update(req.body)
+      res.status(201).send(updatedProduct)
+    } else {
+      const err = new Error('Unauthorized')
+      err.status = 401
+      next(err)
+    }
   } catch (err) {
     next(err)
   }
@@ -141,9 +147,16 @@ router.put('/:productId', async (req, res, next) => {
 // DELETE /api/products/:productId
 router.delete('/:productId', async (req, res, next) => {
   try {
-    const id = req.params.productId
-    await Product.destroy({where: {id}})
-    res.status(204).end()
+    const product = await Product.findByPk(req.params.productId)
+    if (!product) res.send('This product does not exist.')
+    else if (req.user.id === product.sellerId) {
+      await product.destroy()
+      res.status(204).end()
+    } else {
+      const err = new Error('Unauthorized')
+      err.status = 401
+      next(err)
+    }
   } catch (err) {
     next(err)
   }
