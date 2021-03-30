@@ -5,6 +5,7 @@ import Condition from './Condition'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
 import {Link} from 'react-router-dom'
 import AddChat from '../Chats/AddChat'
+import moment from 'moment'
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -52,13 +53,18 @@ class SingleProduct extends Component {
               />
             </div>
             <div className="col-md-5">
-              <h2 className="mb-0 text-dark">{product.title}</h2>
-              <div className="mb-0 text-dark">by {product.author}</div>
-              <div className="mb-0 text-dark">
-                Genre: {product.genre.category}
+              <div className="mb-0 text-dark small">
+                Posted{' '}
+                {moment(
+                  moment(product.createdAt).format('YYYY-MM-DD HH:mm:ss')
+                ).fromNow()}
               </div>
-              <div className="mb-0 text-dark">{product.createdAt}</div>
               <div>
+                <h2 className="mb-0 text-dark">{product.title}</h2>
+                <div className="mb-0 text-dark">by {product.author}</div>
+                <div className="mb-0 text-dark">
+                  Genre: {product.genre.category}
+                </div>
                 <span className="mb-0 text-dark">
                   Condition: {product.condition}{' '}
                 </span>

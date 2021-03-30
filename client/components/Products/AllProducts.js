@@ -204,7 +204,12 @@ class AllProducts extends Component {
                           <div className="card-footer text-center">
                             <h5>
                               <small className="text-muted">
-                                {product.createdAt}
+                                Posted{' '}
+                                {moment(
+                                  moment(product.createdAt).format(
+                                    'YYYY-MM-DD HH:mm:ss'
+                                  )
+                                ).fromNow()}
                               </small>
                             </h5>
                             {product.sellerId === this.props.user.id ? (
