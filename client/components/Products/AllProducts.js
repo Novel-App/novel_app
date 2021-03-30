@@ -171,8 +171,8 @@ class AllProducts extends Component {
               <div className="container-fluid">
                 <div className="row">
                   {products.map(product => (
-                    <div key={product.id} className="w-100">
-                      <div className="col mt-3">
+                    <div key={product.id}>
+                      <div className="col-12 mt-3">
                         <div className="card">
                           <div className="card-horizontal">
                             <Link to={`/products/${product.id}`}>
