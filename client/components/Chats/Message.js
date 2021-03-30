@@ -61,23 +61,22 @@ export class Message extends Component {
           return (
             <div key={chatBubble.id} className="box-body">
               <div className="direct-chat-info clearfix">
-                {' '}
+                <img
+                  className="direct-chat-img rounded-circle"
+                  src={info.profileImg}
+                  alt="message user image"
+                  width="30"
+                  height="30"
+                />{' '}
                 <span className="direct-chat-name pull-left">
                   {info.firstName}
                 </span>{' '}
-                <span className="direct-chat-timestamp pull-right">
+                <span className="direct-chat-timestamp pull-right small">
                   {moment(
                     moment(chatBubble.createdAt).format('YYYY-MM-DD HH:mm:ss')
                   ).fromNow()}
-                </span>{' '}
+                </span>
               </div>
-              <img
-                className="direct-chat-img rounded-circle"
-                src={info.profileImg}
-                alt="message user image"
-                width="30"
-                height="30"
-              />
               <div className="direct-chat-text">{chatBubble.content}</div>
             </div>
           )

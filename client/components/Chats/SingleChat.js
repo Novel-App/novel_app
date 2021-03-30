@@ -4,7 +4,9 @@ import Message from './Message'
 import {Form, Icon, Input, Button, Row, Col} from 'antd'
 import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
+import {Link} from 'react-router-dom'
 import socket from '../../socket'
+import moment from 'moment'
 
 /**
  * COMPONENT
@@ -52,13 +54,41 @@ export class SingleChat extends Component {
     this.setState({content: '', messageSent: true})
   }
   render() {
+    const chat = this.props.chat || {}
     return (
       <React.Fragment>
-        <div>
-          <h3>Single Chat</h3>
-        </div>
-
         <div style={{maxWidth: '800px', margin: '0 auto'}}>
+          {chat.product && (
+            <div className="card mb-3">
+              <div className="row no-gutters">
+                <div className="col-md-4 d-flex justify-content-center align-items-center">
+                  <img
+                    src={chat.product.image}
+                    className="card-img"
+                    alt="product-img"
+                    style={{height: '15vh', width: 'auto'}}
+                  />
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <Link to={`/products/${chat.product.id}`}>
+                      <h5 className="card-title">
+                        {chat.product.title} by {chat.product.author}
+                      </h5>
+                    </Link>
+                    <p className="card-text text-muted">
+                      ${chat.product.price}
+                    </p>
+                    <p className="card-text">
+                      <small className="text-muted">
+                        {chat.product.availability}
+                      </small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           <div
             className="infinite-container"
             style={{height: '500px', overflowY: 'scroll'}}
