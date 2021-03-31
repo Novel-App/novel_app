@@ -53,33 +53,8 @@ class FavAndPurchases extends Component {
     }
     return (
       <div className="container-fluid">
+        <h1>{currentPage === 'favorites' ? 'Favorites' : 'Purchases'}</h1>
         <div className="d-flex flex-column">
-          {/* {products.map(product => (
-          <div className="row" key={product.id}>
-            <div className="col-sm-6">
-              <div className="card">
-                <Link to={`/products/${product.id}`}>
-                  <img
-                    className="card-img-top"
-                    alt={product.title}
-                    src={product.image}
-                  />
-                  <h1 className="card-title">{product.title}</h1>
-                </Link>
-                <h2 className="card-subtitle mb-2 text-muted">
-                  by {product.author}
-                </h2>
-                <h3>{product.createdAt}</h3>
-                <h3>${product.price}</h3>
-                <h3>♡: {product.numFavorites}</h3>
-                <AddChat
-                  productId={product.id}
-                  browserId={this.props.user.id}
-                />
-              </div>
-            </div>
-          </div>
-        ))} */}
           {products.map(product => (
             <div className="card mt-3" key={product.id}>
               <div className="row no-gutters">
