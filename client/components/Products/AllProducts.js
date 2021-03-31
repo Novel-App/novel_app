@@ -194,10 +194,11 @@ class AllProducts extends Component {
                           </h4>
                           <div className="text-center">
                             <h5 className="card-text">${product.price}</h5>
-                            <h5 className="card-text">
-                              {/* add logic to count num favorites */}
-                              <FavoriteBtn productId={product.id} />
-                            </h5>
+                            {product.sellerId !== this.props.user.id && (
+                              <h5 className="card-text">
+                                <FavoriteBtn productId={product.id} />
+                              </h5>
+                            )}
                           </div>
                           <br />
                           <div className="card-footer text-center">
