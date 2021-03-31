@@ -28,6 +28,7 @@ class AllProducts extends Component {
       this.props.match.path.slice(1) === 'listings' ? 'listings' : 'Products'
     this.setState({currentPage: path})
     this.updateData()
+
     this.setState({loading: false})
   }
   componentDidUpdate() {
@@ -90,9 +91,6 @@ class AllProducts extends Component {
     return (
       <div className="container">
         <div className="container-flex">
-          {/* <Link to="/products/add">
-              <i className="bi bi-plus-circle-fill" style={{"font-size":"3em"}}/>
-          </Link> */}
           <div />
           <div className="container">
             <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -161,19 +159,13 @@ class AllProducts extends Component {
               </form>
             </div>
             {products.length === 0 ? (
-              <h2>
-                {/* There are no {this.state.listingStatus.toLowerCase()}{' '}
-                {this.state.currentPage} */}
-                No results
-              </h2>
+              <h2>No results</h2>
             ) : (
               <div className="container-fluid">
-                {/* <div className="row no-gutters"> */}
                 {products.map(product => (
                   <div className="card mt-3" key={product.id}>
                     <div className="row no-gutters">
                       <div className="col-md-4">
-                        {/* <div className="card"> */}
                         <div className="card-horizontal">
                           <Link to={`/products/${product.id}`}>
                             <img
@@ -198,7 +190,6 @@ class AllProducts extends Component {
                             <h5 className="card-text">
                               {/* add logic to count num favorites */}
                               <FavoriteBtn productId={product.id} />
-                              <p>Product id: {product.id}</p>
                             </h5>
                           </div>
                           <br />
@@ -238,12 +229,8 @@ class AllProducts extends Component {
                         </div>
                       </div>
                     </div>
-                    {/* </div> */}
-                    {/* </div> */}
                   </div>
-                  // </div>
                 ))}
-                {/* </div> */}
               </div>
             )}
           </div>
