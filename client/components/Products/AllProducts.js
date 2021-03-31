@@ -131,6 +131,11 @@ class AllProducts extends Component {
                 </div>
               </div>
             </nav>
+
+            <div>
+              <Book />
+            </div>
+
             <div className="d-flex justify-content-between w-90">
               <Link to="/products/add">
                 <i
