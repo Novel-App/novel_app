@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchAllChats, removeChat} from '../../store/chat'
 import moment from 'moment'
+import Book from '../Products/Book'
 
 class AllChats extends Component {
   constructor() {
@@ -49,6 +50,7 @@ class AllChats extends Component {
     return (
       <div>
         <h3>All chats</h3>
+        <Book />
         <ul>
           {currUser.map(chatRoom => {
             return (
