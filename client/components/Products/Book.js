@@ -19,7 +19,16 @@ class Book extends Component {
         `https://www.googleapis.com/books/v1/volumes?q=isbn:${this.state.isbn}`
       )
       .then(data => {
-        console.log(data)
+        //console.log ('xxxxx',data.data.items[0].authors)
+        const bookInfoFromAPI = data.data.items[0].volumeInfo
+        const bookInfo = {
+          title: bookInfoFromAPI.title,
+          ISBN: bookInfoFromAPI.industryIdentifiers[1].identifier,
+          description: bookInfoFromAPI.description,
+          image: bookInfoFromAPI.imageLinks.thumbnail
+        }
+
+        console.log('---->', bookInfo)
       })
   }
 
