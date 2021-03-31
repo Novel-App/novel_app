@@ -36,28 +36,18 @@ class EditProfile extends Component {
     this.props.editUser({...this.state, id: this.props.user.id})
   }
 
-  // upload(){
-  //   return (async (resolve, reject) => {
-  //     const filePicker = document.querySelector('input');
-
-  //     if (!filePicker || !filePicker.files
-  //         || filePicker.files.length <= 0) {
-  //         reject('No file selected.');
-  //         return;
-  //     }
-  //     const myFile = filePicker.files[0];
-  //     console.log(myFile);
-
-  //     resolve();
-  // });
-  // }
+  onFileChange(event) {
+    this.setState({
+      profileImage: event.target.files
+    })
+  }
 
   render() {
     const {
       firstName,
       lastName,
       email,
-      profileImage,
+      profileImageData,
       zipCode,
       password
     } = this.state
@@ -69,7 +59,7 @@ class EditProfile extends Component {
             <div className="d-flex flex-column align-items-center text-center p-3 py-5">
               <img
                 className="rounded-circle mt-5"
-                src={profileImage}
+                src={profileImageData}
                 width="90"
               />
               <span className="font-weight-bold">{firstName}</span>
@@ -115,16 +105,6 @@ class EditProfile extends Component {
               </div>
 
               <div className="input-field">
-                <label>Zip Code</label>
-                <input
-                  type="text"
-                  id="zipCode"
-                  value={zipCode}
-                  onChange={this.handleChange}
-                />
-              </div>
-
-              <div className="input-field">
                 <label>Password</label>
                 <input
                   type="text"
@@ -138,7 +118,7 @@ class EditProfile extends Component {
                 <input
                   type="file"
                   accept="image/x-png,image/jpeg, image/gif"
-                  onChange={() => this.upload()}
+                  onChange={() => this.onFileChange()}
                 />
               </div>
               <div>
