@@ -5,6 +5,7 @@ router.use('/users', require('./users'))
 router.use('/chats', require('./chats'))
 router.use('/messages', require('./messages'))
 router.use('/products', require('./products'))
+router.use('/images', require('./images'))
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')

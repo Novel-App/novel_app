@@ -36,11 +36,11 @@ class EditProfile extends Component {
     this.props.editUser({...this.state, id: this.props.user.id})
   }
 
-  onFileChange(event) {
-    this.setState({
-      profileImage: event.target.files
-    })
-  }
+  // onFileChange(event) {
+  //   this.setState({
+  //     profileImage: event.target.files
+  //   })
+  // }
 
   render() {
     const {firstName, lastName, email} = this.state

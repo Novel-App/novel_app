@@ -5,6 +5,7 @@ const Favorite = require('./favorite')
 const Message = require('./message')
 const Chat = require('./chat')
 const Review = require('./review')
+const Image = require('./image')
 const db = require('../db')
 
 /**
@@ -55,18 +56,6 @@ Chat.belongsToMany(User, {
   constraints: false
 })
 
-// Post.belongsToMany(Tag, {
-//   through: {
-//       model: ItemTag,
-//       unique: false,
-//       scope: {
-//           taggable: 'post'
-//       }
-//   },
-//   foreignKey: 'taggable_id',
-//   constraints: false
-// });
-
 //adding associations between user and review
 User.belongsToMany(User, {through: Review, as: 'reviewer'})
 
@@ -100,5 +89,6 @@ module.exports = {
   Chat,
   Message,
   Review,
+  Image,
   db
 }

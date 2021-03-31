@@ -1,6 +1,6 @@
 const fs = require('fs')
 const db = require('../db')
-const User = require('../db/models/user')
+const Image = require('../db/models/image')
 
 const upload = (req, res, next) => {
   try {
@@ -8,12 +8,10 @@ const upload = (req, res, next) => {
     if (req.file === undefined) {
       return res.send('You must select a file.')
     }
-    User.create({
-      profileImageType: req.file.mimetype,
-      profileImageName: req.file.originalname,
-      profileImageData: fs.readFileSync(
-        __basedir + 'resources/uploads' + req.file.filename
-      )
+    Image.create({
+      type: req.file.mimetype,
+      name: req.file.originalname,
+      data: fs.readFileSync(__basedir + 'resources/uploads' + req.file.filename)
     }).then(image => {
       fs.writeFileSync(__basedir + 'resources/uploads' + image.name, image.data)
       return res.send(`File has been uploaded.`)
