@@ -72,11 +72,11 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
+    updateFavCount: productId => dispatch(updateFavCount(productId)),
     getFavCount: productId => dispatch(getFavCount(productId)),
     updateFavorite: (productId, info) =>
       dispatch(updateFavorite(productId, info)),
-    getFavorites: userId => dispatch(getFavorites(userId)),
-    updateFavCount: productId => dispatch(updateFavCount(produtId))
+    getFavorites: userId => dispatch(getFavorites(userId))
   }
 }
 
