@@ -17,6 +17,7 @@ const defaultState = {
   price: 0,
   canBargain: false,
   availability: 'Available',
+  isFiction: false,
   genreId: ''
 }
 

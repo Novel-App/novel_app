@@ -65,7 +65,8 @@ class SingleProduct extends Component {
                 <h2 className="mb-0 text-dark">{product.title} </h2>
                 <div className="mb-0 text-dark">by {product.author}</div>
                 <div className="mb-0 text-dark">
-                  Genre: {product.genre.category}
+                  Genre: {product.genre.category}{' '}
+                  {product.isFiction && '(Fiction)'}
                 </div>
                 <span className="mb-0 text-dark">
                   Condition: {product.condition}{' '}
