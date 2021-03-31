@@ -180,7 +180,9 @@ class AllProducts extends Component {
                       <div className="col-md-8">
                         <div className="card-body">
                           <h3 className="card-title text-center">
-                            {product.title}
+                            <Link to={`/products/${product.id}`}>
+                              {product.title}
+                            </Link>
                           </h3>
                           <h4 className="card-subtitle mb-2 text-muted text-center">
                             {product.author}
