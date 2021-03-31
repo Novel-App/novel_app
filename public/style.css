@@ -75,6 +75,10 @@ body {
   align-items: center;
 }
 
+.bi {
+  cursor: pointer;
+}
+
 .btn-circle.btn-xl {
   width: 90px;
   height: 90px;

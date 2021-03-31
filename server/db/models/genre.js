@@ -8,13 +8,13 @@ const Genre = db.define('genre', {
   //   primaryKey: true,
   //   type: Sequelize.INTEGER
   // },
-  isFiction: {
-    type: Sequelize.BOOLEAN,
-    allowNull: false
-    // validate: {
-    //   notEmpty: true
-    // }
-  },
+  // isFiction: {
+  //   type: Sequelize.BOOLEAN,
+  //   allowNull: false
+  //   // validate: {
+  //   //   notEmpty: true
+  //   // }
+  // },
   category: {
     type: Sequelize.ENUM(
       'Fantasy/Adventure',
