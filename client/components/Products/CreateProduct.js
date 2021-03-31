@@ -17,6 +17,7 @@ const defaultState = {
   price: 0,
   canBargain: false,
   availability: 'Available',
+  isFiction: false,
   genreId: ''
 }
 
@@ -65,7 +66,11 @@ class CreateProduct extends Component {
     return (
       <div>
         <div className="d-flex flex-column justify-content-center">
-          <Link to="/products">Cancel</Link>
+          <Link to="/home">
+            <button type="button" className="btn btn-warning">
+              Cancel
+            </button>
+          </Link>
           <h1 className="align-self-center">New post</h1>
         </div>
 
