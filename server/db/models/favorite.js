@@ -17,7 +17,7 @@ Favorite.getCount = async function(productId) {
         isFavorite: true
       }
     })
-    return favs.length
+    return {productId: productId, count: favs.length}
   } catch (error) {
     console.log(error)
   }
