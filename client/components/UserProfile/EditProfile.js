@@ -10,7 +10,8 @@ class EditProfile extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: ''
+      password: '',
+      profileImage: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -20,7 +21,8 @@ class EditProfile extends Component {
       firstName: this.props.user.firstName,
       lastName: this.props.user.lastName,
       email: this.props.user.email,
-      password: this.props.user.password
+      password: this.props.user.password,
+      profileImage: this.props.user.profileImage
     })
   }
   handleChange(event) {
@@ -34,24 +36,15 @@ class EditProfile extends Component {
     this.props.editUser({...this.state, id: this.props.user.id})
   }
 
-  // upload(){
-  //   return (async (resolve, reject) => {
-  //     const filePicker = document.querySelector('input');
-
-  //     if (!filePicker || !filePicker.files
-  //         || filePicker.files.length <= 0) {
-  //         reject('No file selected.');
-  //         return;
-  //     }
-  //     const myFile = filePicker.files[0];
-  //     console.log(myFile);
-
-  //     resolve();
-  // });
-  // }
+  onFileChange(event) {
+    this.setState({
+      profileImageData: event.target.files
+    })
+  }
 
   render() {
-    const {firstName, lastName, email, profileImage} = this.state
+    const {firstName, lastName, email} = this.state
+    const {profileImage} = this.props.user
 
     return (
       <div id="edit-container" className="container rounded mt-5">
@@ -118,7 +111,7 @@ class EditProfile extends Component {
                 <input
                   type="file"
                   accept="image/x-png,image/jpeg, image/gif"
-                  onChange={() => this.upload()}
+                  onChange={event => this.onFileChange(event)}
                 />
               </div>
               <div>

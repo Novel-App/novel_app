@@ -91,11 +91,11 @@ router.post('/favorite/:productId', async (req, res, next) => {
 })
 
 //FAVORITE COUNT
-// GET /api/products/:productId/favorite-count
-router.get('/:productId/favorite-count', async (req, res, next) => {
+// GET /api/products/favorite-count/:productId
+router.get('/favoriteCount/:productId', async (req, res, next) => {
   try {
     const favCount = await Favorite.getCount(req.params.productId)
-    res.status(200).send(favCount.toString())
+    res.status(200).send(favCount)
   } catch (error) {
     next(error)
   }

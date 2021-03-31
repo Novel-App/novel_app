@@ -53,10 +53,19 @@ const User = db.define('user', {
   },
   //Update image validater once we figure out another way to store images
   profileImage: {
-    type: Sequelize.TEXT,
+    type: Sequelize.STRING,
     defaultValue:
       'https://ih1.redbubble.net/image.1251162799.6563/flat,750x,075,f-pad,750x1000,f8f8f8.jpg',
     allowNull: false
+  },
+  // profileImageType: {
+  //   type: Sequelize.TEXT
+  // },
+  // profileImageName: {
+  //   type: Sequelize.TEXT
+  // },
+  profileImageData: {
+    type: Sequelize.BLOB
   },
   photoVerified: {
     type: Sequelize.BOOLEAN,

@@ -42,6 +42,12 @@ class CreateProduct extends Component {
     })
   }
 
+  onFileChange(event) {
+    // this.setState({
+    //   profileImage: event.target.files
+    // })
+  }
+
   async handleSubmit(evt) {
     evt.preventDefault()
     await this.props.createProduct({
@@ -83,6 +89,13 @@ class CreateProduct extends Component {
                 required
                 />
                 <br /> */}
+          <div className="form-group">
+            <input
+              type="file"
+              accept="image/x-png,image/jpeg, image/gif"
+              onChange={() => this.onFileChange()}
+            />
+          </div>
 
           <div className="form-group">
             <label htmlFor="title">Title</label>
