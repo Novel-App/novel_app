@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {fetchProducts} from '../../store/product'
+import {fetchProducts, removeProduct} from '../../store/product'
 import {fetchListings} from '../../store/userInfo'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
 import FavoriteBtn from './FavoriteBtn'
@@ -73,6 +73,11 @@ class AllProducts extends Component {
           .includes(this.state.searchTerm.toLowerCase())
     )
   }
+
+  deleteClickHandler(productId) {
+    this.props.deleteProduct(productId)
+  }
+
   render() {
     //loading screen
     if (this.state.loading === true) {
@@ -133,7 +138,7 @@ class AllProducts extends Component {
             <div className="d-flex justify-content-between w-90">
               <Link to="/products/add">
                 <i
-                  className="bi bi-plus-circle-fill"
+                  className="bi bi-plus-circle-fill add-product"
                   style={{fontSize: '3em'}}
                 />
               </Link>
@@ -180,7 +185,9 @@ class AllProducts extends Component {
                       <div className="col-md-8">
                         <div className="card-body">
                           <h3 className="card-title text-center">
-                            {product.title}
+                            <Link to={`/products/${product.id}`}>
+                              {product.title}
+                            </Link>
                           </h3>
                           <h4 className="card-subtitle mb-2 text-muted text-center">
                             {product.author}
@@ -206,15 +213,24 @@ class AllProducts extends Component {
                             </h5>
                             {product.sellerId === this.props.user.id ? (
                               <>
-                                <Link to={`/listings/${product.id}/edit`}>
-                                  <button
-                                    className="btn btn-primary rounded"
-                                    type="button"
-                                  >
-                                    {' '}
-                                    Edit
-                                  </button>
-                                </Link>
+                                <div className="d-flex justify-content-center align-items-center">
+                                  <Link to={`/listings/${product.id}/edit`}>
+                                    <button
+                                      className="btn btn-primary rounded mr-2"
+                                      type="button"
+                                    >
+                                      Edit
+                                    </button>
+                                  </Link>
+                                  <span style={{fontSize: '2em'}}>
+                                    <i
+                                      className="bi bi-trash"
+                                      onClick={() =>
+                                        this.deleteClickHandler(product.id)
+                                      }
+                                    />
+                                  </span>
+                                </div>
                                 <AvailabilityUpdateBtn product={product} />
                                 <i className="bi bi-star-fill small" />{' '}
                                 <span className="small">Your Listing</span>
@@ -252,7 +268,8 @@ const mapDispatch = dispatch => {
   return {
     loadListings: (userId, availability) =>
       dispatch(fetchListings(userId, availability)),
-    loadProducts: availability => dispatch(fetchProducts(availability))
+    loadProducts: availability => dispatch(fetchProducts(availability)),
+    deleteProduct: productId => dispatch(removeProduct(productId))
   }
 }
 

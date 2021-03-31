@@ -37,7 +37,8 @@ body {
 }
 
 #prod-nav-link:hover,
-#prod-nav-link.active {
+#prod-nav-link.active,
+.add-product:hover {
   color: #564147;
 }
 
@@ -92,6 +93,10 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 label {
