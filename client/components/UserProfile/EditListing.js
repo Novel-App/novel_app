@@ -80,9 +80,14 @@ class EditListing extends Component {
     } = this.state
     return (
       <div>
-        <div className="d-flex flex-column justify-content-center">
+        {/* <div className="d-flex flex-column justify-content-center">
           <Link to="/listings">Cancel</Link>
-        </div>
+        </div> */}
+        <Link to="/listings">
+          <button type="button" className="btn btn-warning">
+            Cancel
+          </button>
+        </Link>
 
         <form onSubmit={handleSubmit}>
           {/* <label htmlFor="image">Upload Images:</label>
@@ -164,7 +169,7 @@ class EditListing extends Component {
               <option value={10}>Childrens</option>
             </select>
 
-            <div className="form-check">
+            {/* <div className="form-check">
               <input
                 className="form-check-input"
                 name="isFiction"
@@ -176,7 +181,7 @@ class EditListing extends Component {
               <label className="form-check-label" htmlFor="isFiction">
                 Fiction
               </label>
-            </div>
+            </div> */}
           </div>
 
           <div className="form-group">
