@@ -138,7 +138,7 @@ class AllProducts extends Component {
             <div className="d-flex justify-content-between w-90">
               <Link to="/products/add">
                 <i
-                  className="bi bi-plus-circle-fill"
+                  className="bi bi-plus-circle-fill add-product"
                   style={{fontSize: '3em'}}
                 />
               </Link>
