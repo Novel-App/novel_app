@@ -72,8 +72,12 @@ class CreateProduct extends Component {
     return (
       <div>
         <div className="d-flex flex-column justify-content-center">
-          <Link to="/products">Cancel</Link>
-          <h1 className="align-self-center">New Product</h1>
+          <Link to="/home">
+            <button type="button" className="btn btn-warning">
+              Cancel
+            </button>
+          </Link>
+          <h1 className="align-self-center">New post </h1>
         </div>
 
         <form onSubmit={handleSubmit}>
