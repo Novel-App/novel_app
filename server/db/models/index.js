@@ -55,18 +55,6 @@ Chat.belongsToMany(User, {
   constraints: false
 })
 
-// Post.belongsToMany(Tag, {
-//   through: {
-//       model: ItemTag,
-//       unique: false,
-//       scope: {
-//           taggable: 'post'
-//       }
-//   },
-//   foreignKey: 'taggable_id',
-//   constraints: false
-// });
-
 //adding associations between user and review
 User.belongsToMany(User, {through: Review, as: 'reviewer'})
 

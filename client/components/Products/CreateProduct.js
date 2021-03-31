@@ -42,6 +42,12 @@ class CreateProduct extends Component {
     })
   }
 
+  onFileChange(event) {
+    // this.setState({
+    //   profileImage: event.target.files
+    // })
+  }
+
   async handleSubmit(evt) {
     evt.preventDefault()
     await this.props.createProduct({
@@ -66,12 +72,8 @@ class CreateProduct extends Component {
     return (
       <div>
         <div className="d-flex flex-column justify-content-center">
-          <Link to="/home">
-            <button type="button" className="btn btn-warning">
-              Cancel
-            </button>
-          </Link>
-          <h1 className="align-self-center">New post</h1>
+          <Link to="/products">Cancel</Link>
+          <h1 className="align-self-center">New Product</h1>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -83,6 +85,13 @@ class CreateProduct extends Component {
                 required
                 />
                 <br /> */}
+          <div className="form-group">
+            <input
+              type="file"
+              accept="image/x-png,image/jpeg, image/gif"
+              onChange={() => this.onFileChange()}
+            />
+          </div>
 
           <div className="form-group">
             <label htmlFor="title">Title</label>

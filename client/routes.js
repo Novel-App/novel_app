@@ -15,7 +15,8 @@ import {
   Profile,
   CreateProduct,
   FavandPurchases,
-  EditListing
+  EditListing,
+  EditProfImage
 } from './components'
 import {getMe} from './store'
 
