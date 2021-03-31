@@ -65,7 +65,8 @@ class SingleProduct extends Component {
                 <h2 className="mb-0 text-dark">{product.title} </h2>
                 <div className="mb-0 text-dark">by {product.author}</div>
                 <div className="mb-0 text-dark">
-                  Genre: {product.genre.category}
+                  Genre: {product.genre.category}{' '}
+                  {product.isFiction && '(Fiction)'}
                 </div>
                 <span className="mb-0 text-dark">
                   Condition: {product.condition}{' '}
@@ -81,7 +82,20 @@ class SingleProduct extends Component {
               </p>
               {/* if user is a buyer then render products to buy */}
               <div className="d-flex mb-0 justify-content-space-around align-items-center">
-                <span className="mr-2">
+                {product.sellerId !== this.props.user.id && (
+                  <>
+                    <span className="mr-2">
+                      <AddChat
+                        productId={product.id}
+                        browserId={this.props.user.id}
+                      />
+                    </span>
+                    <span style={{fontSize: '1.5em'}}>
+                      <FavoriteBtn productId={product.id} />
+                    </span>
+                  </>
+                )}
+                {/* <span className="mr-2">
                   <AddChat
                     productId={product.id}
                     browserId={this.props.user.id}
@@ -89,7 +103,7 @@ class SingleProduct extends Component {
                 </span>
                 <span style={{fontSize: '1.5em'}}>
                   <FavoriteBtn productId={product.id} />
-                </span>
+                </span> */}
               </div>
             </div>
           </div>

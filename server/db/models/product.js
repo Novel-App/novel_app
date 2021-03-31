@@ -26,6 +26,10 @@ const Product = db.define('product', {
   description: {
     type: Sequelize.TEXT
   },
+  isFiction: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false
+  },
   //Update image validater once we figure out another way to store images
   image: {
     type: Sequelize.TEXT,
