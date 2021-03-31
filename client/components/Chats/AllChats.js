@@ -52,7 +52,7 @@ class AllChats extends Component {
         <ul>
           {currUser.map(chatRoom => {
             return (
-              <li key={chatRoom.chatId}>
+              <li className="d-flex" key={chatRoom.chatId}>
                 <Link
                   to={{
                     pathname: `/chats/${chatRoom.chatId}`
@@ -60,14 +60,12 @@ class AllChats extends Component {
                 >
                   <p>{`${chatRoom.firstName}: ${chatRoom.productName}`}</p>
                 </Link>
-                <div>
-                  <button
-                    type="button"
+                <span>
+                  <i
+                    className="bi bi-trash ml-5"
                     onClick={() => this.deleteClickHandler(chatRoom.chatId)}
-                  >
-                    X
-                  </button>
-                </div>
+                  />
+                </span>
               </li>
             )
           })}

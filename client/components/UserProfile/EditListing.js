@@ -80,9 +80,14 @@ class EditListing extends Component {
     } = this.state
     return (
       <div>
-        <div className="d-flex flex-column justify-content-center">
+        {/* <div className="d-flex flex-column justify-content-center">
           <Link to="/listings">Cancel</Link>
-        </div>
+        </div> */}
+        <Link to="/listings">
+          <button type="button" className="btn btn-warning">
+            Cancel
+          </button>
+        </Link>
 
         <form onSubmit={handleSubmit}>
           {/* <label htmlFor="image">Upload Images:</label>
