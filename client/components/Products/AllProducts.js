@@ -150,7 +150,7 @@ class AllProducts extends Component {
                   <input
                     type="search"
                     name="searchTerm"
-                    className="form-control rounded"
+                    className="form-control rounded mr-1"
                     placeholder="Search for title/author!"
                     aria-label="Search"
                     aria-describedby="search-addon"
