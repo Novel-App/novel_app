@@ -207,16 +207,16 @@ async function seed() {
 
   //Genre
   const genres = [
-    {isFiction: true, category: 'Fantasy/Adventure'},
-    {isFiction: true, category: 'Romance'},
-    {isFiction: true, category: 'Thriller/Mystery'},
-    {isFiction: true, category: 'Science Fiction/Dystopian'},
-    {isFiction: false, category: 'Memoir'},
-    {isFiction: false, category: 'History'},
-    {isFiction: false, category: 'Lifestyle'},
-    {isFiction: false, category: 'Development/How-To/Education'},
-    {isFiction: true, category: 'Humor'},
-    {isFiction: true, category: 'Childrens'}
+    {category: 'Fantasy/Adventure'},
+    {category: 'Romance'},
+    {category: 'Thriller/Mystery'},
+    {category: 'Science Fiction/Dystopian'},
+    {category: 'Memoir'},
+    {category: 'History'},
+    {category: 'Lifestyle'},
+    {category: 'Development/How-To/Education'},
+    {category: 'Humor'},
+    {category: 'Childrens'}
   ]
   const bulkCreateContent = await Genre.bulkCreate(genres)
 
@@ -240,6 +240,7 @@ async function seed() {
       ISBN: '0735224293',
       description:
         'Little Fires Everywhere is a 2017 novel by American author Celeste Ng. It is her second novel and takes place in Shaker Heights, Ohio, where Ng grew up.',
+      isFiction: true,
       image: 'https://pictures.abebooks.com/inventory/md/md30853210698.jpg',
       condition: 'Like New',
       numFavorites: 2,
@@ -256,6 +257,7 @@ async function seed() {
       ISBN: '0399563091',
       description:
         'Inspired by the incredible true story of one Jewish family separated at the start of World War II, determined to survive—and to reunite—We Were the Lucky Ones is a tribute to the triumph of hope and love against all odds.',
+      isFiction: true,
       image: 'https://pictures.abebooks.com/inventory/md/md30568451278.jpg',
       condition: 'Good',
       numFavorites: 1,
@@ -272,6 +274,7 @@ async function seed() {
       ISBN: '0689851952',
       description:
         'On the Midwinter Day that is his eleventh birthday, Will Stanton discovers a special gift--he is the last of the Old Ones, immortals dedicated to keeping the world from dominations by the forces of evil, the Dark. At once, he is plunged into a quest for the six magical Signs that will one day and the Old Ones in the final battle between the Dark and the Light. And for the twelve days of Christmas, while the Dark is rising, life for Will is fill of wonder, terror, and delight.',
+      isFiction: true,
       image: 'https://pictures.abebooks.com/inventory/md/md21556602983.jpg',
       condition: 'Loved',
       numFavorites: 4,
@@ -288,6 +291,7 @@ async function seed() {
       ISBN: '0375827781',
       description:
         'Cuddle up with Nicholas the bunny in Richard Scarrys beloved classic.',
+      isFiction: true,
       image: 'https://pictures.abebooks.com/inventory/md/md30346052192.jpg',
       condition: 'Loved',
       numFavorites: 0,
@@ -304,6 +308,7 @@ async function seed() {
       ISBN: '0002313316',
       description:
         'Collection of short stories, these stories were selected for television.',
+      isFiction: true,
       image: 'https://pictures.abebooks.com/inventory/md/md1090740259.jpg',
       condition: 'Good',
       numFavorites: 0,
@@ -318,6 +323,7 @@ async function seed() {
       title: '3001: The Final Odyssey',
       author: 'Arthur C. Clarke',
       ISBN: '0345315227',
+      isFiction: true,
       description: 'The fourth and last book in the Odyssey series.',
       image: 'https://pictures.abebooks.com/inventory/md/md30800602444.jpg',
       condition: 'Like New',
@@ -335,6 +341,7 @@ async function seed() {
       ISBN: '0515047260',
       description:
         'A GLITTERING CENTURY WAS ABOUT TO END . . . AND SO WAS KATHLEENS INNOCENCE!',
+      isFiction: true,
       image: 'https://pictures.abebooks.com/inventory/md/md3870823688.jpg',
       condition: 'Aged',
       numFavorites: 1,
@@ -351,6 +358,7 @@ async function seed() {
       ISBN: '0002550504',
       description:
         'Margaret Thatchers government was, she says, about the application of a philosophy, not the implementation of an administrative programme.',
+      isFiction: false,
       image: 'https://pictures.abebooks.com/inventory/md/md30863319630.jpg',
       condition: 'Like New',
       numFavorites: 0,
@@ -364,6 +372,7 @@ async function seed() {
     {
       title: 'Passports Illustrated Travel Guide to Amsterdam',
       author: 'Thomas Cook',
+      isFiction: false,
       ISBN: '0844290432',
       description: 'Guide to Amsterdam',
       image: 'https://pictures.abebooks.com/isbn/9780844290430-us.jpg',
@@ -381,6 +390,7 @@ async function seed() {
       author: 'Gary Larson',
       ISBN: '0844290432',
       description: 'Book of Far Side Cartoons',
+      isFiction: true,
       image: 'https://pictures.abebooks.com/inventory/md/md8655857930.jpg',
       condition: 'Loved',
       numFavorites: 0,
@@ -397,6 +407,7 @@ async function seed() {
       ISBN: '1449337392',
       description:
         'Building Node Applications with MongoDB and Backbone The enthusiasm behind Node does not just reflect the promise of server side JavaScript. Developers also have the potential to create elegant applications with this open source framework that are much easier to maintain.',
+      isFiction: false,
       image: 'https://pictures.abebooks.com/inventory/md/md30310824446.jpg',
       condition: 'Loved',
       numFavorites: 0,
@@ -413,6 +424,7 @@ async function seed() {
       ISBN: '0241425441',
       description:
         'Record-breaking Sunday Times Number One Bestseller. Great series!',
+      isFiction: true,
       image: 'https://pictures.abebooks.com/inventory/md/md30744350421.jpg',
       condition: 'Like New',
       numFavorites: 0,
@@ -428,6 +440,7 @@ async function seed() {
       author: 'Hans Bisanz',
       ISBN: '0914427075',
       description: 'Book on Vienna',
+      isFiction: true,
       image: 'https://pictures.abebooks.com/inventory/md/md30472342163.jpg',
       condition: 'Loved',
       numFavorites: 0,
@@ -444,6 +457,7 @@ async function seed() {
       ISBN: '0385409958',
       description:
         'A new stage adaptation of one of Pratchetts best-selling novels Commander Vimes is sent to wild, wintry and Transylvania-like Uberwald to establish trade links with the King of the Dwarfs but he ends up trying to stop and inter-species war.',
+      isFiction: true,
       image: 'https://pictures.abebooks.com/inventory/md/md22878683997.jpg',
       condition: 'Good',
       numFavorites: 0,
@@ -460,6 +474,7 @@ async function seed() {
       ISBN: '0767903862',
       description:
         'Every time Bill Bryson walks out the door, memorable travel literature threatens to break out. This time in Australia.',
+      isFiction: false,
       image: 'https://pictures.abebooks.com/inventory/md/md30616504538.jpg',
       condition: 'Good',
       numFavorites: 0,
