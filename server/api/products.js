@@ -53,13 +53,28 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-//FAVORITE PRODUCT
-//POST /api/products/:productId/favorite
+//GET ALL USER FAVORITE PRODUCTS
+//GET /api/products/favorites/:userId
 //PASS IN userId FROM FE
-router.post('/:productId/favorite', async (req, res, next) => {
+router.get('/favorites/:userId', async (req, res, next) => {
   try {
-    console.log('REQ.BODY', req.body)
-    console.log('REQ PARAMS ID', req.params.productId)
+    console.log(req.params.userId)
+    const favorite = await Favorite.findAll({
+      where: {
+        userId: req.params.userId
+      }
+    })
+    res.status(201).json(favorite)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//FAVORITE PRODUCT
+//POST /api/favorite/:productId
+//PASS IN userId FROM FE
+router.post('/favorite/:productId', async (req, res, next) => {
+  try {
     const favorite = await Favorite.findOrCreate({
       where: {
         productId: req.params.productId,
