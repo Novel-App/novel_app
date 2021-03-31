@@ -3,45 +3,50 @@
 //pass in product req.body object including all necessary fields (including user)
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getFavorite, getFavCount} from '../../store/product'
+import {getFavorites, updateFavorite, getFavCount} from '../../store/favorites'
 
 class FavoriteBtn extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isFavorite: true,
-      favCount: 0
+      statusUpdated: false
     }
     this.toggleFavorite = this.toggleFavorite.bind(this)
   }
-  async componentDidMount() {
-    await this.props.getFavorite(this.props.product, {
-      userId: this.props.user.id
-    })
-    await this.props.getFavCount(this.props.product.id)
-    await this.setState({
-      isFavorite: this.props.favorite.isFavorite,
-      favCount: this.props.favCount
-    })
+  componentDidMount() {
+    this.props.getFavorites(this.props.user.id)
   }
-  async toggleFavorite() {
-    await this.setState({
-      isFavorite: !this.state.isFavorite
-    })
-    await this.props.getFavorite(this.props.product, {
+  async componentDidUpdate() {
+    if (this.state.statusUpdated) {
+      await this.props.getFavorites(this.props.user.id)
+      this.setState({statusUpdated: false})
+    }
+  }
+  toggleFavorite(favStatus) {
+    this.props.updateFavorite(this.props.productId, {
       userId: this.props.user.id,
-      isFavorite: this.state.isFavorite
+      isFavorite: !favStatus
     })
-    await this.props.getFavCount(this.props.product.id)
+    this.setState({
+      statusUpdated: true
+    })
   }
   render() {
-    return (
+    const favorites = this.props.favorites || []
+    let favorite = favorites.filter(
+      fav => fav.productId === this.props.productId
+    )
+    favorite = favorite.length > 0 ? favorite[0] : {isFavorite: false}
+    const favCount = Number(this.props.favCount)
+    return favorite === undefined || favCount === undefined ? (
+      <></>
+    ) : (
       <>
         <i
-          className={this.state.isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'}
-          onClick={this.toggleFavorite}
+          className={favorite.isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'}
+          onClick={() => this.toggleFavorite(favorite.isFavorite)}
         />
-        <p>{this.state.favCount}</p>
+        {/* <p>{this.props.favCount}</p> */}
       </>
     )
   }
@@ -50,15 +55,17 @@ class FavoriteBtn extends Component {
 const mapState = state => {
   return {
     user: state.user,
-    favorite: state.products.favorite,
+    favorites: state.favorites.all,
     favCount: Number(state.products.favCount)
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    getFavorite: (product, info) => dispatch(getFavorite(product, info)),
-    getFavCount: productId => dispatch(getFavCount(productId))
+    getFavCount: productId => dispatch(getFavCount(productId)),
+    updateFavorite: (productId, info) =>
+      dispatch(updateFavorite(productId, info)),
+    getFavorites: userId => dispatch(getFavorites(userId))
   }
 }
 

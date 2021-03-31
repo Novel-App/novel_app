@@ -8,7 +8,8 @@ socket.on('connect', () => {
   console.log('I am now connected to the server!')
 })
 
-socket.on('new-message', message => {
+socket.on('get-message', message => {
+  console.log('listenning new message from serve..', message)
   store.dispatch(addMessage(message))
 })
 

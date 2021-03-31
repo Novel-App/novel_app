@@ -11,7 +11,7 @@ class EditProfile extends Component {
       lastName: '',
       email: '',
       password: '',
-      zipCode: ''
+      profileImage: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,7 +22,7 @@ class EditProfile extends Component {
       lastName: this.props.user.lastName,
       email: this.props.user.email,
       password: this.props.user.password,
-      zipCode: this.props.user.zipCode
+      profileImage: this.props.user.profileImage
     })
   }
   handleChange(event) {
@@ -43,14 +43,8 @@ class EditProfile extends Component {
   }
 
   render() {
-    const {
-      firstName,
-      lastName,
-      email,
-      profileImageData,
-      zipCode,
-      password
-    } = this.state
+    const {firstName, lastName, email} = this.state
+    const {profileImage} = this.props.user
 
     return (
       <div id="edit-container" className="container rounded mt-5">
@@ -59,13 +53,12 @@ class EditProfile extends Component {
             <div className="d-flex flex-column align-items-center text-center p-3 py-5">
               <img
                 className="rounded-circle mt-5"
-                src={profileImageData}
+                src={profileImage}
                 width="90"
               />
               <span className="font-weight-bold">{firstName}</span>
               <span className="font-weight-bold">{lastName}</span>
               <span>{email}</span>
-              <span>{zipCode}</span>
             </div>
           </div>
           <div className="col-md-8">

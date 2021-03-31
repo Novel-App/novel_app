@@ -6,7 +6,8 @@ module.exports = io => {
     console.log(socket.id, ' has made a persistent connection to the server!')
 
     socket.on('new-message', message => {
-      socket.broadcast.emit('new-message', message)
+      console.log('sending a new message......', message)
+      socket.broadcast.emit('get-message', message)
     })
 
     socket.on('new-chat', chat => {

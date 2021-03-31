@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const {User} = require('./')
 
 const Product = db.define('product', {
   title: {

@@ -4,7 +4,9 @@ import {fetchSingleProduct} from '../../store/product'
 import Condition from './Condition'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
 import {Link} from 'react-router-dom'
+import FavoriteBtn from './FavoriteBtn'
 import AddChat from '../Chats/AddChat'
+import moment from 'moment'
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -39,7 +41,7 @@ class SingleProduct extends Component {
           <AvailabilityUpdateBtn product={product} />
         )}
 
-        <AddChat productId={product.id} browserId={this.props.user.id} />
+        {/* <AddChat productId={product.id} browserId={this.props.user.id} /> */}
         <br />
         <div className="mb-5">
           <div className="row">
@@ -52,13 +54,19 @@ class SingleProduct extends Component {
               />
             </div>
             <div className="col-md-5">
-              <h2 className="mb-0 text-dark">{product.title}</h2>
-              <div className="mb-0 text-dark">by {product.author}</div>
-              <div className="mb-0 text-dark">
-                Genre: {product.genre.category}
+              {/* <div className="mb-0" style={{fontSize: '2em'}}><FavoriteBtn productId={product.id} /></div> */}
+              <div className="mb-0 text-dark small">
+                Posted{' '}
+                {moment(
+                  moment(product.createdAt).format('YYYY-MM-DD HH:mm:ss')
+                ).fromNow()}
               </div>
-              <div className="mb-0 text-dark">{product.createdAt}</div>
               <div>
+                <h2 className="mb-0 text-dark">{product.title} </h2>
+                <div className="mb-0 text-dark">by {product.author}</div>
+                <div className="mb-0 text-dark">
+                  Genre: {product.genre.category}
+                </div>
                 <span className="mb-0 text-dark">
                   Condition: {product.condition}{' '}
                 </span>
@@ -67,11 +75,22 @@ class SingleProduct extends Component {
               <div className="mb-0 text-dark">
                 ${product.price} ({bargainStatus})
               </div>
-              <div className="mb-0 text-dark">♡ </div>
+
               <p className="pt-1 text-dark">
                 Description: {product.description}
               </p>
               {/* if user is a buyer then render products to buy */}
+              <div className="d-flex mb-0 justify-content-space-around align-items-center">
+                <span className="mr-2">
+                  <AddChat
+                    productId={product.id}
+                    browserId={this.props.user.id}
+                  />
+                </span>
+                <span style={{fontSize: '1.5em'}}>
+                  <FavoriteBtn productId={product.id} />
+                </span>
+              </div>
             </div>
           </div>
         </div>

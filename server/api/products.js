@@ -53,10 +53,27 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-//FAVORITE PRODUCT
-//POST /api/products/:productId/favorite
+//GET ALL USER FAVORITE PRODUCTS
+//GET /api/products/favorites/:userId
 //PASS IN userId FROM FE
-router.post('/:productId/favorite', async (req, res, next) => {
+router.get('/favorites/:userId', async (req, res, next) => {
+  try {
+    console.log(req.params.userId)
+    const favorite = await Favorite.findAll({
+      where: {
+        userId: req.params.userId
+      }
+    })
+    res.status(201).json(favorite)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//FAVORITE PRODUCT
+//POST /api/favorite/:productId
+//PASS IN userId FROM FE
+router.post('/favorite/:productId', async (req, res, next) => {
   try {
     const favorite = await Favorite.findOrCreate({
       where: {
@@ -131,8 +148,14 @@ router.put('/:productId', async (req, res, next) => {
       ]
     })
     if (!product) res.send('This product does not exist.')
-    const updatedProduct = await product.update(req.body)
-    res.status(201).send(updatedProduct)
+    else if (req.user.id === product.sellerId) {
+      const updatedProduct = await product.update(req.body)
+      res.status(201).send(updatedProduct)
+    } else {
+      const err = new Error('Unauthorized')
+      err.status = 401
+      next(err)
+    }
   } catch (err) {
     next(err)
   }
@@ -141,9 +164,16 @@ router.put('/:productId', async (req, res, next) => {
 // DELETE /api/products/:productId
 router.delete('/:productId', async (req, res, next) => {
   try {
-    const id = req.params.productId
-    await Product.destroy({where: {id}})
-    res.status(204).end()
+    const product = await Product.findByPk(req.params.productId)
+    if (!product) res.send('This product does not exist.')
+    else if (req.user.id === product.sellerId) {
+      await product.destroy()
+      res.status(204).end()
+    } else {
+      const err = new Error('Unauthorized')
+      err.status = 401
+      next(err)
+    }
   } catch (err) {
     next(err)
   }

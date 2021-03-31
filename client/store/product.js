@@ -1,4 +1,3 @@
-import ActionButton from 'antd/lib/modal/ActionButton'
 import axios from 'axios'
 import history from '../history'
 
@@ -8,8 +7,6 @@ const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
 const CREATE_PRODUCT = 'CREATE_PRODUCT'
 const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
-const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE'
-const GET_FAV_COUNT = 'GET_FAV_COUNT'
 
 // ACTION CREATORS
 const getProducts = products => ({
@@ -40,20 +37,6 @@ const _removeProduct = productId => {
   return {
     type: REMOVE_PRODUCT,
     productId
-  }
-}
-
-const _getFavorite = favorite => {
-  return {
-    type: TOGGLE_FAVORITE,
-    favorite
-  }
-}
-
-const _getFavCount = favCount => {
-  return {
-    type: GET_FAV_COUNT,
-    favCount
   }
 }
 
@@ -105,29 +88,10 @@ export const removeProduct = productId => async dispatch => {
   }
 }
 
-export const getFavorite = (product, info) => {
-  return async dispatch => {
-    const {data} = await axios.post(
-      `/api/products/${product.id}/favorite`,
-      info
-    )
-    dispatch(_getFavorite(data))
-  }
-}
-
-export const getFavCount = productId => {
-  return async dispatch => {
-    const {data} = await axios.get(`/api/products/${productId}/favorite-count`)
-    dispatch(_getFavCount(data))
-  }
-}
-
 // INITIAL STATE
 let initialState = {
   all: [],
-  single: {},
-  favorited: {},
-  favCount: 0
+  single: {}
 }
 
 // REDUCER
@@ -154,16 +118,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         all: state.all.filter(product => product.id !== action.productId)
-      }
-    case TOGGLE_FAVORITE:
-      return {
-        ...state,
-        favorite: action.favorite
-      }
-    case GET_FAV_COUNT:
-      return {
-        ...state,
-        favCount: action.favCount
       }
     default:
       return state

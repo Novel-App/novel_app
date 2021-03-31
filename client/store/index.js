@@ -7,8 +7,16 @@ import products from './product'
 import message from './message'
 import chat from './chat'
 import userInfo from './userInfo'
+import favorites from './favorites'
 
-const reducer = combineReducers({user, products, message, chat, userInfo})
+const reducer = combineReducers({
+  user,
+  products,
+  message,
+  chat,
+  userInfo,
+  favorites
+})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

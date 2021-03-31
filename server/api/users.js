@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {User, Product} = require('../db/models')
+const currentUserOnly = require('../utils/currentUserOnly')
 module.exports = router
 
 // GET /api/users
@@ -29,7 +30,7 @@ router.get('/', async (req, res, next) => {
 
 // GET single User
 // GET /api/users/:userId
-router.get('/:userId', async (req, res, next) => {
+router.get('/:userId', currentUserOnly, async (req, res, next) => {
   try {
     const user = await User.findOne({
       attributes: [
@@ -55,7 +56,7 @@ router.get('/:userId', async (req, res, next) => {
 })
 
 // PUT api/users
-router.put('/:userId', async (req, res, next) => {
+router.put('/:userId', currentUserOnly, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
     if (!user) res.send('This user does not exist.')
@@ -69,27 +70,31 @@ router.put('/:userId', async (req, res, next) => {
 // get all available / reserved / sold listings by user (for profile)
 // GET api/users/:sellerId/listings/:availability
 // req.params.availability options: ["available", "reserved", "sold"]
-router.get('/:sellerId/listings/:availability', async (req, res, next) => {
-  try {
-    const listings = await Product.findAll({
-      where: {
-        availability: req.params.availability,
-        sellerId: req.params.sellerId
-      }
-    })
-    res.status(200).send(listings)
-  } catch (err) {
-    next(err)
+router.get(
+  '/:userId/listings/:availability',
+  currentUserOnly,
+  async (req, res, next) => {
+    try {
+      const listings = await Product.findAll({
+        where: {
+          availability: req.params.availability,
+          sellerId: req.params.userId
+        }
+      })
+      res.status(200).send(listings)
+    } catch (err) {
+      next(err)
+    }
   }
-})
+)
 
 // get all purchases by user
 // GET api/users/:buyerId/purchases
-router.get('/:buyerId/purchases', async (req, res, next) => {
+router.get('/:userId/purchases', currentUserOnly, async (req, res, next) => {
   try {
     const purchases = await Product.findAll({
       where: {
-        buyerId: req.params.buyerId
+        buyerId: req.params.userId
       }
     })
     res.status(200).send(purchases)
@@ -100,7 +105,7 @@ router.get('/:buyerId/purchases', async (req, res, next) => {
 
 // get all favorites by users
 // GET api/users/:userId/favorites
-router.get('/:userId/favorites', async (req, res, next) => {
+router.get('/:userId/favorites', currentUserOnly, async (req, res, next) => {
   try {
     const products = await Product.findAll({
       include: {model: User, where: {id: req.params.userId}}
@@ -114,18 +119,3 @@ router.get('/:userId/favorites', async (req, res, next) => {
     next(err)
   }
 })
-
-//PUT api/user/:userId/favorites
-// router.put('/:userId/favorites', async (req, res, next) => {
-//   try {
-//     const products = await Product.findOne({
-//       include: [
-//         {model: User, where: {userId: req.params.userId}},
-//         {model: Product, where: {productId: req.params.productId}}
-//       ]
-//     })
-//   } catch (error) {
-//     next(error)
-
-//   }
-// })
