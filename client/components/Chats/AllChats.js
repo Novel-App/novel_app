@@ -55,7 +55,7 @@ class AllChats extends Component {
               <li key={chatRoom.chatId}>
                 <Link
                   to={{
-                    pathname: `/messages/${chatRoom.chatId}`
+                    pathname: `/chats/${chatRoom.chatId}`
                   }}
                 >
                   <p>{`${chatRoom.firstName}: ${chatRoom.productName}`}</p>
