@@ -71,7 +71,7 @@ class CreateProduct extends Component {
               Cancel
             </button>
           </Link>
-          <h1 className="align-self-center">New post</h1>
+          <h1 className="align-self-center">New post </h1>
         </div>
 
         <form onSubmit={handleSubmit}>
