@@ -36,11 +36,11 @@ class EditProfile extends Component {
     this.props.editUser({...this.state, id: this.props.user.id})
   }
 
-  // onFileChange(event) {
-  //   this.setState({
-  //     profileImage: event.target.files
-  //   })
-  // }
+  onFileChange(event) {
+    this.setState({
+      profileImageData: event.target.files
+    })
+  }
 
   render() {
     const {firstName, lastName, email} = this.state
@@ -111,7 +111,7 @@ class EditProfile extends Component {
                 <input
                   type="file"
                   accept="image/x-png,image/jpeg, image/gif"
-                  onChange={() => this.onFileChange()}
+                  onChange={event => this.onFileChange(event)}
                 />
               </div>
               <div>

@@ -64,6 +64,9 @@ const User = db.define('user', {
   // profileImageName: {
   //   type: Sequelize.TEXT
   // },
+  profileImageData: {
+    type: Sequelize.BLOB
+  },
   photoVerified: {
     type: Sequelize.BOOLEAN,
     defaultValue: false

@@ -5,7 +5,6 @@ const Favorite = require('./favorite')
 const Message = require('./message')
 const Chat = require('./chat')
 const Review = require('./review')
-const Image = require('./image')
 const db = require('../db')
 
 /**
@@ -89,6 +88,5 @@ module.exports = {
   Chat,
   Message,
   Review,
-  Image,
   db
 }
