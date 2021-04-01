@@ -8,7 +8,6 @@ import axios from 'axios'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
-
 // const defaultState = {
 //   title: '',
 //   author: '',
@@ -68,7 +67,6 @@ class CreateProduct extends Component {
     })
   }
 
-
   async handleAutoFill(e) {
     e.preventDefault()
     try {
@@ -98,13 +96,12 @@ class CreateProduct extends Component {
 
   handleSearch = e => {
     this.setState({isbn: e.target.value})
-
-  onFileChange(event) {
-    // this.setState({
-    //   profileImage: event.target.files
-    // })
-
   }
+  // onFileChange(event) {
+  //   // this.setState({
+  //   //   profileImage: event.target.files
+  //   // })
+  // }
 
   async handleSubmit(evt) {
     evt.preventDefault()
