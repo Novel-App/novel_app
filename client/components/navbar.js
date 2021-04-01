@@ -11,7 +11,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         <div className="navbar-collapse">
           {/* The navbar will show these links after you log in */}
           <a className="navbar-brand" href="/">
-            <img id="logo" className="logo" src="images/2.png" alt="logo" />
+            <i className="bi bi-house-fill large" style={{fontSize: '1.5em'}} />
           </a>
           <button
             className="navbar-toggler"
@@ -30,18 +30,24 @@ const Navbar = ({handleClick, isLoggedIn}) => (
               </li> */}
               <li className="nav-item">
                 <a className="nav-link" href="/chats">
-                  Chats
+                  <i
+                    className="bi bi-chat-left-quote-fill"
+                    style={{fontSize: '1.5em'}}
+                  />
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/profile" to="/profile">
-                  My Profile
+                  <i
+                    className="bi bi-person-square"
+                    style={{fontSize: '1.5em'}}
+                  />
                 </a>
               </li>
             </ul>
           </div>
           <a className="nav-link" href="#" onClick={handleClick}>
-            Logout
+            <i className="bi bi-door-closed-fill" style={{fontSize: '1.5em'}} />
           </a>
         </div>
       ) : (

@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const compression = require('compression')
 const session = require('express-session')
 const passport = require('passport')
+const multer = require('multer')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
 const sessionStore = new SequelizeStore({db})
@@ -84,6 +85,23 @@ const createApp = () => {
   // sends index.html
   app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  })
+
+  //posts new profile image
+  const upload = require('./utils/photoUpload')
+
+  app.use(express.static(path.join(__dirname, 'public')))
+
+  app.post('/upload', upload.single('wallpaper'), function(req, res) {
+    const imagePath = req.file.path.replace(/^public\//, '')
+    console.log('post route!!!')
+    res.redirect(imagePath)
+    // res.send(req.file)
+  })
+
+  app.use(function(err, req, res, next) {
+    if (err instanceof multer.MulterError) res.status(500).send(err.message)
+    else next(err)
   })
 
   // error handling endware
