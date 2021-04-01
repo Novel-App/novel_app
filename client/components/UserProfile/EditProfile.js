@@ -34,6 +34,7 @@ class EditProfile extends Component {
   handleSubmit(event) {
     event.preventDefault()
     this.props.editUser({...this.state, id: this.props.user.id})
+    this.props.history.push('/profile')
   }
 
   onFileChange(event) {
