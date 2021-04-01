@@ -4,8 +4,10 @@ const morgan = require('morgan')
 const compression = require('compression')
 const session = require('express-session')
 const passport = require('passport')
+const multer = require('multer')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
+const {User, Product} = require('./db/models')
 const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
@@ -70,6 +72,41 @@ const createApp = () => {
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
 
+  //UPLOADING IMAGE
+  var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './public/images/')
+    },
+    filename: function(req, file, cb) {
+      cb(null, Date.now() + file.originalname)
+    }
+  })
+
+  var upload = multer({storage: storage})
+
+  app.use(express.static(path.join(__dirname, 'public')))
+
+  //UPLOAD PROFILE IMG
+  app.post('/uploadProfile', upload.single('profileImg'), async function(
+    req,
+    res
+  ) {
+    var imagePath = req.file.path.replace(/^public\//, '')
+    // console.log('BUFFER', req.file.buffer)
+    const user = await User.findByPk(1)
+    user.update({profileImageType: req.file.mimetype})
+    res.redirect(imagePath)
+  })
+
+  //UPLOAD MULTIPLE PRODUCT IMGS
+  app.post('/uploadProducts', upload.array('productImg', 4), function(
+    req,
+    res
+  ) {
+    console.log(req.files)
+    res.send(req.files)
+  })
+
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
@@ -84,6 +121,11 @@ const createApp = () => {
   // sends index.html
   app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  })
+
+  app.use(function(err, req, res, next) {
+    if (err instanceof multer.MulterError) res.status(500).send(err.message)
+    else next(err)
   })
 
   // error handling endware

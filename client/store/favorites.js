@@ -4,6 +4,7 @@ import axios from 'axios'
 const GET_FAVORITE = 'GET_FAVORITE'
 const UPDATE_FAVORITE = 'UPDATE_FAVORITE'
 const GET_FAV_COUNT = 'GET_FAV_COUNT'
+const UPDATE_FAV_COUNT = 'UPDATE_FAV_COUNT'
 
 // ACTION CREATORS
 const _getFavorites = favorites => {
@@ -24,6 +25,13 @@ const _getFavCount = favCount => {
   return {
     type: GET_FAV_COUNT,
     favCount
+  }
+}
+
+const _updateFavCount = updatedCount => {
+  return {
+    type: UPDATE_FAV_COUNT,
+    updatedCount
   }
 }
 
@@ -49,8 +57,17 @@ export const updateFavorite = (productId, info) => async dispatch => {
 
 export const getFavCount = productId => async dispatch => {
   try {
-    const {data} = await axios.get(`/api/products/${productId}/favorite-count`)
+    const {data} = await axios.get(`/api/products/favoriteCount/${productId}`)
     dispatch(_getFavCount(data))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const updateFavCount = productId => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/products/favoriteCount/${productId}`)
+    dispatch(_updateFavCount(data))
   } catch (error) {
     console.log(error)
   }
@@ -59,7 +76,7 @@ export const getFavCount = productId => async dispatch => {
 // INITIAL STATE
 let initialState = {
   all: [],
-  favCount: 0
+  favCounts: []
 }
 
 // REDUCER
@@ -87,7 +104,18 @@ export default function(state = initialState, action) {
     case GET_FAV_COUNT:
       return {
         ...state,
-        favCount: action.favCount
+        favCounts: [...state.favCounts, action.favCount]
+      }
+    case UPDATE_FAV_COUNT:
+      return {
+        ...state,
+        favCounts: state.favCounts.map(fav => {
+          if (fav.productId === action.updatedCount.productId) {
+            return action.updatedCount
+          } else {
+            return fav
+          }
+        })
       }
     default:
       return state

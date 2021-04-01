@@ -8,6 +8,7 @@ import axios from 'axios'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
+
 // const defaultState = {
 //   title: '',
 //   author: '',
@@ -20,7 +21,19 @@ import axios from 'axios'
 //   availability: 'Available',
 //   genreId: ''
 // }
-
+const defaultState = {
+  title: '',
+  author: '',
+  ISBN: '',
+  description: '',
+  image: 'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
+  condition: '',
+  price: 0,
+  canBargain: false,
+  availability: 'Available',
+  isFiction: false,
+  genreId: ''
+}
 class CreateProduct extends Component {
   constructor(props) {
     super(props)
@@ -55,6 +68,7 @@ class CreateProduct extends Component {
     })
   }
 
+
   async handleAutoFill(e) {
     e.preventDefault()
     try {
@@ -84,6 +98,12 @@ class CreateProduct extends Component {
 
   handleSearch = e => {
     this.setState({isbn: e.target.value})
+
+  onFileChange(event) {
+    // this.setState({
+    //   profileImage: event.target.files
+    // })
+
   }
 
   async handleSubmit(evt) {
@@ -110,8 +130,12 @@ class CreateProduct extends Component {
     return (
       <div>
         <div className="d-flex flex-column justify-content-center">
-          <Link to="/products">Cancel</Link>
-          <h1 className="align-self-center">New post</h1>
+          <Link to="/home">
+            <button type="button" className="btn btn-warning">
+              Cancel
+            </button>
+          </Link>
+          <h1 className="align-self-center">New post </h1>
         </div>
 
         <div>
@@ -135,6 +159,13 @@ class CreateProduct extends Component {
                 required
                 />
                 <br /> */}
+          <div className="form-group">
+            <input
+              type="file"
+              accept="image/x-png,image/jpeg, image/gif"
+              onChange={() => this.onFileChange()}
+            />
+          </div>
 
           <div className="form-group">
             <label htmlFor="title">Title</label>

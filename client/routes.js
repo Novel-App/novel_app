@@ -15,7 +15,8 @@ import {
   Profile,
   CreateProduct,
   FavandPurchases,
-  EditListing
+  EditListing,
+  EditProfImage
 } from './components'
 import {getMe} from './store'
 
@@ -59,10 +60,11 @@ class Routes extends Component {
             <Route exact path="/products/add" component={CreateProduct} />
             <Route exact path="/products/:id" component={SingleProducts} />
             <Route exact path="/chats" component={AllChats} />
+            <Route exact path="/chats/:chatId" component={SingleChat} />
             <Route exact path="/singleChat" component={SingleChat} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/profile/edit" component={EditProfile} />
-            <Route exact path="/messages/:chatId" component={SingleChat} />
+            <Route exact path="/profile/editImage" component={EditProfImage} />
 
             <Route
               exact

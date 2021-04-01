@@ -3,7 +3,12 @@
 //pass in product req.body object including all necessary fields (including user)
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getFavorites, updateFavorite, getFavCount} from '../../store/favorites'
+import {
+  getFavorites,
+  updateFavorite,
+  getFavCount,
+  updateFavCount
+} from '../../store/favorites'
 
 class FavoriteBtn extends Component {
   constructor(props) {
@@ -15,10 +20,12 @@ class FavoriteBtn extends Component {
   }
   componentDidMount() {
     this.props.getFavorites(this.props.user.id)
+    this.props.getFavCount(this.props.productId)
   }
   async componentDidUpdate() {
     if (this.state.statusUpdated) {
       await this.props.getFavorites(this.props.user.id)
+      await this.props.updateFavCount(this.props.productId)
       this.setState({statusUpdated: false})
     }
   }
@@ -33,12 +40,15 @@ class FavoriteBtn extends Component {
   }
   render() {
     const favorites = this.props.favorites || []
+    const favCounts = this.props.favCounts || []
     let favorite = favorites.filter(
       fav => fav.productId === this.props.productId
     )
     favorite = favorite.length > 0 ? favorite[0] : {isFavorite: false}
-    const favCount = Number(this.props.favCount)
-    return favorite === undefined || favCount === undefined ? (
+    let oneFavCount = favCounts.filter(
+      fav => Number(fav.productId) === this.props.productId
+    )
+    return favorite === undefined || oneFavCount[0] === undefined ? (
       <></>
     ) : (
       <>
@@ -46,7 +56,7 @@ class FavoriteBtn extends Component {
           className={favorite.isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'}
           onClick={() => this.toggleFavorite(favorite.isFavorite)}
         />
-        {/* <p>{this.props.favCount}</p> */}
+        <p>{oneFavCount[0].count}</p>
       </>
     )
   }
@@ -56,12 +66,13 @@ const mapState = state => {
   return {
     user: state.user,
     favorites: state.favorites.all,
-    favCount: Number(state.products.favCount)
+    favCounts: state.favorites.favCounts
   }
 }
 
 const mapDispatch = dispatch => {
   return {
+    updateFavCount: productId => dispatch(updateFavCount(productId)),
     getFavCount: productId => dispatch(getFavCount(productId)),
     updateFavorite: (productId, info) =>
       dispatch(updateFavorite(productId, info)),

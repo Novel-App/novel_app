@@ -17,7 +17,7 @@ class AddChat extends Component {
   }
   componentDidUpdate() {
     if (this.state.createdChat && this.props.chat.id) {
-      history.push(`/messages/${this.props.chat.id}`)
+      history.push(`/chats/${this.props.chat.id}`)
     }
   }
   render() {

@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {Chat, Product, User} = require('../db/models')
-const Op = require('Sequelize').Op
+const Op = require('sequelize').Op
 module.exports = router
 
 // GET /api/chats/

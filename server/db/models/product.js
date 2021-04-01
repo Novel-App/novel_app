@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const {User} = require('./')
 
 const Product = db.define('product', {
   title: {
@@ -26,6 +25,10 @@ const Product = db.define('product', {
   },
   description: {
     type: Sequelize.TEXT
+  },
+  isFiction: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false
   },
   //Update image validater once we figure out another way to store images
   image: {
