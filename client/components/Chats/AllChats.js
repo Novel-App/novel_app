@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchAllChats, removeChat} from '../../store/chat'
 import moment from 'moment'
+import Book from '../Products/Book'
 
 class AllChats extends Component {
   constructor() {
@@ -47,6 +48,33 @@ class AllChats extends Component {
       : []
 
     return (
+
+      <div>
+        <h3>All chats</h3>
+        <Book />
+        <ul>
+          {currUser.map(chatRoom => {
+            return (
+              <li key={chatRoom.chatId}>
+                <Link
+                  to={{
+                    pathname: `/messages/${chatRoom.chatId}`
+                  }}
+                >
+                  <p>{`${chatRoom.firstName}: ${chatRoom.productName}`}</p>
+                </Link>
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => this.deleteClickHandler(chatRoom.chatId)}
+                  >
+                    X
+                  </button>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
       <div className="card rare-wind-gradient chat-room">
         <div className="card-body">
           <div className="col-md-6 col-xl-4 px-0">
@@ -86,6 +114,7 @@ class AllChats extends Component {
             </div>
           </div>
         </div>
+
       </div>
     )
   }
