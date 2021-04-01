@@ -58,9 +58,9 @@ const User = db.define('user', {
       'https://ih1.redbubble.net/image.1251162799.6563/flat,750x,075,f-pad,750x1000,f8f8f8.jpg',
     allowNull: false
   },
-  // profileImageType: {
-  //   type: Sequelize.TEXT
-  // },
+  profileImageType: {
+    type: Sequelize.TEXT
+  },
   // profileImageName: {
   //   type: Sequelize.TEXT
   // },

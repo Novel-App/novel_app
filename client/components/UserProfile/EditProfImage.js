@@ -83,6 +83,24 @@ class EditProfImage extends Component {
           <input type="file" name="profileImg" onChange={this.onFileChange} />
           <input type="submit" onClick={this.onFileUpload} />
         </form>
+
+        <br />
+
+        <h1>Upload product images!</h1>
+        <form
+          method="post"
+          action="/uploadProducts"
+          encType="multipart/form-data"
+        >
+          <label htmlFor="productImg">
+            <h3>up to 4 images</h3>
+          </label>
+          <input type="file" name="productImg" onChange={this.onFileChange} />
+          <input type="file" name="productImg" onChange={this.onFileChange} />
+          <input type="file" name="productImg" onChange={this.onFileChange} />
+          <input type="file" name="productImg" onChange={this.onFileChange} />
+          <input type="submit" onClick={this.onFileUpload} />
+        </form>
       </div>
     )
   }
