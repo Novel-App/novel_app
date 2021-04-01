@@ -71,6 +71,25 @@ const createApp = () => {
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
 
+  //UPLOADING IMAGE
+  var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './public/images/')
+    },
+    filename: function(req, file, cb) {
+      cb(null, Date.now() + file.originalname)
+    }
+  })
+
+  var upload = multer({storage: storage})
+
+  app.use(express.static(path.join(__dirname, 'public')))
+
+  app.post('/upload', upload.single('wallpaper'), function(req, res) {
+    var imagePath = req.file.path.replace(/^public\//, '')
+    res.send(imagePath)
+  })
+
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
@@ -86,18 +105,6 @@ const createApp = () => {
   app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   })
-
-  //posts new profile image
-  // const upload = require('./utils/photoUpload')
-
-  //app.use(express.static(path.join(__dirname, 'public')))
-
-  // app.post('/upload', upload.single('wallpaper'), function(req, res) {
-  //   const imagePath = req.file.path.replace(/^public\//, '')
-  //   console.log('post route!!!')
-  //   res.redirect(imagePath)
-  //   // res.send(req.file)
-  // })
 
   app.use(function(err, req, res, next) {
     if (err instanceof multer.MulterError) res.status(500).send(err.message)
