@@ -98,11 +98,11 @@ class AllProducts extends Component {
         <div className="container-flex">
           <div />
           <div className="container">
-            <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-md">
               <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <div>
                   <a
-                    id="prod-nav-link"
+                    className="prod-nav-link"
                     href="#"
                     onClick={() => {
                       this.updateStatus('Available')
@@ -113,7 +113,7 @@ class AllProducts extends Component {
                 </div>
                 <div>
                   <a
-                    id="prod-nav-link"
+                    className="prod-nav-link"
                     href="#"
                     onClick={() => {
                       this.updateStatus('Reserved')
@@ -124,7 +124,7 @@ class AllProducts extends Component {
                 </div>
                 <div>
                   <a
-                    id="prod-nav-link"
+                    className="prod-nav-link"
                     href="#"
                     onClick={() => {
                       this.updateStatus('Sold')

@@ -123,14 +123,14 @@ router.get('/:userId/favorites', currentUserOnly, async (req, res, next) => {
 })
 
 // POST api/users/:userId/upload
-router.post('/upload/:userId', upload.single('wallpaper'), (req, res, next) => {
-  try {
-    const imagePath = req.file.path.replace(/^public\//, '')
-    console.log('post route!!!')
-    res.redirect(imagePath)
-    // res.send(req.file)
-  } catch (error) {
-    console.log(error)
-    next(error)
-  }
-})
+// router.post('/upload/:userId', upload.single('wallpaper'), (req, res, next) => {
+//   try {
+//     const imagePath = req.file.path.replace(/^public\//, '')
+//     console.log('post route!!!')
+//     res.redirect(imagePath)
+//     // res.send(req.file)
+//   } catch (error) {
+//     console.log(error)
+//     next(error)
+//   }
+// })
