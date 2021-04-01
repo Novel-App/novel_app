@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 export default class EditProfImage extends Component {
@@ -31,8 +29,8 @@ export default class EditProfImage extends Component {
 
     // Request made to the backend api
     // Send formData object
-    const {data} = await axios.post('/api/upload', formData)
-    console.log(data)
+    await axios.post('/api/upload', formData)
+    // console.log(data)
   }
 
   // File content to be displayed after
