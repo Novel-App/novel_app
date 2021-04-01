@@ -4,9 +4,23 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {createProduct} from '../../store/product'
 import Condition from './Condition'
+import axios from 'axios'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
+
+// const defaultState = {
+//   title: '',
+//   author: '',
+//   ISBN: '',
+//   description: '',
+//   image: 'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
+//   condition: '',
+//   price: 0,
+//   canBargain: false,
+//   availability: 'Available',
+//   genreId: ''
+// }
 const defaultState = {
   title: '',
   author: '',
@@ -20,14 +34,26 @@ const defaultState = {
   isFiction: false,
   genreId: ''
 }
-
 class CreateProduct extends Component {
   constructor(props) {
     super(props)
-    this.state = defaultState
+    this.state = {
+      title: '',
+      author: '',
+      ISBN: '',
+      description: '',
+      image: 'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
+      condition: '',
+      price: 0,
+      canBargain: false,
+      availability: 'Available',
+      genreId: ''
+    }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
+    this.handleAutoFill = this.handleAutoFill.bind(this)
   }
 
   handleChange(evt) {
@@ -42,10 +68,42 @@ class CreateProduct extends Component {
     })
   }
 
+
+  async handleAutoFill(e) {
+    e.preventDefault()
+    try {
+      await axios
+        .get(
+          `https://www.googleapis.com/books/v1/volumes?q=isbn:${
+            this.state.isbn
+          }`
+        )
+        .then(data => {
+          if (data.data.items[0]) {
+            const bookInfoFromAPI = data.data.items[0].volumeInfo
+            this.setState({
+              title: bookInfoFromAPI.title,
+              author: bookInfoFromAPI.authors[0],
+              ISBN: bookInfoFromAPI.industryIdentifiers[1].identifier,
+              description: bookInfoFromAPI.description,
+              image: bookInfoFromAPI.imageLinks.thumbnail
+            })
+            console.log('---->', this.state)
+          }
+        })
+    } catch (err) {
+      alert('This ISBN is invalid! Try again!')
+    }
+  }
+
+  handleSearch = e => {
+    this.setState({isbn: e.target.value})
+
   onFileChange(event) {
     // this.setState({
     //   profileImage: event.target.files
     // })
+
   }
 
   async handleSubmit(evt) {
@@ -78,6 +136,18 @@ class CreateProduct extends Component {
             </button>
           </Link>
           <h1 className="align-self-center">New post </h1>
+        </div>
+
+        <div>
+          <p>Enter ISBN below for auto fill imformation</p>
+          <form onSubmit={this.handleAutoFill}>
+            <input
+              onChange={this.handleSearch}
+              type="text"
+              placeholder="Enter ISBN"
+            />
+            <button type="submit">Auto Fill</button>
+          </form>
         </div>
 
         <form onSubmit={handleSubmit}>
