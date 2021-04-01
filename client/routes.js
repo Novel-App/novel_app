@@ -64,6 +64,7 @@ class Routes extends Component {
             <Route exact path="/singleChat" component={SingleChat} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/profile/edit" component={EditProfile} />
+            <Route exact path="/profile/editImage" component={EditProfImage} />
 
             <Route
               exact
