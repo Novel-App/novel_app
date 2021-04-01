@@ -55,23 +55,31 @@ class CreateProduct extends Component {
     })
   }
 
-  handleAutoFill = e => {
-    console.log('----->', this.state.isbn)
+  async handleAutoFill(e) {
     e.preventDefault()
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=isbn:${this.state.isbn}`
-      )
-      .then(data => {
-        const bookInfoFromAPI = data.data.items[0].volumeInfo
-        this.setState = {
-          title: bookInfoFromAPI.title,
-          ISBN: bookInfoFromAPI.industryIdentifiers[1].identifier,
-          description: bookInfoFromAPI.description,
-          image: bookInfoFromAPI.imageLinks.thumbnail
-        }
-        console.log('---->', this.state)
-      })
+    try {
+      await axios
+        .get(
+          `https://www.googleapis.com/books/v1/volumes?q=isbn:${
+            this.state.isbn
+          }`
+        )
+        .then(data => {
+          if (data.data.items[0]) {
+            const bookInfoFromAPI = data.data.items[0].volumeInfo
+            this.setState({
+              title: bookInfoFromAPI.title,
+              author: bookInfoFromAPI.authors[0],
+              ISBN: bookInfoFromAPI.industryIdentifiers[1].identifier,
+              description: bookInfoFromAPI.description,
+              image: bookInfoFromAPI.imageLinks.thumbnail
+            })
+            console.log('---->', this.state)
+          }
+        })
+    } catch (err) {
+      alert('This ISBN is invalid! Try again!')
+    }
   }
 
   handleSearch = e => {
@@ -107,11 +115,12 @@ class CreateProduct extends Component {
         </div>
 
         <div>
+          <p>Enter ISBN below for auto fill imformation</p>
           <form onSubmit={this.handleAutoFill}>
             <input
               onChange={this.handleSearch}
               type="text"
-              placeholder="search by ISBN"
+              placeholder="Enter ISBN"
             />
             <button type="submit">Auto Fill</button>
           </form>

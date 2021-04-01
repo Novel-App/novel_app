@@ -12,7 +12,6 @@ class Book extends Component {
   }
 
   handleSubmit = e => {
-    console.log('----->', this.state.isbn)
     e.preventDefault()
     axios
       .get(
@@ -28,7 +27,7 @@ class Book extends Component {
           image: bookInfoFromAPI.imageLinks.thumbnail
         }
 
-        console.log('---->', bookInfo)
+        console.log('---->', state)
       })
   }
 

@@ -7,7 +7,6 @@ import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
 import FavoriteBtn from './FavoriteBtn'
 import AddChat from '../Chats/AddChat'
 import moment from 'moment'
-import Book from './Book'
 
 class AllProducts extends Component {
   constructor(props) {
@@ -131,11 +130,6 @@ class AllProducts extends Component {
                 </div>
               </div>
             </nav>
-
-            <div>
-              <Book />
-            </div>
-
             <div className="d-flex justify-content-between w-90">
               <Link to="/products/add">
                 <i
