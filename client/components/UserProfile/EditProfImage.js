@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
 
-export default class EditProfImage extends Component {
+class EditProfImage extends Component {
   state = {
     // Initially, no file is selected
     selectedFile: null
@@ -29,7 +30,7 @@ export default class EditProfImage extends Component {
 
     // Request made to the backend api
     // Send formData object
-    await axios.post('/api/upload', formData)
+    await axios.post(`/api/users/upload/${this.props.user.id}`, formData)
     // console.log(data)
   }
 
@@ -76,3 +77,11 @@ export default class EditProfImage extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(EditProfImage)
