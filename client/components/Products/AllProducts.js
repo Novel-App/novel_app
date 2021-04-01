@@ -98,7 +98,7 @@ class AllProducts extends Component {
         <div className="container-flex">
           <div />
           <div className="container">
-            <nav className="navbar navbar-expand-md">
+            <nav id="tinyNav" className="navbar navbar-expand-md">
               <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <div>
                   <a

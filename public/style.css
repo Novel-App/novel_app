@@ -5,6 +5,10 @@ body {
   padding: 0;
   margin: 0;
 }
+/* 
+#tinyNav{
+  background-color: #f3eada; 
+} */
 
 .navbar {
   background: #254d4c;
@@ -14,15 +18,16 @@ body {
   background: #65837b;
 }
 
-.btn-primary {
-  background: #bda5ab;
-  border-color: #cf9eac;
+#btn-primary {
+  background: #00a988;
+  color: #e7fff8;
+  /* border-color: #e7fff8; */
 }
 
-.btn-warning {
-  background: #341011;
-  border-color: #cf9eac;
-  color: white;
+#btn-warning {
+  background: #8c749b;
+  /* border-color: #CE8FFF; */
+  color: #e7fff8;
 }
 
 .nav-link,
