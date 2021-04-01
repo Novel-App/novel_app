@@ -47,29 +47,45 @@ class AllChats extends Component {
       : []
 
     return (
-      <div>
-        <h3>All chats</h3>
-        <ul>
-          {currUser.map(chatRoom => {
-            return (
-              <li className="d-flex" key={chatRoom.chatId}>
-                <Link
-                  to={{
-                    pathname: `/chats/${chatRoom.chatId}`
-                  }}
-                >
-                  <p>{`${chatRoom.firstName}: ${chatRoom.productName}`}</p>
-                </Link>
-                <span>
-                  <i
-                    className="bi bi-trash ml-5"
-                    onClick={() => this.deleteClickHandler(chatRoom.chatId)}
-                  />
-                </span>
-              </li>
-            )
-          })}
-        </ul>
+      <div className="card rare-wind-gradient chat-room">
+        <div className="card-body">
+          <div className="col-md-6 col-xl-4 px-0">
+            <div className="row px-lg-2 px-2">
+              <h3 className="font-weight-bold mb-3 text-center text-lg-left">
+                All chats
+              </h3>
+              <ul className="list-unstyled friend-list">
+                {currUser.map(chatRoom => {
+                  return (
+                    <li
+                      className="active grey lighten-3 p-2"
+                      key={chatRoom.chatId}
+                    >
+                      <Link
+                        to={{
+                          pathname: `/chats/${chatRoom.chatId}`
+                        }}
+                      >
+                        <p id="allChat-p">{`${chatRoom.firstName}: ${
+                          chatRoom.productName
+                        }`}</p>
+                      </Link>
+                      <span>
+                        <i
+                          id="chat-trash"
+                          className="bi bi-trash ml-5"
+                          onClick={() =>
+                            this.deleteClickHandler(chatRoom.chatId)
+                          }
+                        />
+                      </span>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
