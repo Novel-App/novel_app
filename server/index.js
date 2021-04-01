@@ -88,16 +88,16 @@ const createApp = () => {
   })
 
   //posts new profile image
-  const upload = require('./utils/photoUpload')
+  // const upload = require('./utils/photoUpload')
 
-  app.use(express.static(path.join(__dirname, 'public')))
+  //app.use(express.static(path.join(__dirname, 'public')))
 
-  app.post('/upload', upload.single('wallpaper'), function(req, res) {
-    const imagePath = req.file.path.replace(/^public\//, '')
-    console.log('post route!!!')
-    res.redirect(imagePath)
-    // res.send(req.file)
-  })
+  // app.post('/upload', upload.single('wallpaper'), function(req, res) {
+  //   const imagePath = req.file.path.replace(/^public\//, '')
+  //   console.log('post route!!!')
+  //   res.redirect(imagePath)
+  //   // res.send(req.file)
+  // })
 
   app.use(function(err, req, res, next) {
     if (err instanceof multer.MulterError) res.status(500).send(err.message)
