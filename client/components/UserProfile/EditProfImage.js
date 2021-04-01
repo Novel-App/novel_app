@@ -75,8 +75,12 @@ class EditProfImage extends Component {
         </div>
         {this.fileData()} */}
         <h1>Upload a new profile image!</h1>
-        <form method="post" action="/upload" encType="multipart/form-data">
-          <input type="file" name="wallpaper" onChange={this.onFileChange} />
+        <form
+          method="post"
+          action="/uploadProfile"
+          encType="multipart/form-data"
+        >
+          <input type="file" name="profileImg" onChange={this.onFileChange} />
           <input type="submit" onClick={this.onFileUpload} />
         </form>
       </div>

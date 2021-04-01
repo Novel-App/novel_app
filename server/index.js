@@ -85,10 +85,15 @@ const createApp = () => {
 
   app.use(express.static(path.join(__dirname, 'public')))
 
-  app.post('/upload', upload.single('wallpaper'), function(req, res) {
+  app.post('/uploadProfile', upload.single('profileImg'), function(req, res) {
     var imagePath = req.file.path.replace(/^public\//, '')
-    res.send(imagePath)
+    res.redirect(imagePath)
   })
+
+  // app.post('/uploadProfile', upload.array('profile', 3), function (req, res) {
+  //   console.log(req.files);
+  //   res.send(req.files);
+  // });
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
