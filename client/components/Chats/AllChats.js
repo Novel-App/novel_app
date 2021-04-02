@@ -95,7 +95,7 @@ class AllChats extends Component {
                     key={chatRoom.chatId}
                   >
                     <div
-                      className="allChat  list-group-item-action list-group-item-light rounded-0 d-inline-flex p-2 justify-content-between"
+                      className="allChat  list-group-item-action list-group-item-light rounded-0 d-inline-flex p-2 justify-content-between border-bottom"
                       key={chatRoom.chatId}
                     >
                       <div className="d-flex flex-column">
@@ -119,10 +119,18 @@ class AllChats extends Component {
                           {chatRoom.message.content}
                         </p>
                       </div>
-                      <div className="d-flex flex-column">
+                      <div className="d-flex">
+                        <img
+                          src={chatRoom.productImg}
+                          className="direct-chat-img"
+                        />
                         <button
-                          className="close pull-right"
-                          style={{width: '50%', height: '50%'}}
+                          className="btn btn-sm fixed-top"
+                          style={{
+                            position: 'relative',
+                            right: 5,
+                            top: 5
+                          }}
                           aria-label="Close"
                           type="button"
                           onClick={() =>
@@ -131,12 +139,6 @@ class AllChats extends Component {
                         >
                           X
                         </button>
-                        <div className="img_cont">
-                          <img
-                            src={chatRoom.productImg}
-                            className="direct-chat-img"
-                          />
-                        </div>
                       </div>
                     </div>
                   </Link>
