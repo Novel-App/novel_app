@@ -88,23 +88,26 @@ class AllChats extends Component {
               <div className="list-group rounded-0" />
               {currUser.map(chatRoom => {
                 return (
-                  <div
-                    className="allChat list-group-item list-group-item-action list-group-item-light rounded-0"
+                  <Link
+                    to={{
+                      pathname: `/chats/${chatRoom.chatId}`
+                    }}
                     key={chatRoom.chatId}
                   >
-                    <Link
-                      to={{
-                        pathname: `/chats/${chatRoom.chatId}`
-                      }}
+                    <div
+                      className="allChat  list-group-item-action list-group-item-light rounded-0 d-inline-flex p-2 justify-content-between"
+                      key={chatRoom.chatId}
                     >
-                      <div className="media">
-                        <img
-                          src={chatRoom.profileImg}
-                          className="direct-chat-img rounded-circle"
-                        />
+                      <div className="d-flex flex-column">
+                        <h6 className="mb-0">{chatRoom.firstName}</h6>
+                        <div className="media">
+                          <img
+                            src={chatRoom.profileImg}
+                            className="direct-chat-img rounded-circle"
+                          />
+                        </div>
                       </div>
-                      <div className="d-flex align-items-center justify-content-between mb-1">
-                        <h6 className="mb-0">{chatRoom.firstName} </h6>
+                      <div className="d-flex flex-column ">
                         <small className="small font-weight-bold">
                           {moment(
                             moment(chatRoom.message.time).format(
@@ -112,32 +115,31 @@ class AllChats extends Component {
                             )
                           ).fromNow()}
                         </small>
+                        <p className="font-italic text-muted mb-0 text-small align-middle">
+                          {chatRoom.message.content}
+                        </p>
                       </div>
-                      <p className="font-italic text-muted mb-0 text-small">
-                        {chatRoom.message.content}
-                      </p>
-                      <div>
+                      <div className="d-flex flex-column">
+                        <button
+                          className="close pull-right"
+                          style={{width: '50%', height: '50%'}}
+                          aria-label="Close"
+                          type="button"
+                          onClick={() =>
+                            this.deleteClickHandler(chatRoom.chatId)
+                          }
+                        >
+                          X
+                        </button>
                         <div className="img_cont">
                           <img
                             src={chatRoom.productImg}
                             className="direct-chat-img"
                           />
                         </div>
-                        {/* <div>
-                          <button
-                            className="close"
-                            aria-label="Close"
-                            type="button"
-                            onClick={() =>
-                              this.deleteClickHandler(chatRoom.chatId)
-                            }
-                          >
-                            X
-                          </button>
-                        </div> */}
                       </div>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 )
               })}
             </div>
@@ -147,6 +149,16 @@ class AllChats extends Component {
     )
   }
 }
+
+// <a href="#" class="messages__item unread">
+//   <div class="name">Muhammed ERDEM</div>
+//   <div class="date">1h ago</div>
+
+//   <div class="content">
+//     Currently We are looking for a UI designer to work on our
+//     websites and mobile application...
+//   </div>
+// </a>
 
 /**
  * CONTAINER
