@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchAllChats, removeChat} from '../../store/chat'
 import moment from 'moment'
-import Book from '../Products/Book'
 
 class AllChats extends Component {
   constructor() {
@@ -78,80 +77,71 @@ class AllChats extends Component {
         })
       : []
     return (
-      <div>
-        <div className="container">
-          <nav className="navbar navbar-expand-md">
-            <div className="title navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-              <h3>All chats</h3>
+      <div className="row rounded-lg overflow-hidden shadow justify-content-center">
+        {/* <!-- Users box--> */}
+        <div className="col-5 px-0">
+          <div className="bg-white">
+            <div className="bg-gray px-4 py-2 bg-light">
+              <p className="h5 mb-0 py-1">All Chats</p>
             </div>
-          </nav>
-        </div>
-        <div className="container-fluid">
-          {currUser.map(chatRoom => {
-            return (
-              <div className="card mb-0" key={chatRoom.chatId}>
-                <div className="col-md-4">
-                  <div className="row no-gutters">
-                    <div className="card-horizontal">
-                      <div className="col-4 allChat">
-                        <Link
-                          to={{
-                            pathname: `/chats/${chatRoom.chatId}`
-                          }}
-                        >
-                          <div className="text-small">
-                            <strong>{chatRoom.firstName} </strong>
-                          </div>
-                          <div className="img_cont">
-                            <img
-                              src={chatRoom.profileImg}
-                              className="direct-chat-img rounded-circle"
-                            />
-                          </div>
-                          <div className="last-message text-muted">
-                            {chatRoom.message.content}
-                          </div>
-                          <div className="chat-footer">
-                            <p className="text-smaller text-muted mb-0">
-                              {moment(
-                                moment(chatRoom.message.time).format(
-                                  'YYYY-MM-DD HH:mm:ss'
-                                )
-                              ).fromNow()}
-                            </p>
-                            <span className="text-muted float-right">
-                              <i
-                                className="fas fa-mail-reply"
-                                aria-hidden="true"
-                              />
-                            </span>
-                          </div>
-                        </Link>
+            <div className="messages-box">
+              <div className="list-group rounded-0" />
+              {currUser.map(chatRoom => {
+                return (
+                  <div
+                    className="allChat list-group-item list-group-item-action list-group-item-light rounded-0"
+                    key={chatRoom.chatId}
+                  >
+                    <Link
+                      to={{
+                        pathname: `/chats/${chatRoom.chatId}`
+                      }}
+                    >
+                      <div className="media">
+                        <img
+                          src={chatRoom.profileImg}
+                          className="direct-chat-img rounded-circle"
+                        />
+                      </div>
+                      <div className="d-flex align-items-center justify-content-between mb-1">
+                        <h6 className="mb-0">{chatRoom.firstName} </h6>
+                        <small className="small font-weight-bold">
+                          {moment(
+                            moment(chatRoom.message.time).format(
+                              'YYYY-MM-DD HH:mm:ss'
+                            )
+                          ).fromNow()}
+                        </small>
+                      </div>
+                      <p className="font-italic text-muted mb-0 text-small">
+                        {chatRoom.message.content}
+                      </p>
+                      <div>
                         <div className="img_cont">
                           <img
                             src={chatRoom.productImg}
                             className="direct-chat-img"
                           />
                         </div>
+                        {/* <div>
+                          <button
+                            className="close"
+                            aria-label="Close"
+                            type="button"
+                            onClick={() =>
+                              this.deleteClickHandler(chatRoom.chatId)
+                            }
+                          >
+                            X
+                          </button>
+                        </div> */}
                       </div>
-                      <div>
-                        <button
-                          className="close"
-                          aria-label="Close"
-                          type="button"
-                          onClick={() =>
-                            this.deleteClickHandler(chatRoom.chatId)
-                          }
-                        >
-                          X
-                        </button>
-                      </div>
-                    </div>
+                    </Link>
                   </div>
-                </div>
-              </div>
-            )
-          })}
+                )
+              })}
+            </div>
+          </div>
         </div>
       </div>
     )
