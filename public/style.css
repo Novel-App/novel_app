@@ -47,15 +47,23 @@ body {
   color: #65837b;
 }
 
+a:active {
+  color: #65837b;
+}
+
 .prod-nav-link:hover,
-.prod-nav-link.active,
 .add-product:hover {
   color: #65837b;
 }
 
-.navbar-collapse {
+#small-navbar {
   justify-content: space-evenly;
 }
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
 .navbar-signin {
   justify-content: flex-start;
 }

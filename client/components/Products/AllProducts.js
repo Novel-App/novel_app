@@ -99,7 +99,10 @@ class AllProducts extends Component {
           <div />
           <div className="container">
             <nav className="navbar d-flex navbar-expand-md ">
-              <div className="navbar-collapse d-flex collapse w-100 order-1 order-sm-0 dual-collapse2">
+              <div
+                id="small-navbar"
+                className="navbar-collapse d-flex collapse w-100 order-1 order-sm-0 dual-collapse2"
+              >
                 <div>
                   <a
                     className="prod-nav-link"
