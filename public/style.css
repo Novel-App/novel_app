@@ -314,3 +314,19 @@ singleChat styling */
   ); /* vpace for fixed navbar (48px), "main" (71px), footer (53px) */
   overflow-y: scroll; /* vertical scroll for the message feed */
 }
+
+#chat-message {
+  border-color: #00a988;
+  padding: 6;
+  margin: 3;
+  width: 350px;
+}
+
+.direct-chat-text {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.wrapper {
+  overflow: auto;
+}

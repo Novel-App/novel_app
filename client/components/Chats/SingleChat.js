@@ -115,7 +115,7 @@ export class SingleChat extends Component {
                 <div>
                   <input
                     id="messageTextarea"
-                    className="center form-control"
+                    className="justify-content-center form-control"
                     placeholder="Enter your message"
                     type="text"
                     value={this.state.content}
