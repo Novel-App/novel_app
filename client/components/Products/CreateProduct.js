@@ -36,6 +36,7 @@ const defaultState = {
 class CreateProduct extends Component {
   constructor(props) {
     super(props)
+    this.productImage = React.createRef()
     this.state = {
       title: '',
       author: '',
@@ -50,7 +51,7 @@ class CreateProduct extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.handleAutoFill = this.handleAutoFill.bind(this)
   }
@@ -97,19 +98,17 @@ class CreateProduct extends Component {
   handleSearch = e => {
     this.setState({isbn: e.target.value})
   }
-  // onFileChange(event) {
-  //   // this.setState({
-  //   //   profileImage: event.target.files
-  //   // })
+
+  // async handleSubmit(evt) {
+  //   console.log('PRODUCT IMAGE', this.productImage.current.files)
+  //   evt.preventDefault()
+  //   await this.props.createProduct({
+  //     ...this.state,
+  //     // image: this.productImage.current.files[0].path.replace(/^public\//, ''),
+  //     sellerId: this.props.user.id
+  //   })
   // }
 
-  async handleSubmit(evt) {
-    evt.preventDefault()
-    await this.props.createProduct({
-      ...this.state,
-      sellerId: this.props.user.id
-    })
-  }
   render() {
     const {handleChange, handleCheckboxChange, handleSubmit} = this
     const {
@@ -147,24 +146,20 @@ class CreateProduct extends Component {
           </form>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          {/* <label htmlFor="image">Upload Images:</label>
-                <input
-                name="image"
-                onChange={handleChange}
-                value={image}
-                required
-                />
-                <br /> */}
+        <form
+          encType="multipart/form-data"
+          action="/api/products"
+          method="post"
+        >
           <div className="form-group">
-            <input
-              type="file"
-              accept="image/x-png,image/jpeg, image/gif"
-              onChange={() => this.onFileChange()}
-            />
-          </div>
+            <label htmlFor="productImg">Images (up to 4)</label>
+            <input type="file" name="productImg" />
+            {/* <input type="file" name="productImg" ref={this.productImage}/>
+            <input type="file" name="productImg" ref={this.productImage}/>
+            <input type="file" name="productImg" ref={this.productImage}/> */}
+            {/* <input type="submit" /> */}
+            {/* </form> */}
 
-          <div className="form-group">
             <label htmlFor="title">Title</label>
             <input
               name="title"

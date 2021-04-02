@@ -1,8 +1,34 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
+// import {updateUserPicture} from '../../store/user'
 
 class EditProfImage extends Component {
+  // constructor() {
+  //   super()
+  //   this.state = {
+  //     firstName: '',
+  //     lastName: '',
+  //     email: '',
+  //     password: '',
+  //     profileImage: ''
+  //   }
+  //   // this.handleSubmit = this.handleSubmit.bind(this)
+  // }
+  // componentDidMount() {
+  //   this.setState({
+  //     firstName: this.props.user.firstName,
+  //     lastName: this.props.user.lastName,
+  //     email: this.props.user.email,
+  //     password: this.props.user.password,
+  //     profileImage: this.props.user.profileImage
+  //   })
+  // }
+  // handleSubmit(evt) {
+  //   evt.preventDefault()
+  //   this.props.updateUserPicture({...this.state, profileImage: evt.target.file})
+  //   this.props.history.push('/profile')
+  // }
   // state = {
   //   // Initially, no file is selected
   //   selectedFile: null
@@ -15,9 +41,9 @@ class EditProfImage extends Component {
   // }
 
   // On file upload (click the upload button)
-  // onFileUpload = async () => {
-  // // Create an object of formData
-  // const formData = new FormData()
+  // onFileUpload () {
+  //   this.props.hiistory.push('/profile')
+  // }
 
   // // Update the formData object
   // formData.append(
@@ -66,40 +92,24 @@ class EditProfImage extends Component {
   render() {
     return (
       <div>
-        {/* <h1>Upload a new profile image!</h1>
-        <div>
-          <input type="file" onChange={this.onFileChange} />
-          <button type="button" onClick={this.onFileUpload}>
-            Upload!
-          </button>
-        </div>
-        {this.fileData()} */}
         <h1>Upload a new profile image!</h1>
+        {/* <h3>Your current profile image</h3>
+        <img
+          className="rounded-circle mt-5"
+          src={this.props.user.profileImage}
+           width="90"
+        /> */}
         <form
           method="post"
-          action={`/uploadProfile/${this.props.user.id}`}
+          action={`/api/users/${this.props.user.id}/uploadProfile`}
+          // onSubmit={this.handleSubmit}
           encType="multipart/form-data"
         >
-          <input type="file" name="profileImg" onChange={this.onFileChange} />
-          <input type="submit" onClick={this.onFileUpload} />
-        </form>
-
-        <br />
-
-        <h1>Upload product images!</h1>
-        <form
-          method="post"
-          action="/uploadProducts"
-          encType="multipart/form-data"
-        >
-          <label htmlFor="productImg">
-            <h3>up to 4 images</h3>
-          </label>
-          <input type="file" name="productImg" onChange={this.onFileChange} />
-          <input type="file" name="productImg" onChange={this.onFileChange} />
-          <input type="file" name="productImg" onChange={this.onFileChange} />
-          <input type="file" name="productImg" onChange={this.onFileChange} />
-          <input type="submit" onClick={this.onFileUpload} />
+          <input type="file" name="profileImg" required />
+          <input
+            type="submit"
+            // onClick={this.onFileUpload}
+          />
         </form>
       </div>
     )
@@ -112,4 +122,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(EditProfImage)
+const mapDispatchToProps = dispatch => {
+  return {
+    updateUserPicture: user => dispatch(updateUserPicture(user))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfImage)

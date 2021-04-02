@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Product, User, Genre, Favorite} = require('../db/models')
+const upload = require('../utils/photoUpload')
 module.exports = router
 
 // GET /api/products
@@ -35,23 +36,65 @@ router.get('/status/:availability', async (req, res, next) => {
 //post must include: title, author, ISBN, description, condition, price, sellerId
 //could include 'image', canBargin. could switch: availability ==> then need to add buyerId
 
-router.post('/', async (req, res, next) => {
+// router.post('/', async (req, res, next) => {
+//   try {
+//     let newProduct = await Product.create(req.body, {
+//       include: [
+//         {
+//           model: User,
+//           as: 'seller',
+//           attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
+//         },
+//         {model: Genre}
+//       ]
+//     })
+//     res.status(201).json(newProduct)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
+router.post('/', upload.array('productImg', 4), async (req, res, next) => {
   try {
-    let newProduct = await Product.create(req.body, {
-      include: [
-        {
-          model: User,
-          as: 'seller',
-          attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
-        },
-        {model: Genre}
-      ]
-    })
-    res.status(201).json(newProduct)
+    const imagePath = req.files[0].path.replace(/^public\//, '')
+    console.log('IMAGE PATH', imagePath)
+    await Product.create(
+      {...req.body, image: imagePath},
+      {
+        include: [
+          {
+            model: User,
+            as: 'seller',
+            attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
+          },
+          {model: Genre}
+        ]
+      }
+    )
+    // res.status(201).json(newProduct)
+    res.status(201).redirect('/products')
   } catch (error) {
     next(error)
   }
 })
+
+router.post(
+  '/:userId/uploadProfile',
+  upload.single('profileImg'),
+  async (req, res, next) => {
+    // try {
+    console.log('PROFILE IMAGE COCNSOLE LOG')
+    var imagePath = req.file.path.replace(/^public\//, '')
+    console.log('IMAGE PATH', imagePath)
+    const user = await User.findByPk(req.params.userId)
+    await user.update({profileImage: imagePath})
+    res.status(201).redirect('/profile')
+    // const updatedUser = await user.update({profileImage: imagePath})
+    // res.status(201).send(updatedUser)
+    // } catch(err) {
+    //   next(err)
+    // }
+  }
+)
 
 //GET ALL USER FAVORITE PRODUCTS
 //GET /api/products/favorites/:userId
