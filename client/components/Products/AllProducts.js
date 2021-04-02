@@ -98,8 +98,11 @@ class AllProducts extends Component {
         <div className="container-flex">
           <div />
           <div className="container">
-            <nav id="tinyNav" className="navbar navbar-expand-md">
-              <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <nav className="navbar d-flex navbar-expand-md ">
+              <div
+                id="small-navbar"
+                className="navbar-collapse d-flex collapse w-100 order-1 order-sm-0 dual-collapse2"
+              >
                 <div>
                   <a
                     className="prod-nav-link"
@@ -174,7 +177,7 @@ class AllProducts extends Component {
                         <div className="card-horizontal">
                           <Link to={`/products/${product.id}`}>
                             <img
-                              className="card-img"
+                              className="card-img img-fluid"
                               alt={product.title}
                               src={product.image}
                             />
