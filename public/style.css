@@ -54,7 +54,7 @@ body {
 }
 
 .navbar-collapse {
-  justify-content: flex-end;
+  justify-content: space-evenly;
 }
 .navbar-signin {
   justify-content: flex-start;
