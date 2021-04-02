@@ -14,6 +14,11 @@ body {
 .navbar {
   background: #254d4c;
 }
+.title {
+  color: #e7fff8;
+  text-align: center;
+  align-content: center;
+}
 
 .navbar-dark {
   background: #65837b;
@@ -271,4 +276,21 @@ img.blur {
   );
   background-image: -webkit-linear-gradient(bottom, #98b0aa 0%, #cf9eac 100%);
   background-image: linear-gradient(to top, #98b0aa 0%, #cf9eac 100%);
+}
+
+/* all chats  */
+.direct-chat-img {
+  width: 3rem;
+  height: 3rem;
+}
+.allChat {
+  background: #fff;
+}
+strong {
+  color: #007bff;
+}
+.allChat {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
 }

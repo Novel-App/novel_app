@@ -31,17 +31,25 @@ class AllChats extends Component {
 
     const currUser = chats
       ? chats.map(chat => {
+          //if user is chatting the seller
           if (user.id !== chat.sellerId) {
             return {
               chatId: chat.id,
               firstName: chat.product.seller.firstName,
-              productName: chat.product.title
+              productName: chat.product.title,
+              profileImg: chat.product.seller.profileImage
             }
           } else {
+            //if user is chatting the browser
+            const browserInfo =
+              chat.users[0].id === chat.browserId
+                ? chat.users[0]
+                : chat.users[1]
             return {
               chatId: chat.id,
-              firstName: chat.users[0].firstName,
-              productName: chat.product.title
+              firstName: browserInfo.firstName,
+              productName: chat.product.title,
+              profileImg: browserInfo.profileImage
             }
           }
         })
@@ -49,70 +57,61 @@ class AllChats extends Component {
 
     return (
       <div>
-        <h3>All chats</h3>
-        <Book />
-        <ul>
+        <div className="container">
+          <nav className="navbar navbar-expand-md">
+            <div className="title navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+              <h3>All chats</h3>
+            </div>
+          </nav>
+        </div>
+        <div className="container-fluid">
           {currUser.map(chatRoom => {
             return (
-              <li key={chatRoom.chatId}>
-                <Link
-                  to={{
-                    pathname: `/messages/${chatRoom.chatId}`
-                  }}
-                >
-                  <p>{`${chatRoom.firstName}: ${chatRoom.productName}`}</p>
-                </Link>
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => this.deleteClickHandler(chatRoom.chatId)}
-                  >
-                    X
-                  </button>
-                </div>
-              </li>
-            )
-          })}
-        </ul>
-        <div className="card rare-wind-gradient chat-room">
-          <div className="card-body">
-            <div className="col-md-6 col-xl-4 px-0">
-              <div className="row px-lg-2 px-2">
-                <h3 className="font-weight-bold mb-3 text-center text-lg-left">
-                  All chats
-                </h3>
-                <ul className="list-unstyled friend-list">
-                  {currUser.map(chatRoom => {
-                    return (
-                      <li
-                        className="active grey lighten-3 p-2"
-                        key={chatRoom.chatId}
-                      >
+              <div className="card mb-0" key={chatRoom.chatId}>
+                <div className="col-md-4">
+                  <div className="row no-gutters">
+                    <div className="card-horizontal">
+                      <div className="col-4 allChat">
                         <Link
                           to={{
                             pathname: `/chats/${chatRoom.chatId}`
                           }}
                         >
-                          <p id="allChat-p">{`${chatRoom.firstName}: ${
-                            chatRoom.productName
-                          }`}</p>
+                          <div className="text-small">
+                            <strong>{chatRoom.firstName} </strong>
+                          </div>
+                          <div className="img_cont">
+                            <img
+                              src={chatRoom.profileImg}
+                              className="direct-chat-img rounded-circle"
+                            />
+                          </div>
+                          <div className="last-message text-muted">
+                            <p>
+                              <i className="bi bi-book" aria-hidden="true" />:
+                              {chatRoom.productName}
+                            </p>
+                          </div>
                         </Link>
-                        <span>
-                          <i
-                            id="chat-trash"
-                            className="bi bi-trash ml-5"
-                            onClick={() =>
-                              this.deleteClickHandler(chatRoom.chatId)
-                            }
-                          />
-                        </span>
-                      </li>
-                    )
-                  })}
-                </ul>
+                      </div>
+                      <div>
+                        <button
+                          className="close"
+                          aria-label="Close"
+                          type="button"
+                          onClick={() =>
+                            this.deleteClickHandler(chatRoom.chatId)
+                          }
+                        >
+                          X
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            )
+          })}
         </div>
       </div>
     )
