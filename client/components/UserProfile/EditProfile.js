@@ -109,18 +109,11 @@ class EditProfile extends Component {
                 />
               </div>
               <div>
-                <input
-                  type="file"
-                  accept="image/x-png,image/jpeg, image/gif"
-                  onChange={event => this.onFileChange(event)}
-                />
-              </div>
-              <div>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" id="btn-primary">
                   Update
                 </button>
                 <Link to="/home">
-                  <button type="button" className="btn btn-warning">
+                  <button type="button" id="btn-warning">
                     {' '}
                     Cancel
                   </button>

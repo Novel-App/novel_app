@@ -1,29 +1,40 @@
 body {
   font-family: sans-serif;
-  background-color: #65837b;
-  color: #bda5ab;
+  background-color: #f5f5f5;
+  color: #354b45;
   padding: 0;
   margin: 0;
 }
+/* background-color: #f3eada; */
+/* 
+#tinyNav{
+  background-color: #f3eada; 
+} */
 
 .navbar {
   background: #254d4c;
 }
 
-.btn-primary {
-  background: #bda5ab;
-  border-color: #cf9eac;
+.navbar-dark {
+  background: #65837b;
 }
 
-.btn-warning {
-  background: #341011;
-  border-color: #cf9eac;
-  color: white;
+#btn-primary {
+  background: #00a988;
+  color: #e7fff8;
+  /* border-color: #e7fff8; */
+}
+
+#btn-warning {
+  background: #8c749b;
+  /* border-color: #CE8FFF; */
+  color: #e7fff8;
 }
 
 .nav-link,
-.navbar-brand {
-  color: #bda5ab;
+.navbar-brand,
+.prod-nav-link {
+  color: #e7fff8;
   cursor: pointer;
 }
 
@@ -33,13 +44,13 @@ body {
 .nav-link:hover,
 .navbar-brand:hover,
 .btn-primary:hover {
-  color: #002120;
+  color: #65837b;
 }
 
-#prod-nav-link:hover,
-#prod-nav-link.active,
+.prod-nav-link:hover,
+.prod-nav-link.active,
 .add-product:hover {
-  color: #564147;
+  color: #65837b;
 }
 
 .navbar-collapse {
@@ -55,8 +66,14 @@ body {
 }
 
 .card-horizontal {
-  display: flex;
   flex: 1 1 auto;
+  display: block;
+  text-align: center;
+}
+.form-group {
+  align-content: center;
+  text-align: center;
+  text-align-last: center;
 }
 
 .card-img {
@@ -67,7 +84,7 @@ body {
 #edit-container,
 #profile-container,
 #fav-container {
-  background-color: #564147;
+  background-color: #65837b;
 }
 
 .buttons {
@@ -86,12 +103,12 @@ body {
   border-radius: 50px;
   font-size: 12px;
   text-align: center;
-  border-color: #cf9eac;
+  border-color: #e7fff8;
 }
 
 .btn-circle.btn-xl:hover,
 .btn-primary:hover {
-  background-color: #cf9eac;
+  background-color: #00a988;
 }
 
 a {
