@@ -43,7 +43,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "antd": "^4.14.1",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta3",
     "bootstrap-icons": "^1.4.0",
     "bootstrap-material-design": "^4.1.1",
@@ -62,7 +62,9 @@
     "pg": "^8.3.2",
     "pg-hstore": "^2.3.2",
     "prop-types": "^15.7.2",
+    "quagga": "^0.12.1",
     "react": "^16.14.0",
+    "react-barcode": "^1.4.0",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^16.14.0",
     "react-redux": "^7.2.3",

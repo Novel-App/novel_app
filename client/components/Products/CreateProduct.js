@@ -5,21 +5,10 @@ import {Link} from 'react-router-dom'
 import {createProduct} from '../../store/product'
 import Condition from './Condition'
 import axios from 'axios'
+import BarcodeScanner from './BarcodeScanner'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
-// const defaultState = {
-//   title: '',
-//   author: '',
-//   ISBN: '',
-//   description: '',
-//   image: 'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
-//   condition: '',
-//   price: 0,
-//   canBargain: false,
-//   availability: 'Available',
-//   genreId: ''
-// }
 const defaultState = {
   title: '',
   author: '',
@@ -145,6 +134,11 @@ class CreateProduct extends Component {
             />
             <button type="submit">Auto Fill</button>
           </form>
+        </div>
+
+        <div>
+          <p>Scan your barcode for ISBN</p>
+          <BarcodeScanner />
         </div>
 
         <form onSubmit={handleSubmit}>
