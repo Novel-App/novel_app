@@ -112,10 +112,10 @@ export class SingleChat extends Component {
                 className="d-flex justify-content-end"
                 onSubmit={this.submitChatMessage}
               >
-                <div>
+                <div className="align-items-center">
                   <input
                     id="messageTextarea"
-                    className="justify-content-center form-control"
+                    className="form-control"
                     placeholder="Enter your message"
                     type="text"
                     value={this.state.content}
