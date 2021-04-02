@@ -37,7 +37,8 @@ class AllChats extends Component {
               chatId: chat.id,
               firstName: chat.product.seller.firstName,
               productName: chat.product.title,
-              profileImg: chat.product.seller.profileImage
+              profileImg: chat.product.seller.profileImage,
+              productImg: chat.product.image
             }
           } else {
             //if user is chatting the browser
@@ -49,7 +50,8 @@ class AllChats extends Component {
               chatId: chat.id,
               firstName: browserInfo.firstName,
               productName: chat.product.title,
-              profileImg: browserInfo.profileImage
+              profileImg: browserInfo.profileImage,
+              productImg: chat.product.image
             }
           }
         })
@@ -87,12 +89,19 @@ class AllChats extends Component {
                             />
                           </div>
                           <div className="last-message text-muted">
-                            <p>
+                            {/* last message */}
+                            {/* <p>
                               <i className="bi bi-book" aria-hidden="true" />:
                               {chatRoom.productName}
-                            </p>
+                            </p> */}
                           </div>
                         </Link>
+                        <div className="img_cont">
+                          <img
+                            src={chatRoom.productImg}
+                            className="direct-chat-img"
+                          />
+                        </div>
                       </div>
                       <div>
                         <button
