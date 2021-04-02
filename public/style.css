@@ -304,3 +304,13 @@ strong {
   gap: 12px;
   justify-content: center;
 }
+
+/* 
+singleChat styling */
+
+#messageFeed {
+  height: calc(
+    100vh - 172px
+  ); /* vpace for fixed navbar (48px), "main" (71px), footer (53px) */
+  overflow-y: scroll; /* vertical scroll for the message feed */
+}
