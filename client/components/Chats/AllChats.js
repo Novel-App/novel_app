@@ -31,6 +31,25 @@ class AllChats extends Component {
 
     const currUser = chats
       ? chats.map(chat => {
+          //get last chat message
+          let lastMessage = {content: '', time: '1800-04-02T14:43:19.818Z'}
+          if (chat.users.length === 1) {
+            lastMessage = {
+              content: chat.users[0].message.content,
+              time: chat.users[0].message.createdAt
+            }
+          } else {
+            lastMessage =
+              chat.users[0].createdAt > chat.users[1].message.createdAt
+                ? {
+                    content: chat.users[0].message.content,
+                    time: chat.users[0].message.createdAt
+                  }
+                : {
+                    content: chat.users[1].message.content,
+                    time: chat.users[1].message.createdAt
+                  }
+          }
           //if user is chatting the seller
           if (user.id !== chat.sellerId) {
             return {
@@ -38,7 +57,8 @@ class AllChats extends Component {
               firstName: chat.product.seller.firstName,
               productName: chat.product.title,
               profileImg: chat.product.seller.profileImage,
-              productImg: chat.product.image
+              productImg: chat.product.image,
+              message: lastMessage
             }
           } else {
             //if user is chatting the browser
@@ -51,12 +71,12 @@ class AllChats extends Component {
               firstName: browserInfo.firstName,
               productName: chat.product.title,
               profileImg: browserInfo.profileImage,
-              productImg: chat.product.image
+              productImg: chat.product.image,
+              message: lastMessage
             }
           }
         })
       : []
-
     return (
       <div>
         <div className="container">
@@ -89,11 +109,22 @@ class AllChats extends Component {
                             />
                           </div>
                           <div className="last-message text-muted">
-                            {/* last message */}
-                            {/* <p>
-                              <i className="bi bi-book" aria-hidden="true" />:
-                              {chatRoom.productName}
-                            </p> */}
+                            {chatRoom.message.content}
+                          </div>
+                          <div className="chat-footer">
+                            <p className="text-smaller text-muted mb-0">
+                              {moment(
+                                moment(chatRoom.message.time).format(
+                                  'YYYY-MM-DD HH:mm:ss'
+                                )
+                              ).fromNow()}
+                            </p>
+                            <span className="text-muted float-right">
+                              <i
+                                className="fas fa-mail-reply"
+                                aria-hidden="true"
+                              />
+                            </span>
                           </div>
                         </Link>
                         <div className="img_cont">
