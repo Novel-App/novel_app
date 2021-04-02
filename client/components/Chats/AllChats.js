@@ -38,7 +38,7 @@ class AllChats extends Component {
               firstName: chat.product.seller.firstName,
               productName: chat.product.title,
               profileImg: chat.product.seller.profileImage,
-              productImg: chat.product.image
+              productImg: chat.product.image[0]
             }
           } else {
             //if user is chatting the browser
@@ -51,7 +51,7 @@ class AllChats extends Component {
               firstName: browserInfo.firstName,
               productName: chat.product.title,
               profileImg: browserInfo.profileImage,
-              productImg: chat.product.image
+              productImg: chat.product.image[0]
             }
           }
         })

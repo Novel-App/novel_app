@@ -58,9 +58,11 @@ router.post('/', upload.array('productImg', 4), async (req, res, next) => {
     console.log('REQ BODY', req.body)
     console.log('REQ FILES', req.files)
 
-    const imagePath = req.files[0].path.replace(/^public\//, '')
+    let imagePaths = req.files.map(file => file.path.replace(/^public\//, ''))
+
+    // const imagePath = req.files[0].path.replace(/^public\//, '')
     const newProduct = await Product.create(
-      {...req.body, image: imagePath},
+      {...req.body, image: imagePaths},
       {
         include: [
           {

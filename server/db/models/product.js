@@ -33,9 +33,10 @@ const Product = db.define('product', {
   },
   //Update image validater once we figure out another way to store images
   image: {
-    type: Sequelize.TEXT,
-    defaultValue:
-      'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+    defaultValue: [
+      'https://historyexplorer.si.edu/sites/default/files/book-348.jpg'
+    ],
     allowNull: false
   },
   condition: {

@@ -25,7 +25,7 @@ const defaultState = {
   author: '',
   ISBN: '',
   description: '',
-  image: 'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
+  image: ['https://historyexplorer.si.edu/sites/default/files/book-348.jpg'],
   condition: '',
   price: 0,
   canBargain: false,
@@ -42,7 +42,9 @@ class CreateProduct extends Component {
       author: '',
       ISBN: '',
       description: '',
-      image: 'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
+      image: [
+        'https://historyexplorer.si.edu/sites/default/files/book-348.jpg'
+      ],
       condition: '',
       price: 0,
       canBargain: false,
@@ -103,7 +105,8 @@ class CreateProduct extends Component {
 
   handleFileChange(evt) {
     // console.log('IMAGE URL', URL.createObjectURL(evt.target.files[0]))
-    this.setState({image: evt.target.files[0]})
+    console.log('image ffiless', evt.target.files)
+    this.setState({image: evt.target.files})
   }
 
   async handleSubmit(evt) {
@@ -113,7 +116,9 @@ class CreateProduct extends Component {
     product.append('author', this.state.author)
     product.append('ISBN', this.state.ISBN)
     product.append('description', this.state.description)
-    product.append('productImg', this.state.image)
+    for (let i = 0; i < this.state.image.length; i++) {
+      product.append('productImg', this.state.image[i])
+    }
     product.append('condition', this.state.condition)
     product.append('price', this.state.price)
     product.append('canBargain', this.state.canBargain)
@@ -184,6 +189,8 @@ class CreateProduct extends Component {
             <input
               type="file"
               name="productImg"
+              accept="image/*"
+              multiple
               ref={this.productImage}
               onChange={handleFileChange}
             />

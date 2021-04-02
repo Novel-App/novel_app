@@ -64,7 +64,7 @@ class FavAndPurchases extends Component {
                       <img
                         className="card-img img-fluid"
                         alt={product.title}
-                        src={product.image}
+                        src={product.image[0]}
                       />
                     </Link>
                   </div>
