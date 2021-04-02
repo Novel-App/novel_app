@@ -201,7 +201,7 @@ class AllProducts extends Component {
                             )}
                           </div>
                           <br />
-                          <div className="card-footer text-center">
+                          <div className="card-footer text-center container-flex ">
                             <h5>
                               <small className="text-muted">
                                 Posted{' '}
