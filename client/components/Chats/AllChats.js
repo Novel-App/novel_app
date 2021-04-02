@@ -33,19 +33,33 @@ class AllChats extends Component {
           //get last chat message
           let lastMessage = {content: '', time: '1800-04-02T14:43:19.818Z'}
           if (chat.users.length === 1) {
+            let message = chat.users[0].message.content.split(' ')
             lastMessage = {
-              content: chat.users[0].message.content,
+              content:
+                message.length > 3
+                  ? `${message.slice(0, 3).join(' ')}...`
+                  : message.join(' '),
               time: chat.users[0].message.createdAt
             }
           } else {
             lastMessage =
               chat.users[0].createdAt > chat.users[1].message.createdAt
                 ? {
-                    content: chat.users[0].message.content,
+                    content:
+                      chat.users[0].message.content.split(' ').length > 3
+                        ? `${chat.users[0].message.content.split
+                            .slice(0, 3)
+                            .join(' ')}...`
+                        : chat.users[0].message.content.split(' ').join(' '),
                     time: chat.users[0].message.createdAt
                   }
                 : {
-                    content: chat.users[1].message.content,
+                    content:
+                      chat.users[1].message.content.split(' ').length > 3
+                        ? `${chat.users[1].message.content.split
+                            .slice(0, 3)
+                            .join(' ')}...`
+                        : chat.users[1].message.content.split(' ').join(' '),
                     time: chat.users[1].message.createdAt
                   }
           }
@@ -56,7 +70,7 @@ class AllChats extends Component {
               firstName: chat.product.seller.firstName,
               productName: chat.product.title,
               profileImg: chat.product.seller.profileImage,
-              productImg: chat.product.image,
+              productImg: chat.product.image[0],
               message: lastMessage
             }
           } else {
@@ -70,7 +84,7 @@ class AllChats extends Component {
               firstName: browserInfo.firstName,
               productName: chat.product.title,
               profileImg: browserInfo.profileImage,
-              productImg: chat.product.image,
+              productImg: chat.product.image[0],
               message: lastMessage
             }
           }
@@ -84,7 +98,7 @@ class AllChats extends Component {
             <div className="bg-gray px-4 py-2 bg-light">
               <p className="h5 mb-0 py-1">All Chats</p>
             </div>
-            <div className="messages-box">
+            <div className="messages-box container-flex">
               <div className="list-group rounded-0" />
               {currUser.map(chatRoom => {
                 return (
@@ -95,7 +109,7 @@ class AllChats extends Component {
                     key={chatRoom.chatId}
                   >
                     <div
-                      className="allChat  list-group-item-action list-group-item-light rounded-0 d-inline-flex p-2 justify-content-between border-bottom"
+                      className=" container-flex allChat  list-group-item-action list-group-item-light rounded-0 d-inline-flex p-2 justify-content-between border-bottom"
                       key={chatRoom.chatId}
                     >
                       <div className="d-flex flex-column">
