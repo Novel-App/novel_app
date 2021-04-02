@@ -1,10 +1,11 @@
 body {
   font-family: sans-serif;
-  background-color: #f3eada;
+  background-color: #f5f5f5;
   color: #354b45;
   padding: 0;
   margin: 0;
 }
+/* background-color: #f3eada; */
 /* 
 #tinyNav{
   background-color: #f3eada; 
@@ -65,8 +66,14 @@ body {
 }
 
 .card-horizontal {
-  display: flex;
   flex: 1 1 auto;
+  display: block;
+  text-align: center;
+}
+.form-group {
+  align-content: center;
+  text-align: center;
+  text-align-last: center;
 }
 
 .card-img {
