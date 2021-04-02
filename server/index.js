@@ -100,13 +100,13 @@ const createApp = () => {
   // )
 
   //UPLOAD MULTIPLE PRODUCT IMGS
-  app.post('/uploadProducts', upload.array('productImg', 4), function(
-    req,
-    res
-  ) {
-    console.log(req.files)
-    res.send(req.files)
-  })
+  // app.post('/uploadProducts', upload.array('productImg', 4), function(
+  //   req,
+  //   res
+  // ) {
+  //   console.log(req.files)
+  //   res.send(req.files)
+  // })
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {

@@ -51,7 +51,9 @@ class CreateProduct extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+    this.handleFileChange = this.handleFileChange.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.handleAutoFill = this.handleAutoFill.bind(this)
   }
@@ -99,24 +101,49 @@ class CreateProduct extends Component {
     this.setState({isbn: e.target.value})
   }
 
-  // async handleSubmit(evt) {
-  //   console.log('PRODUCT IMAGE', this.productImage.current.files)
-  //   evt.preventDefault()
-  //   await this.props.createProduct({
-  //     ...this.state,
-  //     // image: this.productImage.current.files[0].path.replace(/^public\//, ''),
-  //     sellerId: this.props.user.id
-  //   })
-  // }
+  handleFileChange(evt) {
+    // console.log('IMAGE URL', URL.createObjectURL(evt.target.files[0]))
+    this.setState({image: evt.target.files[0]})
+  }
+
+  async handleSubmit(evt) {
+    evt.preventDefault()
+    const product = new FormData()
+    product.append('title', this.state.title)
+    product.append('author', this.state.author)
+    product.append('ISBN', this.state.ISBN)
+    product.append('description', this.state.description)
+    product.append('productImg', this.state.image)
+    product.append('condition', this.state.condition)
+    product.append('price', this.state.price)
+    product.append('canBargain', this.state.canBargain)
+    product.append('availability', this.state.availability)
+    product.append('genreId', this.state.genreId)
+    product.append('sellerId', this.props.user.id)
+
+    await this.props.createProduct(product)
+
+    // await this.props.createProduct({
+    //   ...this.state,
+    //   image: this.productImage.current.files[0],
+    //   sellerId: this.props.user.id
+    // })
+  }
 
   render() {
-    const {handleChange, handleCheckboxChange, handleSubmit} = this
+    const {
+      handleChange,
+      handleCheckboxChange,
+      handleSubmit,
+      handleFileChange,
+      handleSearch,
+      handleAutoFill
+    } = this
     const {
       title,
       author,
       ISBN,
       description,
-      image,
       condition,
       price,
       canBargain,
@@ -136,9 +163,9 @@ class CreateProduct extends Component {
 
         <div>
           <p>Enter ISBN below for auto fill imformation</p>
-          <form onSubmit={this.handleAutoFill}>
+          <form onSubmit={handleAutoFill}>
             <input
-              onChange={this.handleSearch}
+              onChange={handleSearch}
               type="text"
               placeholder="Enter ISBN"
             />
@@ -148,17 +175,18 @@ class CreateProduct extends Component {
 
         <form
           encType="multipart/form-data"
-          action="/api/products"
-          method="post"
+          // action="/api/products"
+          // method="post"
+          onSubmit={handleSubmit}
         >
           <div className="form-group">
             <label htmlFor="productImg">Images (up to 4)</label>
-            <input type="file" name="productImg" />
-            {/* <input type="file" name="productImg" ref={this.productImage}/>
-            <input type="file" name="productImg" ref={this.productImage}/>
-            <input type="file" name="productImg" ref={this.productImage}/> */}
-            {/* <input type="submit" /> */}
-            {/* </form> */}
+            <input
+              type="file"
+              name="productImg"
+              ref={this.productImage}
+              onChange={handleFileChange}
+            />
 
             <label htmlFor="title">Title</label>
             <input

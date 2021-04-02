@@ -55,9 +55,11 @@ router.get('/status/:availability', async (req, res, next) => {
 // })
 router.post('/', upload.array('productImg', 4), async (req, res, next) => {
   try {
+    console.log('REQ BODY', req.body)
+    console.log('REQ FILES', req.files)
+
     const imagePath = req.files[0].path.replace(/^public\//, '')
-    console.log('IMAGE PATH', imagePath)
-    await Product.create(
+    const newProduct = await Product.create(
       {...req.body, image: imagePath},
       {
         include: [
@@ -70,31 +72,12 @@ router.post('/', upload.array('productImg', 4), async (req, res, next) => {
         ]
       }
     )
-    // res.status(201).json(newProduct)
-    res.status(201).redirect('/products')
+    res.status(201).send(newProduct)
+    // res.status(201).redirect('/products')
   } catch (error) {
     next(error)
   }
 })
-
-router.post(
-  '/:userId/uploadProfile',
-  upload.single('profileImg'),
-  async (req, res, next) => {
-    // try {
-    console.log('PROFILE IMAGE COCNSOLE LOG')
-    var imagePath = req.file.path.replace(/^public\//, '')
-    console.log('IMAGE PATH', imagePath)
-    const user = await User.findByPk(req.params.userId)
-    await user.update({profileImage: imagePath})
-    res.status(201).redirect('/profile')
-    // const updatedUser = await user.update({profileImage: imagePath})
-    // res.status(201).send(updatedUser)
-    // } catch(err) {
-    //   next(err)
-    // }
-  }
-)
 
 //GET ALL USER FAVORITE PRODUCTS
 //GET /api/products/favorites/:userId
