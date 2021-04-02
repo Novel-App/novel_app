@@ -55,7 +55,7 @@ const User = db.define('user', {
   profileImage: {
     type: Sequelize.STRING,
     defaultValue:
-      'https://ih1.redbubble.net/image.1251162799.6563/flat,750x,075,f-pad,750x1000,f8f8f8.jpg',
+      'https://www.clipartkey.com/mpngs/m/165-1651401_icon-people-reading-book.png',
     allowNull: false
   },
   profileImageType: {
