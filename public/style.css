@@ -47,8 +47,8 @@ body {
   color: #65837b;
 }
 
-a:active {
-  color: #65837b;
+.navbar-nav .active a {
+  background-color: #65837b;
 }
 
 .prod-nav-link:hover,
