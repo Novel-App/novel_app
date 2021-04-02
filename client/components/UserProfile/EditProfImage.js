@@ -77,7 +77,7 @@ class EditProfImage extends Component {
         <h1>Upload a new profile image!</h1>
         <form
           method="post"
-          action="/uploadProfile"
+          action={`/uploadProfile/${this.props.user.id}`}
           encType="multipart/form-data"
         >
           <input type="file" name="profileImg" onChange={this.onFileChange} />

@@ -10,6 +10,7 @@ class Profile extends Component {
   }
   render() {
     const {firstName, lastName, email, profileImage} = this.props.user
+    console.log('PROFILE IMAGE', profileImage)
     return (
       <div className="main-content">
         {/* <a
