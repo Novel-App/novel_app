@@ -26,7 +26,7 @@ const defaultState = {
 class CreateProduct extends Component {
   constructor(props) {
     super(props)
-    this.productImage = React.createRef()
+    // this.productImage = React.createRef()
     this.state = {
       title: '',
       author: '',
@@ -95,7 +95,6 @@ class CreateProduct extends Component {
 
   handleFileChange(evt) {
     // console.log('IMAGE URL', URL.createObjectURL(evt.target.files[0]))
-    console.log('image ffiless', evt.target.files)
     this.setState({image: evt.target.files})
   }
 
@@ -117,12 +116,6 @@ class CreateProduct extends Component {
     product.append('sellerId', this.props.user.id)
 
     await this.props.createProduct(product)
-
-    // await this.props.createProduct({
-    //   ...this.state,
-    //   image: this.productImage.current.files[0],
-    //   sellerId: this.props.user.id
-    // })
   }
 
   render() {
@@ -173,14 +166,6 @@ class CreateProduct extends Component {
         </div>
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
-          {/* <label htmlFor="image">Upload Images:</label>
-                <input
-                name="image"
-                onChange={handleChange}
-                value={image}
-                required
-                />
-                <br /> */}
           <div className="form-group">
             <label htmlFor="productImg">Images (up to 4)</label>
             <input
@@ -188,8 +173,9 @@ class CreateProduct extends Component {
               name="productImg"
               accept="image/*"
               multiple
-              ref={this.productImage}
+              // ref={this.productImage}
               onChange={handleFileChange}
+              required
             />
 
             <label htmlFor="title">Title</label>
