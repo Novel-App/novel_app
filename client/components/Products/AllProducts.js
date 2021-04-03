@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import ScrollUpButton from 'react-scroll-up-button'
 import {fetchProducts, removeProduct} from '../../store/product'
 import {fetchListings} from '../../store/userInfo'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
@@ -96,7 +97,7 @@ class AllProducts extends Component {
     return (
       <div className="container">
         <div className="container-flex">
-          <div />
+          <ScrollUpButton />
           <div className="container">
             <nav className="navbar d-flex navbar-expand-md ">
               <div

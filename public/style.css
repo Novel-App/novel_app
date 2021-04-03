@@ -1,5 +1,11 @@
+@font-face {
+  font-family: 'Poppins-Regular';
+  src: url(./fonts/Poppins-Regular.ttf) format('truetype');
+}
+
 body {
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
+  font-family: 'Poppins-Regular';
   background-color: #f5f5f5;
   color: #354b45;
   padding: 0;
