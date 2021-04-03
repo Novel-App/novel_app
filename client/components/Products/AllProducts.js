@@ -152,18 +152,18 @@ class AllProducts extends Component {
                 className="input-group rounded d-flex justify-content-end"
                 onSubmit={this.handleSubmit}
               >
-                <div className="col-md-4 form-inline">
+                <div className="col-xs-2 form-inline">
                   <input
                     type="search"
                     name="searchTerm"
                     className="form-control rounded mr-1"
-                    placeholder="Search for title/author!"
+                    placeholder="Search a title/author!"
                     aria-label="Search"
                     aria-describedby="search-addon"
                     value={this.state.searchTerm}
                     onChange={this.handleOnSearchChange}
                   />
-                  <button type="submit" className="btn btn-light">
+                  <button type="submit" className="btn">
                     search
                   </button>
                 </div>

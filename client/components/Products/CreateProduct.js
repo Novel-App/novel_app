@@ -305,7 +305,7 @@ class CreateProduct extends Component {
               </label>
             </div>
           </div>
-          <button type="submit" className="btn btn-light">
+          <button type="submit" className="btn">
             Submit
           </button>
         </form>
