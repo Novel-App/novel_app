@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Message from './Message'
-import {sendMessage, fetchMessages, updateUnread} from '../../store/message'
+import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
 import {Link} from 'react-router-dom'
 
@@ -13,7 +13,6 @@ export class SingleChat extends Component {
     super(props)
     this.state = {
       content: '',
-      unread: true,
       messageSent: false
     }
     //state or props will populate with messages objects connected to specific singleChat
@@ -28,7 +27,6 @@ export class SingleChat extends Component {
     this.props.getMessages(chatId)
     this.props.getChat(chatId)
     console.log('helo!')
-    this.props.updateUnread(this.props.chatId)
   }
 
   componentDidUpdate() {
@@ -156,8 +154,7 @@ const mapDispatch = dispatch => {
   return {
     getMessages: chatId => dispatch(fetchMessages(chatId)),
     sendMessage: message => dispatch(sendMessage(message)),
-    getChat: id => dispatch(fetchSingleChat(id)),
-    updateUnread: id => dispatch(updateUnread(id))
+    getChat: id => dispatch(fetchSingleChat(id))
   }
 }
 

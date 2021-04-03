@@ -31,30 +31,3 @@ router.post('/', sellerOrBrowserOnly, async (req, res, next) => {
     next(err)
   }
 })
-
-//post messages to specific chat
-// PUT /api/messages/:chatId
-router.put('/:chatId', async (req, res, next) => {
-  try {
-    console.log('yes', req.params.chatId, req.user.id)
-    //get all the messages that are unread
-    // const messages = await Message.findAll({
-    //   where: {
-    //     chatId: req.params.chatId,
-    //     authorId: {[Op.not]: req.user.id},
-    //     unread: true,
-    //   },
-    // })
-    // console.log('THIS IS THE FILTERED CHAT', messages)
-    //update the messages to read
-    // const updatedMessages = messages.map(async (message) => {
-    //   await message.update({
-    //     unread: false,
-    //   })
-    // })
-    // console.log('THIS IS THE UPDATED MESSAGES', updatedMessages)
-    // res.status(201).send('hi')
-  } catch (err) {
-    next(err)
-  }
-})

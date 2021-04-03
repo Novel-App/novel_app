@@ -17,11 +17,6 @@ export const addMessage = message => ({
   message
 })
 
-const updateMessage = updatedMessages => ({
-  type: UPDATE_MESSAGE_READ,
-  updatedMessages
-})
-
 // THUNK CREATORS
 export const fetchMessages = chatId => async dispatch => {
   try {
@@ -37,15 +32,6 @@ export const sendMessage = message => async dispatch => {
     const {data: newMessage} = await axios.post('/api/messages', message)
     dispatch(addMessage(newMessage))
     socket.emit('new-message', newMessage)
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-export const updateUnread = chatId => async dispatch => {
-  try {
-    const {data: updatedMessages} = await axios.put(`/api/messages/${chatId}`)
-    dispatch(updateMessage(updatedMessages))
   } catch (error) {
     console.log(error)
   }
