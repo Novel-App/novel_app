@@ -6,6 +6,7 @@ import {createProduct} from '../../store/product'
 import Condition from './Condition'
 import axios from 'axios'
 import BarcodeScanner from './BarcodeScanner'
+import Scanner from './Scanner'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
@@ -79,7 +80,7 @@ class CreateProduct extends Component {
           }
         })
     } catch (err) {
-      alert('This ISBN is invalid! Try again!')
+      alert('ISBN Not Found! Try again!')
     }
   }
 
@@ -125,7 +126,7 @@ class CreateProduct extends Component {
         </div>
 
         <div>
-          <p>Enter ISBN below for auto fill imformation</p>
+          <p>Enter ISBN below for auto fill information</p>
           <form onSubmit={this.handleAutoFill}>
             <input
               onChange={this.handleSearch}

@@ -2,41 +2,52 @@ import React, {Component} from 'react'
 import Scanner from './Scanner'
 
 class BarcodeScanner extends Component {
-  state = {
-    results: []
+  constructor() {
+    super()
+    this.state = {
+      results: [],
+      onScan: false
+    }
+    this.handleClick = this.handleClick.bind(this)
   }
-
-  // scan = () => {
-  //   this.setState({scanning: !this.state.scanning})
-  // }
 
   _onDetected = result => {
     this.setState({results: []})
     this.setState({results: this.state.results.concat([result])})
   }
 
+  handleClick = () => {
+    console.log('hadling click...', this.state.onScan)
+    this.setState(prevState => ({
+      onScan: !prevState.onScan
+    }))
+  }
+
   render() {
     return (
       <div>
-        <span>Barcode Scanner</span>
+        <h2>Barcode Scanner</h2>
 
-        <div
-          variant="outlined"
-          style={{marginTop: 30, width: 640, height: 320}}
-        >
-          <Scanner onDetected={this._onDetected} />
-        </div>
-
+        <button type="button" onClick={this.handleClick}>
+          SCAN
+        </button>
         <input
-          style={{fontSize: 32, width: 320, height: 100, marginTop: 30}}
-          rowsMax={4}
-          defaultValue="No data scanned"
+          style={{fontSize: 20, width: 190, height: 35, margin: 8}}
           value={
             this.state.results[0]
               ? this.state.results[0].codeResult.code
-              : 'No data scanned'
+              : 'Scan Barcode'
           }
         />
+        <div>
+          {this.state.onScan ? (
+            <Scanner onDetected={this._onDetected} />
+          ) : (
+            <></>
+          )}
+        </div>
+
+        <button type="button">Submit</button>
       </div>
     )
   }
