@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {fetchSingleChat} from '../../store/chat'
 import {fetchMessages} from '../../store/message'
 import moment from 'moment'
-import user from '../../store/user'
 
 export class Message extends Component {
   constructor(props) {
