@@ -495,7 +495,7 @@ async function seed() {
       description:
         'A first printing of Browns best-seller about Robert Langdons search to crack a codex discovered near the body of a murdered curator of the Louvre, adapted into the 2006 Ron Howard film starring Tom Hanks and Audrey Tautou.',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30524810640.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30524810640.jpg'],
       condition: 'Like New',
       numFavorites: 0,
       price: 25,
@@ -511,7 +511,7 @@ async function seed() {
       ISBN: '9781594633669',
       description: 'Nice copy of the runaway best-seller.',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md22674753875.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md22674753875.jpg'],
       condition: 'Like New',
       numFavorites: 0,
       price: 25,
@@ -528,7 +528,7 @@ async function seed() {
       description:
         'Frazier s first book, set in the Appalachian Mountains at end of the Civil War, was a runaway best seller.',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md17813966474.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md17813966474.jpg'],
       condition: 'Good',
       numFavorites: 0,
       price: 25,
@@ -545,7 +545,7 @@ async function seed() {
       description:
         'A nice pre-publication copy of Fords best-seller about a friendship between a Chinese-American boy and a Japanese-American girl in a World War II internment camp.',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30130529153.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30130529153.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 15,
@@ -562,7 +562,7 @@ async function seed() {
       description:
         'Molly the Marine talks about just a few of the jobs that are available in the United States Marine Corps. The book encourages girls to believe in themselves and work together. Together we can change the world. ',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30687498269.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30687498269.jpg'],
       condition: 'Good',
       numFavorites: 0,
       price: 16,
@@ -578,7 +578,7 @@ async function seed() {
       ISBN: '0793567270',
       description: 'Bipgraphy of Annie Lennox',
       isFiction: false,
-      image: 'https://pictures.abebooks.com/inventory/md/md30543003517.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30543003517.jpg'],
       condition: 'Like New',
       numFavorites: 0,
       price: 18,
@@ -595,7 +595,7 @@ async function seed() {
       description:
         'Women Without Men is notable for being one of the 10 paperback best-sellers of 1957',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30819865579.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30819865579.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 20,
@@ -612,7 +612,7 @@ async function seed() {
       description:
         'This is one of Andre Nortons Beast Master / Hosteen Storm Books.',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30838685103.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30838685103.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 21,
@@ -629,7 +629,7 @@ async function seed() {
       description:
         'In response to the Voyager launched in 1977, an alien race, the Psychlos, remorselessly wiped out the humans with a poisonous gas barrage, and ground and air bombings. They killed more than 99.9% of the people on Earth, not to mention their sadistic hunting sprees of people for pure pleasure for the ensuing 1,000 years. ',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30380200847.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30380200847.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 22,
@@ -646,7 +646,7 @@ async function seed() {
       description:
         'Taking us from Afghanistan in the final days of the monarchy to the present, The Kite Runner is the unforgettable and beautifully told story of the friendship between two boys growing up in Kabul. ',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md22608690491.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md22608690491.jpg'],
       condition: 'Good',
       numFavorites: 0,
       price: 24,
@@ -663,7 +663,7 @@ async function seed() {
       description:
         'Flying out of India, a light aircraft is hi-jacked and flown into the high Tibetan Himalayas. The passengers on board anxiously await their fate, among them Conway, a talented British consul. But on landing they are unexpectedly conducted to a remote valley, a legendary paradise of peace and beauty, known as Shangri-La.',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md22671737075.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md22671737075.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 24,
@@ -679,7 +679,7 @@ async function seed() {
       ISBN: '9780805042023',
       description: 'Signed by author',
       isFiction: false,
-      image: 'https://pictures.abebooks.com/inventory/md/md1306399868.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md1306399868.jpg'],
       condition: 'Good',
       numFavorites: 0,
       price: 24,
@@ -696,7 +696,7 @@ async function seed() {
       description:
         'An exciting novel about an American newspaperman fighting for his big story in the turbulence of Italian political intrigue.',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30808488658.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30808488658.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 23,
@@ -713,7 +713,7 @@ async function seed() {
       description:
         'When rainy days and sick stuffed animals test Emily and Alices friendship, the girls learn that being a best friend isnt always as fun as eating cookies.',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30280645139.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30280645139.jpg'],
       condition: 'Like New',
       numFavorites: 0,
       price: 2,
@@ -730,7 +730,7 @@ async function seed() {
       description:
         'What better guide could there be through the realms of witchery and wonder, of combat and danger, of romance and magic than the hand and mind of Marion Zimmer Bradley, author of best-sellers CITY OF SORCERY, THENDARA HOUSE and MISTS OF AVALON?',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30508944456.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30508944456.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 4,
@@ -747,7 +747,7 @@ async function seed() {
       description:
         'The hilarious best-seller tells you what they are, where to get them, what to call them, and whether to keep them!.',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md867391491.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md867391491.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 5,
@@ -764,7 +764,7 @@ async function seed() {
       description:
         'Only read once, looks nice From Library Journal: "Berger is the Park Avenue physician/nutritionist who wrote last years best seller The Immune Power Diet.',
       isFiction: false,
-      image: 'https://pictures.abebooks.com/inventory/md/md867392025.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md867392025.jpg'],
       condition: 'New',
       numFavorites: 0,
       price: 5,
@@ -782,7 +782,7 @@ async function seed() {
       description:
         'Mob dreams collided with those of Fidel Castro, Che Guevara, and others who would lead an uprising of the countrys disenfranchised against Batistas hated government and its foreign partners—an epic cultural battle that bestselling author T. J. English captures here in all its sexy, decadent, ugly glory.',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30832707023.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30832707023.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 4,
@@ -798,7 +798,7 @@ async function seed() {
       ISBN: '9780317119848',
       description: 'How to for winemaking',
       isFiction: false,
-      image: 'https://pictures.abebooks.com/inventory/md/md30021310765.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30021310765.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 2,
@@ -814,7 +814,7 @@ async function seed() {
       ISBN: '9780439669405',
       description: 'Dog eared at corners : Minimal edge and spine scuffing',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md20747824317.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md20747824317.jpg'],
       condition: 'Good',
       numFavorites: 0,
       price: 3,
@@ -831,7 +831,7 @@ async function seed() {
       description:
         'different cover markings first page some self wear spine and binding good tiny creases tiny corner peel tiny corner crease back cover light readers crease tiny corner creases',
       isFiction: true,
-      image: 'https://pictures.abebooks.com/inventory/md/md30607256535_2.jpg',
+      image: ['https://pictures.abebooks.com/inventory/md/md30607256535_2.jpg'],
       condition: 'Loved',
       numFavorites: 0,
       price: 3,

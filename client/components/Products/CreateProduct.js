@@ -157,7 +157,6 @@ class CreateProduct extends Component {
         </div>
 
         <div>
-
           <p>Enter ISBN below for auto fill imformation</p>
           <form onSubmit={handleAutoFill}>
             <input
@@ -168,14 +167,12 @@ class CreateProduct extends Component {
             <button type="submit">Auto Fill</button>
           </form>
         </div>
-
-<
         <div>
           <p>Scan your barcode for ISBN</p>
           <BarcodeScanner />
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           {/* <label htmlFor="image">Upload Images:</label>
                 <input
                 name="image"
@@ -184,14 +181,6 @@ class CreateProduct extends Component {
                 required
                 />
                 <br /> */}
-
-        <form
-          encType="multipart/form-data"
-          // action="/api/products"
-          // method="post"
-          onSubmit={handleSubmit}
-        >
-
           <div className="form-group">
             <label htmlFor="productImg">Images (up to 4)</label>
             <input

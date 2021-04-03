@@ -26,8 +26,6 @@ class Book extends Component {
           description: bookInfoFromAPI.description,
           image: bookInfoFromAPI.imageLinks.thumbnail
         }
-
-        console.log('---->', state)
       })
   }
 

@@ -1,6 +1,3 @@
-const Message = require('../db/models/message')
-const Chat = require('../db/models/chat')
-
 module.exports = io => {
   io.on('connection', socket => {
     console.log(socket.id, ' has made a persistent connection to the server!')

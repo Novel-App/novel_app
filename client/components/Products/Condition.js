@@ -1,8 +1,6 @@
 import React from 'react'
 import Popover from 'react-bootstrap/Popover'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Button from 'react-bootstrap/Button'
-import {InfoCircleOutlined} from '@ant-design/icons'
 
 const popover = (
   <Popover id="popover-basic">

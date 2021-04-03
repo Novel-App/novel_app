@@ -9,7 +9,6 @@
 //pass in product req.body object including all necessary fields (including user)
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {updateProduct} from '../../store/product'
 import AssignBuyer from './AssignBuyer'
 

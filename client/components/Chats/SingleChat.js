@@ -1,12 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Message from './Message'
-import {Form, Icon, Input, Button, Row, Col} from 'antd'
 import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
 import {Link} from 'react-router-dom'
-import socket from '../../socket'
-import moment from 'moment'
 
 /**
  * COMPONENT
