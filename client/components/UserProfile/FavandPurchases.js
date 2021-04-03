@@ -62,9 +62,9 @@ class FavAndPurchases extends Component {
                   <div className="card-horizontal">
                     <Link to={`/products/${product.id}`}>
                       <img
-                        className="card-img"
+                        className="card-img img-fluid"
                         alt={product.title}
-                        src={product.image}
+                        src={product.image[0]}
                       />
                     </Link>
                   </div>

@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Product, User, Genre, Favorite} = require('../db/models')
+const upload = require('../utils/photoUpload')
 module.exports = router
 
 // GET /api/products
@@ -35,19 +36,46 @@ router.get('/status/:availability', async (req, res, next) => {
 //post must include: title, author, ISBN, description, condition, price, sellerId
 //could include 'image', canBargin. could switch: availability ==> then need to add buyerId
 
-router.post('/', async (req, res, next) => {
+// router.post('/', async (req, res, next) => {
+//   try {
+//     let newProduct = await Product.create(req.body, {
+//       include: [
+//         {
+//           model: User,
+//           as: 'seller',
+//           attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
+//         },
+//         {model: Genre}
+//       ]
+//     })
+//     res.status(201).json(newProduct)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
+router.post('/', upload.array('productImg', 4), async (req, res, next) => {
   try {
-    let newProduct = await Product.create(req.body, {
-      include: [
-        {
-          model: User,
-          as: 'seller',
-          attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
-        },
-        {model: Genre}
-      ]
-    })
-    res.status(201).json(newProduct)
+    console.log('REQ BODY', req.body)
+    console.log('REQ FILES', req.files)
+
+    let imagePaths = req.files.map(file => file.path.replace(/^public\//, ''))
+
+    // const imagePath = req.files[0].path.replace(/^public\//, '')
+    const newProduct = await Product.create(
+      {...req.body, image: imagePaths},
+      {
+        include: [
+          {
+            model: User,
+            as: 'seller',
+            attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
+          },
+          {model: Genre}
+        ]
+      }
+    )
+    res.status(201).send(newProduct)
+    // res.status(201).redirect('/products')
   } catch (error) {
     next(error)
   }

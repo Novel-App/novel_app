@@ -16,7 +16,8 @@ import {
   CreateProduct,
   FavandPurchases,
   EditListing,
-  EditProfImage
+  EditProfImage,
+  NotFound
 } from './components'
 import {getMe} from './store'
 
@@ -75,7 +76,8 @@ class Routes extends Component {
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Route component={Login} />
+        {/* <Route component={Login} /> */}
+        <Route path="*" component={NotFound} />
       </Switch>
     )
   }
