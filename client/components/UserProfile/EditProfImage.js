@@ -1,114 +1,49 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import {updateUserPicture} from '../../store/user'
+import {updateUserPicture} from '../../store/user'
 
 class EditProfImage extends Component {
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     firstName: '',
-  //     lastName: '',
-  //     email: '',
-  //     password: '',
-  //     profileImage: ''
-  //   }
-  //   // this.handleSubmit = this.handleSubmit.bind(this)
-  // }
-  // componentDidMount() {
-  //   this.setState({
-  //     firstName: this.props.user.firstName,
-  //     lastName: this.props.user.lastName,
-  //     email: this.props.user.email,
-  //     password: this.props.user.password,
-  //     profileImage: this.props.user.profileImage
-  //   })
-  // }
-  // handleSubmit(evt) {
-  //   evt.preventDefault()
-  //   this.props.updateUserPicture({...this.state, profileImage: evt.target.file})
-  //   this.props.history.push('/profile')
-  // }
-  // state = {
-  //   // Initially, no file is selected
-  //   selectedFile: null
-  // }
-  // // On file select (from the pop up)
-  // onFileChange = event => {
-  //   // Update the state
-  //   console.log('ON FILE CHANGE FILE', event.target.files)
-  //   this.setState({selectedFile: event.target.files[0]})
-  // }
+  constructor() {
+    super()
+    this.state = {
+      profileImg: ''
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFileChange = this.handleFileChange.bind(this)
+  }
 
-  // On file upload (click the upload button)
-  // onFileUpload () {
-  //   this.props.hiistory.push('/profile')
-  // }
+  handleFileChange(evt) {
+    console.log('image file', evt.target.files)
+    this.setState({profileImg: evt.target.files[0]})
+  }
 
-  // // Update the formData object
-  // formData.append(
-  //   'myFile',
-  //   this.state.selectedFile,
-  //   this.state.selectedFile.name
-  // )
-
-  // Details of the uploaded file
-  // console.log(this.state.selectedFile)
-
-  // Request made to the backend api
-  // Send formData object
-  // await axios.post(`/api/users/upload/${this.props.user.id}`, formData)
-  // console.log(data)
-  // }
-
-  // File content to be displayed after
-  // file upload is complete
-  // fileData = () => {
-  //   if (this.state.selectedFile) {
-  //     return (
-  //       <div>
-  //         <h2>File Details:</h2>
-
-  //         <p>File Name: {this.state.selectedFile.name}</p>
-
-  //         <p>File Type: {this.state.selectedFile.type}</p>
-
-  //         <p>
-  //           Last Modified:{' '}
-  //           {this.state.selectedFile.lastModifiedDate.toDateString()}
-  //         </p>
-  //       </div>
-  //     )
-  //   } else {
-  //     return (
-  //       <div>
-  //         <br />
-  //         <h4>Choose before Pressing the Upload button</h4>
-  //       </div>
-  //     )
-  //   }
-  // }
+  handleSubmit(evt) {
+    evt.preventDefault()
+    const user = new FormData()
+    user.append('profileImg', this.state.profileImg)
+    user.append('id', this.props.user.id)
+    this.props.updateUserPicture(user)
+  }
 
   render() {
     return (
-      <div>
+      <div className="container-fluid d-flex-column justify-content-center">
         <h1>Upload a new profile image!</h1>
-        {/* <h3>Your current profile image</h3>
+        <p>Current profile image</p>
         <img
-          className="rounded-circle mt-5"
+          className="img-fluid rounded-circle z-depth-2 mb-5"
           src={this.props.user.profileImage}
-           width="90"
-        /> */}
-        <form
-          method="post"
-          action={`/api/users/${this.props.user.id}/uploadProfile`}
-          // onSubmit={this.handleSubmit}
-          encType="multipart/form-data"
-        >
-          <input type="file" name="profileImg" required />
+          width="300em"
+        />
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <input
-            type="submit"
-            // onClick={this.onFileUpload}
+            type="file"
+            name="profileImg"
+            accept="image/*"
+            onChange={this.handleFileChange}
+            required
           />
+          <input type="submit" />
         </form>
       </div>
     )

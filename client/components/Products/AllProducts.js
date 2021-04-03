@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import ScrollUpButton from 'react-scroll-up-button'
 import {fetchProducts, removeProduct} from '../../store/product'
 import {fetchListings} from '../../store/userInfo'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
@@ -96,7 +97,7 @@ class AllProducts extends Component {
     return (
       <div className="container">
         <div className="container-flex">
-          <div />
+          <ScrollUpButton />
           <div className="container">
             <nav className="navbar d-flex navbar-expand-md ">
               <div
@@ -140,10 +141,12 @@ class AllProducts extends Component {
             </nav>
             <div className="d-flex justify-content-between w-90">
               <Link to="/products/add">
-                <i
-                  className="bi bi-plus-circle-fill add-product"
-                  style={{fontSize: '3em'}}
-                />
+                <div className="mt-1 ml-2">
+                  <i
+                    className="bi bi-plus-circle-fill add-product"
+                    style={{fontSize: '3em'}}
+                  />
+                </div>
               </Link>
               <form
                 className="input-group rounded d-flex justify-content-end"
@@ -154,13 +157,13 @@ class AllProducts extends Component {
                     type="search"
                     name="searchTerm"
                     className="form-control rounded mr-1"
-                    placeholder="Search for title/author!"
+                    placeholder="Search a title/author!"
                     aria-label="Search"
                     aria-describedby="search-addon"
                     value={this.state.searchTerm}
                     onChange={this.handleOnSearchChange}
                   />
-                  <button type="submit" className="btn btn-light">
+                  <button type="submit" className="btn">
                     search
                   </button>
                 </div>
