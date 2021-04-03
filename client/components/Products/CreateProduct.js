@@ -5,21 +5,11 @@ import {Link} from 'react-router-dom'
 import {createProduct} from '../../store/product'
 import Condition from './Condition'
 import axios from 'axios'
+import BarcodeScanner from './BarcodeScanner'
+import Scanner from './Scanner'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
-// const defaultState = {
-//   title: '',
-//   author: '',
-//   ISBN: '',
-//   description: '',
-//   image: 'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
-//   condition: '',
-//   price: 0,
-//   canBargain: false,
-//   availability: 'Available',
-//   genreId: ''
-// }
 const defaultState = {
   title: '',
   author: '',
@@ -95,7 +85,7 @@ class CreateProduct extends Component {
           }
         })
     } catch (err) {
-      alert('This ISBN is invalid! Try again!')
+      alert('ISBN Not Found! Try again!')
     }
   }
 
@@ -167,6 +157,7 @@ class CreateProduct extends Component {
         </div>
 
         <div>
+
           <p>Enter ISBN below for auto fill imformation</p>
           <form onSubmit={handleAutoFill}>
             <input
@@ -178,12 +169,29 @@ class CreateProduct extends Component {
           </form>
         </div>
 
+<
+        <div>
+          <p>Scan your barcode for ISBN</p>
+          <BarcodeScanner />
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          {/* <label htmlFor="image">Upload Images:</label>
+                <input
+                name="image"
+                onChange={handleChange}
+                value={image}
+                required
+                />
+                <br /> */}
+
         <form
           encType="multipart/form-data"
           // action="/api/products"
           // method="post"
           onSubmit={handleSubmit}
         >
+
           <div className="form-group">
             <label htmlFor="productImg">Images (up to 4)</label>
             <input
