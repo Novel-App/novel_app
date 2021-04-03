@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Message from './Message'
-import {sendMessage, fetchMessages} from '../../store/message'
+import {sendMessage, fetchMessages, updateUnread} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
 import {Link} from 'react-router-dom'
 
@@ -27,6 +27,8 @@ export class SingleChat extends Component {
     const chatId = Number(this.props.match.params.chatId)
     this.props.getMessages(chatId)
     this.props.getChat(chatId)
+    console.log('helo!')
+    this.props.updateUnread(this.props.chatId)
   }
 
   componentDidUpdate() {
@@ -52,6 +54,7 @@ export class SingleChat extends Component {
   }
   render() {
     const chat = this.props.chat || {}
+    console.log(this.props, 'these are my props')
     // const chatId = this.props.match.params.chatId
     return (
       <React.Fragment>
@@ -153,7 +156,8 @@ const mapDispatch = dispatch => {
   return {
     getMessages: chatId => dispatch(fetchMessages(chatId)),
     sendMessage: message => dispatch(sendMessage(message)),
-    getChat: id => dispatch(fetchSingleChat(id))
+    getChat: id => dispatch(fetchSingleChat(id)),
+    updateUnread: id => dispatch(updateUnread(id))
   }
 }
 

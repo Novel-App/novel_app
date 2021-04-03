@@ -4,6 +4,7 @@ import socket from '../socket'
 // ACTION TYPES
 const GET_MESSAGES = 'GET_MESSAGES'
 const ADD_MESSAGE = 'ADD_MESSAGE'
+const UPDATE_MESSAGE_READ = 'UPDATE_MESSAGE_READ'
 
 // ACTION CREATORS
 const getMessages = messages => ({
@@ -14,6 +15,11 @@ const getMessages = messages => ({
 export const addMessage = message => ({
   type: ADD_MESSAGE,
   message
+})
+
+const updateMessage = updatedMessages => ({
+  type: UPDATE_MESSAGE_READ,
+  updatedMessages
 })
 
 // THUNK CREATORS
@@ -36,6 +42,15 @@ export const sendMessage = message => async dispatch => {
   }
 }
 
+export const updateUnread = chatId => async dispatch => {
+  try {
+    const {data: updatedMessages} = await axios.put(`/api/messages/${chatId}`)
+    dispatch(updateMessage(updatedMessages))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // INITIAL STATE
 const initialState = {
   messages: [],
@@ -52,6 +67,23 @@ export default function(state = initialState, action) {
         ...state,
         messages: [...state.messages, action.message],
         message: action.message
+      }
+    case UPDATE_MESSAGE_READ:
+      let updatedMessages = {}
+      action.messages.forEach((message, index) => {
+        updatedMessages[message.id] = index
+      })
+      let newMessages = state.messages.map(message => {
+        if (Object.keys(updatedMessages).indexOf(message.id) !== -1) {
+          return action.messages[updatedMessages[message.id]]
+        } else {
+          return message
+        }
+      })
+      return {
+        ...state,
+        message: action.message,
+        messages: newMessages
       }
     default:
       return state
