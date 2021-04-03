@@ -249,6 +249,31 @@ strong {
   flex-direction: column;
   justify-content: center;
 }
+
+/* 
+singleChat styling */
+
+#messageFeed {
+  height: calc(
+    100vh - 172px
+  ); /* vpace for fixed navbar (48px), "main" (71px), footer (53px) */
+  overflow-y: scroll; /* vertical scroll for the message feed */
+}
+
+#chat-message {
+  border-color: #00a988;
+  padding: 6;
+  margin: 3;
+  width: 350px;
+}
+
+.direct-chat-text {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.wrapper {
+  overflow: auto;
 .text-small {
   font-size: 0.9rem;
 }

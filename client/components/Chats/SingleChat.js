@@ -55,6 +55,7 @@ export class SingleChat extends Component {
   }
   render() {
     const chat = this.props.chat || {}
+    // const chatId = this.props.match.params.chatId
     return (
       <React.Fragment>
         <div style={{maxWidth: '800px', margin: '0 auto'}}>
@@ -89,41 +90,51 @@ export class SingleChat extends Component {
               </div>
             </div>
           )}
-          <div
-            className="infinite-container"
-            style={{height: '500px', overflowY: 'scroll'}}
-          >
-            <Message chatId={this.props.match.params.chatId} />
-            <div
-              ref={el => {
-                this.messagesEnd = el
-              }}
-              style={{float: 'left', clear: 'both'}}
-            />
+          <div className="px-md-3" id="messages">
+            <ul
+              id="messageFeed"
+              className="list-unstyled"
+              style={{height: '200px', overflowY: 'scroll'}}
+            >
+              <Message
+                className="mr-3"
+                chatId={this.props.match.params.chatId}
+              />
+              <div
+                ref={el => {
+                  this.messagesEnd = el
+                }}
+                // style={{float: 'left', clear: 'both'}}
+              />
+            </ul>
+            <div className="input-group mb-3">
+              <div
+                className="d-flex justify-content-end"
+                onSubmit={this.submitChatMessage}
+              >
+                <div className="align-items-center">
+                  <input
+                    id="messageTextarea"
+                    className="form-control"
+                    placeholder="Enter your message"
+                    type="text"
+                    value={this.state.content}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="input-group-append">
+                  <button
+                    type="submit"
+                    className="btn btn-outline-secondary d-flex justify-content-end"
+                    onClick={this.submitChatMessage}
+                  >
+                    {/* <Icon type="enter" /> */}
+                    send
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <Row>
-            <Form layout="inline" onSubmit={this.submitChatMessage}>
-              <Col span={18}>
-                <Input
-                  id="message"
-                  placeholder="Enter your message"
-                  type="text"
-                  value={this.state.content}
-                  onChange={this.handleChange}
-                />
-              </Col>
-              <Col span={2}>
-                {/* {a dropdown icon for uploading pictures or videos} */}
-              </Col>
-              <Col span={4}>
-                <Button type="submit" onClick={this.submitChatMessage}>
-                  {/* <Icon type="enter" /> */}
-                  send
-                </Button>
-              </Col>
-            </Form>
-          </Row>
         </div>
       </React.Fragment>
     )

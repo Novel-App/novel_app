@@ -1,5 +1,6 @@
 'use strict'
 
+// const {ForeignKeyConstraintError} = require('sequelize/types')
 const db = require('../server/db')
 const {
   User,
@@ -24,10 +25,10 @@ async function seed() {
       coordinates: [40.726096, -73.984152]
     },
     {
-      firstName: 'Tobie',
+      firstName: 'Toby',
       lastName: 'Ahrens',
-      email: 'tahrens0@usda.gov',
-      password: 'U1WHr0',
+      email: 'toby@gmail.com',
+      password: 'toby123',
       coordinates: [40.726096, -73.984152]
     },
     {
@@ -35,14 +36,14 @@ async function seed() {
       lastName: 'Camoletto',
       email: 'dcamoletto1@odnoklassniki.ru',
       password: 'rnEmVrgIr',
-      coordinates: [40.919913, -74.814766]
+      coordinates: [40.726096, -73.984152]
     },
     {
       firstName: 'Clement',
       lastName: 'Petruskevich',
       email: 'cpetruskevich2@mac.com',
       password: 'XzK4gezebv6',
-      coordinates: [43.621196, -84.682435]
+      coordinates: [40.726096, -73.984152]
     },
     {
       firstName: 'Tiffany',
@@ -216,7 +217,8 @@ async function seed() {
     {category: 'Lifestyle'},
     {category: 'Development/How-To/Education'},
     {category: 'Humor'},
-    {category: 'Childrens'}
+    {category: 'Childrens'},
+    {category: 'Fiction'}
   ]
   const bulkCreateContent = await Genre.bulkCreate(genres)
 
@@ -230,7 +232,8 @@ async function seed() {
     lifestyle,
     developmentHowToEducation,
     humor,
-    childrens
+    childrens,
+    fiction
   ] = await Genre.findAll()
   console.log('Seeded genres')
   const products = [
@@ -249,7 +252,7 @@ async function seed() {
       availability: 'Available',
       sellerId: 1,
       buyerId: null,
-      genreId: thrillerMystery.id
+      genreId: fiction.id
     },
     {
       title: 'We Were the Lucky Ones',
@@ -484,26 +487,364 @@ async function seed() {
       buyerId: null,
       sellerId: 2,
       genreId: humor.id
+    },
+    {
+      title: 'The Da Vinci Code',
+      author: 'Dan Brown',
+      ISBN: '0385504209',
+      description:
+        'A first printing of Browns best-seller about Robert Langdons search to crack a codex discovered near the body of a murdered curator of the Louvre, adapted into the 2006 Ron Howard film starring Tom Hanks and Audrey Tautou.',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30524810640.jpg',
+      condition: 'Like New',
+      numFavorites: 0,
+      price: 25,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: thrillerMystery.id
+    },
+    {
+      title: 'The Girl on the Train',
+      author: 'Paula Hawkins',
+      ISBN: '9781594633669',
+      description: 'Nice copy of the runaway best-seller.',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md22674753875.jpg',
+      condition: 'Like New',
+      numFavorites: 0,
+      price: 25,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 3,
+      genreId: thrillerMystery.id
+    },
+    {
+      title: 'Cold Mountain',
+      author: 'Charles Frazier',
+      ISBN: '9780340680599',
+      description:
+        'Frazier s first book, set in the Appalachian Mountains at end of the Civil War, was a runaway best seller.',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md17813966474.jpg',
+      condition: 'Good',
+      numFavorites: 0,
+      price: 25,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: fiction.id
+    },
+    {
+      title: 'Hotel on the Corner of Bitter and Sweet',
+      author: 'Jamie Ford',
+      ISBN: '9780345505330',
+      description:
+        'A nice pre-publication copy of Fords best-seller about a friendship between a Chinese-American boy and a Japanese-American girl in a World War II internment camp.',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30130529153.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 15,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 3,
+      genreId: fiction.id
+    },
+    {
+      title: 'Molly the Marine',
+      author: 'Pat White',
+      ISBN: '1633372537',
+      description:
+        'Molly the Marine talks about just a few of the jobs that are available in the United States Marine Corps. The book encourages girls to believe in themselves and work together. Together we can change the world. ',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30687498269.jpg',
+      condition: 'Good',
+      numFavorites: 0,
+      price: 16,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: childrens.id
+    },
+    {
+      title: 'The Best of Annie Lennox',
+      author: 'Hal Leonard',
+      ISBN: '0793567270',
+      description: 'Bipgraphy of Annie Lennox',
+      isFiction: false,
+      image: 'https://pictures.abebooks.com/inventory/md/md30543003517.jpg',
+      condition: 'Like New',
+      numFavorites: 0,
+      price: 18,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 3,
+      genreId: memoir.id
+    },
+    {
+      title: 'Women Without Men',
+      author: 'Reed Marr',
+      ISBN: '9788881588060',
+      description:
+        'Women Without Men is notable for being one of the 10 paperback best-sellers of 1957',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30819865579.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 20,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: fiction.id
+    },
+    {
+      title: 'Lord Of Thunder : Ace G-691',
+      author: 'Andre Norton',
+      ISBN: '9781511385718',
+      description:
+        'This is one of Andre Nortons Beast Master / Hosteen Storm Books.',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30838685103.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 21,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 3,
+      genreId: scienceFictionDystopian.id
+    },
+    {
+      title: 'Battlefield Earth',
+      author: 'L Ron Hubbard',
+      ISBN: '1592129579',
+      description:
+        'In response to the Voyager launched in 1977, an alien race, the Psychlos, remorselessly wiped out the humans with a poisonous gas barrage, and ground and air bombings. They killed more than 99.9% of the people on Earth, not to mention their sadistic hunting sprees of people for pure pleasure for the ensuing 1,000 years. ',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30380200847.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 22,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: scienceFictionDystopian.id
+    },
+    {
+      title: 'The Kite Runner',
+      author: 'Khaled Hosseini',
+      ISBN: '9781408217290',
+      description:
+        'Taking us from Afghanistan in the final days of the monarchy to the present, The Kite Runner is the unforgettable and beautifully told story of the friendship between two boys growing up in Kabul. ',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md22608690491.jpg',
+      condition: 'Good',
+      numFavorites: 0,
+      price: 24,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 3,
+      genreId: fiction.id
+    },
+    {
+      title: 'Lost Horizon',
+      author: 'James Hilton',
+      ISBN: '9780671783075',
+      description:
+        'Flying out of India, a light aircraft is hi-jacked and flown into the high Tibetan Himalayas. The passengers on board anxiously await their fate, among them Conway, a talented British consul. But on landing they are unexpectedly conducted to a remote valley, a legendary paradise of peace and beauty, known as Shangri-La.',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md22671737075.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 24,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: thrillerMystery.id
+    },
+    {
+      title: 'Outrageous Acts and Everyday Rebellions',
+      author: 'Gloria Steinam',
+      ISBN: '9780805042023',
+      description: 'Signed by author',
+      isFiction: false,
+      image: 'https://pictures.abebooks.com/inventory/md/md1306399868.jpg',
+      condition: 'Good',
+      numFavorites: 0,
+      price: 24,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 3,
+      genreId: memoir.id
+    },
+    {
+      title: 'The Crooked Road',
+      author: 'Morris West',
+      ISBN: '9780553234831',
+      description:
+        'An exciting novel about an American newspaperman fighting for his big story in the turbulence of Italian political intrigue.',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30808488658.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 23,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: fiction.id
+    },
+    {
+      title: 'Emily and Alice, Best Friends',
+      author: 'Joyce Champion',
+      ISBN: '9780152021986',
+      description:
+        'When rainy days and sick stuffed animals test Emily and Alices friendship, the girls learn that being a best friend isnt always as fun as eating cookies.',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30280645139.jpg',
+      condition: 'Like New',
+      numFavorites: 0,
+      price: 2,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 3,
+      genreId: childrens.id
+    },
+    {
+      title: 'Sword and Sorceress II',
+      author: 'Marion Zimmer Bradley',
+      ISBN: '9780886770419',
+      description:
+        'What better guide could there be through the realms of witchery and wonder, of combat and danger, of romance and magic than the hand and mind of Marion Zimmer Bradley, author of best-sellers CITY OF SORCERY, THENDARA HOUSE and MISTS OF AVALON?',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30508944456.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 4,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: scienceFictionDystopian.id
+    },
+    {
+      title: 'Men: An Owners Manual',
+      author: 'Stephanie Brush',
+      ISBN: '9780671604134',
+      description:
+        'The hilarious best-seller tells you what they are, where to get them, what to call them, and whether to keep them!.',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md867391491.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 5,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 3,
+      genreId: humor.id
+    },
+    {
+      title: 'How to Be Your Own Nutritionist',
+      author: 'Stuart Berger',
+      ISBN: '9780380703180',
+      description:
+        'Only read once, looks nice From Library Journal: "Berger is the Park Avenue physician/nutritionist who wrote last years best seller The Immune Power Diet.',
+      isFiction: false,
+      image: 'https://pictures.abebooks.com/inventory/md/md867392025.jpg',
+      condition: 'New',
+      numFavorites: 0,
+      price: 5,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: developmentHowToEducation.id
+    },
+    {
+      title:
+        'Havana Nocturne: How the Mob Owned Cuba and Then Lost It to the Revolution',
+      author: 'T.J. English',
+      ISBN: '9780061712746',
+      description:
+        'Mob dreams collided with those of Fidel Castro, Che Guevara, and others who would lead an uprising of the countrys disenfranchised against Batistas hated government and its foreign partners—an epic cultural battle that bestselling author T. J. English captures here in all its sexy, decadent, ugly glory.',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30832707023.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 4,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 3,
+      genreId: scienceFictionDystopian.id
+    },
+    {
+      title: 'Creative Winemaking',
+      author: 'Andre de Chambeau',
+      ISBN: '9780317119848',
+      description: 'How to for winemaking',
+      isFiction: false,
+      image: 'https://pictures.abebooks.com/inventory/md/md30021310765.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 2,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: developmentHowToEducation.id
+    },
+    {
+      title: 'The Biggest, Best Snowman',
+      author: 'Margery Cuyler',
+      ISBN: '9780439669405',
+      description: 'Dog eared at corners : Minimal edge and spine scuffing',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md20747824317.jpg',
+      condition: 'Good',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 3,
+      genreId: childrens.id
+    },
+    {
+      title: 'Remembrance: A Novel',
+      author: 'Danielle Steel',
+      ISBN: '9780440173700',
+      description:
+        'different cover markings first page some self wear spine and binding good tiny creases tiny corner peel tiny corner crease back cover light readers crease tiny corner creases',
+      isFiction: true,
+      image: 'https://pictures.abebooks.com/inventory/md/md30607256535_2.jpg',
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 4,
+      genreId: romance.id
     }
   ]
   const createdProducts = await Product.bulkCreate(products)
   console.log('Seeded products')
-  // Genre/Products
-  // const flattenProductGenres = products => {
-  //   const productGenres = []
 
-  //   return products.reduce((acc, currProduct, idx) => {
-  //     // console.log('currentProduct -->', currProduct)
-  //     const currProductGenres = currProduct.map(product => {
-  //       const genreId = product.genreId
-  //       return {productId: idx + 1, genreId}
-  //     })
-
-  //     return acc.concat(currProductGenres)
-  //   }, productGenres)
-  // }
-  // const productGenres = flattenProductGenres(products)
-  // console.log('Seeded product_genres')
   //Reviews
   const reviews = [
     {
