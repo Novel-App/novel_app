@@ -7,6 +7,7 @@ import history from '../history'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const UPDATE_USER = 'UPDATE_USER'
+const UPDATE_USER_PIC = 'UPDATE_USER_PIC'
 
 /**
  * INITIAL STATE
@@ -88,6 +89,16 @@ export const updateUser = user => {
   }
 }
 
+//UPDATE PROFILE PICTURE
+// export const updateUserPicture = user=> {
+//   return async dispatch => {
+//     // const {data} = await axios.post(`/api/users/${this.props.user.id}/uploadProfile`, user)
+//     const {data} = await axios.post(`/api/users/${user.id}/uploadProfile`, user)
+//     dispatch(_updateUser(data))
+//     history.push('/profile')
+//   }
+// }
+
 /**
  * REDUCER
  */
@@ -99,6 +110,8 @@ export default function(state = defaultUser, action) {
       return defaultUser
     case UPDATE_USER:
       return action.user
+    // case UPDATE_USER_PIC:
+    //   return action.user
     default:
       return state
   }

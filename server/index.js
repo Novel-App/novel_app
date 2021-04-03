@@ -87,53 +87,26 @@ const createApp = () => {
   app.use(express.static(path.join(__dirname, 'public')))
 
   //UPLOAD PROFILE IMG
-  app.post(
-    '/uploadProfile/:userId',
-    upload.single('profileImg'),
-    async function(req, res) {
-      var imagePath = req.file.path.replace(/^public\//, '')
-      console.log('IMAGE PATH', imagePath)
-      const user = await User.findByPk(req.params.userId)
-      user.update({profileImage: imagePath})
-      res.send(
-        `You have uploaded this image: <hr/><img src={${imagePath}} width="500"><hr /><a href="./">Upload another image</a>`
-      )
-      // res.redirect(imagePath)
-    }
-  )
-
-  app.get('/uploadProfile:userId', (req, res, next) => {
-    User.find().then(data => {
-      res.status(200).json({
-        message: 'User list retrieved successfully!',
-        users: data
-      })
-    })
-  })
-
   // app.post(
-  //   '/uploadProfile',
+  //   '/uploadProfile/:userId',
   //   upload.single('profileImg'),
   //   async function(req, res) {
   //     var imagePath = req.file.path.replace(/^public\//, '')
   //     console.log('IMAGE PATH', imagePath)
-  //     const user = await User.findByPk(1)
+  //     const user = await User.findByPk(req.params.userId)
   //     user.update({profileImage: imagePath})
-  //     res.send(
-  //       `You have uploaded this image: <hr/><img src="${imagePath}" width="500"><hr /><a href="./">Upload another image</a>`
-  //     )
-  //     // res.redirect(imagePath)
+  //     res.status(201).redirect('/profile')
   //   }
   // )
 
   //UPLOAD MULTIPLE PRODUCT IMGS
-  app.post('/uploadProducts', upload.array('productImg', 4), function(
-    req,
-    res
-  ) {
-    console.log(req.files)
-    res.send(req.files)
-  })
+  // app.post('/uploadProducts', upload.array('productImg', 4), function(
+  //   req,
+  //   res
+  // ) {
+  //   console.log(req.files)
+  //   res.send(req.files)
+  // })
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
