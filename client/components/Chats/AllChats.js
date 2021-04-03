@@ -46,24 +46,23 @@ class AllChats extends Component {
               chat.users[0].message.createdAt > chat.users[1].message.createdAt
                 ? {
                     content:
-                      chat.users[0].message.content.split(' ').length > 3
+                      chat.users[0].message.content.split(' ').length < 3
                         ? chat.users[0].message.content
-                        : // `${chat.users[0].message.content
-                          //       .split(' ')
-                          //       .slice(0, 3)
-                          //       .join(' ')}...`
-                          chat.users[0].message.content,
+                        : `${chat.users[0].message.content
+                            .split(' ')
+                            .slice(0, 3)
+                            .join(' ')}...`,
                     time: chat.users[0].message.createdAt
                   }
                 : {
                     content:
-                      chat.users[1].message.content.split(' ').length > 3
+                      chat.users[1].message.content.split(' ').length < 3
                         ? chat.users[1].message.content
-                        : // `${chat.users[1].message.content
-                          //     .split(' ')
-                          //     .slice(0, 3)
-                          //     .join(' ')}...`
-                          chat.users[1].message.content,
+                        : `${chat.users[1].message.content
+                            .split(' ')
+                            .slice(0, 3)
+                            .join(' ')}...`,
+
                     time: chat.users[1].message.createdAt
                   }
           }
