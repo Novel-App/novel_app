@@ -50,7 +50,7 @@ class SingleProduct extends Component {
                 className="img-fluid rounded"
                 data-src="holder.js/200x250?theme=thumb"
                 alt={product.title}
-                src={product.image}
+                src={product.image[0]}
               />
             </div>
             <div className="col-md-5">

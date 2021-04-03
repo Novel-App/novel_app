@@ -64,7 +64,7 @@ export class SingleChat extends Component {
               <div className="row no-gutters">
                 <div className="col-md-4 d-flex justify-content-center align-items-center">
                   <img
-                    src={chat.product.image}
+                    src={chat.product.image[0]}
                     className="card-img"
                     alt="product-img"
                     style={{height: '15vh', width: 'auto'}}
