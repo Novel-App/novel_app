@@ -52,8 +52,6 @@ export class SingleChat extends Component {
   }
   render() {
     const chat = this.props.chat || {}
-    console.log(this.props, 'these are my props')
-    // const chatId = this.props.match.params.chatId
     return (
       <React.Fragment>
         <div style={{maxWidth: '800px', margin: '0 auto'}}>

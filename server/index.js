@@ -70,6 +70,8 @@ const createApp = () => {
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
+  app.use('/products/images', express.static(path.join('public/images')))
+  app.use('/chats/images', express.static(path.join('public/images')))
 
   //UPLOADING IMAGE
   var storage = multer.diskStorage({
@@ -83,29 +85,12 @@ const createApp = () => {
 
   var upload = multer({storage: storage})
 
-  app.use(express.static(path.join(__dirname, 'public')))
+  // app.use(express.static(path.join(__dirname, 'public')))
 
-  //UPLOAD PROFILE IMG
-  // app.post(
-  //   '/uploadProfile/:userId',
-  //   upload.single('profileImg'),
-  //   async function(req, res) {
-  //     var imagePath = req.file.path.replace(/^public\//, '')
-  //     console.log('IMAGE PATH', imagePath)
-  //     const user = await User.findByPk(req.params.userId)
-  //     user.update({profileImage: imagePath})
-  //     res.status(201).redirect('/profile')
-  //   }
-  // )
-
-  //UPLOAD MULTIPLE PRODUCT IMGS
-  // app.post('/uploadProducts', upload.array('productImg', 4), function(
-  //   req,
-  //   res
-  // ) {
-  //   console.log(req.files)
-  //   res.send(req.files)
-  // })
+  // sends index.html
+  app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  })
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
@@ -116,11 +101,6 @@ const createApp = () => {
     } else {
       next()
     }
-  })
-
-  // sends index.html
-  app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   })
 
   app.use(function(err, req, res, next) {
