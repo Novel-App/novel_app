@@ -35,11 +35,17 @@ body {
   color: #e7fff8;
   border-color: #e7fff8;
 }
+.edit-profile {
+  color: #e7fff8;
+}
 
 #btn-warning {
   background: #8c749b;
   /* border-color: #CE8FFF; */
   color: #e7fff8;
+}
+.profileText {
+  color: #e1e9e7;
 }
 
 .nav-link,
