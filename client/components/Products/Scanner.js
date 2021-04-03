@@ -2,13 +2,7 @@ import React, {Component} from 'react'
 import Quagga from 'quagga'
 
 class Scanner extends Component {
-  constructor(props) {
-    super(props)
-    this._onDetected = this._onDetected.bind(this)
-  }
-
   componentDidMount() {
-    console.log('component Did mount...')
     Quagga.init(
       {
         inputStream: {
@@ -17,14 +11,13 @@ class Scanner extends Component {
             width: 640,
             height: 320,
             facingMode: 'environment'
-          },
-          area: {
-            // defines rectangle of the detection/localization area
-            top: '10%', // top offset
-            right: '10%', // right offset
-            left: '10%', // left offset
-            bottom: '10%' // bottom offset
           }
+          //   area: { // defines rectangle of the detection/localization area
+          //     top: "10%",    // top offset
+          //     right: "10%",  // right offset
+          //     left: "10%",   // left offset
+          //     bottom: "10%"  // bottom offset
+          //   },
         },
         locator: {
           halfSample: true,
@@ -46,7 +39,19 @@ class Scanner extends Component {
         },
         numOfWorkers: 4,
         decoder: {
-          readers: ['code_128_reader'],
+          readers: [
+            'code_128_reader',
+            'upc_reader',
+            'ean_reader',
+            'ean_8_reader',
+            'code_39_reader',
+            'code_39_vin_reader',
+            'codabar_reader',
+            'upc_e_reader',
+            'i2of5_reader',
+            '2of5_reader',
+            'code_93_reader'
+          ],
           debug: {
             drawBoundingBox: true,
             showFrequency: true,
@@ -67,7 +72,6 @@ class Scanner extends Component {
   }
 
   componentWillUnmount() {
-    console.log('component will Unmount...')
     Quagga.offDetected(this._onDetected)
   }
 

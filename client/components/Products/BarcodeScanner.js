@@ -6,10 +6,9 @@ class BarcodeScanner extends Component {
     results: []
   }
 
-  _scan = () => {
-    this.setState({scanning: !this.state.scanning})
-    console.log('---->', this.state)
-  }
+  // scan = () => {
+  //   this.setState({scanning: !this.state.scanning})
+  // }
 
   _onDetected = result => {
     this.setState({results: []})
@@ -28,7 +27,7 @@ class BarcodeScanner extends Component {
           <Scanner onDetected={this._onDetected} />
         </div>
 
-        <textarea
+        <input
           style={{fontSize: 32, width: 320, height: 100, marginTop: 30}}
           rowsMax={4}
           defaultValue="No data scanned"
