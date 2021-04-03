@@ -274,6 +274,8 @@ singleChat styling */
 
 .wrapper {
   overflow: auto;
+}
+
 .text-small {
   font-size: 0.9rem;
 }

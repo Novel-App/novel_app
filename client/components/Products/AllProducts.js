@@ -140,16 +140,18 @@ class AllProducts extends Component {
             </nav>
             <div className="d-flex justify-content-between w-90">
               <Link to="/products/add">
-                <i
-                  className="bi bi-plus-circle-fill add-product"
-                  style={{fontSize: '3em'}}
-                />
+                <div className="mt-1 ml-2">
+                  <i
+                    className="bi bi-plus-circle-fill add-product"
+                    style={{fontSize: '3em'}}
+                  />
+                </div>
               </Link>
               <form
                 className="input-group rounded d-flex justify-content-end"
                 onSubmit={this.handleSubmit}
               >
-                <div className="col-xs-2 form-inline">
+                <div className="col-md-4 form-inline">
                   <input
                     type="search"
                     name="searchTerm"
