@@ -30,29 +30,33 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(png|jpg|gif)$/i,
         use: [
-          'file-loader',
           {
-            loader: 'image-webpack-loader',
+            loader: 'url-loader',
             options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true // webpack@2.x and newer
+              limit: 8192
             }
           }
         ]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader'
+            // options: {
+            //   outputPath: 'images',
+            //   // filename: 'images/[name].[ext]'
+            // },
+            // options: {
+            //   name: '[name].[ext]',
+            //   outputPath: 'image/',
+            //   publicPath: '/'
+            // }
+          }
+        ]
       }
-      // {
-      //   test: /\.(png|jpe?g|gif)$/i,
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         outputPath: 'images',
-      //       },
-      //     },
-      //   ],
-      // },
     ]
   }
 }
