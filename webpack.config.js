@@ -29,19 +29,6 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
-      // {
-      //   test: /\.(gif|png|jpe?g|svg)$/i,
-      //   use: [
-      //     'file-loader',
-      //     {
-      //       loader: 'image-webpack-loader',
-      //       options: {
-      //         bypassOnDebug: true, // webpack@1.x
-      //         disable: true // webpack@2.x and newer
-      //       }
-      //     }
-      //   ]
-      // }
       {
         test: /\.(png|jpg|gif)$/i,
         use: [
@@ -57,16 +44,16 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'file-loader'
             // options: {
             //   outputPath: 'images',
             //   // filename: 'images/[name].[ext]'
             // },
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'image/',
-              publicPath: '/'
-            }
+            // options: {
+            //   name: '[name].[ext]',
+            //   outputPath: 'image/',
+            //   publicPath: '/'
+            // }
           }
         ]
       }
