@@ -804,8 +804,8 @@ async function seed() {
       numFavorites: 0,
       price: 5,
       canBargain: true,
-      availability: 'Available',
-      buyerId: null,
+      availability: 'Sold',
+      buyerId: 2,
       sellerId: 4,
       genreId: developmentHowToEducation.id
     },
@@ -838,8 +838,8 @@ async function seed() {
       numFavorites: 0,
       price: 2,
       canBargain: true,
-      availability: 'Available',
-      buyerId: null,
+      availability: 'Sold',
+      buyerId: 1,
       sellerId: 4,
       genreId: developmentHowToEducation.id
     },
@@ -854,7 +854,7 @@ async function seed() {
       numFavorites: 0,
       price: 3,
       canBargain: true,
-      availability: 'Available',
+      availability: 'Reserved',
       buyerId: null,
       sellerId: 3,
       genreId: childrens.id
@@ -871,10 +871,130 @@ async function seed() {
       numFavorites: 0,
       price: 3,
       canBargain: true,
-      availability: 'Available',
-      buyerId: null,
+      availability: 'Sold',
+      buyerId: 2,
       sellerId: 4,
       genreId: romance.id
+    },
+    {
+      title: 'No One Can Pronounce My Name: A Novel',
+      author: ' Rakesh Satyal ',
+      ISBN: '1250112125',
+      description:
+        'Eleanore is weird. That’s just who she is. When she and her equally weird co-worker, Raymond, save an elderly man who had fallen on a sidewalk, she suddenly finds company. This is a beautiful story that has a quirky imperfect heroine. Sure to bring you a bit of light on a dark day.',
+      isFiction: true,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/51IfMZ-hK0L._SX322_BO1,204,203,200_.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/811Ov7HIblL.jpg'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 1,
+      genreId: lifestyle.id
+    },
+    {
+      title: 'Eleanor Oliphant Is Completely Fine',
+      author: 'Gail Honeyman',
+      ISBN: '0735220697',
+      description:
+        'Eleanore is weird. That’s just who she is. When she and her equally weird co-worker, Raymond, save an elderly man who had fallen on a sidewalk, she suddenly finds company. This is a beautiful story that has a quirky imperfect heroine. Sure to bring you a bit of light on a dark day.',
+      isFiction: true,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/51meTQ+nUJL._SX330_BO1,204,203,200_.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb4oM9sgZaO3SRSc0UvtXNaRWtEjy8LE_mXA&usqp=CAU'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Sold',
+      buyerId: 2,
+      sellerId: 1,
+      genreId: lifestyle.id
+    },
+    {
+      title: 'BEARTOWN: A NOVEL',
+      author: 'FREDRIK BACKMAN',
+      ISBN: '9781501160776',
+      description:
+        'A small town on the brink of non-existance. A Jr. League hockey league about to make the championships. “Beartown explores the hopes that bring a small community together, the secrets that tear it apart, and the courage it takes for an individual to go against the grain. In this story of a small forest town, Fredrik Backman has found the entire world.',
+      isFiction: true,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/51zhHPuBHuL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBieeq9-HO2RORiKZTojRVEkOFEpBd2Uh3mA&usqp=CAU'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Sold',
+      buyerId: 1,
+      sellerId: 2,
+      genreId: lifestyle.id
+    },
+    {
+      title: 'AN AMERICAN MARRIAGE',
+      author: 'TAYARI JONES',
+      ISBN: ' 9781616208776',
+      description:
+        'This stirring love story is a profoundly insightful look into the hearts and minds of three people who are at once bound and separated by forces beyond their control. An American Marriage is a masterpiece of storytelling, an intimate look deep into the souls of people who must reckon with the past while moving forward—with hope and pain—into the future.',
+      isFiction: false,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/51DVSda0kWL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg',
+        'https://cdn.shopify.com/s/files/1/1336/0125/products/TayariJones-AnAmericanMarriagebookbackcover_800x.jpg?v=1584655323'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Reserved',
+      buyerId: null,
+      sellerId: 2,
+      genreId: lifestyle.id
+    },
+    {
+      title: 'WINTER GARDEN',
+      author: 'KRISTIN HANNAH',
+      ISBN: '90312663153',
+      description:
+        'An inspirational and emotional story of a family that has been defined by war, even if they don’t know it. “Meredith and Nina Whitson are as different as sisters can be and they find themselves together again, standing alongside their cold, disapproving mother, Anya, who even now, offers no comfort to her daughters. As children, the only connection between them was the Russian fairy tale Anya sometimes told the girls at night. On his deathbed, their father extracts a promise from the women in his life: the fairy tale will be told one last time. Thus begins an unexpected journey into the truth of Anya’s life in war-torn Leningrad, more than five decades ago. Alternating between the past and present, Meredith and Nina will finally hear the singular, harrowing story of their mother’s life.',
+      isFiction: false,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/414-KWhHHsL._SX331_BO1,204,203,200_.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/41z7VbRVqTL._SY279_BO1,204,203,200_.jpg'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Reserved',
+      buyerId: null,
+      sellerId: 1,
+      genreId: lifestyle.id
+    },
+    {
+      title: 'THE SNOW CHILD',
+      author: 'EOWYN IVEY',
+      ISBN: '0316175668',
+      description:
+        'Alaska, 1920: a brutal place to homestead, and especially tough for recent arrivals Jack and Mabel. Childless, they are drifting apart—he breaking under the weight of the work of the farm; she crumbling from loneliness and despair. In a moment of levity during the season’s first snowfall, they build a child out of snow. The next morning the snow child is gone—but they glimpse a young, blonde-haired girl running through the trees.',
+      isFiction: false,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/41PWTKFpxyL._SX328_BO1,204,203,200_.jpg',
+        'https://realizinggrace.files.wordpress.com/2017/01/img_7604.jpg?w=356&h=237'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Sold',
+      buyerId: 3,
+      sellerId: 1,
+      genreId: lifestyle.id
     }
   ]
   const createdProducts = await Product.bulkCreate(products)
