@@ -48,7 +48,7 @@ class Profile extends Component {
               </div>
             </div>
             <div className="col-md-8">
-              <h4 className="font-weight-bold d-none d-lg-inline-block">
+              <h4 className="font-weight-bold d-none d-lg-inline-block profileText">
                 Profile
               </h4>
               <ul className="list-group">
