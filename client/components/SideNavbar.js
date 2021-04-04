@@ -6,68 +6,66 @@ import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import {SidebarDataLoggedIn, SideBarLoggedOut} from './SidebarData'
 import {logout} from '../store'
+import styled from 'styled-components'
+import SubMenu from './SubMenu'
+import {IconContext} from 'react-icons/lib'
 
-function SideNavBar({handleClick, isLoggedIn}) {
+const SidebarNav = styled.nav`
+  background: #254d4c;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: ${({sidebar}) => (sidebar ? '0' : '-100%')};
+  transition: 350ms;
+  z-index: 10;
+`
+
+const SideNavBar = ({handleClick, isLoggedIn}) => {
   const [sidebar, setSidebar] = useState(false)
-  const [subNav, setsubnav] = useState(false)
-  const showSideBar = () => {
-    setSidebar(!sidebar)
-  }
-  const showSubnav = () => {
-    setsubnav(!subnav)
-  }
+
+  const showSidebar = () => setSidebar(!sidebar)
   const navBarIcons = isLoggedIn ? SidebarDataLoggedIn : SideBarLoggedOut
+
   return (
     <>
-      <div className="navbar">
-        <Link to="#" className="menu-bars">
-          <FaIcons.FaBars
-            className="fa-lg"
-            style={{color: 'white'}}
-            onClick={showSideBar}
-          />
-        </Link>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className="nav-menu-items" onClick={showSideBar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose style={{color: 'white'}} />
-              </Link>
-            </li>
+      <IconContext.Provider value={{color: '#e7fff8'}}>
+        <div className="sideNavContainer">
+          <Link to="#" className="navLink">
+            <FaIcons.FaBars onClick={showSidebar} />
+          </Link>
+          <div className="title">
+            <h1>Novel</h1>
+          </div>
+        </div>
+        <SidebarNav sidebar={sidebar}>
+          <div className="sidebarwrap">
+            <Link to="#" className="navLink">
+              <AiIcons.AiOutlineClose onClick={showSidebar} />
+            </Link>
+
             {navBarIcons.map((item, index) => {
-              return (
-                <li key={index} className={item.className}>
-                  {item.title === 'LogOut' ? (
-                    <Link to="#" className="navLink" onClick={handleClick}>
-                      {item.icon} <span>{item.title}</span>{' '}
-                    </Link>
-                  ) : (
-                    <Link
-                      to={item.path}
-                      className="navLink"
-                      onClick={item.subNav && subNav}
-                    >
-                      <>
-                        {item.icon ? item.icon : <></>}
-                        <span> {item.title}</span>
-                      </>
-                    </Link>
-                  )}
-                </li>
-              )
+              const value =
+                item.title === 'LogOut' ? (
+                  <Link to="#" className="linkNavigation" onClick={handleClick}>
+                    <div>
+                      {item.icon}
+                      <span className="navTexts">{item.title}</span>{' '}
+                    </div>
+                  </Link>
+                ) : (
+                  <SubMenu item={item} key={index} />
+                )
+              return value
             })}
-          </ul>
-        </nav>
-        <h1 id="navHeader">Novel</h1>
-      </div>
+          </div>
+        </SidebarNav>
+      </IconContext.Provider>
     </>
   )
 }
-
-//                           if()
-//                                       <a className="nav-link" href="#" onClick={handleClick}>
-//     <i className="bi bi-door-closed-fill" style={{fontSize: '1.5em'}} />
-//   </a>
 
 /**
  * CONTAINER
