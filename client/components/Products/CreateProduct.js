@@ -6,7 +6,6 @@ import {createProduct} from '../../store/product'
 import Condition from './Condition'
 import axios from 'axios'
 import BarcodeScanner from './BarcodeScanner'
-import Scanner from './Scanner'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
@@ -39,15 +38,17 @@ class CreateProduct extends Component {
       price: 0,
       canBargain: false,
       availability: 'Available',
-      genreId: ''
+      genreId: '',
+      onScan: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleFileChange = this.handleFileChange.bind(this)
-    this.handleSearch = this.handleSearch.bind(this)
+    //this.handleSearch = this.handleSearch.bind(this)
     this.handleAutoFill = this.handleAutoFill.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleChange(evt) {
@@ -89,12 +90,24 @@ class CreateProduct extends Component {
     }
   }
 
-  handleSearch = e => {
-    this.setState({isbn: e.target.value})
+  _onDetected = result => {
+    console.log('detected the result.....', result)
+    this.setState({isbn: result})
   }
 
+  handleClick = () => {
+    console.log('hadling click...', this.state.onScan)
+    this.setState(prevState => ({
+      onScan: !prevState.onScan
+    }))
+  }
+
+  // handleSearch = e => {
+  //   console.log ('handling Search...')
+  //   this.setState({isbn: e.target.value})
+  // }
+
   handleFileChange(evt) {
-    // console.log('IMAGE URL', URL.createObjectURL(evt.target.files[0]))
     this.setState({image: evt.target.files})
   }
 
@@ -139,31 +152,38 @@ class CreateProduct extends Component {
       isFiction
     } = this.state
     return (
-      <div>
+      <div className="container">
         <div className="d-flex flex-column justify-content-center">
-          <Link to="/home">
-            <button type="button" className="btn btn-outline-warning">
-              Cancel
-            </button>
-          </Link>
+          <br />
+          <div className="d-flex">
+            <Link to="/home">
+              <button
+                type="button"
+                className="ml-10 btn btn-sm btn-outline-warning ml-15  mb-10"
+              >
+                Cancel
+              </button>
+            </Link>
+          </div>
           <h1 className="align-self-center">New post </h1>
         </div>
 
-        <div>
+        <div className="d-flex flex-column align-items-center ml-5">
           <p>Enter ISBN to auto-fill the fields below</p>
           <form onSubmit={handleAutoFill}>
             <input
+              className="new-post-input"
               onChange={handleSearch}
               type="text"
               placeholder="Enter ISBN"
             />
-            <button type="submit" className="btn btn-outline-dark ml-1">
+            <button type="submit" className="btn btn-sm btn-outline-dark ml-1">
               Auto Fill
             </button>
           </form>
         </div>
-        <div>
-          <p>Scan your barcode for ISBN</p>
+        <div className="d-flex flex-column align-items-center ml-5">
+          <p>Scan you ISBN barcode to auto-fill the fields below</p>
           <BarcodeScanner />
         </div>
 
@@ -175,141 +195,164 @@ class CreateProduct extends Component {
               name="productImg"
               accept="image/*"
               multiple
-              // ref={this.productImage}
               onChange={handleFileChange}
               required
             />
+          </div>
 
+          <div className="form-group d-flex flex-column align-items-center">
             <label htmlFor="title">Title</label>
-            <input
-              name="title"
-              type="text"
-              className="form-control"
-              onChange={handleChange}
-              value={title}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="author">Author</label>
-            <input
-              name="author"
-              type="text"
-              className="form-control"
-              onChange={handleChange}
-              value={author}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="ISBN">ISBN</label>
-            <input
-              name="ISBN"
-              type="text"
-              className="form-control"
-              onChange={handleChange}
-              value={ISBN}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="description">Description</label>
-            <textarea
-              name="description"
-              type="textarea"
-              className="form-control"
-              onChange={handleChange}
-              value={description}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="genreId">Genre</label>
-            <select
-              name="genreId"
-              className="form-control"
-              onChange={handleChange}
-              value={genreId}
-              required
-            >
-              <option value="">Select</option>
-              <option value={1}>Fantasy/Adventure</option>
-              <option value={2}>Romance</option>
-              <option value={3}>Thriller/Mystery</option>
-              <option value={4}>Science Fiction/Dystopian</option>
-              <option value={5}>Memoir</option>
-              <option value={6}>History</option>
-              <option value={7}>Lifestyle</option>
-              <option value={8}>Development/How-To/Education</option>
-              <option value={9}>Humor</option>
-              <option value={10}>Childrens</option>
-            </select>
-
-            <div className="form-check">
+            <div className="col-sm-4 col-xs-4 mt-0">
               <input
-                className="form-check-input"
-                name="isFiction"
-                type="checkbox"
-                onChange={handleCheckboxChange}
-                value={isFiction}
+                name="title"
+                type="text"
+                className="form-control"
+                onChange={handleChange}
+                value={title}
+                required
               />
-              <label className="form-check-label" htmlFor="isFiction">
-                Fiction
-              </label>
             </div>
           </div>
 
-          <div className="form-group">
+          <div className="form-group d-flex flex-column align-items-center">
+            <label htmlFor="author">Author</label>
+            <div className="col-sm-4 col-xs-4 mt-0">
+              <input
+                name="author"
+                type="text"
+                className="form-control"
+                onChange={handleChange}
+                value={author}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="form-group d-flex flex-column align-items-center">
+            <label htmlFor="ISBN">ISBN</label>
+            <div className="col-sm-4 col-xs-4 mt-0">
+              <input
+                name="ISBN"
+                type="text"
+                className="form-control"
+                onChange={handleChange}
+                value={ISBN}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="form-group d-flex flex-column align-items-center">
+            <label htmlFor="description">Description</label>
+            <div className="col-sm-4 col-xs-4 mt-0">
+              <textarea
+                name="description"
+                type="textarea"
+                className="form-control"
+                onChange={handleChange}
+                value={description}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="form-group d-flex flex-column align-items-center">
+            <label htmlFor="genreId">Genre</label>
+
+            <div className="d-flex justify-content-center align-items-center">
+              <div className="col-sm-8 col-xs-8 mt-0">
+                <select
+                  name="genreId"
+                  className="form-control select-dropdown"
+                  onChange={handleChange}
+                  value={genreId}
+                  required
+                >
+                  <option value="">Select</option>
+                  <option value={1}>Fantasy/Adventure</option>
+                  <option value={2}>Romance</option>
+                  <option value={3}>Thriller/Mystery</option>
+                  <option value={4}>Science Fiction/Dystopian</option>
+                  <option value={5}>Memoir</option>
+                  <option value={6}>History</option>
+                  <option value={7}>Lifestyle</option>
+                  <option value={8}>Development/How-To/Education</option>
+                  <option value={9}>Humor</option>
+                  <option value={10}>Childrens</option>
+                </select>
+              </div>
+
+              <div className="form-check d-flex justify-content-center">
+                <label className="form-check-label" htmlFor="isFiction">
+                  <input
+                    className="form-check-input mr-10"
+                    name="isFiction"
+                    type="checkbox"
+                    onChange={handleCheckboxChange}
+                    value={isFiction}
+                  />
+                  Fiction
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className="form-group d-flex flex-column align-items-center">
             <label htmlFor="condition">
               Condition <Condition />
             </label>
-            <select
-              name="condition"
-              className="form-control"
-              onChange={handleChange}
-              value={condition}
-              required
-            >
-              <option value="">Select</option>
-              <option value="New">New</option>
-              <option value="Like New">Like New</option>
-              <option value="Good">Good</option>
-              <option value="Loved">Loved</option>
-              <option value="Aged">Aged</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="price">Price ($)</label>
-            <input
-              name="price"
-              type="number"
-              className="form-control"
-              onChange={handleChange}
-              value={price}
-              required
-            />
-
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                name="canBargain"
-                onChange={handleCheckboxChange}
-                value={canBargain}
-              />
-              <label className="form-check-label" htmlFor="canBargain">
-                Negotiable
-              </label>
+            <div className="col-sm-4 col-xs-4 mt-0">
+              <select
+                name="condition"
+                className="form-control select-dropdown"
+                onChange={handleChange}
+                value={condition}
+                required
+              >
+                <option value="">Select</option>
+                <option value="New">New</option>
+                <option value="Like New">Like New</option>
+                <option value="Good">Good</option>
+                <option value="Loved">Loved</option>
+                <option value="Aged">Aged</option>
+              </select>
             </div>
           </div>
-          <button type="submit" className="btn btn-outline-primary">
-            Submit
-          </button>
+
+          <div className="form-group d-flex flex-column align-items-center">
+            <label htmlFor="price">Price ($)</label>
+
+            <div className="d-flex justify-content-center align-items-center">
+              <div className="col-sm-8 col-xs-8 mt-0">
+                <input
+                  name="price"
+                  type="number"
+                  className="form-control"
+                  onChange={handleChange}
+                  value={price}
+                  required
+                />
+              </div>
+
+              <div className="form-check d-flex justify-content-center">
+                <label className="form-check-label" htmlFor="canBargain">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="canBargain"
+                    onChange={handleCheckboxChange}
+                    value={canBargain}
+                  />
+                  Negotiable
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="d-flex justify-content-center">
+            <button type="submit" className="btn btn-outline-primary ml-5">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     )

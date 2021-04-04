@@ -43,7 +43,7 @@ class AvailabilityUpdateBtn extends Component {
             </label>
             <select
               name="availability"
-              className="form-control select-availability"
+              className="form-control select-dropdown"
               onChange={handleChange}
               value={availability}
               required
