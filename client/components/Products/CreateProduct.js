@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 import {createProduct} from '../../store/product'
 import Condition from './Condition'
 import axios from 'axios'
-import BarcodeScanner from './BarcodeScanner'
 import Scanner from './Scanner'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
