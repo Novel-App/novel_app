@@ -56,18 +56,18 @@ class EditProfile extends Component {
                 src={profileImage}
                 width="90"
               />
-              <span className="font-weight-bold">{firstName}</span>
-              <span className="font-weight-bold">{lastName}</span>
-              <span>{email}</span>
+              <span className="font-weight-bold edit-profile">{firstName}</span>
+              <span className="font-weight-bold edit-profile">{lastName}</span>
+              <span className="edit-profile">{email}</span>
             </div>
           </div>
           <div className="col-md-8">
             <div className="p-3 py-5" />
             <div className="d-flex justify-content-between align-items-center mb-3">
-              <h4 className="text-right">Edit Profile</h4>
+              <h4 className="text-right profileText">Edit Profile</h4>
             </div>
             <form onSubmit={this.handleSubmit}>
-              <div className="input-field">
+              <div className="input-field edit-profile">
                 <label>First Name</label>
                 <input
                   type="text"
@@ -77,7 +77,7 @@ class EditProfile extends Component {
                 />
               </div>
 
-              <div className="input-field">
+              <div className="input-field edit-profile">
                 <label>Last Name</label>
                 <input
                   type="text"
@@ -87,7 +87,7 @@ class EditProfile extends Component {
                 />
               </div>
 
-              <div className="input-field">
+              <div className="input-field edit-profile">
                 <label>Email</label>
                 <input
                   type="text"
@@ -97,7 +97,7 @@ class EditProfile extends Component {
                 />
               </div>
 
-              <div className="input-field">
+              <div className="input-field edit-profile">
                 <label>Password</label>
                 <input
                   type="text"
