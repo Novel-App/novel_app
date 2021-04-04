@@ -6,7 +6,6 @@ import SideNavBar from './components/SideNavbar'
 const App = () => {
   return (
     <div>
-      {/* <Navbar /> */}
       <SideNavBar />
       <Routes />
     </div>

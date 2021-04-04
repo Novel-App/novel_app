@@ -244,7 +244,11 @@ async function seed() {
       description:
         'Little Fires Everywhere is a 2017 novel by American author Celeste Ng. It is her second novel and takes place in Shaker Heights, Ohio, where Ng grew up.',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md30853210698.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md30853210698.jpg',
+        'https://cdn.thefashionmagpie.com/wp-content/uploads/2018/04/little-fires-everywhere-celeste-ng-best-instagrams-735x565.jpeg',
+        'https://i.ebayimg.com/images/g/vsYAAOSwCl9fXUp3/s-l1600.jpg'
+      ],
       condition: 'Like New',
       numFavorites: 2,
       price: 14,
@@ -261,7 +265,10 @@ async function seed() {
       description:
         'Inspired by the incredible true story of one Jewish family separated at the start of World War II, determined to survive—and to reunite—We Were the Lucky Ones is a tribute to the triumph of hope and love against all odds.',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md30568451278.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md30568451278.jpg',
+        'https://i1.wp.com/www.globolibri.it/wp-content/uploads/2020/01/we-were-the-lucky-ones-hunter-retro.jpg?fit=600%2C927&ssl=1'
+      ],
       condition: 'Good',
       numFavorites: 1,
       price: 10,
@@ -278,7 +285,10 @@ async function seed() {
       description:
         'On the Midwinter Day that is his eleventh birthday, Will Stanton discovers a special gift--he is the last of the Old Ones, immortals dedicated to keeping the world from dominations by the forces of evil, the Dark. At once, he is plunged into a quest for the six magical Signs that will one day and the Old Ones in the final battle between the Dark and the Light. And for the twelve days of Christmas, while the Dark is rising, life for Will is fill of wonder, terror, and delight.',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md21556602983.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md21556602983.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/51X8qP9CWGL.jpg'
+      ],
       condition: 'Loved',
       numFavorites: 4,
       price: 8,
@@ -328,7 +338,10 @@ async function seed() {
       ISBN: '0345315227',
       isFiction: true,
       description: 'The fourth and last book in the Odyssey series.',
-      image: ['https://pictures.abebooks.com/inventory/md/md30800602444.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md30800602444.jpg',
+        'https://www.prestoimages.net/store30/rd10459/10459_pd1777611_2.jpg'
+      ],
       condition: 'Like New',
       numFavorites: 0,
       price: 20,
@@ -345,7 +358,10 @@ async function seed() {
       description:
         'A GLITTERING CENTURY WAS ABOUT TO END . . . AND SO WAS KATHLEENS INNOCENCE!',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md3870823688.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md3870823688.jpg',
+        'https://g.christianbook.com/g/slideshow/5/525132/main/525132_99_bkc.jpg'
+      ],
       condition: 'Aged',
       numFavorites: 1,
       price: 3,
@@ -378,7 +394,7 @@ async function seed() {
       isFiction: false,
       ISBN: '0844290432',
       description: 'Guide to Amsterdam',
-      image: ['https://pictures.abebooks.com/isbn/9780844290430-us.jpg'],
+      image: ['https://pictures.abebooks.com/isbn/9780844290430-us.jpg', ''],
       condition: 'Loved',
       numFavorites: 0,
       price: 2,

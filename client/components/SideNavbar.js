@@ -9,8 +9,12 @@ import {logout} from '../store'
 
 function SideNavBar({handleClick, isLoggedIn}) {
   const [sidebar, setSidebar] = useState(false)
+  const [subNav, setsubnav] = useState(false)
   const showSideBar = () => {
     setSidebar(!sidebar)
+  }
+  const showSubnav = () => {
+    setsubnav(!subnav)
   }
   const navBarIcons = isLoggedIn ? SidebarDataLoggedIn : SideBarLoggedOut
   return (
@@ -35,13 +39,18 @@ function SideNavBar({handleClick, isLoggedIn}) {
                 <li key={index} className={item.className}>
                   {item.title === 'LogOut' ? (
                     <Link to="#" className="navLink" onClick={handleClick}>
-                      {' '}
                       {item.icon} <span>{item.title}</span>{' '}
                     </Link>
                   ) : (
-                    <Link to={item.path} className="navLink">
-                      {item.icon ? item.icon : <></>}
-                      <span> {item.title}</span>
+                    <Link
+                      to={item.path}
+                      className="navLink"
+                      onClick={item.subNav && subNav}
+                    >
+                      <>
+                        {item.icon ? item.icon : <></>}
+                        <span> {item.title}</span>
+                      </>
                     </Link>
                   )}
                 </li>
