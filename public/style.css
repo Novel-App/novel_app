@@ -246,6 +246,10 @@ span {
   width: 100px;
 }
 
+.novel-logo:hover {
+  color: #65837b;
+}
+
 .card-horizontal {
   flex: 1 1 auto;
   display: block;
