@@ -35,13 +35,15 @@ class AvailabilityUpdateBtn extends Component {
     const {handleChange} = this
     const {availability} = this.state
     return (
-      <div>
+      <div className="mt-2">
         <form>
           <div className="form-group">
-            <label htmlFor="availability">Availability</label>
+            <label className="text-muted" htmlFor="availability">
+              Availability
+            </label>
             <select
               name="availability"
-              className="form-control"
+              className="form-control select-availability"
               onChange={handleChange}
               value={availability}
               required

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchSingleProduct} from '../../store/product'
 import Condition from './Condition'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
+import {Loading} from '../Loading'
 import FavoriteBtn from './FavoriteBtn'
 import AddChat from '../Chats/AddChat'
 import moment from 'moment'
@@ -14,22 +15,24 @@ class SingleProduct extends Component {
     this.state = {
       loading: true
     }
+    this.loadingHandler()
   }
   async componentDidMount() {
     try {
       await this.props.loadProduct(this.props.match.params.id)
-      this.setState({loading: false})
+      this.loadingHandler()
     } catch (err) {
       console.log(err)
     }
   }
+  loadingHandler = () => {
+    setTimeout(() => {
+      this.setState({loading: false})
+    }, 500)
+  }
   render() {
     if (this.state.loading === true) {
-      return (
-        <div>
-          <h2>Loading...</h2>
-        </div>
-      )
+      return <Loading />
     }
     const {product, user} = this.props
     const bargainStatus = product.canBargain ? 'negotiable' : 'non-negotiable'

@@ -1,21 +1,32 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {Loading} from '../Loading'
 import {fetchAllChats, removeChat} from '../../store/chat'
 import moment from 'moment'
 
 class AllChats extends Component {
   constructor() {
     super()
+    this.state = {
+      loading: true
+    }
 
     //state or props will populate with chats objects connected to that user once components mount
     //once chats are populated the map function will map through every chat
     //each chat has a link, that navigates to the specific single chat based on chat id
     this.deleteClickHandler = this.deleteClickHandler.bind(this)
+    this.loadingHandler = this.loadingHandler.bind(this)
   }
 
   componentDidMount() {
     this.props.getAllChats()
+    this.loadingHandler()
+  }
+  loadingHandler = () => {
+    setTimeout(() => {
+      this.setState({loading: false})
+    }, 1000)
   }
 
   // handling the delete chat button
@@ -27,6 +38,10 @@ class AllChats extends Component {
   render() {
     const chats = this.props.chats || []
     const {user} = this.props
+
+    if (this.state.loading) {
+      return <Loading />
+    }
 
     const currUser = chats
       ? chats.map(chat => {

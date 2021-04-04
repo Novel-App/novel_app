@@ -71,8 +71,11 @@ const createApp = () => {
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
   app.use('/products/images', express.static(path.join('public/images')))
+  app.use('/favorites/images', express.static(path.join('public/images')))
+  app.use('/purchases/images', express.static(path.join('public/images')))
   app.use('/chats/images', express.static(path.join('public/images')))
   app.use('/profile/images', express.static(path.join('public/images')))
+  app.use('/loading/images', express.static(path.join('public/images')))
 
   //UPLOADING IMAGE
   var storage = multer.diskStorage({

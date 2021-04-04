@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import ScrollUpButton from 'react-scroll-up-button'
+import {Loading} from '../Loading'
 import {fetchUserProducts} from '../../store/userInfo'
 import AddChat from '../Chats/AddChat'
 import FavoriteBtn from '../Products/FavoriteBtn'
@@ -14,23 +15,24 @@ class FavAndPurchases extends Component {
       loading: true,
       currentPage: ''
     }
+    this.loadingHandler = this.loadingHandler.bind(this)
   }
-
   componentDidMount() {
     const path = this.props.match.path.slice(1)
     const userId = this.props.user.id
     this.setState({currentPage: path})
     this.props.loadUserProducts(userId, path)
-    this.setState({loading: false})
+    this.loadingHandler()
+  }
+  loadingHandler = () => {
+    setTimeout(() => {
+      this.setState({loading: false})
+    }, 1000)
   }
   render() {
     //loading screen
     if (this.state.loading === true) {
-      return (
-        <div>
-          <h2>Loading...</h2>
-        </div>
-      )
+      return <Loading />
     }
     //only display certain buttons if listing page is true
     let products = []
@@ -39,14 +41,18 @@ class FavAndPurchases extends Component {
     if (currentPage === 'favorites') {
       products = this.props.favorites
       noProducts = (
-        <>
+        <div className="d-flex justify-content-center">
           <h2>You do not have any favorite products</h2>
           <p>Browse products and heart some books!</p>
-        </>
+        </div>
       )
     } else {
       products = this.props.purchases
-      noProducts = <h2>You do not have any past purchases</h2>
+      noProducts = (
+        <div className="d-flex justify-content-center">
+          <h2>You do not have any past purchases</h2>
+        </div>
+      )
     }
     //if there are no products sold
     if (products.length === 0) {
