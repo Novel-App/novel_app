@@ -54,6 +54,18 @@ export class SingleChat extends Component {
     const chat = this.props.chat || {}
     return (
       <React.Fragment>
+        <div>
+          <div className="d-flex justify-content-between w-90">
+            <Link to="/chats/">
+              <div className="mt-1 ml-2">
+                <i
+                  className="bi bi-arrow-left-circle"
+                  style={{fontSize: '3em'}}
+                />
+              </div>
+            </Link>
+          </div>
+        </div>
         <div style={{maxWidth: '800px', margin: '0 auto'}}>
           {chat.product && (
             <div className="card mb-3">

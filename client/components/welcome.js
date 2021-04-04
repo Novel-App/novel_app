@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 export const Welcome = () => {
   return (
     <div>
-      <div id="welcome-container" className="jumbotron jumbotron-fluid bg-dark">
+      {/* <div id="welcome-container" className="jumbotron jumbotron-fluid bg-dark">
         <div className="jumbotron-background">
           <img
             src="https://cdn.lifestyleasia.com/wp-content/uploads/sites/2/2020/02/25145253/Photo-by-Alfons-Morales-on-Unsplash-scaled-1535x900.jpg"
@@ -23,9 +23,9 @@ export const Welcome = () => {
             </button>
           </Link>
         </div>
-      </div>
+      </div> */}
       <div>
-        <img className="center" src="resources/images/novel_graphic.png" />
+        <img id="novelgraphic" src="resources/images/novel_graphic.png" />
       </div>
     </div>
   )

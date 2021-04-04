@@ -73,6 +73,7 @@ const createApp = () => {
   app.use('/products/images', express.static(path.join('public/images')))
   app.use('/chats/images', express.static(path.join('public/images')))
   app.use('/profile/images', express.static(path.join('public/images')))
+  app.use('/resources/images', express.static(path.join('public/images')))
 
   //UPLOADING IMAGE
   var storage = multer.diskStorage({
