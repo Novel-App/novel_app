@@ -20,6 +20,7 @@ class AllProducts extends Component {
       listingUpdated: false
     }
     this.updateStatus = this.updateStatus.bind(this)
+    this.updateData = this.updateData.bind(this)
     this.handleOnSearchChange = this.handleOnSearchChange.bind(this)
     this.dynamicSearch = this.dynamicSearch.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -99,7 +100,7 @@ class AllProducts extends Component {
         <div className="container-flex">
           <ScrollUpButton />
           <div className="container">
-            <nav className="navbar d-flex navbar-expand-md ">
+            <nav className="productNavBar d-flex navbar-expand-md ">
               <div
                 id="small-navbar"
                 className="navbar-collapse d-flex collapse w-100 order-1 order-sm-0 dual-collapse2"
@@ -107,6 +108,11 @@ class AllProducts extends Component {
                 <div>
                   <a
                     className="prod-nav-link"
+                    style={
+                      this.state.listingStatus === 'Available'
+                        ? {textDecoration: 'underline'}
+                        : {}
+                    }
                     href="#"
                     onClick={() => {
                       this.updateStatus('Available')
@@ -118,6 +124,11 @@ class AllProducts extends Component {
                 <div>
                   <a
                     className="prod-nav-link"
+                    style={
+                      this.state.listingStatus === 'Reserved'
+                        ? {textDecoration: 'underline'}
+                        : {}
+                    }
                     href="#"
                     onClick={() => {
                       this.updateStatus('Reserved')
@@ -129,6 +140,11 @@ class AllProducts extends Component {
                 <div>
                   <a
                     className="prod-nav-link"
+                    style={
+                      this.state.listingStatus === 'Sold'
+                        ? {textDecoration: 'underline'}
+                        : {}
+                    }
                     href="#"
                     onClick={() => {
                       this.updateStatus('Sold')

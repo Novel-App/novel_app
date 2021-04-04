@@ -6,6 +6,7 @@ import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
 import FavoriteBtn from './FavoriteBtn'
 import AddChat from '../Chats/AddChat'
 import moment from 'moment'
+import {Link} from 'react-router-dom'
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -35,6 +36,18 @@ class SingleProduct extends Component {
 
     return (
       <div className="container">
+        <div>
+          <div className="d-flex justify-content-between w-90">
+            <Link to="/products/">
+              <div className="mt-1 ml-2">
+                <i
+                  className="bi bi-arrow-left-circle"
+                  style={{fontSize: '3em'}}
+                />
+              </div>
+            </Link>
+          </div>
+        </div>
         {/* AVAILABILITY UPDATE BTN ONLY RENDERS FOR SELLER */}
         {product.sellerId === user.id && (
           <AvailabilityUpdateBtn product={product} />

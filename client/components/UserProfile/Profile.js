@@ -25,7 +25,9 @@ class Profile extends Component {
           <div className="row">
             <div className="col-md-4 border-right">
               <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                <h2 className="font-weight-bold">Hi {firstName}!</h2>
+                <h2 className="font-weight-bold profileText ">
+                  Hi {firstName}!
+                </h2>
                 <img
                   className="rounded-circle mt-5"
                   src={profileImage}
@@ -34,11 +36,7 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/editImage">
-                    <button
-                      id="edit_pic"
-                      type="button"
-                      className="btn btn-primary"
-                    >
+                    <button type="button" className="btn edit-profile">
                       Edit Profile Picture
                     </button>
                   </Link>
@@ -46,11 +44,7 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/edit">
-                    <button
-                      id="edit_prof"
-                      type="button"
-                      className="btn btn-primary"
-                    >
+                    <button type="button" className="btn edit-profile">
                       Edit Profile
                     </button>
                   </Link>
@@ -62,9 +56,13 @@ class Profile extends Component {
                 Profile
               </h4>
               <ul className="list-group">
-                <li className="list-group-item">First Name: {firstName}</li>
-                <li className="list-group-item">Last Name: {lastName}</li>
-                <li className="list-group-item">Email: {email}</li>
+                <li className="list-group-item profileText">
+                  First Name: {firstName}
+                </li>
+                <li className="list-group-item profileText">
+                  Last Name: {lastName}
+                </li>
+                <li className="list-group-item profileText">Email: {email}</li>
               </ul>
               <br />
               <div className="d-flex">
