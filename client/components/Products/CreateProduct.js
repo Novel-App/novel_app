@@ -40,7 +40,6 @@ class CreateProduct extends Component {
       canBargain: false,
       availability: 'Available',
       genreId: '',
-      results: [],
       onScan: false
     }
     this.handleChange = this.handleChange.bind(this)
@@ -48,7 +47,7 @@ class CreateProduct extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleFileChange = this.handleFileChange.bind(this)
-    this.handleSearch = this.handleSearch.bind(this)
+    //this.handleSearch = this.handleSearch.bind(this)
     this.handleAutoFill = this.handleAutoFill.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
@@ -93,8 +92,8 @@ class CreateProduct extends Component {
   }
 
   _onDetected = result => {
-    this.setState({results: []})
-    this.setState({results: this.state.results.concat([result])})
+    console.log('detected the result.....', result)
+    this.setState({isbn: result})
   }
 
   handleClick = () => {
@@ -104,12 +103,10 @@ class CreateProduct extends Component {
     }))
   }
 
-  handleSearch = e => {
-    this.setState({isbn: e.target.value})
-    if (this.state.results[0]) {
-      this.setState({isbn: this.state.results[0].codeResult.code})
-    }
-  }
+  // handleSearch = e => {
+  //   console.log ('handling Search...')
+  //   this.setState({isbn: e.target.value})
+  // }
 
   handleFileChange(evt) {
     // console.log('IMAGE URL', URL.createObjectURL(evt.target.files[0]))
@@ -168,27 +165,15 @@ class CreateProduct extends Component {
         </div>
 
         <div>
-          <p>Enter ISBN below for auto fill imformation</p>
-          <form onSubmit={handleAutoFill}>
-            <input
-              onChange={handleSearch}
-              type="text"
-              placeholder="Enter ISBN"
-            />
-            <button type="submit">Auto Fill</button>
-          </form>
-        </div>
-
-        <div>
           <p>Scan your barcode</p>
           <button type="button" onClick={this.handleClick}>
             SCAN
           </button>
           <form onSubmit={handleAutoFill}>
             <input
-              onChange={handleSearch}
-              type="text"
-              placeholder="Scan ISBN barcode"
+              style={{fontSize: 20, width: 190, height: 35, margin: 8}}
+              placeholder="Scan Barcode"
+              value={this.state.isbn ? this.state.isbn : ''}
             />
             <button type="submit">Auto Fill</button>
           </form>
@@ -200,28 +185,6 @@ class CreateProduct extends Component {
             )}
           </div>
         </div>
-
-        {/* <div>
-        <button type="button" onClick={this.handleClick}>
-          SCAN
-        </button>
-        <input
-          type="text"
-          style={{fontSize: 20, width: 190, height: 35, margin: 8}}
-          onChange={handleSearch}
-          // value={
-          //   this.state.results[0]? this.state.results[0].codeResult.code
-          //     : ''
-          // }
-        />
-          <div>
-            {this.state.onScan ? (
-              <Scanner onDetected={this._onDetected} />
-            ) : (
-              <></>
-            )}
-          </div>
-        </div> */}
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="form-group">

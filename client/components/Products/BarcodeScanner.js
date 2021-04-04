@@ -13,6 +13,7 @@ class BarcodeScanner extends Component {
   }
 
   _onDetected = result => {
+    console.log('result----->', result)
     this.setState({results: []})
     this.setState({results: this.state.results.concat([result])})
   }
