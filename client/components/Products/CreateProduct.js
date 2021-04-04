@@ -177,19 +177,26 @@ class CreateProduct extends Component {
         </div>
 
         <div className="d-flex flex-column align-items-center ml-5">
-          <p> Scan you ISBN barcode </p>
-          <button type="button" onClick={this.handleClick}>
+          <br />
+          <button
+            className="btn btn-outline-dark ml-1"
+            type="button"
+            onClick={this.handleClick}
+          >
             SCAN
           </button>
+
+          <p> Scan your barcode to pre-fill the fields below</p>
+
           <form onSubmit={handleAutoFill}>
             <input
               className="new-post-input"
               style={{fontSize: 20, width: 190, height: 35, margin: 8}}
-              placeholder="Scan Barcode"
+              placeholder="Your barcode number"
               value={this.state.isbn ? this.state.isbn : ''}
             />
             <button className="btn btn-sm btn-outline-dark ml-1" type="submit">
-              Auto Fill
+              Confirm
             </button>
             <button
               className="btn btn-sm btn-outline-dark ml-1"
@@ -201,12 +208,33 @@ class CreateProduct extends Component {
           </form>
           <div>
             {this.state.onScan ? (
-              <Scanner onDetected={this._onDetected} />
+              <div>
+                {/* <form onSubmit={handleAutoFill}>
+            <input
+              className="new-post-input"
+              style={{fontSize: 20, width: 190, height: 35, margin: 8}}
+              placeholder="Your barcode number"
+              value={this.state.isbn ? this.state.isbn : ''}
+            />
+            <button className="btn btn-sm btn-outline-dark ml-1" type="submit">
+              Confirm
+            </button>
+            <button
+              className="btn btn-sm btn-outline-dark ml-1"
+              onClick={this.handleReset}
+              type="button"
+            >
+              Reset
+            </button>
+          </form> */}
+                <Scanner onDetected={this._onDetected} />
+              </div>
             ) : (
               <></>
             )}
           </div>
         </div>
+        <br />
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="form-group">
