@@ -67,6 +67,7 @@ body {
   height: 60px;
 }
 .nav-text a {
+  background: #254d4c;
   text-decoration: none;
   height: 100%;
   display: flex;
@@ -390,5 +391,6 @@ singleChat styling */
   background-color: #e7fff8;
 }
 .nav-text {
-  background-color: #e7fff8;
+  color: #e7fff8;
+  z-index: 1;
 }

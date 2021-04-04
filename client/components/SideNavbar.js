@@ -51,11 +51,6 @@ function SideNavBar({handleClick, isLoggedIn}) {
                         {item.icon ? item.icon : <></>}
                         <span> {item.title}</span>
                       </>
-                      <>
-                        {item.subNav && subNav
-                          ? item.iconOpened
-                          : item.subNav ? item.iconClosed : null}
-                      </>
                     </Link>
                   )}
                 </li>
