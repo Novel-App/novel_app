@@ -18,13 +18,19 @@ body {
   justify-content: space-evenly;
 }
 
+.toggle-icon {
+  margin-right: 20px;
+}
+
 /* using */
 .sideNavContainer {
   background: #254d4c;
+  width: 100%;
   height: 80px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: #f3eada;
 }
 .navLink {
   margin-left: 2rem;
@@ -68,6 +74,11 @@ body {
 .navTexts {
   margin-left: 16px;
 }
+
+.nav-title {
+  flex-grow: 2;
+}
+
 .sidebarwrap {
   width: 100%;
 }
@@ -141,9 +152,7 @@ span {
   margin-left: 16px;
 }
 
-
 .navLink,
-
 .label {
   margin-left: 0px;
   color: #254d4c;
@@ -178,8 +187,9 @@ span {
 #btn-warning {
   background: #8c749b;
   /* border-color: #CE8FFF; */
-  color: #e7fff8;
-}
+/* color: #e7fff8;
+} */
+
 .profileText {
   color: #e1e9e7;
 }
@@ -436,7 +446,6 @@ singleChat styling */
   align-self: center;
 }
 
-
 /* nav-bar */
 .nav-text-colors {
   background-color: #e7fff8;
@@ -455,4 +464,3 @@ singleChat styling */
 .select-availability {
   cursor: pointer;
 }
-
