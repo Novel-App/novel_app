@@ -141,9 +141,7 @@ span {
   margin-left: 16px;
 }
 
-
 .navLink,
-
 .label {
   margin-left: 0px;
   color: #254d4c;
@@ -184,9 +182,9 @@ span {
 
 #btn-warning {
   background: #8c749b;
-  /* border-color: #CE8FFF; */
+  border-color: #CE8FFF; 
   color: #e7fff8;
-}
+} */
 .profileText {
   color: #e1e9e7;
 }
@@ -443,7 +441,6 @@ singleChat styling */
   align-self: center;
 }
 
-
 /* nav-bar */
 .nav-text-colors {
   background-color: #e7fff8;
@@ -468,4 +465,3 @@ singleChat styling */
   justify-content: center;
   align-items: center;
 }
-

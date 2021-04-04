@@ -1,6 +1,22 @@
 import React, {Component} from 'react'
 import Quagga from 'quagga'
 
+let lastResult = []
+
+const orderByOccurrence = arr => {
+  let counts = {}
+  arr.forEach(value => {
+    if (!counts[value]) {
+      counts[value] = 0
+    }
+    counts[value]++
+  })
+
+  return Object.keys(counts).sort(function(curKey, nextKey) {
+    return counts[curKey] < counts[nextKey]
+  })
+}
+
 class Scanner extends Component {
   componentDidMount() {
     Quagga.init(
@@ -39,19 +55,7 @@ class Scanner extends Component {
         },
         numOfWorkers: 4,
         decoder: {
-          readers: [
-            'code_128_reader',
-            'upc_reader',
-            'ean_reader',
-            'ean_8_reader',
-            'code_39_reader',
-            'code_39_vin_reader',
-            'codabar_reader',
-            'upc_e_reader',
-            'i2of5_reader',
-            '2of5_reader',
-            'code_93_reader'
-          ],
+          readers: ['upc_reader', 'ean_reader', 'upc_e_reader'],
           debug: {
             drawBoundingBox: true,
             showFrequency: true,
@@ -68,6 +72,7 @@ class Scanner extends Component {
         Quagga.start()
       }
     )
+
     Quagga.onDetected(this._onDetected)
   }
 
@@ -75,8 +80,31 @@ class Scanner extends Component {
     Quagga.offDetected(this._onDetected)
   }
 
+  // let lastResult = []
+  // Quagga.onDetected(function (result){
+  //   let lastCode = result.codeResult.code
+  //   lastResult.push(lastCode)
+
+  //   if (lastResult.length > 30) {
+  //     let code = orderByOccurrence(lastResult)[0]
+  //     console.log ('code',code)
+  //     lastResult = []
+  //     Quagga.stop ()
+  //     this._onDetected(code)
+  //   }
+  // })
+
   _onDetected = result => {
-    this.props.onDetected(result)
+    let lastCode = result.codeResult.code
+    lastResult.push(lastCode)
+    if (lastResult.length > 20) {
+      console.log('hereeeeeee...', lastResult)
+      let code = orderByOccurrence(lastResult)[0]
+      console.log('code', code)
+      lastResult = []
+      Quagga.stop()
+      this.props.onDetected(code)
+    }
   }
 
   render() {

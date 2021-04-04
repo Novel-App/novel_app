@@ -38,15 +38,17 @@ class CreateProduct extends Component {
       price: 0,
       canBargain: false,
       availability: 'Available',
-      genreId: ''
+      genreId: '',
+      onScan: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleFileChange = this.handleFileChange.bind(this)
-    this.handleSearch = this.handleSearch.bind(this)
+    //this.handleSearch = this.handleSearch.bind(this)
     this.handleAutoFill = this.handleAutoFill.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleChange(evt) {
@@ -88,9 +90,22 @@ class CreateProduct extends Component {
     }
   }
 
-  handleSearch = e => {
-    this.setState({isbn: e.target.value})
+  _onDetected = result => {
+    console.log('detected the result.....', result)
+    this.setState({isbn: result})
   }
+
+  handleClick = () => {
+    console.log('hadling click...', this.state.onScan)
+    this.setState(prevState => ({
+      onScan: !prevState.onScan
+    }))
+  }
+
+  // handleSearch = e => {
+  //   console.log ('handling Search...')
+  //   this.setState({isbn: e.target.value})
+  // }
 
   handleFileChange(evt) {
     this.setState({image: evt.target.files})
