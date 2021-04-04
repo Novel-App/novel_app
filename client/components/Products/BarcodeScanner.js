@@ -26,34 +26,26 @@ class BarcodeScanner extends Component {
   render() {
     return (
       <div>
-        <h2>Barcode Scanner</h2>
-
+        <input
+          className="new-post-input"
+          placeholder="Scan a barcode"
+          value={this.state.results[0] && this.state.results[0].codeResult.code}
+        />
         <button
           type="button"
-          className="btn btn-outline-dark"
+          className="btn btn-sm btn-outline-dark ml-1"
           onClick={this.handleClick}
         >
-          SCAN
+          Scan
         </button>
-        <input
-          style={{fontSize: 20, width: 190, height: 35, margin: 8}}
-          value={
-            this.state.results[0]
-              ? this.state.results[0].codeResult.code
-              : 'Scan Barcode'
-          }
-        />
-        <div>
-          {this.state.onScan ? (
+        {this.state.onScan && (
+          <div>
             <Scanner onDetected={this._onDetected} />
-          ) : (
-            <></>
-          )}
-        </div>
-
-        <button type="button" className="btn btn-outline-primary">
-          Submit
-        </button>
+            <button type="button" className="btn btn-outline-primary">
+              Submit
+            </button>
+          </div>
+        )}
       </div>
     )
   }
