@@ -150,6 +150,13 @@ span {
   font-family: 'Poppins-Medium';
 }
 
+/* .new-post-input {
+  font-size: 18;
+  width: 190;
+  height: 35;
+  margin: 8;
+} */
+
 /* .navLink,
 .navbar-brand,
 .prod-navLink {
@@ -452,7 +459,13 @@ singleChat styling */
   height: auto;
 }
 
-.select-availability {
+.select-dropdown {
   cursor: pointer;
+}
+
+.profile-image-edit {
+  padding-top: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
