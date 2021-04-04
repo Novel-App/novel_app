@@ -4,18 +4,75 @@
 }
 
 body {
-  /* font-family: sans-serif; */
   font-family: 'Poppins-Regular';
   background-color: #f5f5f5;
   color: #354b45;
   padding: 0;
   margin: 0;
 }
-/* background-color: #f3eada; */
-/* 
-#tinyNav{
-  background-color: #f3eada; 
-} */
+/* navbar */
+#tinyNav {
+  background-color: #f3eada;
+}
+#small-navbar {
+  justify-content: space-evenly;
+}
+
+/* using */
+.sideNavContainer {
+  background: #254d4c;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navLink {
+  margin-left: 2rem;
+  font-size: 2rem;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.linkNavigation {
+  display: flex;
+  color: #e1e9fc;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  list-style: none;
+  height: 60px;
+  text-decoration: none;
+  font-size: 18px;
+}
+.linkNavigation:hover {
+  background: #65837b;
+  cursor: pointer;
+}
+.navDropDown {
+  background: #254d4c;
+  height: 60px;
+  padding-left: 3rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #e1e9fc;
+  font-size: 18px;
+}
+.navDropDown:hover {
+  background: #65837b;
+  cursor: pointer;
+}
+
+.navTexts {
+  margin-left: 16px;
+}
+.sidebarwrap {
+  width: 100%;
+}
+
+/* using till here */
 .productNavBar {
   background: #254d4c;
   height: 80px;
@@ -80,20 +137,12 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-.nav-menu-items {
-  width: 100%;
-}
-.navbar-toggle {
-  background-color: #254d4c;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
 span {
   margin-left: 16px;
 }
+
+
+.navLink,
 
 .label {
   margin-left: 0px;
@@ -106,12 +155,11 @@ span {
 .prod-navLink {
   color: #e7fff8;
   cursor: pointer;
-} */
+}
 
 .title {
   color: #e7fff8;
-  text-align: center;
-  align-content: center;
+  margin: 0 auto;
 }
 
 .navbar-dark {
@@ -157,24 +205,19 @@ span {
 }
 
 .prod-nav-link:hover,
-.add-product:hover {
+.add-product:hover a {
   color: #65837b;
 }
 
-#small-navbar {
-  justify-content: space-evenly;
-}
-
-/* .navbar-collapse {
+.navbar-collapse {
   justify-content: flex-end;
 }
 
 .navbar-signin {
   justify-content: flex-start;
-} */
+}
 
 .logo {
-  height: 100px;
   width: 100px;
 }
 
@@ -228,8 +271,7 @@ span {
 
 .btn-circle.btn-xl:hover,
 .btn-primary:hover,
-#edit_prof:hover,
-#edit_pic:hover {
+#edit_prof:hover {
   background-color: #354b45;
 }
 
@@ -249,11 +291,6 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
-}
-
-form div {
-  margin: 1em;
-  /* display: inline-block; */
 }
 
 .jumbotron {
@@ -399,6 +436,7 @@ singleChat styling */
   align-self: center;
 }
 
+
 /* nav-bar */
 .nav-text-colors {
   background-color: #e7fff8;
@@ -417,3 +455,4 @@ singleChat styling */
 .select-availability {
   cursor: pointer;
 }
+
