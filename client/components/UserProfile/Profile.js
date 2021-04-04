@@ -66,7 +66,7 @@ class Profile extends Component {
               </ul>
               <br />
               <div className="d-flex">
-                <div className="text-center container">
+                <div className="d-flex justify-content-center text-center container">
                   <span className="col-1 buttons iconsize">
                     <Link to="/favorites">
                       <button

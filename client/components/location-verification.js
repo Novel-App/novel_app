@@ -68,7 +68,11 @@ class LocationVerification extends Component {
       <div>
         <h1>Verify your location</h1>
         {/* info icon to hover ==> explaining 'why do i need to verify my location?' */}
-        <button type="button" onClick={this.getLocation}>
+        <button
+          className="btn btn-outline-dark"
+          type="button"
+          onClick={this.getLocation}
+        >
           Get location
         </button>
         <UserMap
@@ -77,7 +81,9 @@ class LocationVerification extends Component {
         />
         {this.state.verified && (
           <Link to="/products">
-            <button type="button">Confirm</button>
+            <button className="btn btn-outline-dark" type="button">
+              Confirm
+            </button>
           </Link>
         )}
       </div>

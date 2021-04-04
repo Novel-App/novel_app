@@ -142,7 +142,7 @@ class CreateProduct extends Component {
       <div>
         <div className="d-flex flex-column justify-content-center">
           <Link to="/home">
-            <button type="button" className="btn btn-warning">
+            <button type="button" className="btn btn-outline-warning">
               Cancel
             </button>
           </Link>
@@ -150,14 +150,16 @@ class CreateProduct extends Component {
         </div>
 
         <div>
-          <p>Enter ISBN below for auto fill imformation</p>
+          <p>Enter ISBN to auto-fill the fields below</p>
           <form onSubmit={handleAutoFill}>
             <input
               onChange={handleSearch}
               type="text"
               placeholder="Enter ISBN"
             />
-            <button type="submit">Auto Fill</button>
+            <button type="submit" className="btn btn-outline-dark ml-1">
+              Auto Fill
+            </button>
           </form>
         </div>
         <div>
@@ -305,7 +307,7 @@ class CreateProduct extends Component {
               </label>
             </div>
           </div>
-          <button type="submit" className="btn">
+          <button type="submit" className="btn btn-outline-primary">
             Submit
           </button>
         </form>

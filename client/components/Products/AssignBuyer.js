@@ -47,7 +47,9 @@ class AssignBuyer extends Component {
               })}
             </select>
           </div>
-          <button type="submit">Submit</button>
+          <button className="btn btn-primary-outline" type="submit">
+            Submit
+          </button>
           {/* <div name="buyerId" className="form-check" >
           {this.props.chats.map(chat => {
                 return (

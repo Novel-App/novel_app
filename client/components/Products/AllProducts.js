@@ -179,7 +179,7 @@ class AllProducts extends Component {
                     value={this.state.searchTerm}
                     onChange={this.handleOnSearchChange}
                   />
-                  <button type="submit" className="btn">
+                  <button type="submit" className="btn btn-outline-dark ml-1">
                     search
                   </button>
                 </div>
@@ -239,7 +239,7 @@ class AllProducts extends Component {
                                 <div className="d-flex justify-content-center align-items-center">
                                   <Link to={`/listings/${product.id}/edit`}>
                                     <button
-                                      className="btn btn-primary rounded mr-2"
+                                      className="btn btn-outline-secondary rounded mr-2"
                                       type="button"
                                     >
                                       Edit

@@ -51,13 +51,13 @@ class FavoriteBtn extends Component {
     return favorite === undefined || oneFavCount[0] === undefined ? (
       <></>
     ) : (
-      <>
+      <div className="d-flex justify-content-center mb-1">
         <i
           className={favorite.isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'}
           onClick={() => this.toggleFavorite(favorite.isFavorite)}
         />
-        <p>{oneFavCount[0].count}</p>
-      </>
+        <p className="ml-2 mt-1 mb-0 small">{oneFavCount[0].count}</p>
+      </div>
     )
   }
 }
