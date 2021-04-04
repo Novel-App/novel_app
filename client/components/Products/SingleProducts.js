@@ -107,15 +107,6 @@ class SingleProduct extends Component {
                     </span>
                   </>
                 )}
-                {/* <span className="mr-2">
-                  <AddChat
-                    productId={product.id}
-                    browserId={this.props.user.id}
-                  />
-                </span>
-                <span style={{fontSize: '1.5em'}}>
-                  <FavoriteBtn productId={product.id} />
-                </span> */}
               </div>
             </div>
           </div>
