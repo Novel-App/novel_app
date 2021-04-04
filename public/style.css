@@ -78,6 +78,9 @@ body {
 .nav-title {
   flex-grow: 2;
 }
+.sideNav-title {
+  color: #e1e9fc;
+}
 
 .sidebarwrap {
   width: 100%;
@@ -201,7 +204,6 @@ span {
 .edit-profile {
   color: #e7fff8;
 }
-
 
 .profileText {
   color: #e1e9e7;
@@ -470,7 +472,6 @@ singleChat styling */
   height: auto;
 }
 
-
 .select-availability,
 .bi {
   cursor: pointer;
@@ -485,4 +486,3 @@ singleChat styling */
   justify-content: center;
   align-items: center;
 }
-
