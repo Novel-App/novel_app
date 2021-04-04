@@ -10,7 +10,7 @@ export default class PageNotFound extends Component {
         </h1>
         <img
           className="error404"
-          src="resources/images/PinClipart.com_stack-of-books-clip_5379893.png"
+          src="https://image.freepik.com/free-vector/design-404-error-page-is-lost-found-message-template-web-page-with-404-error-modern-line-design_6280-165.jpg"
         />
         <span />
         <h4 className="notfoundpage">

@@ -42,6 +42,7 @@ class Routes extends Component {
             {/* Routes placed here are only available to users not logged in */}
             <Route exact path="/" component={Welcome} />
             <Route exact path="/home" component={Welcome} />
+            <Route path="*" component={PageNotFound} />
           </Switch>
         )}
         {isLoggedIn && (
@@ -73,11 +74,11 @@ class Routes extends Component {
               component={LocationVerification}
             />
             <Route path="/products" component={AllProducts} />
+            <Route path="*" component={PageNotFound} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
         {/* <Route component={Login} /> */}
-        <Route path="*" component={PageNotFound} />
       </Switch>
     )
   }
