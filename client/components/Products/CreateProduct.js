@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {createProduct} from '../../store/product'
 import Condition from './Condition'
 import axios from 'axios'
-import BarcodeScanner from './BarcodeScanner'
+import Scanner from './Scanner'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
@@ -49,6 +49,7 @@ class CreateProduct extends Component {
     //this.handleSearch = this.handleSearch.bind(this)
     this.handleAutoFill = this.handleAutoFill.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleReset = this.handleReset.bind(this)
   }
 
   handleChange(evt) {
@@ -93,6 +94,7 @@ class CreateProduct extends Component {
   _onDetected = result => {
     console.log('detected the result.....', result)
     this.setState({isbn: result})
+    this.setState({onScan: false})
   }
 
   handleClick = () => {
@@ -100,6 +102,12 @@ class CreateProduct extends Component {
     this.setState(prevState => ({
       onScan: !prevState.onScan
     }))
+  }
+
+  handleReset = () => {
+    this.setState({
+      isbn: ''
+    })
   }
 
   // handleSearch = e => {
@@ -169,21 +177,35 @@ class CreateProduct extends Component {
         </div>
 
         <div className="d-flex flex-column align-items-center ml-5">
-          <p>Scan you ISBN barcode to auto-fill the fields below</p>
+          <p> Scan you ISBN barcode </p>
+          <button type="button" onClick={this.handleClick}>
+            SCAN
+          </button>
           <form onSubmit={handleAutoFill}>
             <input
               className="new-post-input"
-              onChange={handleSearch}
-              type="text"
-              placeholder="Enter ISBN"
+              style={{fontSize: 20, width: 190, height: 35, margin: 8}}
+              placeholder="Scan Barcode"
+              value={this.state.isbn ? this.state.isbn : ''}
             />
-            <button type="submit" className="btn btn-sm btn-outline-dark ml-1">
+            <button className="btn btn-sm btn-outline-dark ml-1" type="submit">
               Auto Fill
             </button>
+            <button
+              className="btn btn-sm btn-outline-dark ml-1"
+              onClick={this.handleReset}
+              type="button"
+            >
+              Reset
+            </button>
           </form>
-        </div>
-        <div className="d-flex flex-column align-items-center ml-5">
-          <BarcodeScanner />
+          <div>
+            {this.state.onScan ? (
+              <Scanner onDetected={this._onDetected} />
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
