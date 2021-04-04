@@ -42,7 +42,9 @@ class Book extends Component {
             type="text"
             placeholder="search by ISBN"
           />
-          <button type="submit">Search</button>
+          <button type="submit" className="btn btn-outline-dark">
+            Search
+          </button>
         </form>
       </div>
     )

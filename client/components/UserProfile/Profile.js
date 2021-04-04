@@ -36,7 +36,9 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/editImage">
+
                     <button type="button" className="btn edit-profile">
+
                       Edit Profile Picture
                     </button>
                   </Link>
@@ -44,7 +46,9 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/edit">
+
                     <button type="button" className="btn edit-profile">
+
                       Edit Profile
                     </button>
                   </Link>
@@ -66,7 +70,7 @@ class Profile extends Component {
               </ul>
               <br />
               <div className="d-flex">
-                <div className="text-center container">
+                <div className="d-flex justify-content-center text-center container">
                   <span className="col-1 buttons iconsize">
                     <Link to="/favorites">
                       <button
