@@ -108,11 +108,11 @@ class EditProfile extends Component {
                 />
               </div>
               <div>
-                <button type="submit" id="btn-primary">
+                <button type="submit" id="btn-outline-primary">
                   Update
                 </button>
                 <Link to="/home">
-                  <button type="button" id="btn-warning">
+                  <button type="button" id="btn-outline-warning">
                     {' '}
                     Cancel
                   </button>

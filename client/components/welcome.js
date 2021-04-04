@@ -18,15 +18,13 @@ export const Welcome = () => {
           <h1 className="display-4">Welcome to Novel</h1>
           <h4 className="lead">Bringing books back to life</h4>
           <Link to="/signup">
-            <button type="button" className="btn btn-primary">
+            <button type="button" className="btn btn-outline-dark">
               Sign Up Now
             </button>
           </Link>
         </div>
       </div>
-      <div>
-        <img className="center" src="resources/images/novel_graphic.png" />
-      </div>
+      <img className="center" src="resources/images/novel_graphic.png" />
     </div>
   )
 }

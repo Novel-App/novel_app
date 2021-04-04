@@ -28,7 +28,11 @@ class BarcodeScanner extends Component {
       <div>
         <h2>Barcode Scanner</h2>
 
-        <button type="button" onClick={this.handleClick}>
+        <button
+          type="button"
+          className="btn btn-outline-dark"
+          onClick={this.handleClick}
+        >
           SCAN
         </button>
         <input
@@ -47,7 +51,9 @@ class BarcodeScanner extends Component {
           )}
         </div>
 
-        <button type="button">Submit</button>
+        <button type="button" className="btn btn-outline-primary">
+          Submit
+        </button>
       </div>
     )
   }
