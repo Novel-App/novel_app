@@ -229,7 +229,7 @@ class EditListing extends Component {
               </label>
             </div>
           </div>
-          <button type="submit" className="btn">
+          <button type="submit" className="btn btn-outline-primary">
             Submit
           </button>
         </form>

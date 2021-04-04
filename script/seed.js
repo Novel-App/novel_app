@@ -244,7 +244,11 @@ async function seed() {
       description:
         'Little Fires Everywhere is a 2017 novel by American author Celeste Ng. It is her second novel and takes place in Shaker Heights, Ohio, where Ng grew up.',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md30853210698.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md30853210698.jpg',
+        'https://cdn.thefashionmagpie.com/wp-content/uploads/2018/04/little-fires-everywhere-celeste-ng-best-instagrams-735x565.jpeg',
+        'https://i.ebayimg.com/images/g/vsYAAOSwCl9fXUp3/s-l1600.jpg'
+      ],
       condition: 'Like New',
       numFavorites: 2,
       price: 14,
@@ -261,7 +265,10 @@ async function seed() {
       description:
         'Inspired by the incredible true story of one Jewish family separated at the start of World War II, determined to survive—and to reunite—We Were the Lucky Ones is a tribute to the triumph of hope and love against all odds.',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md30568451278.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md30568451278.jpg',
+        'https://i1.wp.com/www.globolibri.it/wp-content/uploads/2020/01/we-were-the-lucky-ones-hunter-retro.jpg?fit=600%2C927&ssl=1'
+      ],
       condition: 'Good',
       numFavorites: 1,
       price: 10,
@@ -278,7 +285,10 @@ async function seed() {
       description:
         'On the Midwinter Day that is his eleventh birthday, Will Stanton discovers a special gift--he is the last of the Old Ones, immortals dedicated to keeping the world from dominations by the forces of evil, the Dark. At once, he is plunged into a quest for the six magical Signs that will one day and the Old Ones in the final battle between the Dark and the Light. And for the twelve days of Christmas, while the Dark is rising, life for Will is fill of wonder, terror, and delight.',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md21556602983.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md21556602983.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/51X8qP9CWGL.jpg'
+      ],
       condition: 'Loved',
       numFavorites: 4,
       price: 8,
@@ -328,7 +338,10 @@ async function seed() {
       ISBN: '0345315227',
       isFiction: true,
       description: 'The fourth and last book in the Odyssey series.',
-      image: ['https://pictures.abebooks.com/inventory/md/md30800602444.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md30800602444.jpg',
+        'https://www.prestoimages.net/store30/rd10459/10459_pd1777611_2.jpg'
+      ],
       condition: 'Like New',
       numFavorites: 0,
       price: 20,
@@ -345,7 +358,10 @@ async function seed() {
       description:
         'A GLITTERING CENTURY WAS ABOUT TO END . . . AND SO WAS KATHLEENS INNOCENCE!',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md3870823688.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md3870823688.jpg',
+        'https://g.christianbook.com/g/slideshow/5/525132/main/525132_99_bkc.jpg'
+      ],
       condition: 'Aged',
       numFavorites: 1,
       price: 3,
@@ -428,7 +444,10 @@ async function seed() {
       description:
         'Record-breaking Sunday Times Number One Bestseller. Great series!',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md30744350421.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md30744350421.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6z8ZFpqOb2sUoAFSkmU7yjQ7Pi34t_AlsvQ&usqp=CAU'
+      ],
       condition: 'Like New',
       numFavorites: 0,
       price: 12,
@@ -444,7 +463,10 @@ async function seed() {
       ISBN: '0914427075',
       description: 'Book on Vienna',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md30472342163.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md30472342163.jpg',
+        'https://covers.openlibrary.org/b/id/8280995-L.jpg'
+      ],
       condition: 'Loved',
       numFavorites: 0,
       price: 5,
@@ -472,7 +494,7 @@ async function seed() {
       genreId: fantasyAdventure.id
     },
     {
-      title: 'In A Sunburnt Country',
+      title: 'The Fifth Elephant',
       author: 'Bill Bryson',
       ISBN: '0767903862',
       description:
@@ -495,7 +517,11 @@ async function seed() {
       description:
         'A first printing of Browns best-seller about Robert Langdons search to crack a codex discovered near the body of a murdered curator of the Louvre, adapted into the 2006 Ron Howard film starring Tom Hanks and Audrey Tautou.',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md30524810640.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md30524810640.jpg',
+        'https://encantobooks.com/wp-content/uploads/2017/10/2TDC3_Back-2.jpeg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGbKObwfrCrFvp3thaqbafZItN5ERSJmVqPw&usqp=CAU'
+      ],
       condition: 'Like New',
       numFavorites: 0,
       price: 25,
@@ -511,7 +537,10 @@ async function seed() {
       ISBN: '9781594633669',
       description: 'Nice copy of the runaway best-seller.',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md22674753875.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md22674753875.jpg',
+        'https://thejeromydiaries.com/wp-content/uploads/2015/09/the-girl-on-the-train-book-review-the-jeromy-diaries-.jpg'
+      ],
       condition: 'Like New',
       numFavorites: 0,
       price: 25,
@@ -528,7 +557,10 @@ async function seed() {
       description:
         'Frazier s first book, set in the Appalachian Mountains at end of the Civil War, was a runaway best seller.',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md17813966474.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md17813966474.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/51znJqGNnLL.jpg'
+      ],
       condition: 'Good',
       numFavorites: 0,
       price: 25,
@@ -545,7 +577,10 @@ async function seed() {
       description:
         'A nice pre-publication copy of Fords best-seller about a friendship between a Chinese-American boy and a Japanese-American girl in a World War II internment camp.',
       isFiction: true,
-      image: ['https://pictures.abebooks.com/inventory/md/md30130529153.jpg'],
+      image: [
+        'https://pictures.abebooks.com/inventory/md/md30130529153.jpg',
+        'https://photos-us.bazaarvoice.com/photo/2/cGhvdG86YmFybmVzYW5kbm9ibGU/5e421b2d-6ec2-556e-a42c-7499bfcee8ff'
+      ],
       condition: 'Loved',
       numFavorites: 0,
       price: 15,
@@ -769,8 +804,8 @@ async function seed() {
       numFavorites: 0,
       price: 5,
       canBargain: true,
-      availability: 'Available',
-      buyerId: null,
+      availability: 'Sold',
+      buyerId: 2,
       sellerId: 4,
       genreId: developmentHowToEducation.id
     },
@@ -803,8 +838,8 @@ async function seed() {
       numFavorites: 0,
       price: 2,
       canBargain: true,
-      availability: 'Available',
-      buyerId: null,
+      availability: 'Sold',
+      buyerId: 1,
       sellerId: 4,
       genreId: developmentHowToEducation.id
     },
@@ -819,7 +854,7 @@ async function seed() {
       numFavorites: 0,
       price: 3,
       canBargain: true,
-      availability: 'Available',
+      availability: 'Reserved',
       buyerId: null,
       sellerId: 3,
       genreId: childrens.id
@@ -836,10 +871,130 @@ async function seed() {
       numFavorites: 0,
       price: 3,
       canBargain: true,
-      availability: 'Available',
-      buyerId: null,
+      availability: 'Sold',
+      buyerId: 2,
       sellerId: 4,
       genreId: romance.id
+    },
+    {
+      title: 'No One Can Pronounce My Name: A Novel',
+      author: ' Rakesh Satyal ',
+      ISBN: '1250112125',
+      description:
+        'Eleanore is weird. That’s just who she is. When she and her equally weird co-worker, Raymond, save an elderly man who had fallen on a sidewalk, she suddenly finds company. This is a beautiful story that has a quirky imperfect heroine. Sure to bring you a bit of light on a dark day.',
+      isFiction: true,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/51IfMZ-hK0L._SX322_BO1,204,203,200_.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/811Ov7HIblL.jpg'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Available',
+      buyerId: null,
+      sellerId: 1,
+      genreId: lifestyle.id
+    },
+    {
+      title: 'Eleanor Oliphant Is Completely Fine',
+      author: 'Gail Honeyman',
+      ISBN: '0735220697',
+      description:
+        'Eleanore is weird. That’s just who she is. When she and her equally weird co-worker, Raymond, save an elderly man who had fallen on a sidewalk, she suddenly finds company. This is a beautiful story that has a quirky imperfect heroine. Sure to bring you a bit of light on a dark day.',
+      isFiction: true,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/51meTQ+nUJL._SX330_BO1,204,203,200_.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb4oM9sgZaO3SRSc0UvtXNaRWtEjy8LE_mXA&usqp=CAU'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Sold',
+      buyerId: 2,
+      sellerId: 1,
+      genreId: lifestyle.id
+    },
+    {
+      title: 'BEARTOWN: A NOVEL',
+      author: 'FREDRIK BACKMAN',
+      ISBN: '9781501160776',
+      description:
+        'A small town on the brink of non-existance. A Jr. League hockey league about to make the championships. “Beartown explores the hopes that bring a small community together, the secrets that tear it apart, and the courage it takes for an individual to go against the grain. In this story of a small forest town, Fredrik Backman has found the entire world.',
+      isFiction: true,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/51zhHPuBHuL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBieeq9-HO2RORiKZTojRVEkOFEpBd2Uh3mA&usqp=CAU'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Sold',
+      buyerId: 1,
+      sellerId: 2,
+      genreId: lifestyle.id
+    },
+    {
+      title: 'AN AMERICAN MARRIAGE',
+      author: 'TAYARI JONES',
+      ISBN: ' 9781616208776',
+      description:
+        'This stirring love story is a profoundly insightful look into the hearts and minds of three people who are at once bound and separated by forces beyond their control. An American Marriage is a masterpiece of storytelling, an intimate look deep into the souls of people who must reckon with the past while moving forward—with hope and pain—into the future.',
+      isFiction: false,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/51DVSda0kWL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg',
+        'https://cdn.shopify.com/s/files/1/1336/0125/products/TayariJones-AnAmericanMarriagebookbackcover_800x.jpg?v=1584655323'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Reserved',
+      buyerId: null,
+      sellerId: 2,
+      genreId: lifestyle.id
+    },
+    {
+      title: 'WINTER GARDEN',
+      author: 'KRISTIN HANNAH',
+      ISBN: '90312663153',
+      description:
+        'An inspirational and emotional story of a family that has been defined by war, even if they don’t know it. “Meredith and Nina Whitson are as different as sisters can be and they find themselves together again, standing alongside their cold, disapproving mother, Anya, who even now, offers no comfort to her daughters. As children, the only connection between them was the Russian fairy tale Anya sometimes told the girls at night. On his deathbed, their father extracts a promise from the women in his life: the fairy tale will be told one last time. Thus begins an unexpected journey into the truth of Anya’s life in war-torn Leningrad, more than five decades ago. Alternating between the past and present, Meredith and Nina will finally hear the singular, harrowing story of their mother’s life.',
+      isFiction: false,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/414-KWhHHsL._SX331_BO1,204,203,200_.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/41z7VbRVqTL._SY279_BO1,204,203,200_.jpg'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Reserved',
+      buyerId: null,
+      sellerId: 1,
+      genreId: lifestyle.id
+    },
+    {
+      title: 'THE SNOW CHILD',
+      author: 'EOWYN IVEY',
+      ISBN: '0316175668',
+      description:
+        'Alaska, 1920: a brutal place to homestead, and especially tough for recent arrivals Jack and Mabel. Childless, they are drifting apart—he breaking under the weight of the work of the farm; she crumbling from loneliness and despair. In a moment of levity during the season’s first snowfall, they build a child out of snow. The next morning the snow child is gone—but they glimpse a young, blonde-haired girl running through the trees.',
+      isFiction: false,
+      image: [
+        'https://images-na.ssl-images-amazon.com/images/I/41PWTKFpxyL._SX328_BO1,204,203,200_.jpg',
+        'https://realizinggrace.files.wordpress.com/2017/01/img_7604.jpg?w=356&h=237'
+      ],
+      condition: 'Loved',
+      numFavorites: 0,
+      price: 3,
+      canBargain: true,
+      availability: 'Sold',
+      buyerId: 3,
+      sellerId: 1,
+      genreId: lifestyle.id
     }
   ]
   const createdProducts = await Product.bulkCreate(products)
@@ -938,6 +1093,37 @@ async function seed() {
   ]
   const createMessages = await Message.bulkCreate(messages)
   console.log('Seeded messages')
+
+  //favorites
+  const favorites = [
+    {
+      isFavorite: true,
+      productId: 2,
+      userId: 1
+    },
+    {
+      isFavorite: true,
+      productId: 15,
+      userId: 1
+    },
+    {
+      isFavorite: true,
+      productId: 1,
+      userId: 2
+    },
+    {
+      isFavorite: true,
+      productId: 4,
+      userId: 2
+    },
+    {
+      isFavorite: true,
+      productId: 16,
+      userId: 2
+    }
+  ]
+  const createFavorites = await Favorite.bulkCreate(favorites)
+  console.log('Seeded favorites')
 }
 
 // We've separated the `seed` function from the `runSeed` function.

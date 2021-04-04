@@ -66,6 +66,7 @@
     "react-barcode": "^1.4.0",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^16.14.0",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "react-scroll-up-button": "^1.6.4",
@@ -73,7 +74,8 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "sequelize": "^5.10.1",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "styled-components": "^5.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",

@@ -5,6 +5,7 @@ import ScrollUpButton from 'react-scroll-up-button'
 import {fetchProducts, removeProduct} from '../../store/product'
 import {fetchListings} from '../../store/userInfo'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
+import {Loading} from '../Loading'
 import FavoriteBtn from './FavoriteBtn'
 import AddChat from '../Chats/AddChat'
 import moment from 'moment'
@@ -20,23 +21,30 @@ class AllProducts extends Component {
       listingUpdated: false
     }
     this.updateStatus = this.updateStatus.bind(this)
+    this.updateData = this.updateData.bind(this)
     this.handleOnSearchChange = this.handleOnSearchChange.bind(this)
     this.dynamicSearch = this.dynamicSearch.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.loadingHandler = this.loadingHandler.bind(this)
   }
   componentDidMount() {
     const path =
       this.props.match.path.slice(1) === 'listings' ? 'listings' : 'Products'
     this.setState({currentPage: path})
     this.updateData()
-
-    this.setState({loading: false})
+    // this.setState({loading: false})
+    this.loadingHandler()
   }
   componentDidUpdate() {
     if (this.state.listingUpdated) {
       this.updateData()
       this.setState({listingUpdated: false})
     }
+  }
+  loadingHandler = () => {
+    setTimeout(() => {
+      this.setState({loading: false})
+    }, 1000)
   }
   updateData() {
     const userId = this.props.user.id
@@ -81,12 +89,8 @@ class AllProducts extends Component {
 
   render() {
     //loading screen
-    if (this.state.loading === true) {
-      return (
-        <div>
-          <h2>Loading...</h2>
-        </div>
-      )
+    if (this.state.loading) {
+      return <Loading />
     }
     //only display certain buttons if listing page is true
     let products = []
@@ -99,7 +103,7 @@ class AllProducts extends Component {
         <div className="container-flex">
           <ScrollUpButton />
           <div className="container">
-            <nav className="navbar d-flex navbar-expand-md ">
+            <nav className="productNavBar d-flex navbar-expand-md mt-3">
               <div
                 id="small-navbar"
                 className="navbar-collapse d-flex collapse w-100 order-1 order-sm-0 dual-collapse2"
@@ -107,6 +111,11 @@ class AllProducts extends Component {
                 <div>
                   <a
                     className="prod-nav-link"
+                    style={
+                      this.state.listingStatus === 'Available'
+                        ? {textDecoration: 'underline'}
+                        : {}
+                    }
                     href="#"
                     onClick={() => {
                       this.updateStatus('Available')
@@ -118,6 +127,11 @@ class AllProducts extends Component {
                 <div>
                   <a
                     className="prod-nav-link"
+                    style={
+                      this.state.listingStatus === 'Reserved'
+                        ? {textDecoration: 'underline'}
+                        : {}
+                    }
                     href="#"
                     onClick={() => {
                       this.updateStatus('Reserved')
@@ -129,6 +143,11 @@ class AllProducts extends Component {
                 <div>
                   <a
                     className="prod-nav-link"
+                    style={
+                      this.state.listingStatus === 'Sold'
+                        ? {textDecoration: 'underline'}
+                        : {}
+                    }
                     href="#"
                     onClick={() => {
                       this.updateStatus('Sold')
@@ -152,18 +171,21 @@ class AllProducts extends Component {
                 className="input-group rounded d-flex justify-content-end"
                 onSubmit={this.handleSubmit}
               >
-                <div className="col-xs-2 form-inline">
+                <div className="col-xs-6 form-inline">
                   <input
                     type="search"
                     name="searchTerm"
                     className="form-control rounded mr-1"
-                    placeholder="Search a title/author!"
+                    placeholder="Search a title/author "
                     aria-label="Search"
                     aria-describedby="search-addon"
                     value={this.state.searchTerm}
                     onChange={this.handleOnSearchChange}
                   />
-                  <button type="submit" className="btn">
+                  <button
+                    type="submit"
+                    className="btn btn-sm btn-outline-dark ml-1 mt-1"
+                  >
                     search
                   </button>
                 </div>
@@ -176,11 +198,11 @@ class AllProducts extends Component {
                 {products.map(product => (
                   <div className="card mt-3" key={product.id}>
                     <div className="row no-gutters">
-                      <div className="col-md-4">
+                      <div className="d-flex align-items-center col-md-4">
                         <div className="card-horizontal">
                           <Link to={`/products/${product.id}`}>
                             <img
-                              className="card-img img-fluid"
+                              className="img-fluid"
                               alt={product.title}
                               src={product.image[0]}
                             />
@@ -223,20 +245,29 @@ class AllProducts extends Component {
                                 <div className="d-flex justify-content-center align-items-center">
                                   <Link to={`/listings/${product.id}/edit`}>
                                     <button
-                                      className="btn btn-primary rounded mr-2"
+                                      className="btn btn-sm btn-outline-secondary rounded mr-2"
                                       type="button"
                                     >
                                       Edit
                                     </button>
                                   </Link>
-                                  <span style={{fontSize: '2em'}}>
+                                  {/* <span style={{fontSize: '2em'}}>
                                     <i
                                       className="bi bi-trash"
                                       onClick={() =>
                                         this.deleteClickHandler(product.id)
                                       }
                                     />
-                                  </span>
+                                  </span> */}
+                                  <button
+                                    className="btn btn-sm btn-outline-warning rounded mr-2"
+                                    type="button"
+                                    onClick={() =>
+                                      this.deleteClickHandler(product.id)
+                                    }
+                                  >
+                                    Delete
+                                  </button>
                                 </div>
                                 <AvailabilityUpdateBtn product={product} />
                                 <i className="bi bi-star-fill small" />{' '}
