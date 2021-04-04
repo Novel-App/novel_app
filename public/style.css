@@ -190,6 +190,10 @@ span {
 /* color: #e7fff8;
 } */
 
+.edit-profile {
+  color: #e7fff8;
+}
+
 .profileText {
   color: #e1e9e7;
 }
@@ -256,10 +260,6 @@ span {
 .buttons {
   padding-right: 80px;
   align-items: center;
-}
-
-.bi {
-  cursor: pointer;
 }
 
 #edit_prof,
@@ -461,6 +461,7 @@ singleChat styling */
   height: auto;
 }
 
-.select-availability {
+.select-availability,
+.bi {
   cursor: pointer;
 }

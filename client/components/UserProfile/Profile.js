@@ -26,7 +26,10 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/editImage">
-                    <button type="button" className="btn edit-profile">
+                    <button
+                      type="button"
+                      className="btn btn-outline edit-profile"
+                    >
                       Edit Profile Picture
                     </button>
                   </Link>
@@ -34,7 +37,10 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/edit">
-                    <button type="button" className="btn edit-profile">
+                    <button
+                      type="button"
+                      className="btn btn-outline edit-profile"
+                    >
                       Edit Profile
                     </button>
                   </Link>
@@ -61,7 +67,7 @@ class Profile extends Component {
                     <Link to="/favorites">
                       <button
                         type="button"
-                        className="btn btn-primary btn-outline-dark btn-xl text-wrap"
+                        className="btn btn-outline edit-profile btn-xl text-wrap"
                       >
                         <i className="bi bi-suit-heart-fill" /> Favorites
                       </button>
@@ -71,7 +77,7 @@ class Profile extends Component {
                     <Link to="/listings">
                       <button
                         type="button"
-                        className="btn btn-primary btn-outline-dark btn-xl text-wrap"
+                        className="btn btn-outline edit-profile btn-xl text-wrap"
                       >
                         <i className="bi bi-receipt" /> Listings
                       </button>
@@ -81,7 +87,7 @@ class Profile extends Component {
                     <Link to="/purchases">
                       <button
                         type="button"
-                        className="btn btn-outline-dark btn-xl text-wrap"
+                        className="btn btn-outline edit-profile btn-xl text-wrap"
                       >
                         <i className="bi bi-bag-fill" /> Purchases
                       </button>
