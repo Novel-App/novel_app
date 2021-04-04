@@ -50,7 +50,7 @@ const SideNavBar = ({handleClick, isLoggedIn}) => {
               </Link>
               {navBarIcons.map((item, index) => {
                 const value =
-                  item.title === 'LogOut' ? (
+                  item.title === 'Log Out' ? (
                     <Link
                       to="#"
                       className="linkNavigation"
