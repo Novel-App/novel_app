@@ -39,7 +39,7 @@ const SideNavBar = ({handleClick, isLoggedIn}) => {
                 <FaIcons.FaBars onClick={showSidebar} />
               </Link>
             </div>
-            <div className="d-flex nav-title">
+            <div className="d-flex nav-title justify-content-center">
               <h1>Novel</h1>
             </div>
           </div>
@@ -48,7 +48,6 @@ const SideNavBar = ({handleClick, isLoggedIn}) => {
               <Link to="#" className="navLink">
                 <AiIcons.AiOutlineClose onClick={showSidebar} />
               </Link>
-
               {navBarIcons.map((item, index) => {
                 const value =
                   item.title === 'LogOut' ? (
