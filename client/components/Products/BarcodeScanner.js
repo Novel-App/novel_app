@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Scanner from './Scanner'
+import CreateProduct from './CreateProduct'
 
 class BarcodeScanner extends Component {
   constructor() {
@@ -31,6 +32,7 @@ class BarcodeScanner extends Component {
         <button type="button" onClick={this.handleClick}>
           SCAN
         </button>
+
         <input
           style={{fontSize: 20, width: 190, height: 35, margin: 8}}
           value={

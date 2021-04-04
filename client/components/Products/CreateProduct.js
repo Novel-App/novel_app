@@ -39,7 +39,9 @@ class CreateProduct extends Component {
       price: 0,
       canBargain: false,
       availability: 'Available',
-      genreId: ''
+      genreId: '',
+      results: [],
+      onScan: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
@@ -48,6 +50,7 @@ class CreateProduct extends Component {
     this.handleFileChange = this.handleFileChange.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.handleAutoFill = this.handleAutoFill.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleChange(evt) {
@@ -89,8 +92,23 @@ class CreateProduct extends Component {
     }
   }
 
+  _onDetected = result => {
+    this.setState({results: []})
+    this.setState({results: this.state.results.concat([result])})
+  }
+
+  handleClick = () => {
+    console.log('hadling click...', this.state.onScan)
+    this.setState(prevState => ({
+      onScan: !prevState.onScan
+    }))
+  }
+
   handleSearch = e => {
     this.setState({isbn: e.target.value})
+    if (this.state.results[0]) {
+      this.setState({isbn: this.state.results[0].codeResult.code})
+    }
   }
 
   handleFileChange(evt) {
@@ -160,10 +178,50 @@ class CreateProduct extends Component {
             <button type="submit">Auto Fill</button>
           </form>
         </div>
+
         <div>
-          <p>Scan your barcode for ISBN</p>
-          <BarcodeScanner />
+          <p>Scan your barcode</p>
+          <button type="button" onClick={this.handleClick}>
+            SCAN
+          </button>
+          <form onSubmit={handleAutoFill}>
+            <input
+              onChange={handleSearch}
+              type="text"
+              placeholder="Scan ISBN barcode"
+            />
+            <button type="submit">Auto Fill</button>
+          </form>
+          <div>
+            {this.state.onScan ? (
+              <Scanner onDetected={this._onDetected} />
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
+
+        {/* <div>
+        <button type="button" onClick={this.handleClick}>
+          SCAN
+        </button>
+        <input
+          type="text"
+          style={{fontSize: 20, width: 190, height: 35, margin: 8}}
+          onChange={handleSearch}
+          // value={
+          //   this.state.results[0]? this.state.results[0].codeResult.code
+          //     : ''
+          // }
+        />
+          <div>
+            {this.state.onScan ? (
+              <Scanner onDetected={this._onDetected} />
+            ) : (
+              <></>
+            )}
+          </div>
+        </div> */}
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="form-group">
