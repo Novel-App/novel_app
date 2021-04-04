@@ -64,11 +64,16 @@ class LocationVerification extends Component {
   }
 
   render() {
+    console.log('LAT LNG', this.state.latitude, this.state.longitude)
     return (
-      <div>
+      <div className="d-flex-column justify-content-center align-items-center">
         <h1>Verify your location</h1>
         {/* info icon to hover ==> explaining 'why do i need to verify my location?' */}
-        <button type="button" onClick={this.getLocation}>
+        <button
+          className="btn btn-outline-dark"
+          type="button"
+          onClick={this.getLocation}
+        >
           Get location
         </button>
         <UserMap
@@ -77,7 +82,9 @@ class LocationVerification extends Component {
         />
         {this.state.verified && (
           <Link to="/products">
-            <button type="button">Confirm</button>
+            <button className="btn btn-outline-dark" type="button">
+              Confirm
+            </button>
           </Link>
         )}
       </div>

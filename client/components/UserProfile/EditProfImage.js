@@ -27,14 +27,19 @@ class EditProfImage extends Component {
 
   render() {
     return (
-      <div className="container-fluid d-flex-column justify-content-center">
+      <div className="container-fluid d-flex flex-column profile-image-edit">
         <h1>Upload a new profile image!</h1>
-        <p>Current profile image</p>
-        <img
-          className="img-fluid rounded-circle z-depth-2 mb-5"
-          src={this.props.user.profileImage}
-          width="300em"
-        />
+        <br />
+        <div className="d-flex flex-column align-items-center">
+          <img
+            className="img-fluid rounded-circle z-depth-2"
+            src={this.props.user.profileImage}
+            width="300em"
+          />
+          <small>Your current profile image</small>
+        </div>
+        <br />
+
         <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <input
             type="file"
