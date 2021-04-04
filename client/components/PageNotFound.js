@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-export default class PageNotFound extends React.Component {
+export default class PageNotFound extends Component {
   render() {
     return (
-      <div className="wrapper">
+      <div>
         <h1 className="notfoundpage">
           Uh oh, looks like we can't find that page!
         </h1>

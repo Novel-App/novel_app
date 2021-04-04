@@ -115,6 +115,11 @@ body {
   cursor: pointer;
 }
 
+#edit_prof,
+#edit_pic {
+  color: #e7fff8;
+}
+
 .btn-circle.btn-xl {
   width: 90px;
   height: 90px;
@@ -128,7 +133,9 @@ body {
 }
 
 .btn-circle.btn-xl:hover,
-.btn-primary:hover {
+.btn-primary:hover,
+#edit_prof:hover,
+#edit_pic:hover {
   background-color: #354b45;
 }
 

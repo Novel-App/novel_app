@@ -34,7 +34,11 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/editImage">
-                    <button type="button" className="btn btn-primary">
+                    <button
+                      id="edit_pic"
+                      type="button"
+                      className="btn btn-primary"
+                    >
                       Edit Profile Picture
                     </button>
                   </Link>
@@ -42,7 +46,11 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/edit">
-                    <button type="button" className="btn btn-primary">
+                    <button
+                      id="edit_prof"
+                      type="button"
+                      className="btn btn-primary"
+                    >
                       Edit Profile
                     </button>
                   </Link>
