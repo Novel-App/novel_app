@@ -66,6 +66,7 @@ class CreateProduct extends Component {
 
   async handleAutoFill(e) {
     e.preventDefault()
+    this.handleClick()
     try {
       await axios
         .get(
@@ -87,18 +88,18 @@ class CreateProduct extends Component {
           }
         })
     } catch (err) {
-      alert('ISBN Not Found! Try again!')
+      alert('Invalid Barcode number! Try again!')
     }
   }
 
   _onDetected = result => {
     console.log('detected the result.....', result)
     this.setState({isbn: result})
-    this.setState({onScan: false})
+    // this.setState({onScan: false})
   }
 
   handleClick = () => {
-    console.log('hadling click...', this.state.onScan)
+    console.log('handling click...', this.state.onScan)
     this.setState(prevState => ({
       onScan: !prevState.onScan
     }))
@@ -179,7 +180,11 @@ class CreateProduct extends Component {
         <div className="d-flex flex-column align-items-center ml-5">
           <br />
           <button
-            className="btn btn-outline-dark ml-1"
+            className={
+              this.state.onScan
+                ? 'btn btn-outline-success m1'
+                : 'btn btn-outline-dark ml-1'
+            }
             type="button"
             onClick={this.handleClick}
           >

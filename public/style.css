@@ -22,6 +22,10 @@ body {
   margin-right: 20px;
 }
 
+.scan-selected {
+  background-color: #424242;
+}
+
 /* using */
 .sideNavContainer {
   background: #254d4c;
