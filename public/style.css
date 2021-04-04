@@ -401,3 +401,13 @@ singleChat styling */
   color: #e7fff8;
   z-index: 1;
 }
+
+.loading-img-fluid {
+  display: block;
+  max-width: 90%;
+  height: auto;
+}
+
+.select-availability {
+  cursor: pointer;
+}

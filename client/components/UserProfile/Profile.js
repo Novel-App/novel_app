@@ -1,16 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getMe} from '../../store/user'
+import {Loading} from '../Loading'
 import {fetchUserProducts} from '../../store/userInfo'
 
 class Profile extends Component {
-  componentDidMount() {
-    this.props.getMe()
-  }
   render() {
     const {firstName, lastName, email, profileImage} = this.props.user
-    console.log('PROFILE IMAGE', profileImage)
+
     return (
       <div className="main-content">
         {/* <a
@@ -36,9 +33,7 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/editImage">
-
                     <button type="button" className="btn edit-profile">
-
                       Edit Profile Picture
                     </button>
                   </Link>
@@ -46,9 +41,7 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/edit">
-
                     <button type="button" className="btn edit-profile">
-
                       Edit Profile
                     </button>
                   </Link>
@@ -113,19 +106,18 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
-    products: state.products.all,
-    favorites: state.userInfo.favorites,
-    purchases: state.userInfo.purchases
+    user: state.user
+    // products: state.products.all,
+    // favorites: state.userInfo.favorites,
+    // purchases: state.userInfo.purchases
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getMe: () => dispatch(getMe()),
-    loadUserProducts: (userId, type) =>
-      dispatch(fetchUserProducts(userId, type))
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     loadUserProducts: (userId, type) =>
+//       dispatch(fetchUserProducts(userId, type))
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, null)(Profile)
