@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import Message from './Message'
 import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
+import {Loading} from '../Loading'
 import {Link} from 'react-router-dom'
 
 /**
@@ -13,7 +14,8 @@ export class SingleChat extends Component {
     super(props)
     this.state = {
       content: '',
-      messageSent: false
+      messageSent: false,
+      loading: true
     }
     //state or props will populate with messages objects connected to specific singleChat
     //once message are populated the map function will map through every message
@@ -52,6 +54,9 @@ export class SingleChat extends Component {
   }
   render() {
     const chat = this.props.chat || {}
+    if (this.state.loading) {
+      return <Loading />
+    }
     return (
       <React.Fragment>
         <div style={{maxWidth: '800px', margin: '0 auto'}}>

@@ -141,7 +141,16 @@ span {
   margin-left: 16px;
 }
 
+
 .navLink,
+
+.label {
+  margin-left: 0px;
+  color: #254d4c;
+  font-family: 'Poppins-Medium';
+}
+
+/* .navLink,
 .navbar-brand,
 .prod-navLink {
   color: #e7fff8;
@@ -426,3 +435,24 @@ singleChat styling */
   display: flex;
   align-self: center;
 }
+
+
+/* nav-bar */
+.nav-text-colors {
+  background-color: #e7fff8;
+}
+.nav-text {
+  color: #e7fff8;
+  z-index: 1;
+}
+
+.loading-img-fluid {
+  display: block;
+  max-width: 90%;
+  height: auto;
+}
+
+.select-availability {
+  cursor: pointer;
+}
+
