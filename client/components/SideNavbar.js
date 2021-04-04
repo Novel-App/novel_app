@@ -33,35 +33,43 @@ const SideNavBar = ({handleClick, isLoggedIn}) => {
     <>
       <IconContext.Provider value={{color: '#e7fff8'}}>
         <div className="sideNavContainer">
-          <Link to="#" className="navLink">
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-          <div className="title">
-            <h1>Novel</h1>
+          <div className="container-fluid d-flex align-items-center">
+            <div className="toggle-icon">
+              <Link to="#" className="navLink">
+                <FaIcons.FaBars onClick={showSidebar} />
+              </Link>
+            </div>
+            <div className="d-flex nav-title">
+              <h1>Novel</h1>
+            </div>
           </div>
-        </div>
-        <SidebarNav sidebar={sidebar}>
-          <div className="sidebarwrap">
-            <Link to="#" className="navLink">
-              <AiIcons.AiOutlineClose onClick={showSidebar} />
-            </Link>
+          <SidebarNav sidebar={sidebar}>
+            <div className="sidebarwrap">
+              <Link to="#" className="navLink">
+                <AiIcons.AiOutlineClose onClick={showSidebar} />
+              </Link>
 
-            {navBarIcons.map((item, index) => {
-              const value =
-                item.title === 'LogOut' ? (
-                  <Link to="#" className="linkNavigation" onClick={handleClick}>
-                    <div>
-                      {item.icon}
-                      <span className="navTexts">{item.title}</span>{' '}
-                    </div>
-                  </Link>
-                ) : (
-                  <SubMenu item={item} key={index} />
-                )
-              return value
-            })}
-          </div>
-        </SidebarNav>
+              {navBarIcons.map((item, index) => {
+                const value =
+                  item.title === 'LogOut' ? (
+                    <Link
+                      to="#"
+                      className="linkNavigation"
+                      onClick={handleClick}
+                    >
+                      <div>
+                        {item.icon}
+                        <span className="navTexts">{item.title}</span>{' '}
+                      </div>
+                    </Link>
+                  ) : (
+                    <SubMenu item={item} key={index} />
+                  )
+                return value
+              })}
+            </div>
+          </SidebarNav>
+        </div>
       </IconContext.Provider>
     </>
   )

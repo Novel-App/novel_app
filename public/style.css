@@ -18,13 +18,19 @@ body {
   justify-content: space-evenly;
 }
 
+.toggle-icon {
+  margin-right: 20px;
+}
+
 /* using */
 .sideNavContainer {
   background: #254d4c;
+  width: 100%;
   height: 80px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: #f3eada;
 }
 .navLink {
   margin-left: 2rem;
@@ -68,6 +74,11 @@ body {
 .navTexts {
   margin-left: 16px;
 }
+
+.nav-title {
+  flex-grow: 2;
+}
+
 .sidebarwrap {
   width: 100%;
 }
@@ -182,9 +193,16 @@ span {
 
 #btn-warning {
   background: #8c749b;
-  border-color: #CE8FFF; 
-  color: #e7fff8;
+
+  /* border-color: #CE8FFF; */
+/* color: #e7fff8;
 } */
+
+.edit-profile {
+  color: #e7fff8;
+}
+
+
 .profileText {
   color: #e1e9e7;
 }
@@ -251,10 +269,6 @@ span {
 .buttons {
   padding-right: 80px;
   align-items: center;
-}
-
-.bi {
-  cursor: pointer;
 }
 
 #edit_prof,
@@ -456,6 +470,12 @@ singleChat styling */
   height: auto;
 }
 
+
+.select-availability,
+.bi {
+  cursor: pointer;
+}
+
 .select-dropdown {
   cursor: pointer;
 }
@@ -465,3 +485,4 @@ singleChat styling */
   justify-content: center;
   align-items: center;
 }
+

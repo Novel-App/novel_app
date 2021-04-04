@@ -10,14 +10,7 @@ class Profile extends Component {
 
     return (
       <div className="main-content">
-        {/* <a
-          className="h3 mb-0 text-uppercase font-weight-bold d-none d-lg-inline-block"
-          target="_blank"
-        >
-          User profile
-        </a> */}
-        {/* <span /> */}
-        <div id="profile-container" className="container rounded mt-4">
+        <div id="profile-container" className="container rounded mt-4 mb-10">
           <div className="d-flex justify-content-between align-items-center mb-3" />
           <div className="row">
             <div className="col-md-4 border-right">
@@ -33,7 +26,10 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/editImage">
-                    <button type="button" className="btn edit-profile">
+                    <button
+                      type="button"
+                      className="btn btn-outline edit-profile"
+                    >
                       Edit Profile Picture
                     </button>
                   </Link>
@@ -41,14 +37,17 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/edit">
-                    <button type="button" className="btn edit-profile">
+                    <button
+                      type="button"
+                      className="btn btn-outline edit-profile"
+                    >
                       Edit Profile
                     </button>
                   </Link>
                 </div>
               </div>
             </div>
-            <div className="col-md-8 ">
+            <div className="col-md-8">
               <h4 className="font-weight-bold d-none d-lg-inline-block">
                 Profile
               </h4>
@@ -62,38 +61,38 @@ class Profile extends Component {
                 <li className="list-group-item profileText">Email: {email}</li>
               </ul>
               <br />
-              <div className="d-flex">
-                <div className="d-flex justify-content-center text-center container">
-                  <span className="col-1 buttons iconsize">
+              <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center">
+                  <div className=" iconsize mr-3">
                     <Link to="/favorites">
                       <button
                         type="button"
-                        className="btn btn-primary btn-circle btn-xl text-wrap"
+                        className="btn btn-outline edit-profile btn-xl text-wrap"
                       >
                         <i className="bi bi-suit-heart-fill" /> Favorites
                       </button>
                     </Link>
-                  </span>
-                  <span className="col-1 buttons iconsize">
+                  </div>
+                  <div className=" iconsize mr-3">
                     <Link to="/listings">
                       <button
                         type="button"
-                        className="btn btn-primary btn-circle btn-xl text-wrap"
+                        className="btn btn-outline edit-profile btn-xl text-wrap"
                       >
                         <i className="bi bi-receipt" /> Listings
                       </button>
                     </Link>
-                  </span>
-                  <span className="col-1 buttons iconsize">
+                  </div>
+                  <div className=" iconsize">
                     <Link to="/purchases">
                       <button
                         type="button"
-                        className="btn btn-primary btn-circle btn-xl text-wrap"
+                        className="btn btn-outline edit-profile btn-xl text-wrap"
                       >
-                        <i className="bi bi-bag-fill" />Purchases
+                        <i className="bi bi-bag-fill" /> Purchases
                       </button>
                     </Link>
-                  </span>
+                  </div>
                 </div>
               </div>
             </div>
