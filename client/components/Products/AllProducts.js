@@ -20,6 +20,7 @@ class AllProducts extends Component {
       listingUpdated: false
     }
     this.updateStatus = this.updateStatus.bind(this)
+    this.updateData = this.updateData.bind(this)
     this.handleOnSearchChange = this.handleOnSearchChange.bind(this)
     this.dynamicSearch = this.dynamicSearch.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -107,6 +108,11 @@ class AllProducts extends Component {
                 <div>
                   <a
                     className="prod-nav-link"
+                    style={
+                      this.state.listingStatus === 'Available'
+                        ? {textDecoration: 'underline'}
+                        : {}
+                    }
                     href="#"
                     onClick={() => {
                       this.updateStatus('Available')
@@ -118,6 +124,11 @@ class AllProducts extends Component {
                 <div>
                   <a
                     className="prod-nav-link"
+                    style={
+                      this.state.listingStatus === 'Reserved'
+                        ? {textDecoration: 'underline'}
+                        : {}
+                    }
                     href="#"
                     onClick={() => {
                       this.updateStatus('Reserved')
@@ -129,6 +140,11 @@ class AllProducts extends Component {
                 <div>
                   <a
                     className="prod-nav-link"
+                    style={
+                      this.state.listingStatus === 'Sold'
+                        ? {textDecoration: 'underline'}
+                        : {}
+                    }
                     href="#"
                     onClick={() => {
                       this.updateStatus('Sold')
