@@ -169,7 +169,7 @@ class CreateProduct extends Component {
         </div>
 
         <div className="d-flex flex-column align-items-center ml-5">
-          <p>Enter ISBN to auto-fill the fields below</p>
+          <p>Scan you ISBN barcode to auto-fill the fields below</p>
           <form onSubmit={handleAutoFill}>
             <input
               className="new-post-input"
@@ -183,7 +183,6 @@ class CreateProduct extends Component {
           </form>
         </div>
         <div className="d-flex flex-column align-items-center ml-5">
-          <p>Scan you ISBN barcode to auto-fill the fields below</p>
           <BarcodeScanner />
         </div>
 

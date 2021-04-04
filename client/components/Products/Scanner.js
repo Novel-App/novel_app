@@ -80,27 +80,11 @@ class Scanner extends Component {
     Quagga.offDetected(this._onDetected)
   }
 
-  // let lastResult = []
-  // Quagga.onDetected(function (result){
-  //   let lastCode = result.codeResult.code
-  //   lastResult.push(lastCode)
-
-  //   if (lastResult.length > 30) {
-  //     let code = orderByOccurrence(lastResult)[0]
-  //     console.log ('code',code)
-  //     lastResult = []
-  //     Quagga.stop ()
-  //     this._onDetected(code)
-  //   }
-  // })
-
   _onDetected = result => {
     let lastCode = result.codeResult.code
     lastResult.push(lastCode)
     if (lastResult.length > 20) {
-      console.log('hereeeeeee...', lastResult)
       let code = orderByOccurrence(lastResult)[0]
-      console.log('code', code)
       lastResult = []
       Quagga.stop()
       this.props.onDetected(code)
