@@ -24,9 +24,7 @@ export const Welcome = () => {
           </Link>
         </div>
       </div>
-        <img className="center" src="resources/images/novel_graphic.png" />
-
-      </div>
+      <img className="center" src="resources/images/novel_graphic.png" />
     </div>
   )
-
+}
