@@ -95,6 +95,12 @@ span {
   margin-left: 16px;
 }
 
+.label {
+  margin-left: 0px;
+  color: #254d4c;
+  font-family: 'Poppins-Medium';
+}
+
 /* .navLink,
 .navbar-brand,
 .prod-navLink {

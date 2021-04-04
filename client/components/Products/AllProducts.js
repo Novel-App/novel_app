@@ -198,11 +198,11 @@ class AllProducts extends Component {
                 {products.map(product => (
                   <div className="card mt-3" key={product.id}>
                     <div className="row no-gutters">
-                      <div className="col-md-4">
+                      <div className="d-flex align-items-center col-md-4">
                         <div className="card-horizontal">
                           <Link to={`/products/${product.id}`}>
                             <img
-                              className="card-img img-fluid"
+                              className="img-fluid"
                               alt={product.title}
                               src={product.image[0]}
                             />
