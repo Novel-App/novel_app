@@ -424,3 +424,9 @@ singleChat styling */
 .select-dropdown {
   cursor: pointer;
 }
+
+.profile-image-edit {
+  padding-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
