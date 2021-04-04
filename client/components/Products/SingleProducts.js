@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {fetchSingleProduct} from '../../store/product'
 import Condition from './Condition'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
-import {Link} from 'react-router-dom'
 import FavoriteBtn from './FavoriteBtn'
 import AddChat from '../Chats/AddChat'
 import moment from 'moment'
@@ -50,7 +49,7 @@ class SingleProduct extends Component {
                 className="img-fluid rounded"
                 data-src="holder.js/200x250?theme=thumb"
                 alt={product.title}
-                src={product.image}
+                src={product.image[0]}
               />
             </div>
             <div className="col-md-5">

@@ -10,6 +10,7 @@ class Profile extends Component {
   }
   render() {
     const {firstName, lastName, email, profileImage} = this.props.user
+    console.log('PROFILE IMAGE', profileImage)
     return (
       <div className="main-content">
         {/* <a
@@ -64,7 +65,7 @@ class Profile extends Component {
                     <Link to="/favorites">
                       <button
                         type="button"
-                        className="btn btn-primary btn-circle btn-xl"
+                        className="btn btn-primary btn-circle btn-xl text-wrap"
                       >
                         <i className="bi bi-suit-heart-fill" /> Favorites
                       </button>
@@ -74,7 +75,7 @@ class Profile extends Component {
                     <Link to="/listings">
                       <button
                         type="button"
-                        className="btn btn-primary btn-circle btn-xl"
+                        className="btn btn-primary btn-circle btn-xl text-wrap"
                       >
                         <i className="bi bi-receipt" /> Listings
                       </button>
@@ -84,9 +85,9 @@ class Profile extends Component {
                     <Link to="/purchases">
                       <button
                         type="button"
-                        className="btn btn-primary btn-circle btn-xl"
+                        className="btn btn-primary btn-circle btn-xl text-wrap"
                       >
-                        <i className="bi bi-bag-fill" /> Purchases
+                        <i className="bi bi-bag-fill" />Purchases
                       </button>
                     </Link>
                   </span>

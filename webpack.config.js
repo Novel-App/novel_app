@@ -28,7 +28,39 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader'
+            // options: {
+            //   outputPath: 'images',
+            //   // filename: 'images/[name].[ext]'
+            // },
+            // options: {
+            //   name: '[name].[ext]',
+            //   outputPath: 'image/',
+            //   publicPath: '/'
+            // }
+          }
+        ]
       }
+      // {
+      //   test: /\.(woff|woff2|eot|ttf|otf)$/i,
+      //   type: 'asset/resource',
+      // },
     ]
   }
 }

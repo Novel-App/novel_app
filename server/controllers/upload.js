@@ -1,5 +1,5 @@
 const fs = require('fs')
-const db = require('../db')
+const path = require('path')
 
 const upload = (req, res, next) => {
   try {
@@ -10,9 +10,12 @@ const upload = (req, res, next) => {
     Image.create({
       type: req.file.mimetype,
       name: req.file.originalname,
-      data: fs.readFileSync(__basedir + 'resources/uploads' + req.file.filename)
+      // data: fs.readFileSync(__basedir + 'resources/uploads' + req.file.filename)
+      // data: fs.readFileSync(path.join(__basedir, 'public/images', req.file.filename))
+      data: fs.readFileSync(__basedir + 'public/images' + req.file.filename)
     }).then(image => {
-      fs.writeFileSync(__basedir + 'resources/uploads' + image.name, image.data)
+      // fs.writeFileSync(__basedir + 'resources/uploads' + image.name, image.data)
+      fs.writeFileSync(__basedir + 'public/images' + image.name + image.data)
       return res.send(`File has been uploaded.`)
     })
   } catch (error) {

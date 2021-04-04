@@ -4,6 +4,9 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {createProduct} from '../../store/product'
 import Condition from './Condition'
+import axios from 'axios'
+import BarcodeScanner from './BarcodeScanner'
+import Scanner from './Scanner'
 
 //TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
 
@@ -12,7 +15,7 @@ const defaultState = {
   author: '',
   ISBN: '',
   description: '',
-  image: 'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
+  image: ['https://historyexplorer.si.edu/sites/default/files/book-348.jpg'],
   condition: '',
   price: 0,
   canBargain: false,
@@ -20,14 +23,33 @@ const defaultState = {
   isFiction: false,
   genreId: ''
 }
-
 class CreateProduct extends Component {
   constructor(props) {
     super(props)
-    this.state = defaultState
+    // this.productImage = React.createRef()
+    this.state = {
+      title: '',
+      author: '',
+      ISBN: '',
+      description: '',
+      image: [
+        'https://historyexplorer.si.edu/sites/default/files/book-348.jpg'
+      ],
+      condition: '',
+      price: 0,
+      canBargain: false,
+      availability: 'Available',
+      genreId: '',
+      onScan: false
+    }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+    this.handleFileChange = this.handleFileChange.bind(this)
+    //this.handleSearch = this.handleSearch.bind(this)
+    this.handleAutoFill = this.handleAutoFill.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleChange(evt) {
@@ -42,27 +64,89 @@ class CreateProduct extends Component {
     })
   }
 
-  onFileChange(event) {
-    // this.setState({
-    //   profileImage: event.target.files
-    // })
+  async handleAutoFill(e) {
+    e.preventDefault()
+    try {
+      await axios
+        .get(
+          `https://www.googleapis.com/books/v1/volumes?q=isbn:${
+            this.state.isbn
+          }`
+        )
+        .then(data => {
+          if (data.data.items[0]) {
+            const bookInfoFromAPI = data.data.items[0].volumeInfo
+            this.setState({
+              title: bookInfoFromAPI.title,
+              author: bookInfoFromAPI.authors[0],
+              ISBN: bookInfoFromAPI.industryIdentifiers[1].identifier,
+              description: bookInfoFromAPI.description,
+              image: bookInfoFromAPI.imageLinks.thumbnail
+            })
+            console.log('---->', this.state)
+          }
+        })
+    } catch (err) {
+      alert('ISBN Not Found! Try again!')
+    }
+  }
+
+  _onDetected = result => {
+    console.log('detected the result.....', result)
+    this.setState({isbn: result})
+  }
+
+  handleClick = () => {
+    console.log('hadling click...', this.state.onScan)
+    this.setState(prevState => ({
+      onScan: !prevState.onScan
+    }))
+  }
+
+  // handleSearch = e => {
+  //   console.log ('handling Search...')
+  //   this.setState({isbn: e.target.value})
+  // }
+
+  handleFileChange(evt) {
+    // console.log('IMAGE URL', URL.createObjectURL(evt.target.files[0]))
+    this.setState({image: evt.target.files})
   }
 
   async handleSubmit(evt) {
     evt.preventDefault()
-    await this.props.createProduct({
-      ...this.state,
-      sellerId: this.props.user.id
-    })
+    const product = new FormData()
+    product.append('title', this.state.title)
+    product.append('author', this.state.author)
+    product.append('ISBN', this.state.ISBN)
+    product.append('description', this.state.description)
+    for (let i = 0; i < this.state.image.length; i++) {
+      product.append('productImg', this.state.image[i])
+    }
+    product.append('condition', this.state.condition)
+    product.append('price', this.state.price)
+    product.append('canBargain', this.state.canBargain)
+    product.append('availability', this.state.availability)
+    product.append('genreId', this.state.genreId)
+    product.append('sellerId', this.props.user.id)
+
+    await this.props.createProduct(product)
   }
+
   render() {
-    const {handleChange, handleCheckboxChange, handleSubmit} = this
+    const {
+      handleChange,
+      handleCheckboxChange,
+      handleSubmit,
+      handleFileChange,
+      handleSearch,
+      handleAutoFill
+    } = this
     const {
       title,
       author,
       ISBN,
       description,
-      image,
       condition,
       price,
       canBargain,
@@ -72,28 +156,49 @@ class CreateProduct extends Component {
     return (
       <div>
         <div className="d-flex flex-column justify-content-center">
-          <Link to="/products">Cancel</Link>
-          <h1 className="align-self-center">New Product</h1>
+          <Link to="/home">
+            <button type="button" className="btn btn-warning">
+              Cancel
+            </button>
+          </Link>
+          <h1 className="align-self-center">New post </h1>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          {/* <label htmlFor="image">Upload Images:</label>
-                <input
-                name="image"
-                onChange={handleChange}
-                value={image}
-                required
-                />
-                <br /> */}
+        <div>
+          <p>Scan your barcode</p>
+          <button type="button" onClick={this.handleClick}>
+            SCAN
+          </button>
+          <form onSubmit={handleAutoFill}>
+            <input
+              style={{fontSize: 20, width: 190, height: 35, margin: 8}}
+              placeholder="Scan Barcode"
+              value={this.state.isbn ? this.state.isbn : ''}
+            />
+            <button type="submit">Auto Fill</button>
+          </form>
+          <div>
+            {this.state.onScan ? (
+              <Scanner onDetected={this._onDetected} />
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="form-group">
+            <label htmlFor="productImg">Images (up to 4)</label>
             <input
               type="file"
-              accept="image/x-png,image/jpeg, image/gif"
-              onChange={() => this.onFileChange()}
+              name="productImg"
+              accept="image/*"
+              multiple
+              // ref={this.productImage}
+              onChange={handleFileChange}
+              required
             />
-          </div>
 
-          <div className="form-group">
             <label htmlFor="title">Title</label>
             <input
               name="title"
@@ -221,7 +326,7 @@ class CreateProduct extends Component {
               </label>
             </div>
           </div>
-          <button type="submit" className="btn btn-light">
+          <button type="submit" className="btn">
             Submit
           </button>
         </form>

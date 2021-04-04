@@ -61,7 +61,15 @@ export const fetchSingleProduct = productId => async dispatch => {
 
 export const createProduct = product => async dispatch => {
   try {
-    const {data} = await axios.post('/api/products', product)
+    // console.log('REDUX DATA', product)
+    const {data} = await axios.post(
+      '/api/products',
+      product
+      // , { headers: {
+      //   // "Accept": "application/json",
+      //   "Content-Type": undefined }
+      // }
+    )
     dispatch(_createProduct(data))
     history.push('/products')
   } catch (error) {
@@ -73,7 +81,7 @@ export const updateProduct = product => async dispatch => {
   try {
     const {data} = await axios.put(`/api/products/${product.id}`, product)
     dispatch(_updateProduct(data))
-    history.push('/listings')
+    history.push(`/products/${product.id}`)
   } catch (error) {
     console.log(error)
   }

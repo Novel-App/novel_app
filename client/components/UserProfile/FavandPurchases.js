@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import ScrollUpButton from 'react-scroll-up-button'
 import {fetchUserProducts} from '../../store/userInfo'
 import AddChat from '../Chats/AddChat'
 import FavoriteBtn from '../Products/FavoriteBtn'
@@ -53,6 +54,7 @@ class FavAndPurchases extends Component {
     }
     return (
       <div className="container-fluid">
+        <ScrollUpButton />
         <h1>{currentPage === 'favorites' ? 'Favorites' : 'Purchases'}</h1>
         <div className="d-flex flex-column">
           {products.map(product => (
@@ -62,9 +64,9 @@ class FavAndPurchases extends Component {
                   <div className="card-horizontal">
                     <Link to={`/products/${product.id}`}>
                       <img
-                        className="card-img"
+                        className="card-img img-fluid"
                         alt={product.title}
-                        src={product.image}
+                        src={product.image[0]}
                       />
                     </Link>
                   </div>

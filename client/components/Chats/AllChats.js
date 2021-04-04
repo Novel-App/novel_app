@@ -30,50 +30,154 @@ class AllChats extends Component {
 
     const currUser = chats
       ? chats.map(chat => {
+          //get last chat message
+          let lastMessage = {content: '', time: '1800-04-02T14:43:19.818Z'}
+          if (chat.users.length === 1) {
+            let message = chat.users[0].message.content.split(' ')
+            lastMessage = {
+              content:
+                message.length > 3
+                  ? `${message.slice(0, 3).join(' ')}...`
+                  : message.join(' '),
+              time: chat.users[0].message.createdAt
+            }
+          } else {
+            lastMessage =
+              chat.users[0].message.createdAt > chat.users[1].message.createdAt
+                ? {
+                    content:
+                      chat.users[0].message.content.split(' ').length < 3
+                        ? chat.users[0].message.content
+                        : `${chat.users[0].message.content
+                            .split(' ')
+                            .slice(0, 3)
+                            .join(' ')}...`,
+                    time: chat.users[0].message.createdAt
+                  }
+                : {
+                    content:
+                      chat.users[1].message.content.split(' ').length < 3
+                        ? chat.users[1].message.content
+                        : `${chat.users[1].message.content
+                            .split(' ')
+                            .slice(0, 3)
+                            .join(' ')}...`,
+
+                    time: chat.users[1].message.createdAt
+                  }
+          }
+          //if user is chatting the seller
           if (user.id !== chat.sellerId) {
             return {
               chatId: chat.id,
               firstName: chat.product.seller.firstName,
-              productName: chat.product.title
+              productName: chat.product.title,
+              profileImg: chat.product.seller.profileImage,
+              productImg: chat.product.image[0],
+              message: lastMessage
             }
           } else {
+            //if user is chatting the browser
+            const browserInfo =
+              chat.users[0].id === chat.browserId
+                ? chat.users[0]
+                : chat.users[1]
             return {
               chatId: chat.id,
-              firstName: chat.users[0].firstName,
-              productName: chat.product.title
+              firstName: browserInfo.firstName,
+              productName: chat.product.title,
+              profileImg: browserInfo.profileImage,
+              productImg: chat.product.image[0],
+              message: lastMessage
             }
           }
         })
       : []
-
     return (
-      <div>
-        <h3>All chats</h3>
-        <ul>
-          {currUser.map(chatRoom => {
-            return (
-              <li className="d-flex" key={chatRoom.chatId}>
-                <Link
-                  to={{
-                    pathname: `/chats/${chatRoom.chatId}`
-                  }}
-                >
-                  <p>{`${chatRoom.firstName}: ${chatRoom.productName}`}</p>
-                </Link>
-                <span>
-                  <i
-                    className="bi bi-trash ml-5"
-                    onClick={() => this.deleteClickHandler(chatRoom.chatId)}
-                  />
-                </span>
-              </li>
-            )
-          })}
-        </ul>
+      <div className="row rounded-lg overflow-hidden shadow justify-content-center">
+        {/* <!-- Users box--> */}
+        <div className="col-5 px-0">
+          <div className="bg-white">
+            <div className="bg-gray px-4 py-2 bg-light">
+              <p className="h5 mb-0 py-1">All Chats</p>
+            </div>
+            <div className="messages-box container-flex">
+              <div className="list-group rounded-0" />
+              {currUser.map(chatRoom => {
+                return (
+                  <Link
+                    to={{
+                      pathname: `/chats/${chatRoom.chatId}`
+                    }}
+                    key={chatRoom.chatId}
+                  >
+                    <div
+                      className=" container-flex allChat  list-group-item-action list-group-item-light rounded-0 d-inline-flex p-2 justify-content-between border-bottom"
+                      key={chatRoom.chatId}
+                    >
+                      <div className="d-flex flex-column">
+                        <h6 className="mb-0">{chatRoom.firstName}</h6>
+                        <div className="media">
+                          <img
+                            src={chatRoom.profileImg}
+                            className="direct-chat-img rounded-circle"
+                          />
+                        </div>
+                      </div>
+                      <div className="d-flex flex-column ">
+                        <small className="small font-weight-bold">
+                          {moment(
+                            moment(chatRoom.message.time).format(
+                              'YYYY-MM-DD HH:mm:ss'
+                            )
+                          ).fromNow()}
+                        </small>
+                        <p className="font-italic text-muted mb-0 text-small align-middle">
+                          {chatRoom.message.content}
+                        </p>
+                      </div>
+                      <div className="d-flex">
+                        <img
+                          src={chatRoom.productImg}
+                          className="direct-chat-img"
+                        />
+                        <button
+                          className="btn btn-sm fixed-top"
+                          style={{
+                            position: 'relative',
+                            right: 5,
+                            top: 5
+                          }}
+                          aria-label="Close"
+                          type="button"
+                          onClick={() =>
+                            this.deleteClickHandler(chatRoom.chatId)
+                          }
+                        >
+                          X
+                        </button>
+                      </div>
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
 }
+
+// <a href="#" class="messages__item unread">
+//   <div class="name">Muhammed ERDEM</div>
+//   <div class="date">1h ago</div>
+
+//   <div class="content">
+//     Currently We are looking for a UI designer to work on our
+//     websites and mobile application...
+//   </div>
+// </a>
 
 /**
  * CONTAINER

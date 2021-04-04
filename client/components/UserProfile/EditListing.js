@@ -10,7 +10,7 @@ const defaultState = {
   author: '',
   ISBN: '',
   description: '',
-  image: 'https://historyexplorer.si.edu/sites/default/files/book-348.jpg',
+  image: ['https://historyexplorer.si.edu/sites/default/files/book-348.jpg'],
   condition: '',
   price: 0,
   canBargain: false,
@@ -34,7 +34,7 @@ class EditListing extends Component {
       author: this.props.listing.author,
       ISBN: this.props.listing.ISBN,
       description: this.props.listing.description,
-      image: this.props.listing.image,
+      image: this.props.listing.image[0],
       condition: this.props.listing.condition,
       price: this.props.listing.price,
       canBargain: this.props.listing.canBargain,
@@ -229,7 +229,7 @@ class EditListing extends Component {
               </label>
             </div>
           </div>
-          <button type="submit" className="btn btn-light">
+          <button type="submit" className="btn">
             Submit
           </button>
         </form>

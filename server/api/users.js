@@ -59,7 +59,7 @@ router.get('/:userId', currentUserOnly, async (req, res, next) => {
 // PUT api/users
 router.put('/:userId', currentUserOnly, async (req, res, next) => {
   try {
-    console.log('req.file ===>', req.file)
+    // console.log('req.file ===>', req.file)
     const user = await User.findByPk(req.params.userId)
     if (!user) res.send('This user does not exist.')
     const updatedUser = await user.update(req.body)
@@ -121,3 +121,19 @@ router.get('/:userId/favorites', currentUserOnly, async (req, res, next) => {
     next(err)
   }
 })
+
+// POST /api/users/
+router.post(
+  '/uploadProfile',
+  upload.single('profileImg'),
+  async (req, res, next) => {
+    try {
+      const imagePath = req.file.path.replace(/^public\//, '')
+      const user = await User.findByPk(req.body.id)
+      const updatedUser = await user.update({profileImage: imagePath})
+      res.status(201).send(updatedUser)
+    } catch (err) {
+      next(err)
+    }
+  }
+)

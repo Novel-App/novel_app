@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {updateUser} from '../store/user'
 import UserMap from './UserProfile/UserMap'
 import {Link} from 'react-router-dom'
-import history from '../history'
 
 class LocationVerification extends Component {
   constructor(props) {
@@ -56,10 +55,10 @@ class LocationVerification extends Component {
   }
   addLocation() {
     if (this.state.latitude && this.state.longitude) {
-      this.props.updateUser(
-        {coordinates: [this.state.latitude, this.state.longitude]},
-        this.props.user.id
-      )
+      this.props.updateUser({
+        ...this.props.user,
+        coordinates: [this.state.latitude, this.state.longitude]
+      })
       this.setState({verified: true})
     }
   }
@@ -94,7 +93,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    updateUser: (userInfo, userId) => dispatch(updateUser(userInfo, userId))
+    updateUser: userInfo => dispatch(updateUser(userInfo))
   }
 }
 

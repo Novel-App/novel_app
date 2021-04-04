@@ -1,80 +1,65 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import axios from 'axios'
+import {updateUserPicture} from '../../store/user'
 
-export default class EditProfImage extends Component {
-  state = {
-    // Initially, no file is selected
-    selectedFile: null
-  }
-  // On file select (from the pop up)
-  onFileChange = event => {
-    // Update the state
-    this.setState({selectedFile: event.target.files[0]})
-  }
-
-  // On file upload (click the upload button)
-  onFileUpload = async () => {
-    // Create an object of formData
-    const formData = new FormData()
-
-    // Update the formData object
-    formData.append(
-      'myFile',
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    )
-
-    // Details of the uploaded file
-    console.log(this.state.selectedFile)
-
-    // Request made to the backend api
-    // Send formData object
-    const {data} = await axios.post('/api/upload', formData)
-    console.log(data)
-  }
-
-  // File content to be displayed after
-  // file upload is complete
-  fileData = () => {
-    if (this.state.selectedFile) {
-      return (
-        <div>
-          <h2>File Details:</h2>
-
-          <p>File Name: {this.state.selectedFile.name}</p>
-
-          <p>File Type: {this.state.selectedFile.type}</p>
-
-          <p>
-            Last Modified:{' '}
-            {this.state.selectedFile.lastModifiedDate.toDateString()}
-          </p>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <br />
-          <h4>Choose before Pressing the Upload button</h4>
-        </div>
-      )
+class EditProfImage extends Component {
+  constructor() {
+    super()
+    this.state = {
+      profileImg: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFileChange = this.handleFileChange.bind(this)
+  }
+
+  handleFileChange(evt) {
+    console.log('image file', evt.target.files)
+    this.setState({profileImg: evt.target.files[0]})
+  }
+
+  handleSubmit(evt) {
+    evt.preventDefault()
+    const user = new FormData()
+    user.append('profileImg', this.state.profileImg)
+    user.append('id', this.props.user.id)
+    this.props.updateUserPicture(user)
   }
 
   render() {
     return (
-      <div>
+      <div className="container-fluid d-flex-column justify-content-center">
         <h1>Upload a new profile image!</h1>
-        <div>
-          <input type="file" onChange={this.onFileChange} />
-          <button type="button" onClick={this.onFileUpload}>
-            Upload!
-          </button>
-        </div>
-        {this.fileData()}
+        <p>Current profile image</p>
+        <img
+          className="img-fluid rounded-circle z-depth-2 mb-5"
+          src={this.props.user.profileImage}
+          width="300em"
+        />
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+          <input
+            type="file"
+            name="profileImg"
+            accept="image/*"
+            onChange={this.handleFileChange}
+            required
+          />
+          <input type="submit" />
+        </form>
       </div>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateUserPicture: user => dispatch(updateUserPicture(user))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfImage)

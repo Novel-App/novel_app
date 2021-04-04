@@ -36,7 +36,8 @@ export class Message extends Component {
           if (this.props.user.id === chatBubble.authorId) {
             info = {
               firstName: this.props.user.firstName,
-              profileImg: this.props.user.profileImage
+              profileImg: this.props.user.profileImage,
+              id: this.props.user.id
             }
             //guest is the browser (allChat view clicking on chat)
           } else if (
@@ -49,35 +50,48 @@ export class Message extends Component {
                 : chat.users[1]
             info = {
               firstName: guest.firstName,
-              profileImg: guest.profileImage
+              profileImg: guest.profileImage,
+              id: guest.id
             }
           } else {
             //guest is the seller
             info = {
               firstName: this.props.chat.product.seller.firstName,
-              profileImg: this.props.chat.product.seller.profileImage
+              profileImg: this.props.chat.product.seller.profileImage,
+              id: this.props.chat.product.seller.id
             }
           }
+          let styling =
+            info.id === this.props.user.id
+              ? 'd-flex justify-content-end'
+              : 'd-flex justify-content-start'
           return (
-            <div key={chatBubble.id} className="box-body">
-              <div className="direct-chat-info clearfix">
-                <img
-                  className="direct-chat-img rounded-circle"
-                  src={info.profileImg}
-                  alt="message user image"
-                  width="30"
-                  height="30"
-                />{' '}
-                <span className="direct-chat-name pull-left">
-                  {info.firstName}
-                </span>{' '}
-                <span className="direct-chat-timestamp pull-right small">
-                  {moment(
-                    moment(chatBubble.createdAt).format('YYYY-MM-DD HH:mm:ss')
-                  ).fromNow()}
-                </span>
+            <div key={chatBubble.id} className={styling}>
+              <div className="wrapper">
+                <div id="chat-message" className="border-bottom  border-3">
+                  <div className="direct-chat-info clearfix">
+                    <img
+                      className="direct-chat-img rounded-circle"
+                      src={info.profileImg}
+                      alt="message user image"
+                      width="30"
+                      height="30"
+                    />{' '}
+                    <span className="direct-chat-name pull-left">
+                      {info.firstName}
+                    </span>{' '}
+                    <span className="direct-chat-timestamp pull-right small">
+                      {moment(
+                        moment(chatBubble.createdAt).format(
+                          'YYYY-MM-DD HH:mm:ss'
+                        )
+                      ).fromNow()}
+                    </span>
+                  </div>
+                  <br />
+                  <div className="direct-chat-text">{chatBubble.content}</div>
+                </div>
               </div>
-              <div className="direct-chat-text">{chatBubble.content}</div>
             </div>
           )
         })}

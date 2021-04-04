@@ -70,6 +70,28 @@ const createApp = () => {
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
+  app.use('/products/images', express.static(path.join('public/images')))
+  app.use('/chats/images', express.static(path.join('public/images')))
+  app.use('/profile/images', express.static(path.join('public/images')))
+
+  //UPLOADING IMAGE
+  var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './public/images/')
+    },
+    filename: function(req, file, cb) {
+      cb(null, Date.now() + file.originalname)
+    }
+  })
+
+  var upload = multer({storage: storage})
+
+  // app.use(express.static(path.join(__dirname, 'public')))
+
+  // sends index.html
+  app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  })
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
@@ -80,23 +102,6 @@ const createApp = () => {
     } else {
       next()
     }
-  })
-
-  // sends index.html
-  app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-  })
-
-  //posts new profile image
-  const upload = require('./utils/photoUpload')
-
-  app.use(express.static(path.join(__dirname, 'public')))
-
-  app.post('/upload', upload.single('wallpaper'), function(req, res) {
-    const imagePath = req.file.path.replace(/^public\//, '')
-    console.log('post route!!!')
-    res.redirect(imagePath)
-    // res.send(req.file)
   })
 
   app.use(function(err, req, res, next) {

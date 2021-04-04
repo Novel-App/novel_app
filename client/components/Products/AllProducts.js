@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import ScrollUpButton from 'react-scroll-up-button'
 import {fetchProducts, removeProduct} from '../../store/product'
 import {fetchListings} from '../../store/userInfo'
 import AvailabilityUpdateBtn from './AvailabilityUpdateBtn'
@@ -96,13 +97,16 @@ class AllProducts extends Component {
     return (
       <div className="container">
         <div className="container-flex">
-          <div />
+          <ScrollUpButton />
           <div className="container">
-            <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-              <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <nav className="navbar d-flex navbar-expand-md ">
+              <div
+                id="small-navbar"
+                className="navbar-collapse d-flex collapse w-100 order-1 order-sm-0 dual-collapse2"
+              >
                 <div>
                   <a
-                    id="prod-nav-link"
+                    className="prod-nav-link"
                     href="#"
                     onClick={() => {
                       this.updateStatus('Available')
@@ -113,7 +117,7 @@ class AllProducts extends Component {
                 </div>
                 <div>
                   <a
-                    id="prod-nav-link"
+                    className="prod-nav-link"
                     href="#"
                     onClick={() => {
                       this.updateStatus('Reserved')
@@ -124,7 +128,7 @@ class AllProducts extends Component {
                 </div>
                 <div>
                   <a
-                    id="prod-nav-link"
+                    className="prod-nav-link"
                     href="#"
                     onClick={() => {
                       this.updateStatus('Sold')
@@ -137,10 +141,12 @@ class AllProducts extends Component {
             </nav>
             <div className="d-flex justify-content-between w-90">
               <Link to="/products/add">
-                <i
-                  className="bi bi-plus-circle-fill add-product"
-                  style={{fontSize: '3em'}}
-                />
+                <div className="mt-1 ml-2">
+                  <i
+                    className="bi bi-plus-circle-fill add-product"
+                    style={{fontSize: '3em'}}
+                  />
+                </div>
               </Link>
               <form
                 className="input-group rounded d-flex justify-content-end"
@@ -151,13 +157,13 @@ class AllProducts extends Component {
                     type="search"
                     name="searchTerm"
                     className="form-control rounded mr-1"
-                    placeholder="Search for title/author!"
+                    placeholder="Search a title/author!"
                     aria-label="Search"
                     aria-describedby="search-addon"
                     value={this.state.searchTerm}
                     onChange={this.handleOnSearchChange}
                   />
-                  <button type="submit" className="btn btn-light">
+                  <button type="submit" className="btn">
                     search
                   </button>
                 </div>
@@ -174,9 +180,9 @@ class AllProducts extends Component {
                         <div className="card-horizontal">
                           <Link to={`/products/${product.id}`}>
                             <img
-                              className="card-img"
+                              className="card-img img-fluid"
                               alt={product.title}
-                              src={product.image}
+                              src={product.image[0]}
                             />
                           </Link>
                         </div>
@@ -201,7 +207,7 @@ class AllProducts extends Component {
                             )}
                           </div>
                           <br />
-                          <div className="card-footer text-center">
+                          <div className="card-footer text-center container-flex ">
                             <h5>
                               <small className="text-muted">
                                 Posted{' '}

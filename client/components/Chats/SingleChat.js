@@ -1,12 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Message from './Message'
-import {Form, Icon, Input, Button, Row, Col} from 'antd'
 import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
 import {Link} from 'react-router-dom'
-import socket from '../../socket'
-import moment from 'moment'
 
 /**
  * COMPONENT
@@ -16,7 +13,6 @@ export class SingleChat extends Component {
     super(props)
     this.state = {
       content: '',
-      unread: true,
       messageSent: false
     }
     //state or props will populate with messages objects connected to specific singleChat
@@ -30,6 +26,7 @@ export class SingleChat extends Component {
     const chatId = Number(this.props.match.params.chatId)
     this.props.getMessages(chatId)
     this.props.getChat(chatId)
+    console.log('helo!')
   }
 
   componentDidUpdate() {
@@ -63,7 +60,7 @@ export class SingleChat extends Component {
               <div className="row no-gutters">
                 <div className="col-md-4 d-flex justify-content-center align-items-center">
                   <img
-                    src={chat.product.image}
+                    src={chat.product.image[0]}
                     className="card-img"
                     alt="product-img"
                     style={{height: '15vh', width: 'auto'}}
@@ -89,41 +86,51 @@ export class SingleChat extends Component {
               </div>
             </div>
           )}
-          <div
-            className="infinite-container"
-            style={{height: '500px', overflowY: 'scroll'}}
-          >
-            <Message chatId={this.props.match.params.chatId} />
-            <div
-              ref={el => {
-                this.messagesEnd = el
-              }}
-              style={{float: 'left', clear: 'both'}}
-            />
+          <div className="px-md-3" id="messages">
+            <ul
+              id="messageFeed"
+              className="list-unstyled"
+              style={{height: '200px', overflowY: 'scroll'}}
+            >
+              <Message
+                className="mr-3"
+                chatId={this.props.match.params.chatId}
+              />
+              <div
+                ref={el => {
+                  this.messagesEnd = el
+                }}
+                // style={{float: 'left', clear: 'both'}}
+              />
+            </ul>
+            <div className="input-group mb-3">
+              <div
+                className="d-flex justify-content-end"
+                onSubmit={this.submitChatMessage}
+              >
+                <div className="align-items-center">
+                  <input
+                    id="messageTextarea"
+                    className="form-control"
+                    placeholder="Enter your message"
+                    type="text"
+                    value={this.state.content}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="input-group-append">
+                  <button
+                    type="submit"
+                    className="btn btn-outline-secondary d-flex justify-content-end"
+                    onClick={this.submitChatMessage}
+                  >
+                    {/* <Icon type="enter" /> */}
+                    send
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <Row>
-            <Form layout="inline" onSubmit={this.submitChatMessage}>
-              <Col span={18}>
-                <Input
-                  id="message"
-                  placeholder="Enter your message"
-                  type="text"
-                  value={this.state.content}
-                  onChange={this.handleChange}
-                />
-              </Col>
-              <Col span={2}>
-                {/* {a dropdown icon for uploading pictures or videos} */}
-              </Col>
-              <Col span={4}>
-                <Button type="submit" onClick={this.submitChatMessage}>
-                  {/* <Icon type="enter" /> */}
-                  send
-                </Button>
-              </Col>
-            </Form>
-          </Row>
         </div>
       </React.Fragment>
     )
