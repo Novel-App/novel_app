@@ -255,12 +255,12 @@ class CreateProduct extends Component {
               placeholder="Enter ISBN"
             />
             <button type="submit" className="btn btn-sm btn-outline-dark ml-1">
-              Auto Fill
+              Submit
             </button>
           </form>
         </div>
         <div className="d-flex flex-column align-items-center ml-5">
-          <p>Scan you ISBN barcode to auto-fill the fields below</p>
+          <p>Scan your barcode to auto-fill the fields below</p>
         </div>
         <br />
 
