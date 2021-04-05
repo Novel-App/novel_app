@@ -32,6 +32,7 @@ export class SingleChat extends Component {
     const chatId = Number(this.props.match.params.chatId)
     this.props.getMessages(chatId)
     this.props.getChat(chatId)
+    this.setState({loading: false})
     // this.scrollToBottom()
   }
 
@@ -59,9 +60,9 @@ export class SingleChat extends Component {
   }
   render() {
     const chat = this.props.chat || {}
-    if (this.state.loading) {
-      return <Loading />
-    }
+    // if (this.state.loading) {
+    //   return <Loading />
+    // }
     return (
       <React.Fragment>
         <div>

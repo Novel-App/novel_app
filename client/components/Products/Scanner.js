@@ -95,6 +95,7 @@ class Scanner extends Component {
 
   render() {
     return (
+      // <div className="fluid-container">
       <div id="interactive" className="viewport">
         {/* <video
           className="videoCamera"
@@ -106,6 +107,7 @@ class Scanner extends Component {
         /> */}
         <canvas className="drawingBuffer" />
       </div>
+      // </div>
     )
   }
 }
