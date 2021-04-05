@@ -455,6 +455,15 @@ button.rec-dot:focus {
     z-index: 1;
   }
 
+  .productNavBar {
+    background: #254d4c;
+    font-size: smaller;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .footer {
   }
 }
