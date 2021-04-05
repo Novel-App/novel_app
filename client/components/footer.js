@@ -22,6 +22,11 @@ const Footer = () => {
                 <AiIcons.AiFillTwitterCircle className="footerIcon" />
               </a>
             </li>
+            <li className="list-inline-item">
+              <a href="#">
+                <AiIcons.AiFillGithub className="footerIcon" />
+              </a>
+            </li>
           </ul>
           <div className="createdBy">
             <p>Created by the Novel Corporation</p>
