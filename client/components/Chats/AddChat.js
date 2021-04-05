@@ -25,7 +25,7 @@ class AddChat extends Component {
     return (
       <div>
         <button
-          className="btn btn-outline-primary rounded"
+          className="btn btn-sm btn-outline-primary rounded"
           type="submit"
           onClick={() => this.addClickHandler(browserId, productId)}
         >

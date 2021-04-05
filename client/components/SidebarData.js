@@ -12,7 +12,7 @@ export const SidebarDataLoggedIn = [
     className: 'nav-text'
   },
   {
-    title: 'My Items',
+    title: 'My Page',
     path: '#',
     icon: <BiIcons.BiBookReader />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -57,7 +57,7 @@ export const SidebarDataLoggedIn = [
     className: 'nav-text'
   },
   {
-    title: 'LogOut',
+    title: 'Log Out',
     path: '#',
     icon: <AiIcons.AiOutlineLogout />,
     className: 'nav-text'
