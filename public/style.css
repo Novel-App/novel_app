@@ -165,11 +165,18 @@ span {
   color: #254d4c;
   font-family: 'Poppins-Medium';
 }
+.prod-nav-link {
+  color: #e1e9fc;
+}
 
 .prod-nav-link:hover,
 .add-product:hover a,
 .novel-logo:hover {
   color: #65837b;
+}
+
+.novel-logo {
+  color: #e1e9fc;
 }
 
 .navbar-collapse {
