@@ -57,6 +57,7 @@ const SideNavBar = ({handleClick, isLoggedIn}) => {
                       to="#"
                       className="linkNavigation"
                       onClick={handleClick}
+                      key={index}
                     >
                       <div>
                         {item.icon}

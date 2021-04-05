@@ -54,61 +54,59 @@ export class SingleChat extends Component {
 
   render() {
     const chat = this.props.chat || {}
-    // if (this.state.loading) {
-    //   return <Loading />
-    // }
+
     return (
-      <ScrollToBottom>
-        <React.Fragment>
-          <div>
-            <div className="d-flex justify-content-between w-90">
-              <Link to="/chats/">
-                <div className="mt-1 ml-2">
-                  <i
-                    className="bi bi-arrow-left-circle"
-                    style={{fontSize: '3em'}}
+      <React.Fragment>
+        <div>
+          <div className="d-flex justify-content-between w-90">
+            <Link to="/chats/">
+              <div className="mt-1 ml-2">
+                <i
+                  className="bi bi-arrow-left-circle"
+                  style={{fontSize: '3em'}}
+                />
+              </div>
+            </Link>
+          </div>
+        </div>
+        <div style={{maxWidth: '800px', margin: '0 auto'}}>
+          {chat.product && (
+            <div className="card mb-3">
+              <div className="row no-gutters">
+                <div className="col-md-4 d-flex justify-content-center align-items-center">
+                  <img
+                    src={chat.product.image[0]}
+                    className="card-img"
+                    alt="product-img"
+                    style={{height: '15vh', width: 'auto'}}
                   />
                 </div>
-              </Link>
-            </div>
-          </div>
-          <div style={{maxWidth: '800px', margin: '0 auto'}}>
-            {chat.product && (
-              <div className="card mb-3">
-                <div className="row no-gutters">
-                  <div className="col-md-4 d-flex justify-content-center align-items-center">
-                    <img
-                      src={chat.product.image[0]}
-                      className="card-img"
-                      alt="product-img"
-                      style={{height: '15vh', width: 'auto'}}
-                    />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body">
-                      <Link to={`/products/${chat.product.id}`}>
-                        <h5 className="card-title">
-                          {chat.product.title} by {chat.product.author}
-                        </h5>
-                      </Link>
-                      <p className="card-text text-muted">
-                        ${chat.product.price}
-                      </p>
-                      <p className="card-text">
-                        <small className="text-muted">
-                          {chat.product.availability}
-                        </small>
-                      </p>
-                    </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <Link to={`/products/${chat.product.id}`}>
+                      <h5 className="card-title">
+                        {chat.product.title} by {chat.product.author}
+                      </h5>
+                    </Link>
+                    <p className="card-text text-muted">
+                      ${chat.product.price}
+                    </p>
+                    <p className="card-text">
+                      <small className="text-muted">
+                        {chat.product.availability}
+                      </small>
+                    </p>
                   </div>
                 </div>
               </div>
-            )}
+            </div>
+          )}
+          <ScrollToBottom>
             <div className="px-md-3" id="messages">
               <ul
                 id="messageFeed"
                 className="list-unstyled"
-                style={{height: '300px', overflowY: 'scroll'}}
+                style={{height: '300px', overflowY: 'auto'}}
               >
                 <Message
                   className="mr-3"
@@ -137,16 +135,15 @@ export class SingleChat extends Component {
                       className="btn btn-outline-secondary d-flex justify-content-end"
                       onClick={this.submitChatMessage}
                     >
-                      {/* <Icon type="enter" /> */}
                       send
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </React.Fragment>
-      </ScrollToBottom>
+          </ScrollToBottom>
+        </div>
+      </React.Fragment>
     )
   }
 }
