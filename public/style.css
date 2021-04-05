@@ -165,6 +165,9 @@ span {
   color: #254d4c;
   font-family: 'Poppins-Medium';
 }
+.prod-nav-link {
+  color: #e1e9fc;
+}
 
 .prod-nav-link:hover,
 .add-product:hover a,
