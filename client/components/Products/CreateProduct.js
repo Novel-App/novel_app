@@ -95,7 +95,7 @@ class CreateProduct extends Component {
   _onDetected = result => {
     console.log('detected the result.....', result)
     this.setState({isbn: result})
-    // this.setState({onScan: false})
+    this.setState({onScan: false})
   }
 
   handleClick = () => {
@@ -219,34 +219,32 @@ class CreateProduct extends Component {
             </button>
           </form> */}
           <div>
-            {this.state.onScan ? (
-              <div className="d-flex flex-column align-items-center">
-                <form
-                  onSubmit={handleAutoFill}
-                  className="d-flex justify-content-center"
+            <div className="d-flex flex-column align-items-center">
+              <form className="d-flex justify-content-center">
+                <input
+                  className="new-post-input"
+                  style={{fontSize: 20, width: 190, height: 35, margin: 8}}
+                  placeholder="Your barcode number"
+                  value={this.state.isbn ? this.state.isbn : ''}
+                />
+                <button
+                  className="btn btn-sm btn-outline-dark ml-1"
+                  type="submit"
+                  onClick={handleAutoFill}
                 >
-                  <input
-                    className="new-post-input"
-                    style={{fontSize: 20, width: 190, height: 35, margin: 8}}
-                    placeholder="Your barcode number"
-                    value={this.state.isbn ? this.state.isbn : ''}
-                  />
-                  <button
-                    className="btn btn-sm btn-outline-dark ml-1"
-                    type="submit"
-                  >
-                    Confirm
-                  </button>
-                  <button
-                    className="btn btn-sm btn-outline-dark ml-1"
-                    onClick={this.handleReset}
-                    type="button"
-                  >
-                    Clear
-                  </button>
-                </form>
-                <Scanner onDetected={this._onDetected} />
-              </div>
+                  Confirm
+                </button>
+                <button
+                  className="btn btn-sm btn-outline-dark ml-1"
+                  onClick={this.handleReset}
+                  type="button"
+                >
+                  Clear
+                </button>
+              </form>
+            </div>
+            {this.state.onScan ? (
+              <Scanner onDetected={this._onDetected} />
             ) : (
               <></>
             )}
