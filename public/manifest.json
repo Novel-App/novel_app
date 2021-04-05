@@ -1,4 +1,23 @@
 {
-  "name": "Novel",
-  "short_name": "Novel"
+  "short_name": "Novel",
+  "name": "Novel Marketplace",
+  "icons": [
+    {
+      "src": "/images/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "description": "Novel is a second-hand book community marketplace.",
+  "start_url": "./",
+  "scope": ".",
+  "background-color": "#f5f5f5",
+  "theme_color": "#354b45",
+  "display": "fullscreen",
+  "orientation": "portrait"
 }

@@ -24,16 +24,21 @@ export class SingleChat extends Component {
     this.submitChatMessage = this.submitChatMessage.bind(this)
   }
 
+  // scrollToBottom = () => {
+  //   this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  // }
+
   componentDidMount() {
     const chatId = Number(this.props.match.params.chatId)
     this.props.getMessages(chatId)
     this.props.getChat(chatId)
-    console.log('helo!')
+    // this.scrollToBottom()
   }
 
-  componentDidUpdate() {
-    this.messagesEnd.scrollIntoView({behavior: 'smooth'})
-  }
+  // componentDidUpdate() {
+  //   this.messagesEnd.scrollIntoView({behavior: 'smooth'})
+  //   this.scrollToBottom()
+  // }
 
   handleChange(e) {
     this.setState({
@@ -114,10 +119,10 @@ export class SingleChat extends Component {
                 chatId={this.props.match.params.chatId}
               />
               <div
-                ref={el => {
-                  this.messagesEnd = el
-                }}
-                // style={{float: 'left', clear: 'both'}}
+              // ref={el => {
+              //   this.messagesEnd = el
+              // }}
+              // style={{float: 'left', clear: 'both'}}
               />
             </ul>
             <div className="input-group mb-3">

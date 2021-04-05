@@ -26,7 +26,10 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/editImage">
-                    <button type="button" className="btn edit-profile">
+                    <button
+                      type="button"
+                      className="btn btn-outline edit-profile"
+                    >
                       Edit Profile Picture
                     </button>
                   </Link>
@@ -34,7 +37,10 @@ class Profile extends Component {
                 <br />
                 <div>
                   <Link to="/profile/edit">
-                    <button type="button" className="btn edit-profile">
+                    <button
+                      type="button"
+                      className="btn btn-outline edit-profile"
+                    >
                       Edit Profile
                     </button>
                   </Link>
