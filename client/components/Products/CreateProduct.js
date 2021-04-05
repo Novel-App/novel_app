@@ -39,7 +39,8 @@ class CreateProduct extends Component {
       canBargain: false,
       availability: 'Available',
       genreId: '',
-      onScan: false
+      onScan: false,
+      thumbnail: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
@@ -81,7 +82,7 @@ class CreateProduct extends Component {
               author: bookInfoFromAPI.authors[0],
               ISBN: bookInfoFromAPI.industryIdentifiers[1].identifier,
               description: bookInfoFromAPI.description,
-              image: bookInfoFromAPI.imageLinks.thumbnail
+              thumbnail: bookInfoFromAPI.imageLinks.thumbnail
             })
             console.log('---->', this.state)
           }
@@ -230,6 +231,16 @@ class CreateProduct extends Component {
             <div>
               {this.state.onScan ? (
                 <Scanner onDetected={this._onDetected} />
+              ) : (
+                <></>
+              )}
+            </div>
+            <div>
+              {this.state.thumbnail && this.state.title ? (
+                <div>
+                  <h5>{this.state.title}</h5>
+                  <img src={this.state.thumbnail} />
+                </div>
               ) : (
                 <></>
               )}
