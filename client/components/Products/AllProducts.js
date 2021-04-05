@@ -101,7 +101,7 @@ class AllProducts extends Component {
     return (
       <div className="container">
         <div className="container-flex">
-          <ScrollUpButton />
+          <ScrollUpButton style={{marginBottom: '3em'}} />
           <div className="container">
             <nav className="productNavBar d-flex navbar-expand-md mt-3">
               <div

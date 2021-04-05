@@ -24,16 +24,18 @@ class Scanner extends Component {
         inputStream: {
           type: 'LiveStream',
           constraints: {
+            // width: 640,
+            // height: 320,
             width: 640,
             height: 320,
             facingMode: 'environment'
           }
-          //   area: { // defines rectangle of the detection/localization area
-          //     top: "10%",    // top offset
-          //     right: "10%",  // right offset
-          //     left: "10%",   // left offset
-          //     bottom: "10%"  // bottom offset
-          //   },
+          // area: { // defines rectangle of the detection/localization area
+          //   top: "10%",    // top offset
+          //   right: "10%",  // right offset
+          //   left: "10%",   // left offset
+          //   bottom: "10%"  // bottom offset
+          // },
         },
         locator: {
           halfSample: true,
@@ -92,7 +94,21 @@ class Scanner extends Component {
   }
 
   render() {
-    return <div id="interactive" className="viewport" />
+    return (
+      // <div className="fluid-container">
+      <div id="interactive" className="viewport">
+        {/* <video
+          className="videoCamera"
+          autoPlay={true}
+          preload="auto"
+          src=""
+          muted={true}
+          playsInLine={true}
+        /> */}
+        <canvas className="drawingBuffer" />
+      </div>
+      // </div>
+    )
   }
 }
 
