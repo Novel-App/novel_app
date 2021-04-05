@@ -31,7 +31,6 @@ const Product = db.define('product', {
     defaultValue: false,
     allowNull: false
   },
-  //Update image validater once we figure out another way to store images
   image: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
     defaultValue: [
@@ -87,15 +86,5 @@ Product.getListingsByAvailability = function(sellerId, availability) {
     }
   })
 }
-
-// Product.getFavorites = function(userId) {
-//   return this.findAll({
-//     include: {
-//       model: User,
-//       where: {
-//         id: userId
-//     }}
-//   }).filter(product => product.users[0].favorite.isFavorite === true)
-// }
 
 module.exports = Product
