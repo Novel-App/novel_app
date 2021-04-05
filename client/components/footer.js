@@ -24,12 +24,22 @@ const Footer = () => {
             </li>
           </ul>
           <div className="createdBy">
-            <p>Created by the Novel Coorporation</p>
+            <p>Created by the Novel Corporation</p>
           </div>
         </div>
       </div>
     </section>
   )
 }
+
+// const Footer = () => (
+//   <div className="footer">
+//     <i className="bi bi-instagram" />
+//     <span />
+//     <i className="bi bi-github" />
+//     <span />
+//     <i className="bi bi-envelope-fill">Contact Us</i>
+//   </div>
+// )
 
 export default Footer

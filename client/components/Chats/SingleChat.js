@@ -24,16 +24,22 @@ export class SingleChat extends Component {
     this.submitChatMessage = this.submitChatMessage.bind(this)
   }
 
+  // scrollToBottom = () => {
+  //   this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  // }
+
   componentDidMount() {
     const chatId = Number(this.props.match.params.chatId)
     this.props.getMessages(chatId)
     this.props.getChat(chatId)
-    console.log('helo!')
+    this.setState({loading: false})
+    // this.scrollToBottom()
   }
 
-  componentDidUpdate() {
-    this.messagesEnd.scrollIntoView({behavior: 'smooth'})
-  }
+  // componentDidUpdate() {
+  //   this.messagesEnd.scrollIntoView({behavior: 'smooth'})
+  //   this.scrollToBottom()
+  // }
 
   handleChange(e) {
     this.setState({
@@ -54,11 +60,23 @@ export class SingleChat extends Component {
   }
   render() {
     const chat = this.props.chat || {}
-    if (this.state.loading) {
-      return <Loading />
-    }
+    // if (this.state.loading) {
+    //   return <Loading />
+    // }
     return (
       <React.Fragment>
+        <div>
+          <div className="d-flex justify-content-between w-90">
+            <Link to="/chats/">
+              <div className="mt-1 ml-2">
+                <i
+                  className="bi bi-arrow-left-circle"
+                  style={{fontSize: '3em'}}
+                />
+              </div>
+            </Link>
+          </div>
+        </div>
         <div style={{maxWidth: '800px', margin: '0 auto'}}>
           {chat.product && (
             <div className="card mb-3">
@@ -102,10 +120,10 @@ export class SingleChat extends Component {
                 chatId={this.props.match.params.chatId}
               />
               <div
-                ref={el => {
-                  this.messagesEnd = el
-                }}
-                // style={{float: 'left', clear: 'both'}}
+              // ref={el => {
+              //   this.messagesEnd = el
+              // }}
+              // style={{float: 'left', clear: 'both'}}
               />
             </ul>
             <div className="input-group mb-3">

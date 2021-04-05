@@ -1,6 +1,5 @@
 import React from 'react'
 import Routes from './routes'
-// import SideNavBar from './components/SideNavbar'
 import {Footer, SideNavBar} from './components'
 
 const App = () => {
