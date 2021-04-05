@@ -85,7 +85,6 @@ export const updateUser = user => async dispatch => {
   try {
     const {data} = await axios.put(`/api/users/${user.id}`, user)
     dispatch(_updateUser(data))
-    history.push('/profile')
   } catch (err) {
     console.error(err)
   }
