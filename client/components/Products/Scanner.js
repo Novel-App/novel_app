@@ -96,14 +96,14 @@ class Scanner extends Component {
   render() {
     return (
       <div id="interactive" className="viewport">
-        <video
-          classNam="videoCamera"
-          autoPlay="true"
+        {/* <video
+          className="videoCamera"
+          autoPlay={true}
           preload="auto"
           src=""
-          muted="true"
-          playsinline="true"
-        />
+          muted={true}
+          playsInLine={true}
+        /> */}
         <canvas className="drawingBuffer" />
       </div>
     )
