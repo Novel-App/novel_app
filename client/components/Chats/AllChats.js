@@ -109,7 +109,7 @@ class AllChats extends Component {
         })
       : []
     return (
-      <div className="row rounded-lg overflow-hidden shadow justify-content-center">
+      <div className="row overflow-hidden justify-content-center">
         {/* <!-- Users box--> */}
         <div className="col-5 px-0">
           <div className="bg-white">

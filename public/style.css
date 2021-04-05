@@ -10,7 +10,8 @@ html {
 
 body,
 .login,
-.signup {
+.signup,
+.chats {
   font-family: 'Poppins-Regular';
   background-color: #f5f5f5;
   color: #354b45;
