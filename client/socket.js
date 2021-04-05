@@ -9,7 +9,6 @@ socket.on('connect', () => {
 })
 
 socket.on('get-message', message => {
-  console.log('listenning new message from serve..', message)
   store.dispatch(addMessage(message))
 })
 

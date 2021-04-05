@@ -64,7 +64,6 @@ class LocationVerification extends Component {
   }
 
   render() {
-    console.log('LAT LNG', this.state.latitude, this.state.longitude)
     return (
       <div className="container d-flex flex-column justify-content-center align-items-center">
         <br />

@@ -61,15 +61,7 @@ export const fetchSingleProduct = productId => async dispatch => {
 
 export const createProduct = product => async dispatch => {
   try {
-    // console.log('REDUX DATA', product)
-    const {data} = await axios.post(
-      '/api/products',
-      product
-      // , { headers: {
-      //   // "Accept": "application/json",
-      //   "Content-Type": undefined }
-      // }
-    )
+    const {data} = await axios.post('/api/products', product)
     dispatch(_createProduct(data))
     history.push('/products')
   } catch (error) {
