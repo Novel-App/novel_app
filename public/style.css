@@ -3,11 +3,20 @@
   src: url(./fonts/Poppins-Regular.ttf) format('truetype');
 }
 
-body {
+html {
+  height: 100vh;
+  padding: 0;
+}
+
+body,
+.login,
+.signup {
   font-family: 'Poppins-Regular';
   background-color: #f5f5f5;
   color: #354b45;
   padding: 0;
+  margin: 0;
+  min-height: 100vh;
   margin: 0;
 }
 /* navbar */
@@ -292,6 +301,11 @@ nav a {
   background-color: #354b45;
   color: #71a093;
 }
+
+.footer-text {
+  margin-bottom: 0;
+}
+
 .socialMedia {
   text-align: left;
 }
