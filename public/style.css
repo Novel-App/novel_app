@@ -175,6 +175,10 @@ span {
   color: #65837b;
 }
 
+.novel-logo {
+  color: #e1e9fc;
+}
+
 .navbar-collapse {
   justify-content: flex-end;
 }
