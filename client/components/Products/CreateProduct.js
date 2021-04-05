@@ -255,7 +255,7 @@ class CreateProduct extends Component {
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="form-group">
-            <label htmlFor="productImg">Images (up to 4)</label>
+            <label htmlFor="productImg">Upload your own images (up to 4)</label>
             <input
               type="file"
               name="productImg"
