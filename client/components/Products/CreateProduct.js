@@ -39,14 +39,15 @@ class CreateProduct extends Component {
       canBargain: false,
       availability: 'Available',
       genreId: '',
-      onScan: false
+      onScan: false,
+      thumbnail: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleFileChange = this.handleFileChange.bind(this)
-    //this.handleSearch = this.handleSearch.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
     this.handleAutoFill = this.handleAutoFill.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleReset = this.handleReset.bind(this)
@@ -81,7 +82,7 @@ class CreateProduct extends Component {
               author: bookInfoFromAPI.authors[0],
               ISBN: bookInfoFromAPI.industryIdentifiers[1].identifier,
               description: bookInfoFromAPI.description,
-              image: bookInfoFromAPI.imageLinks.thumbnail
+              thumbnail: bookInfoFromAPI.imageLinks.thumbnail
             })
             console.log('---->', this.state)
           }
@@ -117,10 +118,10 @@ class CreateProduct extends Component {
     })
   }
 
-  // handleSearch = e => {
-  //   console.log ('handling Search...')
-  //   this.setState({isbn: e.target.value})
-  // }
+  handleSearch = e => {
+    console.log('handling Search...')
+    this.setState({isbn: e.target.value})
+  }
 
   handleFileChange(evt) {
     this.setState({image: evt.target.files})
@@ -197,7 +198,7 @@ class CreateProduct extends Component {
             SCAN
           </button>
 
-          <p> Scan your barcode to pre-fill the fields below</p>
+          <p> Scan or type in your barcode to pre-fill the fields below</p>
 
           <div>
             <div className="d-flex flex-column align-items-center">
@@ -209,6 +210,7 @@ class CreateProduct extends Component {
                   className="new-post-input"
                   style={{fontSize: 20, width: 190, height: 35, margin: 8}}
                   placeholder="Your barcode number"
+                  onChange={handleSearch}
                   value={this.state.isbn ? this.state.isbn : ''}
                 />
                 <button
@@ -229,6 +231,16 @@ class CreateProduct extends Component {
             <div>
               {this.state.onScan ? (
                 <Scanner onDetected={this._onDetected} />
+              ) : (
+                <></>
+              )}
+            </div>
+            <div>
+              {this.state.thumbnail && this.state.title ? (
+                <div>
+                  <h5>{this.state.title}</h5>
+                  <img src={this.state.thumbnail} />
+                </div>
               ) : (
                 <></>
               )}
