@@ -242,7 +242,7 @@ class CreateProduct extends Component {
                     onClick={this.handleReset}
                     type="button"
                   >
-                    Reset
+                    Clear
                   </button>
                 </form>
                 <Scanner onDetected={this._onDetected} />
