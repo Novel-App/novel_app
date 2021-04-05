@@ -46,7 +46,7 @@ class CreateProduct extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleFileChange = this.handleFileChange.bind(this)
-    //this.handleSearch = this.handleSearch.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
     this.handleAutoFill = this.handleAutoFill.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleReset = this.handleReset.bind(this)
@@ -117,10 +117,10 @@ class CreateProduct extends Component {
     })
   }
 
-  // handleSearch = e => {
-  //   console.log ('handling Search...')
-  //   this.setState({isbn: e.target.value})
-  // }
+  handleSearch = e => {
+    console.log('handling Search...')
+    this.setState({isbn: e.target.value})
+  }
 
   handleFileChange(evt) {
     this.setState({image: evt.target.files})
@@ -197,7 +197,7 @@ class CreateProduct extends Component {
             SCAN
           </button>
 
-          <p> Scan your barcode to pre-fill the fields below</p>
+          <p> Scan or type in your barcode to pre-fill the fields below</p>
 
           <div>
             <div className="d-flex flex-column align-items-center">
@@ -209,6 +209,7 @@ class CreateProduct extends Component {
                   className="new-post-input"
                   style={{fontSize: 20, width: 190, height: 35, margin: 8}}
                   placeholder="Your barcode number"
+                  onChange={handleSearch}
                   value={this.state.isbn ? this.state.isbn : ''}
                 />
                 <button
