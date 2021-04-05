@@ -447,4 +447,7 @@ button.rec-dot:focus {
     position: absolute;
     z-index: 1;
   }
+
+  .footer {
+  }
 }
