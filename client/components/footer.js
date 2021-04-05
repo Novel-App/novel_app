@@ -23,6 +23,9 @@ const Footer = () => {
               </a>
             </li>
           </ul>
+          <div className="createdBy">
+            <p>Created by the Novel Coorporation</p>
+          </div>
         </div>
       </div>
     </section>

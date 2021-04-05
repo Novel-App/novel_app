@@ -505,5 +505,8 @@ singleChat styling */
 }
 .social {
   padding-top: 20px;
-  padding-bottom: 20px;
+}
+.createdBy {
+  text-align: center;
+  justify-content: center;
 }
