@@ -166,34 +166,6 @@ span {
   font-family: 'Poppins-Medium';
 }
 
-.edit-profile {
-  color: #e7fff8;
-}
-
-.profileText {
-  color: #e1e9e7;
-}
-
-.nav-link,
-.navbar-brand,
-.prod-nav-link {
-  color: #e7fff8;
-  cursor: pointer;
-}
-
-.nav-link {
-  margin-right: 1em !important;
-}
-.nav-text:hover,
-.navbar-brand:hover,
-.btn-primary:hover {
-  color: #65837b;
-}
-
-.navbar-nav .active a {
-  background-color: #65837b;
-}
-
 .prod-nav-link:hover,
 .add-product:hover a,
 .novel-logo:hover {
@@ -244,18 +216,6 @@ span {
   color: #e7fff8;
 }
 
-/* .btn-circle.btn-xl {
-  width: 90px;
-  height: 90px;
-  padding: 10px 16px;
-  border-radius: 50px;
-  font-size: 12px;
-  text-align: center;
-  border-color: #e7fff8;
-  background-color: #00a988;
-  color: #e7fff8;
-} */
-
 .btn-circle.btn-xl:hover,
 .btn-primary:hover,
 #edit_prof:hover,
@@ -286,11 +246,33 @@ nav a {
   position: relative;
   width: 100%;
   height: 100%;
+  display: block;
 }
 
-.welcome {
-  background-color: #e7fff9;
-  height: 100%;
+.btn-circle.btn-xl {
+  width: 90px;
+  height: 90px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  text-align: center;
+  border-color: #e7fff8;
+  background-color: #00a988;
+  color: #e7fff8;
+}
+
+#signup {
+  top: 10em;
+  left: 4em;
+  position: absolute;
+  z-index: 1;
+}
+
+#login {
+  top: 10em;
+  right: 4em;
+  position: absolute;
+  z-index: 1;
 }
 
 /* this helps with border-box sizing with google maps */
@@ -452,14 +434,17 @@ button.rec-dot:focus {
 
 /* mobile styling */
 @media only screen and (max-device-width: 480px) {
-  /* #novelgraphic {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  #signup {
+    top: 6em;
+    left: 1em;
+    position: absolute;
+    z-index: 1;
   }
 
-  .welcome {
-    background-color: #e7fff9;
-    height: 100%;
-  } */
+  #login {
+    top: 6em;
+    right: 1em;
+    position: absolute;
+    z-index: 1;
+  }
 }

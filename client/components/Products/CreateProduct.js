@@ -234,6 +234,22 @@ class CreateProduct extends Component {
               )}
             </div>
           </div>
+          <p>Enter ISBN to auto-fill the fields below</p>
+          <form onSubmit={handleAutoFill}>
+            <input
+              className="new-post-input"
+              onChange={handleSearch}
+              type="text"
+              placeholder="Enter ISBN"
+            />
+            <button type="submit" className="btn btn-sm btn-outline-dark ml-1">
+              Auto Fill
+            </button>
+          </form>
+        </div>
+        <div className="d-flex flex-column align-items-center ml-5">
+          <p>Scan you ISBN barcode to auto-fill the fields below</p>
+          <BarcodeScanner />
         </div>
         <br />
 
