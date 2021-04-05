@@ -166,34 +166,6 @@ span {
   font-family: 'Poppins-Medium';
 }
 
-.edit-profile {
-  color: #e7fff8;
-}
-
-.profileText {
-  color: #e1e9e7;
-}
-
-.nav-link,
-.navbar-brand,
-.prod-nav-link {
-  color: #e7fff8;
-  cursor: pointer;
-}
-
-.nav-link {
-  margin-right: 1em !important;
-}
-.nav-text:hover,
-.navbar-brand:hover,
-.btn-primary:hover {
-  color: #65837b;
-}
-
-.navbar-nav .active a {
-  background-color: #65837b;
-}
-
 .prod-nav-link:hover,
 .add-product:hover a,
 .novel-logo:hover {
