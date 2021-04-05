@@ -245,6 +245,7 @@ class CreateProduct extends Component {
                 <></>
               )}
             </div>
+            <h4 className="d-flex justify-content-center">OR</h4>
           </div>
           <p>Enter ISBN to auto-fill the fields below</p>
           <form onSubmit={handleAutoFill}>
@@ -259,10 +260,11 @@ class CreateProduct extends Component {
             </button>
           </form>
         </div>
-        <div className="d-flex flex-column align-items-center ml-5">
-          <p>Scan your barcode to auto-fill the fields below</p>
-        </div>
         <br />
+
+        <h4 className="d-flex justify-content-center">
+          Please fill in the fields below
+        </h4>
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="form-group">
