@@ -32,7 +32,6 @@ class AllProducts extends Component {
       this.props.match.path.slice(1) === 'listings' ? 'listings' : 'Products'
     this.setState({currentPage: path})
     this.updateData()
-    // this.setState({loading: false})
     this.loadingHandler()
   }
   componentDidUpdate() {
@@ -251,14 +250,6 @@ class AllProducts extends Component {
                                       Edit
                                     </button>
                                   </Link>
-                                  {/* <span style={{fontSize: '2em'}}>
-                                    <i
-                                      className="bi bi-trash"
-                                      onClick={() =>
-                                        this.deleteClickHandler(product.id)
-                                      }
-                                    />
-                                  </span> */}
                                   <button
                                     className="btn btn-sm btn-outline-warning rounded mr-2"
                                     type="button"

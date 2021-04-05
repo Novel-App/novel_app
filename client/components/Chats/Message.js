@@ -116,5 +116,3 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapState, mapDispatch)(Message)
-
-//https://bbbootstrap.com/snippets/awesome-chat-messages-box-43788219  --> styling

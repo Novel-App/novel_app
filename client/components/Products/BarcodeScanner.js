@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Scanner from './Scanner'
-import CreateProduct from './CreateProduct'
 
 class BarcodeScanner extends Component {
   constructor() {
@@ -13,13 +12,11 @@ class BarcodeScanner extends Component {
   }
 
   _onDetected = result => {
-    console.log('result----->', result)
     this.setState({results: []})
     this.setState({results: this.state.results.concat([result])})
   }
 
   handleClick = () => {
-    console.log('hadling click...', this.state.onScan)
     this.setState(prevState => ({
       onScan: !prevState.onScan
     }))

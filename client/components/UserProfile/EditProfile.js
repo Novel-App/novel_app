@@ -103,7 +103,6 @@ class EditProfile extends Component {
                   type="text"
                   placeholder="*****"
                   id="password"
-                  // value={password}
                   onChange={this.handleChange}
                 />
               </div>

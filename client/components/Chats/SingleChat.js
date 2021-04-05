@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import Message from './Message'
 import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
-import {Loading} from '../Loading'
 import {Link} from 'react-router-dom'
 import ScrollToBottom from 'react-scroll-to-bottom'
 

@@ -13,7 +13,6 @@ class EditProfImage extends Component {
   }
 
   handleFileChange(evt) {
-    console.log('image file', evt.target.files)
     this.setState({profileImg: evt.target.files[0]})
   }
 

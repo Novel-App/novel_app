@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {Loading} from '../Loading'
-import {fetchUserProducts} from '../../store/userInfo'
 
 class Profile extends Component {
   render() {
@@ -107,17 +105,7 @@ class Profile extends Component {
 const mapStateToProps = state => {
   return {
     user: state.user
-    // products: state.products.all,
-    // favorites: state.userInfo.favorites,
-    // purchases: state.userInfo.purchases
   }
 }
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     loadUserProducts: (userId, type) =>
-//       dispatch(fetchUserProducts(userId, type))
-//   }
-// }
 
 export default connect(mapStateToProps, null)(Profile)
