@@ -234,7 +234,8 @@ span {
 }
 
 .prod-nav-link:hover,
-.add-product:hover a {
+.add-product:hover a,
+.novel-logo:hover {
   color: #65837b;
 }
 

@@ -108,6 +108,12 @@ class CreateProduct extends Component {
   handleReset = () => {
     this.setState({
       isbn: '',
+      title: '',
+      author: '',
+      ISBN: '',
+      description: ''
+    })
+    this.setState({
       onScan: true
     })
   }
