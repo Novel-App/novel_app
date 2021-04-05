@@ -107,7 +107,8 @@ class CreateProduct extends Component {
 
   handleReset = () => {
     this.setState({
-      isbn: ''
+      isbn: '',
+      onScan: true
     })
   }
 
@@ -193,28 +194,7 @@ class CreateProduct extends Component {
 
           <p> Scan your barcode to pre-fill the fields below</p>
 
-          <form onSubmit={handleAutoFill}>
-            <input
-              className="new-post-input"
-              style={{fontSize: 20, width: 190, height: 35, margin: 8}}
-              placeholder="Your barcode number"
-              value={this.state.isbn ? this.state.isbn : ''}
-            />
-            <button className="btn btn-sm btn-outline-dark ml-1" type="submit">
-              Confirm
-            </button>
-            <button
-              className="btn btn-sm btn-outline-dark ml-1"
-              onClick={this.handleReset}
-              type="button"
-            >
-              Reset
-            </button>
-          </form>
-          <div>
-            {this.state.onScan ? (
-              <div>
-                {/* <form onSubmit={handleAutoFill}>
+          {/* <form onSubmit={handleAutoFill}>
             <input
               className="new-post-input"
               style={{fontSize: 20, width: 190, height: 35, margin: 8}}
@@ -232,6 +212,33 @@ class CreateProduct extends Component {
               Reset
             </button>
           </form> */}
+          <div>
+            {this.state.onScan ? (
+              <div>
+                <form
+                  onSubmit={handleAutoFill}
+                  className="d-flex justify-content-center"
+                >
+                  <input
+                    className="new-post-input"
+                    style={{fontSize: 20, width: 190, height: 35, margin: 8}}
+                    placeholder="Your barcode number"
+                    value={this.state.isbn ? this.state.isbn : ''}
+                  />
+                  <button
+                    className="btn btn-sm btn-outline-dark ml-1"
+                    type="submit"
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    className="btn btn-sm btn-outline-dark ml-1"
+                    onClick={this.handleReset}
+                    type="button"
+                  >
+                    Reset
+                  </button>
+                </form>
                 <Scanner onDetected={this._onDetected} />
               </div>
             ) : (
