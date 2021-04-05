@@ -93,6 +93,7 @@ class Profile extends Component {
                       </button>
                     </Link>
                   </div>
+                  <br />
                 </div>
               </div>
             </div>
