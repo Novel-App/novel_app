@@ -83,7 +83,7 @@ class Scanner extends Component {
   _onDetected = result => {
     let lastCode = result.codeResult.code
     lastResult.push(lastCode)
-    if (lastResult.length > 35) {
+    if (lastResult.length > 50) {
       let code = orderByOccurrence(lastResult)[0]
       lastResult = []
       Quagga.stop()

@@ -66,6 +66,7 @@ class CreateProduct extends Component {
 
   async handleAutoFill(e) {
     e.preventDefault()
+    this.handleClick()
     try {
       await axios
         .get(
@@ -87,18 +88,18 @@ class CreateProduct extends Component {
           }
         })
     } catch (err) {
-      alert('ISBN Not Found! Try again!')
+      alert('Invalid Barcode number! Try again!')
     }
   }
 
   _onDetected = result => {
     console.log('detected the result.....', result)
     this.setState({isbn: result})
-    this.setState({onScan: false})
+    // this.setState({onScan: false})
   }
 
   handleClick = () => {
-    console.log('hadling click...', this.state.onScan)
+    console.log('handling click...', this.state.onScan)
     this.setState(prevState => ({
       onScan: !prevState.onScan
     }))
@@ -186,7 +187,11 @@ class CreateProduct extends Component {
         <div className="d-flex flex-column align-items-center ml-5">
           <br />
           <button
-            className="btn btn-outline-dark ml-1"
+            className={
+              this.state.onScan
+                ? 'btn btn-outline-success m1'
+                : 'btn btn-outline-dark ml-1'
+            }
             type="button"
             onClick={this.handleClick}
           >
@@ -195,28 +200,7 @@ class CreateProduct extends Component {
 
           <p> Scan your barcode to pre-fill the fields below</p>
 
-          <form onSubmit={handleAutoFill}>
-            <input
-              className="new-post-input"
-              style={{fontSize: 20, width: 190, height: 35, margin: 8}}
-              placeholder="Your barcode number"
-              value={this.state.isbn ? this.state.isbn : ''}
-            />
-            <button className="btn btn-sm btn-outline-dark ml-1" type="submit">
-              Confirm
-            </button>
-            <button
-              className="btn btn-sm btn-outline-dark ml-1"
-              onClick={this.handleReset}
-              type="button"
-            >
-              Reset
-            </button>
-          </form>
-          <div>
-            {this.state.onScan ? (
-              <div>
-                {/* <form onSubmit={handleAutoFill}>
+          {/* <form onSubmit={handleAutoFill}>
             <input
               className="new-post-input"
               style={{fontSize: 20, width: 190, height: 35, margin: 8}}
@@ -234,6 +218,33 @@ class CreateProduct extends Component {
               Reset
             </button>
           </form> */}
+          <div>
+            {this.state.onScan ? (
+              <div>
+                <form
+                  onSubmit={handleAutoFill}
+                  className="d-flex justify-content-center"
+                >
+                  <input
+                    className="new-post-input"
+                    style={{fontSize: 20, width: 190, height: 35, margin: 8}}
+                    placeholder="Your barcode number"
+                    value={this.state.isbn ? this.state.isbn : ''}
+                  />
+                  <button
+                    className="btn btn-sm btn-outline-dark ml-1"
+                    type="submit"
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    className="btn btn-sm btn-outline-dark ml-1"
+                    onClick={this.handleReset}
+                    type="button"
+                  >
+                    Reset
+                  </button>
+                </form>
                 <Scanner onDetected={this._onDetected} />
               </div>
             ) : (
