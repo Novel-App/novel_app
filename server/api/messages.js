@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const {Message} = require('../db/models')
 const sellerOrBrowserOnly = require('../utils/sellerOrBrowserOnly')
-const {Op} = require('sequelize')
 module.exports = router
 
 //COMMENT: unable to serve specific user information, need to do this on the front-end
