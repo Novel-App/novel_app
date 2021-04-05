@@ -260,7 +260,7 @@ class CreateProduct extends Component {
           </form>
         </div>
         <div className="d-flex flex-column align-items-center ml-5">
-          <p>Scan you ISBN barcode to auto-fill the fields below</p>
+          <p>Scan your barcode to auto-fill the fields below</p>
         </div>
         <br />
 
