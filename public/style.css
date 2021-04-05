@@ -298,6 +298,18 @@ nav a {
   box-sizing: content-box;
 }
 
+/* footer */
+.footer {
+  margin-top: 1rem;
+  padding: 1rem;
+  color: #e7fff9;
+  background-color: #254d4c;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 /* all chats  */
 .direct-chat-img {
   width: 3rem;
@@ -390,7 +402,7 @@ singleChat styling */
 
 /* mobile styling */
 @media only screen and (max-device-width: 480px) {
-  #novelgraphic {
+  /* #novelgraphic {
     position: relative;
     width: 100%;
     height: 100%;
@@ -399,5 +411,5 @@ singleChat styling */
   .welcome {
     background-color: #e7fff9;
     height: 100%;
-  }
+  } */
 }
