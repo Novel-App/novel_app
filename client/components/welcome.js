@@ -9,18 +9,22 @@ export const Welcome = () => {
     <div className="welcome">
       <div>
         <a href="/signup">
-          <btn
+          <button
             type="button"
             id="signup"
             className="btn btn-outline btn-primary"
           >
             Sign up
-          </btn>
+          </button>
         </a>
         <a href="/login">
-          <btn type="button" id="login" className="btn btn-outline btn-primary">
+          <button
+            type="button"
+            id="login"
+            className="btn btn-outline btn-primary"
+          >
             Login
-          </btn>
+          </button>
         </a>
         <img id="novelgraphic" src="resources/images/novel_graphic.png" />
       </div>
