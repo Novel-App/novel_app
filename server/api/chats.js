@@ -3,7 +3,7 @@ const {Chat, Product, User} = require('../db/models')
 const Op = require('sequelize').Op
 module.exports = router
 
-// GET /api/chats/
+// GET /api/chats
 router.get('/', async (req, res, next) => {
   try {
     const chats = await Chat.findAll({
