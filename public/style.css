@@ -220,7 +220,8 @@ span {
 .btn-primary:hover,
 #edit_prof:hover,
 #edit_pic:hover {
-  background-color: #354b45;
+  background-color: #254d4c;
+  color: white;
 }
 
 a {
@@ -250,6 +251,22 @@ form div {
   position: relative;
   width: 100%;
   height: 100%;
+}
+
+.welcome {
+  background-color: #e7fff8;
+}
+
+#welcome_round_left {
+  position: absolute;
+  top: 10em;
+  left: 12em;
+}
+
+#welcome_round_right {
+  position: absolute;
+  top: 10em;
+  right: 12em;
 }
 
 .jumbotron {
