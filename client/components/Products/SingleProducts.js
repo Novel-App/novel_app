@@ -75,8 +75,6 @@ class SingleProduct extends Component {
         {product.sellerId === user.id && (
           <AvailabilityUpdateBtn product={product} />
         )}
-
-        {/* <AddChat productId={product.id} browserId={this.props.user.id} /> */}
         <br />
         <div className="mb-5">
           <div className="row">
@@ -97,7 +95,6 @@ class SingleProduct extends Component {
             </div>
 
             <div className="col-md-5">
-              {/* <div className="mb-0" style={{fontSize: '2em'}}><FavoriteBtn productId={product.id} /></div> */}
               <div className="mb-0 text-dark small">
                 Posted{' '}
                 {moment(

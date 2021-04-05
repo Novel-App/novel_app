@@ -27,7 +27,6 @@ class AvailabilityUpdateBtn extends Component {
     // ADD CONDITION: IF VALUE = AVAILABLE / RESERVED
     if (evt.target.value === 'Available' || evt.target.value === 'Reserved') {
       this.props.updateProduct({...this.state, availability: evt.target.value})
-      //IS THIS OK TO USE
       window.location.reload()
     }
   }

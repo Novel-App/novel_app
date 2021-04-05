@@ -7,8 +7,6 @@ import Condition from './Condition'
 import axios from 'axios'
 import Scanner from './Scanner'
 
-//TIER 3: BARCODE SCAN --> PRE-FILL AVAILABLE INFORMATION
-
 const defaultState = {
   title: '',
   author: '',
@@ -84,7 +82,6 @@ class CreateProduct extends Component {
               description: bookInfoFromAPI.description,
               thumbnail: bookInfoFromAPI.imageLinks.thumbnail
             })
-            console.log('---->', this.state)
           }
         })
     } catch (err) {
@@ -93,13 +90,11 @@ class CreateProduct extends Component {
   }
 
   _onDetected = result => {
-    console.log('detected the result.....', result)
     this.setState({isbn: result})
     this.setState({onScan: false})
   }
 
   handleClick = () => {
-    console.log('handling click...', this.state.onScan)
     this.setState(prevState => ({
       onScan: !prevState.onScan
     }))
@@ -119,7 +114,6 @@ class CreateProduct extends Component {
   }
 
   handleSearch = e => {
-    console.log('handling Search...')
     this.setState({isbn: e.target.value})
   }
 

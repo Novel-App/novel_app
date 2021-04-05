@@ -27,7 +27,6 @@ class AssignBuyer extends Component {
       availability: 'Sold',
       buyerId: evt.target.buyerId.value
     })
-    //IS THIS OK TO USE
     window.location.reload()
   }
   render() {
@@ -50,19 +49,6 @@ class AssignBuyer extends Component {
           <button className="btn btn-primary-outline" type="submit">
             Submit
           </button>
-          {/* <div name="buyerId" className="form-check" >
-          {this.props.chats.map(chat => {
-                return (
-                        <div key={chat.id} >
-                        <input className="form-check-input" type="radio" value={chat.users[0].id} />
-                        <label className="form-check-label" htmlFor="buyerId">
-                            {chat.users[0].firstName}
-                        </label>
-                        </div>
-                )
-              })}
-           </div>
-            <button type="submit">Submit</button> */}
         </form>
       </div>
     )
