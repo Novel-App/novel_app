@@ -66,9 +66,10 @@ class LocationVerification extends Component {
   render() {
     console.log('LAT LNG', this.state.latitude, this.state.longitude)
     return (
-      <div className="d-flex-column justify-content-center align-items-center">
-        <h1>Verify your location</h1>
-        {/* info icon to hover ==> explaining 'why do i need to verify my location?' */}
+      <div className="container d-flex flex-column justify-content-center align-items-center">
+        <br />
+        <h1 className="location-label">Verify your location</h1>
+        <br />
         <button
           className="btn btn-outline-dark"
           type="button"

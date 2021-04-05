@@ -9,7 +9,7 @@ import {login} from '../store'
 const LoginForm = props => {
   const {name, displayName, handleSubmit, error} = props
   return (
-    <div className="container d-flex flex-column justify-content-center align-items-center ">
+    <div className="login container d-flex flex-column justify-content-center align-items-center ">
       <h1 className="align-self-center my-5">Login </h1>
       <form
         className="d-flex flex-column align-items-center"

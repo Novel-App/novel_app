@@ -29,7 +29,7 @@ const Footer = () => {
             </li>
           </ul>
           <div className="createdBy">
-            <p>Created by the Novel Corporation</p>
+            <p className="footer-text">Created by the Novel Corporation</p>
           </div>
         </div>
       </div>

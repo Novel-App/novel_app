@@ -109,28 +109,57 @@ class AllChats extends Component {
         })
       : []
     return (
-      <div className="row rounded-lg overflow-hidden shadow justify-content-center">
+      <div className="chats row overflow-hidden justify-content-center">
         {/* <!-- Users box--> */}
-        <div className="col-5 px-0">
+        <div className="col-8 px-4">
           <div className="bg-white">
-            <div className="bg-gray px-4 py-2 bg-light">
-              <p className="h5 mb-0 py-1">All Chats</p>
+            <div className="d-flex justify-content-center bg-gray px-4 py-2 bg-light">
+              <h1 className="h5 mb-0 py-1">Chats</h1>
             </div>
-            <div className="messages-box container-flex">
-              <div className="list-group rounded-0" />
-              {currUser.map(chatRoom => {
-                return (
-                  <Link
-                    to={{
-                      pathname: `/chats/${chatRoom.chatId}`
-                    }}
+            {/* <div className="card messages-box"> */}
+            <div className="list-group d-flex flex-column py-0" />
+            {currUser.map(chatRoom => {
+              return (
+                <Link
+                  to={{
+                    pathname: `/chats/${chatRoom.chatId}`
+                  }}
+                  key={chatRoom.chatId}
+                >
+                  <div
+                    className="card d-flex allChat list-group-item-action list-group-item-light rounded-0 p-2  border-bottom"
                     key={chatRoom.chatId}
                   >
-                    <div
-                      className=" container-flex allChat  list-group-item-action list-group-item-light rounded-0 d-inline-flex p-2 justify-content-between border-bottom"
-                      key={chatRoom.chatId}
-                    >
-                      <div className="d-flex flex-column">
+                    <div className="row no-gutters">
+                      {/* HERE */}
+                      <div className="col-md-6 d-flex flex-column">
+                        <div className="d-flex flex-column align-items-center ">
+                          <h6 className="mb-0">{chatRoom.firstName}</h6>
+                          <div className="media">
+                            <img
+                              src={chatRoom.profileImg}
+                              className="direct-chat-img rounded-circle"
+                            />
+                          </div>
+                        </div>
+                        <div className="d-flex flex-column align-items-center ">
+                          <small className="small font-weight-bold">
+                            {moment(
+                              moment(chatRoom.message.time).format(
+                                'YYYY-MM-DD HH:mm:ss'
+                              )
+                            ).fromNow()}
+                          </small>
+                          <p className="font-italic text-muted mb-0 text-small align-middle">
+                            {chatRoom.message.content}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* HERE */}
+
+                      {/* <div className="col-md-6 d-flex flex-column">
+                      <div className="d-flex flex-column align-items-center ">
                         <h6 className="mb-0">{chatRoom.firstName}</h6>
                         <div className="media">
                           <img
@@ -139,7 +168,7 @@ class AllChats extends Component {
                           />
                         </div>
                       </div>
-                      <div className="d-flex flex-column ">
+                      <div className="d-flex flex-column align-items-center ">
                         <small className="small font-weight-bold">
                           {moment(
                             moment(chatRoom.message.time).format(
@@ -151,13 +180,26 @@ class AllChats extends Component {
                           {chatRoom.message.content}
                         </p>
                       </div>
-                      <div className="d-flex">
+                    </div> */}
+
+                      {/* <div className="col-md-3 d-flex justify-content-center align-items-center">
                         <img
                           src={chatRoom.productImg}
                           className="direct-chat-img"
                         />
+                      </div> */}
+
+                      <div className="col-md-3 d-flex flex-column justify-content-center align-items-center">
+                        <p className="mt-2 mb-0">Listing</p>
+                        <img
+                          src={chatRoom.productImg}
+                          className="direct-chat-img"
+                        />
+                      </div>
+
+                      <div className="col-md-3 d-flex align-items-center justify-content-center">
                         <button
-                          className="btn btn-sm fixed-top"
+                          className="delete-chat btn btn-outline-warning btn-sm fixed-top"
                           style={{
                             position: 'relative',
                             right: 5,
@@ -169,14 +211,15 @@ class AllChats extends Component {
                             this.deleteClickHandler(chatRoom.chatId)
                           }
                         >
-                          X
+                          Delete
                         </button>
                       </div>
                     </div>
-                  </Link>
-                )
-              })}
-            </div>
+                  </div>
+                </Link>
+              )
+            })}
+            {/* </div> */}
           </div>
         </div>
       </div>

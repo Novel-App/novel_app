@@ -249,13 +249,12 @@ class CreateProduct extends Component {
         </div>
         <div className="d-flex flex-column align-items-center ml-5">
           <p>Scan you ISBN barcode to auto-fill the fields below</p>
-          <BarcodeScanner />
         </div>
         <br />
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="form-group">
-            <label htmlFor="productImg">Images (up to 4)</label>
+            <label htmlFor="productImg">Upload your own images (up to 4)</label>
             <input
               type="file"
               name="productImg"
