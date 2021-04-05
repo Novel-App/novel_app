@@ -255,7 +255,7 @@ class CreateProduct extends Component {
               placeholder="Enter ISBN"
             />
             <button type="submit" className="btn btn-sm btn-outline-dark ml-1">
-              Auto Fill
+              Submit
             </button>
           </form>
         </div>
