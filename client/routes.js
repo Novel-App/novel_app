@@ -77,8 +77,6 @@ class Routes extends Component {
             <Route path="*" component={PageNotFound} />
           </Switch>
         )}
-        {/* Displays our Login component as a fallback */}
-        {/* <Route component={Login} /> */}
       </Switch>
     )
   }

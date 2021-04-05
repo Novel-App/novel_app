@@ -4,7 +4,6 @@ import axios from 'axios'
 const GET_LISTINGS = 'GET_LISTINGS'
 const GET_FAVORITES = 'GET_FAVORITES'
 const GET_PURCHASES = 'GET_PURCHASES'
-// const GET_PROFILE_IMAGE = 'GET_PROFILE_IMAGE'
 
 // ACTION CREATORS
 const getListings = listings => ({
@@ -20,8 +19,6 @@ const getPurchases = purchases => ({
   type: GET_PURCHASES,
   purchases
 })
-
-// const getProfileImage = image => ({})
 
 // THUNK CREATORS
 export const fetchListings = (userId, availability) => async dispatch => {
