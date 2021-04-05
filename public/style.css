@@ -439,6 +439,10 @@ singleChat styling */
   outline: inherit;
 }
 
+.location-label {
+  text-align: center;
+}
+
 .arrow:disabled {
   visibility: hidden;
 }
