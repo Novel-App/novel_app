@@ -375,6 +375,7 @@ singleChat styling */
 .messages-box,
 .chat-box {
   height: 510px;
+  width: 80%;
   overflow-y: scroll;
 }
 .chatText {
@@ -427,7 +428,8 @@ singleChat styling */
   color: #e7fff8;
 } */
 
-.arrow {
+.arrow,
+.delete-chat {
   background: none;
   color: inherit;
   border: none;
