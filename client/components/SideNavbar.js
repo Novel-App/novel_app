@@ -7,7 +7,6 @@ import * as AiIcons from 'react-icons/ai'
 import {SidebarDataLoggedIn, SideBarLoggedOut} from './SidebarData'
 import {logout} from '../store'
 import styled from 'styled-components'
-import SubMenu from './SubMenu'
 import {IconContext} from 'react-icons/lib'
 
 const SidebarNav = styled.nav`
@@ -64,7 +63,16 @@ const SideNavBar = ({handleClick, isLoggedIn}) => {
                       </div>
                     </Link>
                   ) : (
-                    <SubMenu item={item} key={index} />
+                    <Link
+                      to={item.path}
+                      className="linkNavigation"
+                      onClick={showSidebar}
+                    >
+                      <div>
+                        {item.icon}
+                        <span className="navTexts">{item.title}</span>{' '}
+                      </div>
+                    </Link>
                   )
                 return value
               })}

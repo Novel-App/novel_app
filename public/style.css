@@ -455,3 +455,10 @@ button.rec-dot:focus {
     z-index: 1;
   }
 }
+
+.main-content {
+  color: #e1e9fc;
+}
+.edit-profile {
+  color: #e1e9fc;
+}
