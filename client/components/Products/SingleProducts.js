@@ -8,6 +8,7 @@ import FavoriteBtn from './FavoriteBtn'
 import AddChat from '../Chats/AddChat'
 import moment from 'moment'
 import {Link} from 'react-router-dom'
+import Carousel from 'react-elastic-carousel'
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -61,13 +62,21 @@ class SingleProduct extends Component {
         <div className="mb-5">
           <div className="row">
             <div className="col-md-6 mb-4 mb-md-0">
-              <img
-                className="img-fluid rounded"
-                data-src="holder.js/200x250?theme=thumb"
-                alt={product.title}
-                src={product.image[0]}
-              />
+              <Carousel>
+                {product.image.map((image, index) => {
+                  return (
+                    <img
+                      key={index}
+                      className="img-fluid rounded"
+                      data-src="holder.js/200x250?theme=thumb"
+                      alt={product.title}
+                      src={image}
+                    />
+                  )
+                })}
+              </Carousel>
             </div>
+
             <div className="col-md-5">
               {/* <div className="mb-0" style={{fontSize: '2em'}}><FavoriteBtn productId={product.id} /></div> */}
               <div className="mb-0 text-dark small">
