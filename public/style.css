@@ -400,6 +400,14 @@ singleChat styling */
   align-items: center;
 }
 
+.drawingBuffer {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+
 /* mobile styling */
 @media only screen and (max-device-width: 480px) {
   /* #novelgraphic {
@@ -412,4 +420,4 @@ singleChat styling */
     background-color: #e7fff9;
     height: 100%;
   } */
-}
+
