@@ -8,9 +8,6 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      // explicitly select only the id and email fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
       attributes: [
         'id',
         'firstName',
@@ -59,7 +56,6 @@ router.get('/:userId', currentUserOnly, async (req, res, next) => {
 // PUT api/users
 router.put('/:userId', currentUserOnly, async (req, res, next) => {
   try {
-    // console.log('req.file ===>', req.file)
     const user = await User.findByPk(req.params.userId)
     if (!user) res.send('This user does not exist.')
     const updatedUser = await user.update(req.body)
@@ -69,9 +65,7 @@ router.put('/:userId', currentUserOnly, async (req, res, next) => {
   }
 })
 
-// get all available / reserved / sold listings by user (for profile)
 // GET api/users/:sellerId/listings/:availability
-// req.params.availability options: ["available", "reserved", "sold"]
 router.get(
   '/:userId/listings/:availability',
   currentUserOnly,
@@ -90,7 +84,6 @@ router.get(
   }
 )
 
-// get all purchases by user
 // GET api/users/:buyerId/purchases
 router.get('/:userId/purchases', currentUserOnly, async (req, res, next) => {
   try {
@@ -105,7 +98,6 @@ router.get('/:userId/purchases', currentUserOnly, async (req, res, next) => {
   }
 })
 
-// get all favorites by users
 // GET api/users/:userId/favorites
 router.get('/:userId/favorites', currentUserOnly, async (req, res, next) => {
   try {
@@ -115,7 +107,6 @@ router.get('/:userId/favorites', currentUserOnly, async (req, res, next) => {
     const faves = products.filter(
       product => product.users[0].favorite.isFavorite === true
     )
-    // const products = await Product.getFavorites(req.params.userId)
     res.status(200).send(faves)
   } catch (err) {
     next(err)

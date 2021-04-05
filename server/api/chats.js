@@ -126,7 +126,6 @@ router.get('/product/:productId', async (req, res, next) => {
 })
 
 // POST /api/chats
-//THUNKS MUST SEND: browserId & productId
 router.post('/', async (req, res, next) => {
   try {
     const chat = await Chat.findOrCreate({

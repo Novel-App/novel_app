@@ -32,35 +32,10 @@ router.get('/status/:availability', async (req, res, next) => {
   }
 })
 
-//POST /api/products
-//post must include: title, author, ISBN, description, condition, price, sellerId
-//could include 'image', canBargin. could switch: availability ==> then need to add buyerId
-
-// router.post('/', async (req, res, next) => {
-//   try {
-//     let newProduct = await Product.create(req.body, {
-//       include: [
-//         {
-//           model: User,
-//           as: 'seller',
-//           attributes: ['id', 'firstName', 'coordinates', 'reviewScore']
-//         },
-//         {model: Genre}
-//       ]
-//     })
-//     res.status(201).json(newProduct)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
 router.post('/', upload.array('productImg', 4), async (req, res, next) => {
   try {
-    console.log('REQ BODY', req.body)
-    console.log('REQ FILES', req.files)
-
     let imagePaths = req.files.map(file => file.path.replace(/^public\//, ''))
 
-    // const imagePath = req.files[0].path.replace(/^public\//, '')
     const newProduct = await Product.create(
       {...req.body, image: imagePaths},
       {
@@ -75,18 +50,13 @@ router.post('/', upload.array('productImg', 4), async (req, res, next) => {
       }
     )
     res.status(201).send(newProduct)
-    // res.status(201).redirect('/products')
   } catch (error) {
     next(error)
   }
 })
 
-//GET ALL USER FAVORITE PRODUCTS
-//GET /api/products/favorites/:userId
-//PASS IN userId FROM FE
 router.get('/favorites/:userId', async (req, res, next) => {
   try {
-    console.log(req.params.userId)
     const favorite = await Favorite.findAll({
       where: {
         userId: req.params.userId
@@ -98,7 +68,6 @@ router.get('/favorites/:userId', async (req, res, next) => {
   }
 })
 
-//FAVORITE PRODUCT
 //POST /api/favorite/:productId
 //PASS IN userId FROM FE
 router.post('/favorite/:productId', async (req, res, next) => {
@@ -155,8 +124,6 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-// edit listing info (seller can update info for their listings) ==> info to update -> pass in as req.body
-// ** ex) use this when updating product availability status --> ex) req.body = {availability: "Sold", buyerId: 3}
 // PUT api/products/:productId
 router.put('/:productId', async (req, res, next) => {
   try {
