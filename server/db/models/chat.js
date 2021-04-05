@@ -37,19 +37,4 @@ Chat.beforeBulkCreate(async chats => {
   await Promise.all(chats.map(chat => getSellerId(chat)))
 })
 
-// Chat.getChatsByUser = function(browserId) {
-//   return this.findAll({
-//     include: {
-//       model: Message,
-//       as: 'authorId'
-//     },
-//     where: {
-//       browserId: "authorId"
-//     }
-//   })
-// }
-
-//findAll where authorId === browserId
-//require message to get authorId
-
 module.exports = Chat

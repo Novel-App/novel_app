@@ -17,9 +17,6 @@ const Genre = db.define('genre', {
       'Fiction'
     ),
     allowNull: false
-    // validate: {
-    //   notEmpty: true
-    // }
   }
 })
 

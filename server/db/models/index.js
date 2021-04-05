@@ -7,19 +7,6 @@ const Chat = require('./chat')
 const Review = require('./review')
 const db = require('../db')
 
-/**
- * If we had any associations to make, this would be a great place to put them!
- * ex. if we had another model called BlogPost, we might say:
- *
- *    BlogPost.belongsTo(User)
- */
-
-/**
- * We'll export all of our models here, so that any time a module needs a model,
- * we can just require it from 'db/models'
- * for example, we can say: const {User} = require('../db/models')
- * instead of: const User = require('../db/models/user')
- */
 Product.belongsTo(Genre)
 Genre.hasMany(Product)
 
@@ -41,7 +28,6 @@ Chat.belongsTo(Product)
 User.belongsToMany(Chat, {
   through: {
     model: Message,
-    // as: 'author',
     unique: false
   },
   foreignKey: 'authorId',
@@ -57,28 +43,6 @@ Chat.belongsToMany(User, {
 
 //adding associations between user and review
 User.belongsToMany(User, {through: Review, as: 'reviewer'})
-
-// Through table for review score (update database schema)
-// Association between two sets of users (reviewer, and review score)
-// Leave reviewScore as that average (update db each time)
-
-// User.hasMany(Message, {
-//   foreignKey: 'senderId',
-//   as: 'OutgoingMessage'
-// })
-// User.hasMany(Message, {
-//   foreignKey: 'receiverId',
-//   as: 'IncomingMessage'
-// })
-
-// Message.belongsTo(User, {
-//   foreignKey: 'senderId',
-//   as: 'Sender'
-// })
-// Message.belongsTo(User, {
-//   foreignKey: 'receiverId',
-//   as: 'Receiver'
-// })
 
 module.exports = {
   User,

@@ -31,7 +31,7 @@ Message.getUnread = async function() {
   }
 }
 
-//returns number of unread messages of a single chat (to render number of unread message for each chat in AllChats view)
+//returns number of unread messages of a single chat (to render number of unread message for each chat in AllChats)
 Message.getUnreadCountByChat = async function(chatId) {
   try {
     const unreadCount = await this.findAll({

@@ -58,15 +58,6 @@ const User = db.define('user', {
       'https://www.clipartkey.com/mpngs/m/165-1651401_icon-people-reading-book.png',
     allowNull: false
   },
-  profileImageType: {
-    type: Sequelize.TEXT
-  },
-  // profileImageName: {
-  //   type: Sequelize.TEXT
-  // },
-  profileImageData: {
-    type: Sequelize.BLOB
-  },
   photoVerified: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
