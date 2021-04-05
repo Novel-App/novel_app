@@ -8,7 +8,7 @@ import FavoriteBtn from './FavoriteBtn'
 import AddChat from '../Chats/AddChat'
 import moment from 'moment'
 import {Link} from 'react-router-dom'
-import Carousel from 'react-elastic-carousel'
+import Carousel, {consts} from 'react-elastic-carousel'
 
 class SingleProduct extends Component {
   constructor(props) {
@@ -16,7 +16,8 @@ class SingleProduct extends Component {
     this.state = {
       loading: true
     }
-    this.loadingHandler()
+    this.loadingHandler = this.loadingHandler.bind(this)
+    this.myArrow = this.myArrow.bind(this)
   }
   async componentDidMount() {
     try {
@@ -30,6 +31,24 @@ class SingleProduct extends Component {
     setTimeout(() => {
       this.setState({loading: false})
     }, 500)
+  }
+  myArrow({type, onClick, isEdge}) {
+    const pointer =
+      type === consts.PREV ? (
+        <i className="bi bi-caret-left" />
+      ) : (
+        <i className="bi bi-caret-right" />
+      )
+    return (
+      <button
+        className="arrow"
+        type="button"
+        onClick={onClick}
+        disabled={isEdge}
+      >
+        {pointer}
+      </button>
+    )
   }
   render() {
     if (this.state.loading === true) {
@@ -62,7 +81,7 @@ class SingleProduct extends Component {
         <div className="mb-5">
           <div className="row">
             <div className="col-md-6 mb-4 mb-md-0">
-              <Carousel>
+              <Carousel renderArrow={this.myArrow}>
                 {product.image.map((image, index) => {
                   return (
                     <img
