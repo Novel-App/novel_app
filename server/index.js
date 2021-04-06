@@ -70,6 +70,14 @@ const createApp = () => {
   app.use('/resources/images', express.static(path.join('public/images')))
   app.use('/loading/images', express.static(path.join('public/images')))
 
+  //service worker
+  app.get('/service-worker.js', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'service-worker.js'))
+  })
+  app.get('*', function response(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  })
+
   //UPLOADING IMAGE
   var storage = multer.diskStorage({
     destination: function(req, file, cb) {

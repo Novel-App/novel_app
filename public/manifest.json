@@ -16,8 +16,9 @@
   "description": "Novel is a second-hand book community marketplace.",
   "start_url": "./",
   "scope": ".",
-  "background-color": "#f5f5f5",
+  "background_color": "#f5f5f5",
   "theme_color": "#354b45",
   "display": "fullscreen",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "prefer_related_applications": false
 }
