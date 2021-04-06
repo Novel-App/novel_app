@@ -99,6 +99,20 @@ class AllProducts extends Component {
       : (products = this.dynamicSearch(this.props.products))
     return (
       <div className="container">
+        {currentPage === 'listings' ? (
+          <div className="d-flex justify-content-between w-90">
+            <Link to="/profile">
+              <div className="mt-1 ml-2">
+                <i
+                  className="bi bi-arrow-left-circle"
+                  style={{fontSize: '3em'}}
+                />
+              </div>
+            </Link>
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="container-flex">
           <ScrollUpButton />
           <div className="container">
@@ -201,7 +215,7 @@ class AllProducts extends Component {
                         <div className="card-horizontal">
                           <Link to={`/products/${product.id}`}>
                             <img
-                              className="img-fluid"
+                              className="img-fluid my-3"
                               alt={product.title}
                               src={product.image[0]}
                             />

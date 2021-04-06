@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {updateUserPicture} from '../../store/user'
+import {Link} from 'react-router-dom'
 
 class EditProfImage extends Component {
   constructor() {
@@ -27,6 +28,16 @@ class EditProfImage extends Component {
   render() {
     return (
       <div className="container-fluid d-flex flex-column profile-image-edit">
+        <div className="d-flex justify-content-between w-90">
+          <Link to="/profile/">
+            <div className="mt-1 ml-2">
+              <i
+                className="bi bi-arrow-left-circle"
+                style={{fontSize: '3em'}}
+              />
+            </div>
+          </Link>
+        </div>
         <h1>Upload a new profile image!</h1>
         <br />
         <div className="d-flex flex-column align-items-center">

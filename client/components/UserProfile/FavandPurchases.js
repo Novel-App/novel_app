@@ -60,6 +60,16 @@ class FavAndPurchases extends Component {
     }
     return (
       <div className="container-fluid">
+        <div className="d-flex justify-content-between w-90">
+          <Link to="/profile/">
+            <div className="mt-1 ml-2">
+              <i
+                className="bi bi-arrow-left-circle"
+                style={{fontSize: '3em'}}
+              />
+            </div>
+          </Link>
+        </div>
         <ScrollUpButton />
         <h1>{currentPage === 'favorites' ? 'Favorites' : 'Purchases'}</h1>
         <div className="d-flex flex-column">
