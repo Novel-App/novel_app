@@ -128,7 +128,7 @@ export class SingleChat extends Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  <div className="input-group-append">
+                  <div>
                     <button
                       type="submit"
                       className="btn btn-outline-secondary d-flex justify-content-end"
