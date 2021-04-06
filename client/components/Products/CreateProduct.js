@@ -166,7 +166,7 @@ class CreateProduct extends Component {
         <div className="d-flex flex-column justify-content-center">
           <br />
           <div className="d-flex">
-            <Link to="/home">
+            <Link to="/">
               <button
                 type="button"
                 className="ml-10 btn btn-sm btn-outline-warning ml-15  mb-10"
@@ -231,7 +231,7 @@ class CreateProduct extends Component {
             </div>
             <div>
               {this.state.thumbnail && this.state.title ? (
-                <div>
+                <div className="d-flex flex-column align-items-center justify-content-center">
                   <h5>{this.state.title}</h5>
                   <img src={this.state.thumbnail} />
                 </div>

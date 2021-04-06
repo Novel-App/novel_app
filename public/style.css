@@ -1,6 +1,11 @@
 @font-face {
-  font-family: 'Poppins-Regular';
+  font-family: 'Poppins-Medium';
   src: url(./fonts/Poppins-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins-Regular';
+  src: url(./fonts/Poppins-Medium.ttf) format('truetype');
 }
 
 html {
@@ -430,7 +435,8 @@ singleChat styling */
 } */
 
 .arrow,
-.delete-chat {
+.delete-chat,
+.fav-btn {
   background: none;
   color: inherit;
   border: none;
@@ -438,6 +444,7 @@ singleChat styling */
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  z-index: 0;
 }
 
 .location-label {

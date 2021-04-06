@@ -52,10 +52,12 @@ class FavoriteBtn extends Component {
       <></>
     ) : (
       <div className="d-flex justify-content-center mb-1">
-        <i
-          className={favorite.isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'}
-          onClick={() => this.toggleFavorite(favorite.isFavorite)}
-        />
+        <button type="button" className="fav-btn">
+          <i
+            className={favorite.isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'}
+            onClick={() => this.toggleFavorite(favorite.isFavorite)}
+          />
+        </button>
         <p className="ml-2 mt-1 mb-0 small">{oneFavCount[0].count}</p>
       </div>
     )

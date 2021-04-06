@@ -100,7 +100,7 @@ class AllProducts extends Component {
     return (
       <div className="container">
         <div className="container-flex">
-          <ScrollUpButton style={{marginBottom: '3em'}} />
+          <ScrollUpButton />
           <div className="container">
             <nav className="productNavBar d-flex navbar-expand-md mt-3">
               <div
@@ -194,7 +194,7 @@ class AllProducts extends Component {
               <h2>No results</h2>
             ) : (
               <div className="container-fluid">
-                {products.map(product => (
+                {products.reverse().map(product => (
                   <div className="card mt-3" key={product.id}>
                     <div className="row no-gutters">
                       <div className="d-flex align-items-center col-md-4">

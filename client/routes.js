@@ -41,7 +41,6 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available to users not logged in */}
             <Route exact path="/" component={Welcome} />
-            <Route exact path="/home" component={Welcome} />
             <Route path="*" component={PageNotFound} />
           </Switch>
         )}
@@ -49,7 +48,6 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/" component={AllProducts} />
-            <Route exact path="/home" component={AllProducts} />
             <Route exact path="/products" component={AllProducts} />
             <Route exact path="/listings" component={AllProducts} />
             <Route

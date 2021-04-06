@@ -39,7 +39,7 @@ const SideNavBar = ({handleClick, isLoggedIn}) => {
               </Link>
             </div>
             <div className="d-flex nav-title justify-content-center">
-              <Link to="/home">
+              <Link to="/">
                 <h1 className="novel-logo">Novel</h1>
               </Link>
             </div>

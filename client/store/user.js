@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {useReducer} from 'react'
 import history from '../history'
 
 /**
@@ -63,7 +64,7 @@ export const login = (email, password) => async dispatch => {
 
   try {
     dispatch(getUser(res.data))
-    history.push('/home')
+    history.push('/')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
@@ -85,6 +86,9 @@ export const updateUser = user => async dispatch => {
   try {
     const {data} = await axios.put(`/api/users/${user.id}`, user)
     dispatch(_updateUser(data))
+    if (!user.coordinates) {
+      history.push('/profile')
+    }
   } catch (err) {
     console.error(err)
   }

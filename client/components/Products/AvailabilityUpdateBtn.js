@@ -2,8 +2,6 @@
 //listings
 //--> selected: current availability status of product
 
-//PROPS --> SINGLE PRODUCT
-
 //logic to add buyerId if status changes to "Sold"
 
 //pass in product req.body object including all necessary fields (including user)
