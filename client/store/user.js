@@ -63,7 +63,7 @@ export const login = (email, password) => async dispatch => {
 
   try {
     dispatch(getUser(res.data))
-    history.push('/home')
+    history.push('/')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
@@ -85,6 +85,9 @@ export const updateUser = user => async dispatch => {
   try {
     const {data} = await axios.put(`/api/users/${user.id}`, user)
     dispatch(_updateUser(data))
+    if (!data.coordinates) {
+      history.push('/profile')
+    }
   } catch (err) {
     console.error(err)
   }

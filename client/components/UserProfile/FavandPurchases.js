@@ -60,10 +60,10 @@ class FavAndPurchases extends Component {
     }
     return (
       <div className="container-fluid">
-        <ScrollUpButton style={{marginBottom: '3em'}} />
+        <ScrollUpButton />
         <h1>{currentPage === 'favorites' ? 'Favorites' : 'Purchases'}</h1>
         <div className="d-flex flex-column">
-          {products.map(product => (
+          {products.reverse().map(product => (
             <div className="card mt-3" key={product.id}>
               <div className="row no-gutters">
                 <div className="col-md-4">

@@ -34,7 +34,6 @@ class EditProfile extends Component {
   handleSubmit(event) {
     event.preventDefault()
     this.props.editUser({...this.state, id: this.props.user.id})
-    history.push('/profile')
   }
 
   onFileChange(event) {
@@ -111,7 +110,7 @@ class EditProfile extends Component {
                 <button type="submit" className="btn btn-outline-dark mr-2">
                   Update
                 </button>
-                <Link to="/home">
+                <Link to="/profile">
                   <button type="button" className="btn btn-outline-warning">
                     {' '}
                     Cancel

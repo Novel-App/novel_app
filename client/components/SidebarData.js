@@ -38,7 +38,7 @@ export const SidebarDataLoggedIn = [
 export const SideBarLoggedOut = [
   {
     title: 'Home',
-    path: '/home',
+    path: '/',
     icon: <AiIcons.AiFillHome />,
     className: 'nav-text'
   },

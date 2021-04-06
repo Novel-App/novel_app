@@ -250,7 +250,6 @@ async function seed() {
         'https://i.ebayimg.com/images/g/vsYAAOSwCl9fXUp3/s-l1600.jpg'
       ],
       condition: 'Like New',
-      numFavorites: 2,
       price: 14,
       canBargain: false,
       availability: 'Available',
@@ -270,7 +269,6 @@ async function seed() {
         'https://i1.wp.com/www.globolibri.it/wp-content/uploads/2020/01/we-were-the-lucky-ones-hunter-retro.jpg?fit=600%2C927&ssl=1'
       ],
       condition: 'Good',
-      numFavorites: 1,
       price: 10,
       canBargain: true,
       availability: 'Available',
@@ -290,7 +288,6 @@ async function seed() {
         'https://images-na.ssl-images-amazon.com/images/I/51X8qP9CWGL.jpg'
       ],
       condition: 'Loved',
-      numFavorites: 4,
       price: 8,
       canBargain: true,
       availability: 'Available',
@@ -307,7 +304,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md30346052192.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 4,
       canBargain: true,
       availability: 'Available',
@@ -324,7 +320,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md1090740259.jpg'],
       condition: 'Good',
-      numFavorites: 0,
       price: 10,
       canBargain: true,
       availability: 'Available',
@@ -343,7 +338,6 @@ async function seed() {
         'https://www.prestoimages.net/store30/rd10459/10459_pd1777611_2.jpg'
       ],
       condition: 'Like New',
-      numFavorites: 0,
       price: 20,
       canBargain: true,
       availability: 'Available',
@@ -363,7 +357,6 @@ async function seed() {
         'https://g.christianbook.com/g/slideshow/5/525132/main/525132_99_bkc.jpg'
       ],
       condition: 'Aged',
-      numFavorites: 1,
       price: 3,
       canBargain: true,
       availability: 'Reserved',
@@ -380,7 +373,6 @@ async function seed() {
       isFiction: false,
       image: ['https://pictures.abebooks.com/inventory/md/md30863319630.jpg'],
       condition: 'Like New',
-      numFavorites: 0,
       price: 15,
       canBargain: false,
       availability: 'Reserved',
@@ -396,11 +388,10 @@ async function seed() {
       description: 'Guide to Amsterdam',
       image: ['https://pictures.abebooks.com/isbn/9780844290430-us.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 2,
       canBargain: false,
       availability: 'Reserved',
-      buyerId: null,
+      buyerId: 2,
       sellerId: 9,
       genreId: lifestyle.id
     },
@@ -412,7 +403,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md8655857930.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 6,
       canBargain: true,
       availability: 'Sold',
@@ -429,7 +419,6 @@ async function seed() {
       isFiction: false,
       image: ['https://pictures.abebooks.com/inventory/md/md30310824446.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 3,
       canBargain: true,
       availability: 'Sold',
@@ -449,7 +438,6 @@ async function seed() {
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6z8ZFpqOb2sUoAFSkmU7yjQ7Pi34t_AlsvQ&usqp=CAU'
       ],
       condition: 'Like New',
-      numFavorites: 0,
       price: 12,
       canBargain: true,
       availability: 'Available',
@@ -468,7 +456,6 @@ async function seed() {
         'https://covers.openlibrary.org/b/id/8280995-L.jpg'
       ],
       condition: 'Loved',
-      numFavorites: 0,
       price: 5,
       canBargain: true,
       availability: 'Available',
@@ -485,7 +472,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md22878683997.jpg'],
       condition: 'Good',
-      numFavorites: 0,
       price: 7,
       canBargain: true,
       availability: 'Available',
@@ -502,7 +488,6 @@ async function seed() {
       isFiction: false,
       image: ['https://pictures.abebooks.com/inventory/md/md30616504538.jpg'],
       condition: 'Good',
-      numFavorites: 0,
       price: 9,
       canBargain: true,
       availability: 'Available',
@@ -523,7 +508,6 @@ async function seed() {
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGbKObwfrCrFvp3thaqbafZItN5ERSJmVqPw&usqp=CAU'
       ],
       condition: 'Like New',
-      numFavorites: 0,
       price: 25,
       canBargain: true,
       availability: 'Available',
@@ -542,7 +526,6 @@ async function seed() {
         'https://thejeromydiaries.com/wp-content/uploads/2015/09/the-girl-on-the-train-book-review-the-jeromy-diaries-.jpg'
       ],
       condition: 'Like New',
-      numFavorites: 0,
       price: 25,
       canBargain: true,
       availability: 'Available',
@@ -562,7 +545,6 @@ async function seed() {
         'https://images-na.ssl-images-amazon.com/images/I/51znJqGNnLL.jpg'
       ],
       condition: 'Good',
-      numFavorites: 0,
       price: 25,
       canBargain: true,
       availability: 'Available',
@@ -582,7 +564,6 @@ async function seed() {
         'https://photos-us.bazaarvoice.com/photo/2/cGhvdG86YmFybmVzYW5kbm9ibGU/5e421b2d-6ec2-556e-a42c-7499bfcee8ff'
       ],
       condition: 'Loved',
-      numFavorites: 0,
       price: 15,
       canBargain: true,
       availability: 'Available',
@@ -599,7 +580,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md30687498269.jpg'],
       condition: 'Good',
-      numFavorites: 0,
       price: 16,
       canBargain: true,
       availability: 'Available',
@@ -615,7 +595,6 @@ async function seed() {
       isFiction: false,
       image: ['https://pictures.abebooks.com/inventory/md/md30543003517.jpg'],
       condition: 'Like New',
-      numFavorites: 0,
       price: 18,
       canBargain: true,
       availability: 'Available',
@@ -632,7 +611,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md30819865579.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 20,
       canBargain: true,
       availability: 'Available',
@@ -649,7 +627,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md30838685103.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 21,
       canBargain: true,
       availability: 'Available',
@@ -666,7 +643,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md30380200847.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 22,
       canBargain: true,
       availability: 'Available',
@@ -683,7 +659,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md22608690491.jpg'],
       condition: 'Good',
-      numFavorites: 0,
       price: 24,
       canBargain: true,
       availability: 'Available',
@@ -700,7 +675,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md22671737075.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 24,
       canBargain: true,
       availability: 'Available',
@@ -716,7 +690,6 @@ async function seed() {
       isFiction: false,
       image: ['https://pictures.abebooks.com/inventory/md/md1306399868.jpg'],
       condition: 'Good',
-      numFavorites: 0,
       price: 24,
       canBargain: true,
       availability: 'Available',
@@ -733,7 +706,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md30808488658.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 23,
       canBargain: true,
       availability: 'Available',
@@ -750,7 +722,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md30280645139.jpg'],
       condition: 'Like New',
-      numFavorites: 0,
       price: 2,
       canBargain: true,
       availability: 'Available',
@@ -767,7 +738,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md30508944456.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 4,
       canBargain: true,
       availability: 'Available',
@@ -784,7 +754,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md867391491.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 5,
       canBargain: true,
       availability: 'Available',
@@ -801,7 +770,6 @@ async function seed() {
       isFiction: false,
       image: ['https://pictures.abebooks.com/inventory/md/md867392025.jpg'],
       condition: 'New',
-      numFavorites: 0,
       price: 5,
       canBargain: true,
       availability: 'Sold',
@@ -819,7 +787,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md30832707023.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 4,
       canBargain: true,
       availability: 'Available',
@@ -835,7 +802,6 @@ async function seed() {
       isFiction: false,
       image: ['https://pictures.abebooks.com/inventory/md/md30021310765.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 2,
       canBargain: true,
       availability: 'Sold',
@@ -851,7 +817,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md20747824317.jpg'],
       condition: 'Good',
-      numFavorites: 0,
       price: 3,
       canBargain: true,
       availability: 'Reserved',
@@ -868,7 +833,6 @@ async function seed() {
       isFiction: true,
       image: ['https://pictures.abebooks.com/inventory/md/md30607256535_2.jpg'],
       condition: 'Loved',
-      numFavorites: 0,
       price: 3,
       canBargain: true,
       availability: 'Sold',
@@ -888,7 +852,6 @@ async function seed() {
         'https://images-na.ssl-images-amazon.com/images/I/811Ov7HIblL.jpg'
       ],
       condition: 'Loved',
-      numFavorites: 0,
       price: 3,
       canBargain: true,
       availability: 'Available',
@@ -908,7 +871,6 @@ async function seed() {
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb4oM9sgZaO3SRSc0UvtXNaRWtEjy8LE_mXA&usqp=CAU'
       ],
       condition: 'Loved',
-      numFavorites: 0,
       price: 3,
       canBargain: true,
       availability: 'Sold',
@@ -928,7 +890,6 @@ async function seed() {
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBieeq9-HO2RORiKZTojRVEkOFEpBd2Uh3mA&usqp=CAU'
       ],
       condition: 'Loved',
-      numFavorites: 0,
       price: 3,
       canBargain: true,
       availability: 'Sold',
@@ -948,7 +909,6 @@ async function seed() {
         'https://cdn.shopify.com/s/files/1/1336/0125/products/TayariJones-AnAmericanMarriagebookbackcover_800x.jpg?v=1584655323'
       ],
       condition: 'Loved',
-      numFavorites: 0,
       price: 3,
       canBargain: true,
       availability: 'Reserved',
@@ -968,7 +928,6 @@ async function seed() {
         'https://images-na.ssl-images-amazon.com/images/I/41z7VbRVqTL._SY279_BO1,204,203,200_.jpg'
       ],
       condition: 'Loved',
-      numFavorites: 0,
       price: 3,
       canBargain: true,
       availability: 'Reserved',
@@ -988,7 +947,6 @@ async function seed() {
         'https://realizinggrace.files.wordpress.com/2017/01/img_7604.jpg?w=356&h=237'
       ],
       condition: 'Loved',
-      numFavorites: 0,
       price: 3,
       canBargain: true,
       availability: 'Sold',
@@ -1120,6 +1078,146 @@ async function seed() {
       isFavorite: true,
       productId: 16,
       userId: 2
+    },
+    {
+      isFavorite: true,
+      productId: 5,
+      userId: 3
+    },
+    {
+      isFavorite: true,
+      productId: 28,
+      userId: 8
+    },
+    {
+      isFavorite: true,
+      productId: 28,
+      userId: 9
+    },
+    {
+      isFavorite: true,
+      productId: 28,
+      userId: 10
+    },
+    {
+      isFavorite: true,
+      productId: 23,
+      userId: 4
+    },
+    {
+      isFavorite: true,
+      productId: 23,
+      userId: 5
+    },
+    {
+      isFavorite: true,
+      productId: 23,
+      userId: 9
+    },
+    {
+      isFavorite: true,
+      productId: 23,
+      userId: 11
+    },
+    {
+      isFavorite: true,
+      productId: 23,
+      userId: 14
+    },
+    {
+      isFavorite: true,
+      productId: 20,
+      userId: 4
+    },
+    {
+      isFavorite: true,
+      productId: 18,
+      userId: 9
+    },
+    {
+      isFavorite: true,
+      productId: 10,
+      userId: 11
+    },
+    {
+      isFavorite: true,
+      productId: 20,
+      userId: 10
+    },
+    {
+      isFavorite: true,
+      productId: 16,
+      userId: 6
+    },
+    {
+      isFavorite: true,
+      productId: 29,
+      userId: 14
+    },
+    {
+      isFavorite: true,
+      productId: 29,
+      userId: 4
+    },
+    {
+      isFavorite: true,
+      productId: 29,
+      userId: 3
+    },
+    {
+      isFavorite: true,
+      productId: 30,
+      userId: 4
+    },
+    {
+      isFavorite: true,
+      productId: 30,
+      userId: 14
+    },
+    {
+      isFavorite: true,
+      productId: 30,
+      userId: 19
+    },
+    {
+      isFavorite: true,
+      productId: 26,
+      userId: 10
+    },
+    {
+      isFavorite: true,
+      productId: 26,
+      userId: 22
+    },
+    {
+      isFavorite: true,
+      productId: 26,
+      userId: 26
+    },
+    {
+      isFavorite: true,
+      productId: 26,
+      userId: 5
+    },
+    {
+      isFavorite: true,
+      productId: 13,
+      userId: 5
+    },
+    {
+      isFavorite: true,
+      productId: 13,
+      userId: 17
+    },
+    {
+      isFavorite: true,
+      productId: 13,
+      userId: 24
+    },
+    {
+      isFavorite: true,
+      productId: 13,
+      userId: 22
     }
   ]
   const createFavorites = await Favorite.bulkCreate(favorites)
