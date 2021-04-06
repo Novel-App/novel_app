@@ -420,14 +420,10 @@ singleChat styling */
   left: 0;
 }
 
-/* .rec.rec-arrow,
-.rec.rec-arrow:enabled
-.rec.rec-arrow:hover
-.rec.rec-arrow:focus
-.rec.rec-arrow:enabled:hover {
-  background-color: #82a59d;
-  color: #e7fff8;
-} */
+.singleProductImage {
+  height: '450px';
+  width: '300px';
+}
 
 .arrow,
 .delete-chat {
