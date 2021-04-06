@@ -84,7 +84,7 @@ class SingleProduct extends Component {
                   return (
                     <img
                       key={index}
-                      className="img-fluid rounded"
+                      className="img-fluid rounded singleProductImage"
                       data-src="holder.js/200x250?theme=thumb"
                       alt={product.title}
                       src={image}
