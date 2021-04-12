@@ -20,14 +20,12 @@ Deployed website: https://novel-market.herokuapp.com/
 
 A list of technologies used within the project:
 
-* Express/Sequelize
-* React/Redux
-* Bootstrap / Material UI
-* Google Geolocation API
-* Google Books API
-* Quagga Barcode Scanner
+* Backend: Express, PostgreSQL, Sequelize
+* Frontend: React, Redux
+* Styling: Bootstrap / Material UI
+* Libraries/APIs: Google Maps API, Google Books API, Quagga Barcode Scanner
 
-* Novel is a progressive Web Application
+* Novel is a Progressive Web Application
 
 ## FAQs
 
