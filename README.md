@@ -14,6 +14,8 @@ Novel App is a community-based marketplace for books. New users verify their loc
 
 Deployed website: https://novel-market.herokuapp.com/
 
+Login: cody@gmail.com / cody123
+
 ## Technologies
 
 ---
