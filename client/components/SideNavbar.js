@@ -49,14 +49,14 @@ const SideNavBar = ({handleClick, isLoggedIn}) => {
               <Link to="#" className="navLink">
                 <AiIcons.AiOutlineClose onClick={showSidebar} />
               </Link>
-              {navBarIcons.map((item, index) => {
+              {navBarIcons.map(item => {
                 const value =
                   item.title === 'Log Out' ? (
                     <Link
                       to="#"
                       className="linkNavigation"
                       onClick={handleClick}
-                      key={index}
+                      key={item.title}
                     >
                       <div>
                         {item.icon}
@@ -68,6 +68,7 @@ const SideNavBar = ({handleClick, isLoggedIn}) => {
                       to={item.path}
                       className="linkNavigation"
                       onClick={showSidebar}
+                      key={item.title}
                     >
                       <div>
                         {item.icon}
