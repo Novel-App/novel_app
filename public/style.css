@@ -22,9 +22,10 @@ body,
   color: #354b45;
   padding: 0;
   margin: 0;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0;
 }
+
 /* navbar */
 #tinyNav {
   background-color: #f3eada;
@@ -41,7 +42,6 @@ body,
   background-color: #424242;
 }
 
-/* using */
 .sideNavContainer {
   background: #254d4c;
   width: 100%;
@@ -105,7 +105,6 @@ body,
   width: 100%;
 }
 
-/* using till here */
 .productNavBar {
   background: #254d4c;
   height: 80px;
@@ -350,10 +349,6 @@ strong {
   margin: 10px;
 }
 
-#messageFeed {
-  overflow-y: scroll; /* vertical scroll for the message feed */
-}
-
 #chat-message {
   border-color: #00a988;
   padding: 6;
@@ -376,12 +371,11 @@ strong {
 .rounded-lg {
   border-radius: 0.5rem;
 }
-.messages-box,
-.chat-box {
-  height: 510px;
-  width: 80%;
-  overflow-y: scroll;
+
+.messages-box {
+  border: #254d4c solid 2px;
 }
+
 .chatText {
   display: flex;
   align-self: center;

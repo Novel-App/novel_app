@@ -4,7 +4,6 @@ import Message from './Message'
 import {sendMessage, fetchMessages} from '../../store/message'
 import {fetchSingleChat} from '../../store/chat'
 import {Link} from 'react-router-dom'
-import ScrollToBottom from 'react-scroll-to-bottom'
 
 /**
  * COMPONENT
@@ -17,20 +16,25 @@ export class SingleChat extends Component {
       messageSent: false,
       loading: true
     }
+
     //state or props will populate with messages objects connected to specific singleChat
     //once message are populated the map function will map through every message
     //need to ensure that we're sorting messages by send time
     this.handleChange = this.handleChange.bind(this)
     this.submitChatMessage = this.submitChatMessage.bind(this)
+    this.scrollToBottom = this.scrollToBottom.bind(this)
   }
-
-  chatContainer = React.createRef()
 
   componentDidMount() {
     const chatId = Number(this.props.match.params.chatId)
     this.props.getMessages(chatId)
     this.props.getChat(chatId)
     this.setState({loading: false})
+    this.scrollToBottom()
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom()
   }
 
   handleChange(e) {
@@ -49,6 +53,15 @@ export class SingleChat extends Component {
     const chatId = Number(this.props.match.params.chatId)
     this.props.getChat(chatId)
     this.setState({content: '', messageSent: true})
+    this.scrollToBottom()
+  }
+
+  scrollToBottom() {
+    this.messagesEnd.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+      inline: 'nearest'
+    })
   }
 
   render() {
@@ -100,47 +113,49 @@ export class SingleChat extends Component {
               </div>
             </div>
           )}
-          <ScrollToBottom>
-            <div className="px-md-3" id="messages">
-              <ul
-                id="messageFeed"
-                className="list-unstyled"
-                style={{height: '300px', overflowY: 'auto'}}
-              >
-                <Message
-                  className="mr-3"
-                  chatId={this.props.match.params.chatId}
+          <div className="px-md-3 messages-box">
+            <div
+              className="list-unstyled"
+              style={{height: '300px', overflowY: 'auto'}}
+            >
+              <Message
+                className="mr-3"
+                chatId={this.props.match.params.chatId}
+              />
+              <div
+                ref={el => {
+                  this.messagesEnd = el
+                }}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="input-group mb-3 d-flex justify-content-end">
+            <div
+              className="d-flex justify-content-end"
+              onSubmit={this.submitChatMessage}
+            >
+              <div className="align-items-center">
+                <input
+                  id="messageTextarea"
+                  className="form-control"
+                  placeholder="Enter your message"
+                  type="text"
+                  value={this.state.content}
+                  onChange={this.handleChange}
                 />
-                <div />
-              </ul>
-              <div className="input-group mb-3">
-                <div
-                  className="d-flex justify-content-end"
-                  onSubmit={this.submitChatMessage}
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="btn btn-outline-secondary d-flex justify-content-end ml-3"
+                  onClick={this.submitChatMessage}
                 >
-                  <div className="align-items-center">
-                    <input
-                      id="messageTextarea"
-                      className="form-control"
-                      placeholder="Enter your message"
-                      type="text"
-                      value={this.state.content}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  <div>
-                    <button
-                      type="submit"
-                      className="btn btn-outline-secondary d-flex justify-content-end"
-                      onClick={this.submitChatMessage}
-                    >
-                      send
-                    </button>
-                  </div>
-                </div>
+                  send
+                </button>
               </div>
             </div>
-          </ScrollToBottom>
+          </div>
         </div>
       </React.Fragment>
     )

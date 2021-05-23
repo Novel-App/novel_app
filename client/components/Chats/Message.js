@@ -18,14 +18,11 @@ export class Message extends Component {
       this.setState({loading: false})
     }
   }
+
   render() {
     const messages = this.props.messages || []
     const chat = this.props.chat || {users: []}
-    if (this.state.loading) {
-      return <></>
-    }
-    //move the loading state to redux
-    if (!chat.users) {
+    if (this.state.loading || !chat.users) {
       return <></>
     }
     return (
