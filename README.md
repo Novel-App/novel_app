@@ -25,7 +25,7 @@ A list of technologies used within the project:
 * Backend: Express, PostgreSQL, Sequelize
 * Frontend: React, Redux
 * Styling: Bootstrap / Material UI
-* Libraries/APIs: Google Maps API, Google Books API, Quagga Barcode Scanner
+* Libraries/APIs: Google Maps API, Google Books API, Socket.IO, Quagga Barcode Scanner
 
 * Novel is a Progressive Web Application
 
